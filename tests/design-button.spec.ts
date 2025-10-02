@@ -17,10 +17,12 @@ test.describe('DesignButton Component', () => {
     const primaryButton = page.locator('design-button[variant="primary"]').first();
     const secondaryButton = page.locator('design-button[variant="secondary"]');
     const outlineButton = page.locator('design-button[variant="outline"]');
+    const ghostButton = page.locator('design-button[variant="ghost"]');
 
     await expect(primaryButton).toBeVisible();
     await expect(secondaryButton).toBeVisible();
     await expect(outlineButton).toBeVisible();
+    await expect(ghostButton).toBeVisible();
   });
 
   test('should render different sizes', async ({ page }) => {

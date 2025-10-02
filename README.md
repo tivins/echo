@@ -45,6 +45,7 @@ A customizable button component with multiple variants and sizes.
 <design-button variant="primary">Primary</design-button>
 <design-button variant="secondary">Secondary</design-button>
 <design-button variant="outline">Outline</design-button>
+<design-button variant="ghost">Ghost</design-button>
 
 <!-- Sizes -->
 <design-button size="small">Small</design-button>
@@ -59,7 +60,7 @@ A customizable button component with multiple variants and sizes.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline'` | `'primary'` | Button style variant |
+| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Button style variant |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button size |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
 

@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('design-button')
 export class DesignButton extends LitElement {
   @property({ type: String })
-  variant: 'primary' | 'secondary' | 'outline' = 'primary';
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' = 'primary';
   
   @property({ type: String })
   size: 'small' | 'medium' | 'large' = 'medium';
@@ -22,7 +22,7 @@ export class DesignButton extends LitElement {
       align-items: center;
       justify-content: center;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-weight: 500;
       cursor: pointer;
@@ -68,6 +68,17 @@ export class DesignButton extends LitElement {
     .button--outline:hover:not(:disabled) {
       background-color: #3b82f6;
       color: white;
+    }
+
+    .button--ghost {
+      background-color: transparent;
+      color: #3b82f6;
+      border: none;
+    }
+
+    .button--ghost:hover:not(:disabled) {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: #2563eb;
     }
 
     /* Sizes */

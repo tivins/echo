@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-01-02
+
+### Added
+- Ghost variant for DesignButton component
+- Updated demo page with ghost button example
+- Enhanced test coverage for ghost variant
+
+### Features
+- DesignButton component with:
+  - Four variants: primary, secondary, outline, ghost
+  - Three sizes: small, medium, large
+  - Disabled state support
+  - Custom click event emission
+  - Accessible design with focus management
+  - CSS custom properties for theming
+
 ## [1.0.0] - 2025-01-02
 
 ### Added
