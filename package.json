@@ -1,0 +1,47 @@
+{
+  "name": "design-toolkit",
+  "version": "1.0.0",
+  "description": "A modern web component library built with Lit",
+  "main": "dist/design-toolkit.js",
+  "module": "dist/design-toolkit.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "keywords": [
+    "web-components",
+    "lit",
+    "typescript",
+    "design-system",
+    "ui-library"
+  ],
+  "author": "Tivins",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^24.6.2",
+    "lit": "^3.3.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "playwright": "^1.55.1",
+    "prettier": "^3.6.2",
+    "rollup": "^4.52.3"
+  }
+}
