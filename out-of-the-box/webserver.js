@@ -26,10 +26,8 @@ const mimeTypes = {
 const server = http.createServer((req, res) => {
   
   const parsedUrl = url.parse(req.url);
-  console.log(parsedUrl);
 
   let pathname = path.join(ROOT, parsedUrl.pathname);
-  console.log(pathname);
 
   fs.stat(pathname, (err, stats) => {
     if (err) {
