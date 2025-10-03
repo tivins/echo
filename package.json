@@ -21,7 +21,9 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write src/**/*.ts",
     "test": "playwright test",
-    "test:ui": "playwright test --ui"
+    "test:ui": "playwright test --ui",
+    "ootbw": "npm run build && powershell -Command \"Copy-Item 'dist/design-toolkit.esm.bundled.js' 'out-of-the-box/'\" && cd out-of-the-box && node webserver.js",
+    "ootb": "npm run build && cp dist/design-toolkit.esm.bundled.js out-of-the-box/ && cd out-of-the-box && node webserver.js"
   },
   "keywords": [
     "web-components",
