@@ -12,6 +12,14 @@
       background-color: #f8fafc;
     }
     
+    h1 {
+      margin: 0;
+    }
+    header {
+      line-height: .7;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -68,16 +76,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>Design Toolkit</h1>
-    <p class="subtitle">A modern web component library built with Lit</p>
+    <header>
+      <h1>Design Toolkit</h1>
+      <p class="subtitle">A modern web component library built with Lit</p>
+    </header>
     
     <div class="section">
       <h2>Button Component</h2>
       
+      <h3>Variants</h3>
       <div class="demo-grid">
         <div class="demo-item">
-          <h3>Primary</h3>
-          <echo-button context="primary">Primary Button</echo-button>
+          <h3>Default</h3>
+          <echo-button>Button</echo-button>
         </div>
         
         
@@ -97,6 +108,7 @@
         </div>
       </div>
       
+      <h3>Contexts</h3>
       <div class="demo-grid">
         <div class="demo-item">
           <h3>Primary</h3>
@@ -128,11 +140,40 @@
           <echo-button context="warning">Warning Context</echo-button>
         </div>
       </div>
+
+      <h3>Sizes</h3>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <h3>Small</h3>
+          <echo-button variant="default" context="primary" size="small">Small Button</echo-button>
+        </div>
+        
+        <div class="demo-item">
+          <h3>Medium</h3>
+          <echo-button variant="default" context="primary" size="medium">Medium Button</echo-button>
+        </div>
+        
+        <div class="demo-item">
+          <h3>Large</h3>
+          <echo-button variant="default" context="primary" size="large">Large Button</echo-button>
+        </div>
+      </div>
+      
+      <h3>States</h3>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <h3>Disabled</h3>
+          <echo-button variant="default" context="primary" disabled>Disabled Button</echo-button>
+        </div>
+      </div>
+
+      <h3>Combinations</h3>
+      
       
       <div class="demo-grid">
         <div class="demo-item">
           <h3>Success Primary</h3>
-          <echo-button variant="primary" context="success">Success Primary</echo-button>
+          <echo-button size="small" context="success">Success Primary</echo-button>
         </div>
         
         <div class="demo-item">
@@ -151,29 +192,6 @@
         </div>
       </div>
       
-      <div class="demo-grid">
-        <div class="demo-item">
-          <h3>Small</h3>
-          <echo-button variant="default" context="primary" size="small">Small Button</echo-button>
-        </div>
-        
-        <div class="demo-item">
-          <h3>Medium</h3>
-          <echo-button variant="default" context="primary" size="medium">Medium Button</echo-button>
-        </div>
-        
-        <div class="demo-item">
-          <h3>Large</h3>
-          <echo-button variant="default" context="primary" size="large">Large Button</echo-button>
-        </div>
-      </div>
-      
-      <div class="demo-grid">
-        <div class="demo-item">
-          <h3>Disabled</h3>
-          <echo-button variant="default" context="primary" disabled>Disabled Button</echo-button>
-        </div>
-      </div>
     </div>
   </div>
 
