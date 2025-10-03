@@ -1,2 +1,2 @@
-export type DesignButtonVariant = 'primary' | 'secondary' | 'outline';
-export type DesignButtonSize = 'small' | 'medium' | 'large';
+export type EchoButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
+export type EchoButtonSize = 'small' | 'medium' | 'large';

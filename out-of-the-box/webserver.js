@@ -1,8 +1,12 @@
 // server.js
-const http = require("http");
-const path = require("path");
-const fs = require("fs");
-const url = require("url");
+import http from "http";
+import path from "path";
+import fs from "fs";
+import url from "url";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Récupère le dossier root depuis les arguments ou prend le dossier courant
 const ROOT = process.argv[2] ? path.resolve(process.argv[2]) : process.cwd();
@@ -20,11 +24,16 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
+  
   const parsedUrl = url.parse(req.url);
+  console.log(parsedUrl);
+
   let pathname = path.join(ROOT, parsedUrl.pathname);
+  console.log(pathname);
 
   fs.stat(pathname, (err, stats) => {
     if (err) {
+      console.log(err);
       res.statusCode = 404;
       res.end("Not Found");
       return;

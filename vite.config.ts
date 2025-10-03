@@ -3,8 +3,12 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   server: {
     port: 3000,
-    host: true
+    host: '127.0.0.1',
+    open: false,
+    strictPort: true,
+    cors: true
   },
+  logLevel: 'info',
   build: {
     lib: {
       entry: 'src/index.ts',
@@ -22,5 +26,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['lit']
-  }
+  },
+  root: '.',
+  publicDir: 'public'
 })

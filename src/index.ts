@@ -1,8 +1,8 @@
 // Import and register components
-import './components/design-button.js';
+import './components/echo-button.js';
 
 // Export all components
-export { DesignButton } from './components/design-button.js';
+export { EchoButton } from './components/echo-button.js';
 
 // Export types
-export type { DesignButtonVariant, DesignButtonSize } from './types/index.js';
+export type { EchoButtonVariant, EchoButtonSize } from './types/index.js';

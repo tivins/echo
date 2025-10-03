@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-01-03
+
+### Added
+- Rollup build configuration with multiple output formats
+- ES Module (ESM) build for modern browsers
+- UMD build for universal compatibility
+- Minified UMD build for production use
+- TypeScript declaration files generation
+- Source maps for debugging
+- CDN-ready bundles via unpkg/jsDelivr
+- Comprehensive example.html demonstrating all usage patterns
+
+### Enhanced
+- package.json with proper entry points for all formats
+- Build scripts: `build`, `build:vite`, `build:all`
+- Documentation with CDN usage examples
+- UMD compatibility for older browsers
+- Module type configuration in package.json
+
+### Technical
+- Rollup configuration with TypeScript plugin
+- Terser minification for production builds
+- Node resolution for dependency bundling
+- Multiple bundle formats from single configuration
+- TypeScript declarations in separate directory
+- Source maps for development debugging
+- Clean build output without warnings
+- tslib dependency for TypeScript plugin
+
+## [1.2.0] - 2025-01-02
+
+### Changed
+- Renamed component from `design-button` to `echo-button` following new naming convention
+- Updated class name from `DesignButton` to `EchoButton`
+- Changed custom event from `design-button-click` to `echo-button-click`
+- Updated type definitions from `DesignButtonVariant/Size` to `EchoButtonVariant/Size`
+- Renamed component file from `design-button.ts` to `echo-button.ts`
+- Renamed test file from `design-button.spec.ts` to `echo-button.spec.ts`
+- Updated all HTML examples and documentation to use new component name
+- Updated README.md with new component naming throughout
+
+### Technical
+- All imports and exports updated to reflect new naming convention
+- Global HTMLElementTagNameMap declaration updated
+- Test suite fully migrated to new component name
+- Development server and demo pages updated
+- All tests passing with new naming convention
+
 ## [1.1.0] - 2025-01-02
 
 ### Added

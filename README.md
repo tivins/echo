@@ -1,15 +1,6 @@
 # Design Toolkit
 
-A modern web component library built with Lit, TypeScript, and Vite.
-
-## Features
-
-- **Modern Web Components**: Built with Lit for optimal performance and developer experience
-- **TypeScript**: Full TypeScript support with type definitions
-- **Tree-shakable**: ES modules for optimal bundle sizes
-- **Accessible**: Built with accessibility in mind
-- **Customizable**: CSS custom properties for easy theming
-- **Framework Agnostic**: Works with any framework or vanilla JavaScript
+A modern web component library built with Lit, TypeScript, and Vite. Provides framework-agnostic, accessible UI components for modern web applications.
 
 ## Installation
 
@@ -19,41 +10,89 @@ npm install design-toolkit
 
 ## Quick Start
 
+### Self-Contained Bundled Version (Recommended)
+
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="module" src="https://unpkg.com/design-toolkit/dist/design-toolkit.js"></script>
+  <script type="module" src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.esm.bundled.js"></script>
 </head>
 <body>
-  <design-button variant="primary">Click me!</design-button>
+  <echo-button variant="primary">Click me!</echo-button>
 </body>
 </html>
 ```
 
+### External Dependencies Version (requires import map)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="importmap">
+  {
+    "imports": {
+      "lit": "https://cdn.skypack.dev/lit@^3.3.1"
+    }
+  }
+  </script>
+  <script type="module" src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.esm.js"></script>
+</head>
+<body>
+  <echo-button variant="primary">Click me!</echo-button>
+</body>
+</html>
+```
+
+### UMD Bundle (for older browsers)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://unpkg.com/lit@latest/index.js"></script>
+  <script src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.umd.min.js"></script>
+</head>
+<body>
+  <echo-button variant="primary">Click me!</echo-button>
+</body>
+</html>
+```
+
+### NPM Installation
+
+```bash
+npm install design-toolkit
+```
+
+```html
+<script type="module">
+  import 'design-toolkit';
+</script>
+<echo-button variant="primary">Click me!</echo-button>
+```
+
 ## Components
 
-### DesignButton
+### EchoButton
 
 A customizable button component with multiple variants and sizes.
 
 ```html
-<!-- Basic usage -->
-<design-button>Default Button</design-button>
-
 <!-- Variants -->
-<design-button variant="primary">Primary</design-button>
-<design-button variant="secondary">Secondary</design-button>
-<design-button variant="outline">Outline</design-button>
-<design-button variant="ghost">Ghost</design-button>
+<echo-button variant="primary">Primary</echo-button>
+<echo-button variant="secondary">Secondary</echo-button>
+<echo-button variant="outline">Outline</echo-button>
+<echo-button variant="ghost">Ghost</echo-button>
 
 <!-- Sizes -->
-<design-button size="small">Small</design-button>
-<design-button size="medium">Medium</design-button>
-<design-button size="large">Large</design-button>
+<echo-button size="small">Small</echo-button>
+<echo-button size="medium">Medium</echo-button>
+<echo-button size="large">Large</echo-button>
 
 <!-- Disabled state -->
-<design-button disabled>Disabled</design-button>
+<echo-button disabled>Disabled</echo-button>
 ```
 
 #### Properties
@@ -68,35 +107,32 @@ A customizable button component with multiple variants and sizes.
 
 | Event | Description |
 |-------|-------------|
-| `design-button-click` | Fired when the button is clicked |
+| `echo-button-click` | Fired when the button is clicked |
 
 ## Development
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm
 
 ### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/tivins/design4.git
 cd design4
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The development server will start at `http://localhost:3000`.
+The development server runs at `http://localhost:3000`.
 
-### Available Scripts
+### Scripts
 
 - `npm run dev` - Start development server
-- `npm run build` - Build the library
+- `npm run build` - Build library with Rollup (creates multiple formats)
+- `npm run build:vite` - Build with Vite
+- `npm run build:all` - Build both Rollup and Vite versions
 - `npm run preview` - Preview the built library
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Fix ESLint issues
@@ -104,12 +140,30 @@ The development server will start at `http://localhost:3000`.
 - `npm run test` - Run Playwright tests
 - `npm run test:ui` - Run Playwright tests with UI
 
+### Build Output
+
+The build process creates multiple formats:
+
+#### Self-Contained Bundles (Recommended - includes Lit)
+- `dist/design-toolkit.esm.bundled.js` - Complete ES Module with Lit bundled
+- `dist/design-toolkit.umd.bundled.js` - Complete UMD with Lit bundled
+- `dist/design-toolkit.umd.bundled.min.js` - Complete minified UMD with Lit bundled
+
+#### External Dependencies Builds (require import maps or globals)
+- `dist/design-toolkit.esm.js` - ES Module format (needs Lit externally)
+- `dist/design-toolkit.umd.js` - UMD format (needs Lit globally)
+- `dist/design-toolkit.umd.min.js` - Minified UMD version (needs Lit globally)
+
+#### Additional Files
+- `dist/types/` - TypeScript declaration files
+- Source maps for debugging
+
 ### Project Structure
 
 ```
 src/
 ├── components/          # Web components
-│   └── design-button.ts
+│   └── echo-button.ts
 ├── types/              # TypeScript type definitions
 │   └── index.ts
 └── index.ts            # Main entry point
@@ -117,10 +171,10 @@ src/
 
 ## Theming
 
-Components use CSS custom properties for theming. You can override these in your application:
+Components use CSS custom properties for theming:
 
 ```css
-design-button {
+echo-button {
   --button-primary-bg: #your-color;
   --button-primary-hover: #your-hover-color;
   --button-border-radius: 8px;
@@ -129,38 +183,24 @@ design-button {
 
 ## Testing
 
-This project uses Playwright for end-to-end testing:
-
 ```bash
-# Run tests
 npm run test
-
-# Run tests with UI
-npm run test:ui
 ```
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
 5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Links
-
-- [Repository](https://github.com/tivins/design4)
-- [Documentation](https://github.com/tivins/design4#readme)
-- [Issues](https://github.com/tivins/design4/issues)
+MIT License - see [LICENSE](LICENSE) for details.
 
 ## Author
 
 **Tivins**
-
----
 
 Built with Lit, TypeScript, and Vite.
