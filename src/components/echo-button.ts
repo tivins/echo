@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type { EchoButtonVariant, EchoSize, EchoContext } from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
+import { componentSizes } from '../styles/component-sizes.js';
 
 @customElement('echo-button')
 export class EchoButton extends LitElement {
@@ -20,6 +21,7 @@ export class EchoButton extends LitElement {
 
   static styles = [
     contextColors,
+    componentSizes,
     css`
       :host {
         display: inline-block;
@@ -88,25 +90,6 @@ export class EchoButton extends LitElement {
 
       .button--ghost:hover:not(:disabled) {
         background-color: var(--context-color-alpha);
-      }
-
-      /* Sizes */
-      .size--small {
-        padding: 6px 12px;
-        font-size: 14px;
-        height: 32px;
-      }
-
-      .size--medium {
-        padding: 8px 16px;
-        font-size: 16px;
-        height: 40px;
-      }
-
-      .size--large {
-        padding: 12px 24px;
-        font-size: 18px;
-        height: 48px;
       }
     `
   ];
