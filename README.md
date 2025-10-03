@@ -19,7 +19,7 @@ npm install design-toolkit
   <script type="module" src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.esm.bundled.js"></script>
 </head>
 <body>
-  <echo-button variant="primary">Click me!</echo-button>
+  <echo-button variant="default" context="primary">Click me!</echo-button>
 </body>
 </html>
 ```
@@ -40,7 +40,7 @@ npm install design-toolkit
   <script type="module" src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.esm.js"></script>
 </head>
 <body>
-  <echo-button variant="primary">Click me!</echo-button>
+  <echo-button variant="default" context="primary">Click me!</echo-button>
 </body>
 </html>
 ```
@@ -55,7 +55,7 @@ npm install design-toolkit
   <script src="https://unpkg.com/design-toolkit@latest/dist/design-toolkit.umd.min.js"></script>
 </head>
 <body>
-  <echo-button variant="primary">Click me!</echo-button>
+  <echo-button variant="default" context="primary">Click me!</echo-button>
 </body>
 </html>
 ```
@@ -81,10 +81,23 @@ A customizable button component with multiple variants and sizes.
 
 ```html
 <!-- Variants -->
-<echo-button variant="primary">Primary</echo-button>
-<echo-button variant="secondary">Secondary</echo-button>
+<echo-button variant="default">Default</echo-button>
+<echo-button variant="link">Link</echo-button>
 <echo-button variant="outline">Outline</echo-button>
 <echo-button variant="ghost">Ghost</echo-button>
+
+<!-- Context Colors -->
+<echo-button context="primary">Primary</echo-button>
+<echo-button context="secondary">Secondary</echo-button>
+<echo-button context="success">Success</echo-button>
+<echo-button context="danger">Danger</echo-button>
+<echo-button context="warning">Warning</echo-button>
+<echo-button context="info">Info</echo-button>
+
+<!-- Combinations -->
+<echo-button variant="default" context="success">Success Default</echo-button>
+<echo-button variant="outline" context="danger">Danger Outline</echo-button>
+<echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
 
 <!-- Sizes -->
 <echo-button size="small">Small</echo-button>
@@ -99,9 +112,22 @@ A customizable button component with multiple variants and sizes.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Button style variant |
+| `variant` | `'default' \| 'link' \| 'outline' \| 'ghost'` | `'default'` | Button visual style variant |
+| `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Button semantic context/color |
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button size |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
+
+#### TypeScript Types
+
+The library exports reusable TypeScript types for extending components:
+
+```typescript
+import type { EchoButtonVariant, EchoSize, EchoContext } from 'design-toolkit';
+
+// EchoSize: 'small' | 'medium' | 'large'
+// EchoContext: 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary'
+// EchoButtonVariant: 'primary' | 'secondary' | 'outline' | 'ghost'
+```
 
 #### Events
 

@@ -77,10 +77,32 @@
         <div class="demo-section">
             <h2>Button Variants</h2>
             <div class="button-group">
-                <echo-button variant="primary">Primary</echo-button>
-                <echo-button variant="secondary">Secondary</echo-button>
+                <echo-button variant="default">Default</echo-button>
+                <echo-button variant="link">Link</echo-button>
                 <echo-button variant="outline">Outline</echo-button>
                 <echo-button variant="ghost">Ghost</echo-button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Context Colors</h2>
+            <div class="button-group">
+                <echo-button context="primary">Primary</echo-button>
+                <echo-button context="secondary">Secondary</echo-button>
+                <echo-button context="success">Success</echo-button>
+                <echo-button context="danger">Danger</echo-button>
+                <echo-button context="warning">Warning</echo-button>
+                <echo-button context="info">Info</echo-button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Variants + Contexts</h2>
+            <div class="button-group">
+                <echo-button variant="default" context="success">Success Default</echo-button>
+                <echo-button variant="outline" context="danger">Danger Outline</echo-button>
+                <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
+                <echo-button variant="link" context="info">Info Link</echo-button>
             </div>
         </div>
 
@@ -96,9 +118,9 @@
         <div class="demo-section">
             <h2>Disabled Buttons</h2>
             <div class="button-group">
-                <echo-button disabled>Disabled Primary</echo-button>
-                <echo-button variant="secondary" disabled>Disabled Secondary</echo-button>
-                <echo-button variant="outline" disabled>Disabled Outline</echo-button>
+                <echo-button disabled>Disabled Default</echo-button>
+                <echo-button variant="outline" context="danger" disabled>Disabled Danger Outline</echo-button>
+                <echo-button variant="ghost" context="success" disabled>Disabled Success Ghost</echo-button>
             </div>
         </div>
 

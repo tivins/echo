@@ -5,4 +5,4 @@ import './components/echo-button.js';
 export { EchoButton } from './components/echo-button.js';
 
 // Export types
-export type { EchoButtonVariant, EchoButtonSize } from './types/index.js';
+export type { EchoButtonVariant, EchoSize, EchoContext } from './types/index.js';

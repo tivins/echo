@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2025-01-03
+
+### Changed
+- Renamed `EchoButtonSize` type to `EchoSize` for broader reuse across components
+- Renamed `EchoButtonContext` type to `EchoContext` for broader reuse across components
+
+### Technical
+- Updated type definitions in src/types/index.ts
+- Updated all imports and exports in src/index.ts
+- Updated component implementation in src/components/echo-button.ts
+- All tests passing after type rename
+- Build process successful with new type names
+
+## [1.4.0] - 2025-01-03
+
+### Added
+- Context property for theme colors (danger, success, warning, info, primary, secondary)
+- CSS custom properties system for dynamic theming
+- Support for variant + context combinations
+- Comprehensive color palette with hover states
+- Alpha transparency support for ghost variants
+
+### Changed
+- Restructured button variants: default, link, outline, ghost
+- Separated visual variants from semantic contexts
+- Updated CSS architecture to use CSS custom properties
+- Enhanced focus-visible styling with currentColor
+
+### Enhanced
+- Better separation of concerns between variants and contexts
+- More flexible theming system
+- Improved accessibility with semantic color meanings
+
 ## [1.3.0] - 2025-01-03
 
 ### Added

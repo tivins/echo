@@ -1,17 +1,18 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import type { EchoButtonVariant, EchoSize, EchoContext } from '../types/index.js';
 
 @customElement('echo-button')
 export class EchoButton extends LitElement {
   
   @property({ type: String })
-  variant: 'default' | 'link' | 'outline' | 'ghost' = 'default';
+  variant: EchoButtonVariant = 'primary';
 
   @property({ type: String })
-  size: 'small' | 'medium' | 'large' = 'medium';
+  size: EchoSize = 'medium';
 
   @property({ type: String })
-  context: 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary' = 'primary';
+  context: EchoContext = 'primary';
 
   @property({ type: Boolean })
   disabled = false;
@@ -37,7 +38,7 @@ export class EchoButton extends LitElement {
     }
 
     .button:focus-visible {
-      box-shadow: 0 0 0 2px #3b82f6;
+      box-shadow: 0 0 0 2px currentColor;
     }
 
     .button:disabled {
@@ -47,43 +48,89 @@ export class EchoButton extends LitElement {
 
     /* Variants */
     .button--primary {
-      background-color: #3b82f6;
+      background-color: var(--context-color);
       color: white;
     }
 
     .button--primary:hover:not(:disabled) {
-      background-color: #2563eb;
+      background-color: var(--context-color-hover);
+    }
+
+    .button--link {
+      background-color: transparent;
+      color: var(--context-color);
+    }
+
+    .button--link:hover:not(:disabled) {
+      color: var(--context-color-hover);
+      text-decoration: underline;
     }
 
     .button--secondary {
-      background-color: #6b7280;
+      background-color: var(--context-color);
       color: white;
     }
 
     .button--secondary:hover:not(:disabled) {
-      background-color: #4b5563;
+      background-color: var(--context-color-hover);
     }
 
     .button--outline {
       background-color: transparent;
-      color: #3b82f6;
-      border: 1px solid #3b82f6;
+      color: var(--context-color);
+      border: 1px solid var(--context-color);
     }
 
     .button--outline:hover:not(:disabled) {
-      background-color: #3b82f6;
+      background-color: var(--context-color);
       color: white;
     }
 
     .button--ghost {
       background-color: transparent;
-      color: #3b82f6;
+      color: var(--context-color);
       border: none;
     }
 
     .button--ghost:hover:not(:disabled) {
-      background-color: rgba(59, 130, 246, 0.1);
-      color: #2563eb;
+      background-color: var(--context-color-alpha);
+    }
+
+    /* Context Colors */
+    .context--primary {
+      --context-color: #3b82f6;
+      --context-color-hover: #2563eb;
+      --context-color-alpha: rgba(59, 130, 246, 0.1);
+    }
+
+    .context--secondary {
+      --context-color: #6b7280;
+      --context-color-hover: #4b5563;
+      --context-color-alpha: rgba(107, 114, 128, 0.1);
+    }
+
+    .context--success {
+      --context-color: #10b981;
+      --context-color-hover: #059669;
+      --context-color-alpha: rgba(16, 185, 129, 0.1);
+    }
+
+    .context--danger {
+      --context-color: #ef4444;
+      --context-color-hover: #dc2626;
+      --context-color-alpha: rgba(239, 68, 68, 0.1);
+    }
+
+    .context--warning {
+      --context-color: #f59e0b;
+      --context-color-hover: #d97706;
+      --context-color-alpha: rgba(245, 158, 11, 0.1);
+    }
+
+    .context--info {
+      --context-color: #06b6d4;
+      --context-color-hover: #0891b2;
+      --context-color-alpha: rgba(6, 182, 212, 0.1);
     }
 
     /* Sizes */
@@ -109,7 +156,7 @@ export class EchoButton extends LitElement {
   render() {
     return html`
       <button
-        class="button button--${this.variant} size--${this.size}"
+        class="button button--${this.variant} context--${this.context} size--${this.size}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >

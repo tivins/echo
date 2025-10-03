@@ -15,14 +15,44 @@ test.describe('EchoButton Component', () => {
 
   test('should render different variants', async ({ page }) => {
     const primaryButton = page.locator('echo-button[variant="primary"]').first();
-    const secondaryButton = page.locator('echo-button[variant="secondary"]');
-    const outlineButton = page.locator('echo-button[variant="outline"]');
-    const ghostButton = page.locator('echo-button[variant="ghost"]');
+    const secondaryButton = page.locator('echo-button[variant="secondary"]').first();
+    const linkButton = page.locator('echo-button[variant="link"]').first();
+    const outlineButton = page.locator('echo-button[variant="outline"]').first();
+    const ghostButton = page.locator('echo-button[variant="ghost"]').first();
 
     await expect(primaryButton).toBeVisible();
     await expect(secondaryButton).toBeVisible();
+    await expect(linkButton).toBeVisible();
     await expect(outlineButton).toBeVisible();
     await expect(ghostButton).toBeVisible();
+  });
+
+  test('should render different contexts', async ({ page }) => {
+    const primaryButton = page.locator('echo-button[context="primary"]').first();
+    const secondaryButton = page.locator('echo-button[context="secondary"]').first();
+    const successButton = page.locator('echo-button[context="success"]').first();
+    const dangerButton = page.locator('echo-button[context="danger"]').first();
+    const warningButton = page.locator('echo-button[context="warning"]').first();
+    const infoButton = page.locator('echo-button[context="info"]').first();
+
+    await expect(primaryButton).toBeVisible();
+    await expect(secondaryButton).toBeVisible();
+    await expect(successButton).toBeVisible();
+    await expect(dangerButton).toBeVisible();
+    await expect(warningButton).toBeVisible();
+    await expect(infoButton).toBeVisible();
+  });
+
+  test('should render combinations of variants and contexts', async ({ page }) => {
+    const successPrimaryButton = page.locator('echo-button[variant="primary"][context="success"]');
+    const dangerOutlineButton = page.locator('echo-button[variant="outline"][context="danger"]');
+    const warningGhostButton = page.locator('echo-button[variant="ghost"][context="warning"]');
+    const infoLinkButton = page.locator('echo-button[variant="link"][context="info"]');
+
+    await expect(successPrimaryButton).toBeVisible();
+    await expect(dangerOutlineButton).toBeVisible();
+    await expect(warningGhostButton).toBeVisible();
+    await expect(infoLinkButton).toBeVisible();
   });
 
   test('should render different sizes', async ({ page }) => {
