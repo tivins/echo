@@ -303,6 +303,7 @@ A customizable button component with multiple variants and sizes.
 <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
 
 <!-- Sizes -->
+<echo-button size="xs">Extra Small</echo-button>
 <echo-button size="small">Small</echo-button>
 <echo-button size="medium">Medium</echo-button>
 <echo-button size="large">Large</echo-button>
@@ -317,7 +318,7 @@ A customizable button component with multiple variants and sizes.
 |----------|------|---------|-------------|
 | `variant` | `'default' \| 'link' \| 'outline' \| 'ghost'` | `'default'` | Button visual style variant |
 | `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Button semantic context/color |
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button size |
+| `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Button size (24px, 32px, 40px, 48px) |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
 
 #### TypeScript Types
@@ -327,9 +328,9 @@ The library exports reusable TypeScript types for extending components:
 ```typescript
 import type { EchoButtonVariant, EchoSize, EchoContext } from 'design-toolkit';
 
-// EchoSize: 'small' | 'medium' | 'large'
+// EchoSize: 'xs' | 'small' | 'medium' | 'large'
 // EchoContext: 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary'
-// EchoButtonVariant: 'primary' | 'secondary' | 'outline' | 'ghost'
+// EchoButtonVariant: 'default' | 'link' | 'outline' | 'ghost'
 ```
 
 #### Events

@@ -1,6 +1,6 @@
 /**
  * Icon registry for Design Toolkit
- * 
+ *
  * This module manages the SVG icon library and provides
  * efficient loading and caching of icon data.
  */
@@ -27,7 +27,6 @@ const createSVGTemplate = (content: string): string => {
   </svg>`;
 };
 
-
 /**
  * Generate SVG path for an icon based on its name
  * Uses the comprehensive icon library
@@ -36,8 +35,9 @@ const generateIconSVG = (iconName: IconName): string => {
   const exists = Object.prototype.hasOwnProperty.call(iconLibrary, iconName);
   const path = exists ? iconLibrary[iconName] : iconLibrary['x']; // fallback to x icon
   if (!exists) {
-    // eslint-disable-next-line no-console
-    console.warn(`[design-toolkit] Icon "${String(iconName)}" is not implemented. Falling back to "x".`);
+    console.warn(
+      `[design-toolkit] Icon "${String(iconName)}" is not implemented. Falling back to "x".`
+    );
   }
   return createSVGTemplate(path);
 };

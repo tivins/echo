@@ -1,12 +1,15 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import type { EchoButtonVariant, EchoSize, EchoContext } from '../types/index.js';
+import type {
+  EchoButtonVariant,
+  EchoSize,
+  EchoContext,
+} from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
 import { componentSizes } from '../styles/component-sizes.js';
 
 @customElement('echo-button')
 export class EchoButton extends LitElement {
-  
   @property({ type: String })
   variant: EchoButtonVariant = 'default';
 
@@ -91,13 +94,14 @@ export class EchoButton extends LitElement {
       .button--ghost:hover:not(:disabled) {
         background-color: var(--context-color-alpha);
       }
-    `
+    `,
   ];
 
   render() {
     return html`
       <button
-        class="button button--${this.variant} context--${this.context} size--${this.size}"
+        class="button button--${this.variant} context--${this
+          .context} size--${this.size}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >

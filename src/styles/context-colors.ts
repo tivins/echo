@@ -2,14 +2,14 @@ import { css } from 'lit';
 
 /**
  * Shared context color styles for Design Toolkit components
- * 
+ *
  * This module provides CSS custom properties for different context colors
  * that can be reused across multiple web components.
- * 
+ *
  * Usage:
  * ```typescript
  * import { contextColors } from '../styles/context-colors.js';
- * 
+ *
  * static styles = css`
  *   ${contextColors}
  *   // ... other styles
@@ -103,14 +103,14 @@ export const contextColorsCSS = `
  */
 export const contextColorNames = [
   'primary',
-  'secondary', 
+  'secondary',
   'success',
   'danger',
   'warning',
-  'info'
+  'info',
 ] as const;
 
 /**
  * Type for context color names
  */
-export type ContextColorName = typeof contextColorNames[number];
+export type ContextColorName = (typeof contextColorNames)[number];

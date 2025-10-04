@@ -1,6 +1,6 @@
 /**
  * Icon system types for Design Toolkit
- * 
+ *
  * This module defines the types and constants for the icon system,
  * including icon names, sizes, and variants.
  */
@@ -12,20 +12,12 @@ export type EchoIconVariant = 'default' | 'outline' | 'filled';
 /**
  * Available icon size names
  */
-export const echoIconSizeNames = [
-  'small',
-  'medium', 
-  'large'
-] as const;
+export const echoIconSizeNames = ['small', 'medium', 'large'] as const;
 
 /**
  * Available icon variant names
  */
-export const echoIconVariantNames = [
-  'default',
-  'outline',
-  'filled'
-] as const;
+export const echoIconVariantNames = ['default', 'outline', 'filled'] as const;
 
 /**
  * Icon names for the icon library
@@ -186,14 +178,14 @@ export const iconNames = [
 /**
  * Type for icon names
  */
-export type IconName = typeof iconNames[number];
+export type IconName = (typeof iconNames)[number];
 
 /**
  * Type for icon size names
  */
-export type IconSizeName = typeof echoIconSizeNames[number];
+export type IconSizeName = (typeof echoIconSizeNames)[number];
 
 /**
  * Type for icon variant names
  */
-export type IconVariantName = typeof echoIconVariantNames[number];
+export type IconVariantName = (typeof echoIconVariantNames)[number];

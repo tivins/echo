@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Extra Small (XS) Component Size**: Added "xs" size option to all components
+  - XS size: 24px height, 12px font-size, 4px/8px padding
+  - Perfect for compact UIs, inline actions, dense tables, and toolbar buttons
+  - Available across all components that use the EchoSize type
+  - Updated TypeScript types and component-sizes module
 - **EchoIcon Context Property**: Added support for context colors (primary, secondary, success, danger, warning, info) in echo-icon component
   - Context colors integrate with the shared Design Toolkit color system
   - Context property works alongside existing color property (color takes precedence)

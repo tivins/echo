@@ -1,13 +1,17 @@
 import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement, property } from 'lit/decorators.js';
-import type { EchoIconSize, EchoIconVariant, IconName, EchoContext } from '../types/index.js';
+import type {
+  EchoIconSize,
+  EchoIconVariant,
+  IconName,
+  EchoContext,
+} from '../types/index.js';
 import { loadIcon } from '../icons/icon-registry.js';
 import { contextColors } from '../styles/context-colors.js';
 
 @customElement('echo-icon')
 export class EchoIcon extends LitElement {
-  
   @property({ type: String })
   name: IconName = 'x';
 
@@ -91,7 +95,7 @@ export class EchoIcon extends LitElement {
         outline-offset: 2px;
         border-radius: 2px;
       }
-    `
+    `,
   ];
 
   connectedCallback(): void {
@@ -101,7 +105,7 @@ export class EchoIcon extends LitElement {
 
   updated(changedProperties: Map<string | number | symbol, unknown>): void {
     super.updated(changedProperties);
-    
+
     if (changedProperties.has('name') || changedProperties.has('variant')) {
       this._loadIcon();
     }
@@ -109,10 +113,10 @@ export class EchoIcon extends LitElement {
 
   private async _loadIcon(): Promise<void> {
     if (this._isLoading) return;
-    
+
     this._isLoading = true;
     this.requestUpdate();
-    
+
     try {
       let svgContent = await loadIcon(this.name);
       this._svgContent = this._transformSVGForVariant(svgContent);
@@ -144,13 +148,16 @@ export class EchoIcon extends LitElement {
       `icon--${this.variant}`,
       this.context ? `context--${this.context}` : '',
       this._isLoading ? 'icon--loading' : '',
-      this.disabled ? 'icon--disabled' : ''
-    ].filter(Boolean).join(' ');
+      this.disabled ? 'icon--disabled' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
 
-    const style = this.color !== 'currentColor' ? `--icon-color: ${this.color}` : '';
+    const style =
+      this.color !== 'currentColor' ? `--icon-color: ${this.color}` : '';
 
     return html`
-      <div 
+      <div
         class="${classes}"
         style="${style}"
         role="img"
@@ -159,7 +166,9 @@ export class EchoIcon extends LitElement {
         tabindex="${this.disabled ? -1 : 0}"
         @keydown="${this._handleKeydown}"
       >
-        ${this._svgContent ? unsafeHTML(this._svgContent) : html`<div class="icon-placeholder"></div>`}
+        ${this._svgContent
+          ? unsafeHTML(this._svgContent)
+          : html`<div class="icon-placeholder"></div>`}
       </div>
     `;
   }
@@ -175,9 +184,9 @@ export class EchoIcon extends LitElement {
       event.preventDefault();
       this.dispatchEvent(
         new CustomEvent('echo-icon-click', {
-          detail: { 
+          detail: {
             iconName: this.name,
-            originalEvent: event 
+            originalEvent: event,
           },
           bubbles: true,
           composed: true,

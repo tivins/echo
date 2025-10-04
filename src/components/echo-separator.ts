@@ -1,11 +1,16 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import type { EchoSeparatorVariant, EchoSeparatorMargin, EchoSeparatorThickness, EchoSeparatorOrientation, EchoContext } from '../types/index.js';
+import type {
+  EchoSeparatorVariant,
+  EchoSeparatorMargin,
+  EchoSeparatorThickness,
+  EchoSeparatorOrientation,
+  EchoContext,
+} from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
 
 @customElement('echo-separator')
 export class EchoSeparator extends LitElement {
-  
   @property({ type: String })
   variant: EchoSeparatorVariant = 'solid';
 
@@ -40,7 +45,10 @@ export class EchoSeparator extends LitElement {
         border: none;
         border-top-style: var(--separator-variant);
         border-top-width: var(--separator-thickness);
-        border-top-color: var(--separator-color, var(--context-color, currentColor));
+        border-top-color: var(
+          --separator-color,
+          var(--context-color, currentColor)
+        );
         margin: var(--separator-margin) 0;
       }
 
@@ -53,7 +61,10 @@ export class EchoSeparator extends LitElement {
         border: none;
         border-left-style: var(--separator-variant);
         border-left-width: var(--separator-thickness);
-        border-left-color: var(--separator-color, var(--context-color, currentColor));
+        border-left-color: var(
+          --separator-color,
+          var(--context-color, currentColor)
+        );
         margin: 0 var(--separator-margin);
         vertical-align: middle;
       }
@@ -143,7 +154,10 @@ export class EchoSeparator extends LitElement {
         border: none;
         border-top-style: var(--separator-variant);
         border-top-width: var(--separator-thickness);
-        border-top-color: var(--separator-color, var(--context-color, currentColor));
+        border-top-color: var(
+          --separator-color,
+          var(--context-color, currentColor)
+        );
         margin: 0;
       }
 
@@ -152,7 +166,10 @@ export class EchoSeparator extends LitElement {
         border: none;
         border-left-style: var(--separator-variant);
         border-left-width: var(--separator-thickness);
-        border-left-color: var(--separator-color, var(--context-color, currentColor));
+        border-left-color: var(
+          --separator-color,
+          var(--context-color, currentColor)
+        );
         min-height: 20px;
       }
 
@@ -179,7 +196,8 @@ export class EchoSeparator extends LitElement {
         height: var(--separator-thickness);
       }
 
-      .separator-container--gradient.separator-container--vertical .separator-line--vertical {
+      .separator-container--gradient.separator-container--vertical
+        .separator-line--vertical {
         border: none;
         background: linear-gradient(
           to bottom,
@@ -190,7 +208,7 @@ export class EchoSeparator extends LitElement {
         width: var(--separator-thickness);
         height: auto;
       }
-    `
+    `,
   ];
 
   render() {
@@ -198,7 +216,7 @@ export class EchoSeparator extends LitElement {
       `separator--${this.variant}`,
       `thickness--${this.thickness}`,
       `margin--${this.margin}`,
-      `context--${this.context}`
+      `context--${this.context}`,
     ].join(' ');
 
     const customColor = this.color ? `--separator-color: ${this.color}` : '';
@@ -211,18 +229,24 @@ export class EchoSeparator extends LitElement {
         this.variant === 'gradient' ? 'separator-container--gradient' : '',
         `thickness--${this.thickness}`,
         `margin--${this.margin}`,
-        `context--${this.context}`
-      ].filter(Boolean).join(' ');
+        `context--${this.context}`,
+      ]
+        .filter(Boolean)
+        .join(' ');
 
       const lineClasses = [
-        this.orientation === 'vertical' ? 'separator-line--vertical' : 'separator-line',
-        `separator--${this.variant}`
+        this.orientation === 'vertical'
+          ? 'separator-line--vertical'
+          : 'separator-line',
+        `separator--${this.variant}`,
       ].join(' ');
 
       const contentClasses = [
         'separator-content',
-        this.orientation === 'vertical' ? 'separator-content--vertical' : ''
-      ].filter(Boolean).join(' ');
+        this.orientation === 'vertical' ? 'separator-content--vertical' : '',
+      ]
+        .filter(Boolean)
+        .join(' ');
 
       return html`
         <div class="${containerClasses}" style="${customColor}">
@@ -237,7 +261,7 @@ export class EchoSeparator extends LitElement {
 
     // Render simple separator (but always include the slot to detect content)
     return html`
-      <hr 
+      <hr
         class="separator--${this.orientation} ${classes}"
         style="${customColor}"
         role="separator"
@@ -250,11 +274,12 @@ export class EchoSeparator extends LitElement {
   private _handleSlotChange(e: Event): void {
     const slot = e.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
-    const hasContent = nodes.some(node => 
-      node.nodeType === Node.ELEMENT_NODE || 
-      (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+    const hasContent = nodes.some(
+      (node) =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
     );
-    
+
     if (hasContent !== this._hasContent) {
       this._hasContent = hasContent;
     }
@@ -266,4 +291,3 @@ declare global {
     'echo-separator': EchoSeparator;
   }
 }
-
