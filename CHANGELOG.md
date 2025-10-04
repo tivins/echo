@@ -5,6 +5,89 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2025-01-04
+
+### Fixed
+- **EchoCard Footer Display Issue**: Fixed critical bug where footer content was never displayed
+  - **Root Cause**: Footer rendering was conditional based on `_hasFooterContent()` method that couldn't properly detect slot content
+  - **Solution**: Simplified footer rendering to always show footer slot, allowing CSS to handle empty state styling
+  - **Impact**: Footer content now displays correctly in all scenarios
+
+### Improved
+- **EchoCard Visual Design**: Enhanced card styling for more refined, delicate appearance
+  - **Border Radius**: Increased from 8px to 12px (medium) for softer, more modern look
+  - **Padding**: Increased from 16px to 20px (medium) for better breathing room
+  - **Shadows**: Refined shadow system with layered shadows for depth and elegance
+    - Default: `0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)`
+    - Hover: `0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06)`
+  - **Elevated Variant**: Enhanced with deeper shadows `0 8px 25px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08)`
+  - **Outlined Variant**: Refined border styling and subtle background tint
+  - **Hover Effects**: Added subtle lift animation with `translateY(-1px)` and enhanced shadows
+
+### Enhanced
+- **Typography**: Improved text styling for better readability and hierarchy
+  - **Title**: Reduced font-weight from 600 to 500, improved letter-spacing (-0.01em)
+  - **Content**: Refined color (#4a4a4a) and line-height (1.6) for better readability
+  - **Font Sizes**: Adjusted for better visual balance across sizes
+- **Header Design**: Enhanced header section with subtle border separator
+  - **Border**: Added `1px solid rgba(0, 0, 0, 0.05)` separator between header and content
+  - **Spacing**: Improved padding and gap adjustments
+- **Footer Design**: Enhanced footer section with visual separation
+  - **Border**: Added `1px solid rgba(0, 0, 0, 0.05)` separator between content and footer
+  - **Background**: Subtle background tint `rgba(0, 0, 0, 0.01)` for visual distinction
+  - **Spacing**: Improved padding and gap adjustments
+- **Close Button**: Refined close button styling for better UX
+  - **Color**: Changed from context color to neutral gray (#666)
+  - **Hover**: Subtle background with opacity transition
+  - **Padding**: Increased for better touch target
+
+### Technical
+- **Animation**: Upgraded to `cubic-bezier(0.4, 0, 0.2, 1)` for smoother, more natural transitions
+- **CSS Variables**: Enhanced custom property system for consistent theming
+- **Responsive Design**: Improved spacing and sizing across different screen sizes
+
+## [1.7.0] - 2025-01-04
+
+### Added
+- **EchoCard Component**: New flexible card component with comprehensive features
+  - **Header Section**: Supports title, icon, and close button
+  - **Content Section**: Main content area with proper padding and spacing
+  - **Footer Section**: Optional footer for action buttons
+  - **Header Actions Slot**: Additional buttons in header area alongside close button
+  - **Multiple Variants**: `default`, `outlined`, `elevated`, `flat` visual styles
+  - **Size Options**: `small`, `medium`, `large` sizing variants
+  - **Context Colors**: Full support for all context colors (primary, secondary, success, warning, danger, info)
+  - **Icon Integration**: Built-in support for icons with size and variant options
+  - **Closable Feature**: Optional close button with event handling
+  - **Disabled State**: Proper disabled styling and interaction prevention
+  - **Event System**: `echo-card-close` event when card is closed
+  - **Public Methods**: `show()` and `hide()` methods for programmatic control
+  - **Accessibility**: Proper ARIA labels and keyboard navigation support
+
+### Technical
+- **TypeScript Types**: Added `EchoCardVariant` and `EchoCardSize` types
+- **Component Integration**: EchoCard uses EchoButton and EchoIcon components internally
+- **Slot System**: Named slots for `header-actions` and `footer` content
+- **CSS Custom Properties**: Consistent theming with context colors and component sizes
+- **Responsive Design**: Flexible layout that adapts to content and screen size
+- **Event Handling**: Proper event bubbling and composition for close functionality
+
+### Documentation
+- **Comprehensive Examples**: Added detailed usage examples in README.md
+- **API Documentation**: Complete property, slot, event, and method documentation
+- **Demo Page**: Created `echo-card-demo.html` with extensive examples
+- **Test Coverage**: Full Playwright test suite for all card features
+
+### Examples
+- **Basic Cards**: Simple cards with titles and content
+- **Icon Integration**: Cards with various icons and icon variants
+- **Closable Cards**: Cards with close functionality and event handling
+- **Header Actions**: Cards with additional action buttons in header
+- **Footer Actions**: Cards with footer buttons and actions
+- **Complex Layouts**: Dashboard-style cards with multiple sections
+- **Disabled States**: Proper disabled card styling and behavior
+- **Event Handling**: JavaScript examples for card close events
+
 ## [1.6.5] - 2025-01-04
 
 ### Fixed

@@ -2,11 +2,13 @@
 import './components/echo-button.js';
 import './components/echo-icon.js';
 import './components/echo-separator.js';
+import './components/echo-card.js';
 
 // Export all components
 export { EchoButton } from './components/echo-button.js';
 export { EchoIcon } from './components/echo-icon.js';
 export { EchoSeparator } from './components/echo-separator.js';
+export { EchoCard } from './components/echo-card.js';
 
 // Export types
 export type {
@@ -28,6 +30,10 @@ export type {
   EchoSeparatorMargin,
   EchoSeparatorThickness,
   EchoSeparatorOrientation,
+} from './types/index.js';
+export type {
+  EchoCardVariant,
+  EchoCardSize,
 } from './types/index.js';
 export { contextColorNames, componentSizeNames } from './types/index.js';
 export {

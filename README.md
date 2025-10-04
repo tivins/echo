@@ -287,6 +287,115 @@ import type {
 - Fully accessible with proper ARIA attributes
 - Built with Lit for performance and reusability
 
+### EchoCard
+
+A flexible card component with header, content, and footer sections. Supports icons, titles, close buttons, and custom actions.
+
+```html
+<!-- Basic card -->
+<echo-card title="Card Title">
+  <p>Card content goes here.</p>
+</echo-card>
+
+<!-- Card with icon -->
+<echo-card title="Card with Icon" icon="star">
+  <p>This card has an icon in the header.</p>
+</echo-card>
+
+<!-- Closable card -->
+<echo-card title="Closable Card" closable>
+  <p>This card can be closed by clicking the X button.</p>
+</echo-card>
+
+<!-- Card variants -->
+<echo-card variant="default" title="Default Card">Content</echo-card>
+<echo-card variant="outlined" title="Outlined Card">Content</echo-card>
+<echo-card variant="elevated" title="Elevated Card">Content</echo-card>
+<echo-card variant="flat" title="Flat Card">Content</echo-card>
+
+<!-- Card sizes -->
+<echo-card size="small" title="Small Card">Content</echo-card>
+<echo-card size="medium" title="Medium Card">Content</echo-card>
+<echo-card size="large" title="Large Card">Content</echo-card>
+
+<!-- Card with context colors -->
+<echo-card context="primary" title="Primary Card">Content</echo-card>
+<echo-card context="success" title="Success Card">Content</echo-card>
+<echo-card context="warning" title="Warning Card">Content</echo-card>
+<echo-card context="danger" title="Danger Card">Content</echo-card>
+
+<!-- Card with header actions -->
+<echo-card title="Card with Actions" closable>
+  <div slot="header-actions">
+    <echo-button variant="ghost" size="small" icon="edit">Edit</echo-button>
+    <echo-button variant="ghost" size="small" icon="more-horizontal"></echo-button>
+  </div>
+  <p>This card has additional action buttons in the header.</p>
+</echo-card>
+
+<!-- Card with footer -->
+<echo-card title="Card with Footer">
+  <p>This card has a footer with buttons.</p>
+  <div slot="footer">
+    <echo-button variant="outline" size="small">Cancel</echo-button>
+    <echo-button variant="default" size="small">Save</echo-button>
+  </div>
+</echo-card>
+
+<!-- Complex card example -->
+<echo-card variant="elevated" context="primary" title="Dashboard" icon="bar-chart" size="large" closable>
+  <div slot="header-actions">
+    <echo-button variant="ghost" size="small" icon="refresh">Refresh</echo-button>
+    <echo-button variant="ghost" size="small" icon="settings">Settings</echo-button>
+  </div>
+  
+  <p>Welcome to your dashboard.</p>
+  <echo-separator margin="medium"></echo-separator>
+  <h4>Recent Activity</h4>
+  <ul>
+    <li>Project Alpha - Updated 2 hours ago</li>
+    <li>Project Beta - Completed yesterday</li>
+  </ul>
+  
+  <div slot="footer">
+    <echo-button variant="outline" size="small">View All</echo-button>
+    <echo-button variant="default" size="small" icon="arrow-right">Get Started</echo-button>
+  </div>
+</echo-card>
+
+<!-- Disabled card -->
+<echo-card title="Disabled Card" disabled>
+  <p>This card is disabled.</p>
+</echo-card>
+```
+
+#### Properties
+
+- `variant`: Card visual style (`default`, `outlined`, `elevated`, `flat`)
+- `size`: Card size (`small`, `medium`, `large`)
+- `context`: Color context (`primary`, `secondary`, `success`, `warning`, `danger`, `info`)
+- `title`: Card title text
+- `icon`: Icon name to display in header
+- `icon-size`: Icon size (`small`, `medium`, `large`)
+- `icon-variant`: Icon variant (`default`, `outline`, `filled`)
+- `closable`: Whether to show close button
+- `disabled`: Whether the card is disabled
+
+#### Slots
+
+- Default slot: Main card content
+- `header-actions`: Additional buttons in the header
+- `footer`: Footer content (typically buttons)
+
+#### Events
+
+- `echo-card-close`: Fired when the close button is clicked
+
+#### Methods
+
+- `show()`: Show the card (if it was hidden)
+- `hide()`: Hide the card
+
 ### EchoButton
 
 A customizable button component with multiple variants, sizes, and built-in icon support.

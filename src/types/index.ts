@@ -32,6 +32,10 @@ export { contextColorNames } from '../styles/context-colors.js';
 export type { ComponentSizeName } from '../styles/component-sizes.js';
 export { componentSizeNames } from '../styles/component-sizes.js';
 
+// Echo Card types
+export type EchoCardVariant = 'default' | 'outlined' | 'elevated' | 'flat';
+export type EchoCardSize = 'small' | 'medium' | 'large';
+
 // Re-export icon types
 export type {
   EchoIconSize,
