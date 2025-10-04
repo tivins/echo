@@ -249,4 +249,88 @@ test.describe('EchoCard Component', () => {
     // Footer should contain text
     await expect(footer.locator('span')).toHaveText('Footer text content');
   });
+
+  test('should not show content when main content slot is empty', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card without main content
+    const cardWithoutContent = page.locator('echo-card[title="Card without content"]').first();
+    await expect(cardWithoutContent).toBeVisible();
+    
+    // Content should not be visible
+    const content = cardWithoutContent.locator('.card__content');
+    await expect(content).not.toBeVisible();
+  });
+
+  test('should show content when main content slot has content', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with main content
+    const cardWithContent = page.locator('echo-card[title="Card with content"]').first();
+    await expect(cardWithContent).toBeVisible();
+    
+    // Content should be visible
+    const content = cardWithContent.locator('.card__content');
+    await expect(content).toBeVisible();
+    
+    // Content should contain text
+    await expect(content.locator('p')).toHaveText('This is the main content of the card. There is actual content provided.');
+  });
+
+  test('should not show content when main content slot contains only whitespace', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with whitespace-only content
+    const cardWithWhitespaceContent = page.locator('echo-card[title="Card with whitespace content"]').first();
+    await expect(cardWithWhitespaceContent).toBeVisible();
+    
+    // Content should not be visible
+    const content = cardWithWhitespaceContent.locator('.card__content');
+    await expect(content).not.toBeVisible();
+  });
+
+  test('should show content when main content slot has text content', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with text-only content
+    const cardWithTextContent = page.locator('echo-card[title="Card with text content"]').first();
+    await expect(cardWithTextContent).toBeVisible();
+    
+    // Content should be visible
+    const content = cardWithTextContent.locator('.card__content');
+    await expect(content).toBeVisible();
+    
+    // Content should contain text
+    await expect(content.locator('span')).toHaveText('Simple text content');
+  });
+
+  test('should show only header when no content and no footer', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with header only
+    const headerOnlyCard = page.locator('echo-card[title="Header only card"]').first();
+    await expect(headerOnlyCard).toBeVisible();
+    
+    // Header should be visible
+    const header = headerOnlyCard.locator('.card__header');
+    await expect(header).toBeVisible();
+    
+    // Content should not be visible
+    const content = headerOnlyCard.locator('.card__content');
+    await expect(content).not.toBeVisible();
+    
+    // Footer should not be visible
+    const footer = headerOnlyCard.locator('.card__footer');
+    await expect(footer).not.toBeVisible();
+  });
 });

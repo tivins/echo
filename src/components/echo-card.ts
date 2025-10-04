@@ -46,6 +46,9 @@ export class EchoCard extends LitElement {
   @state()
   private _hasFooterContent = false;
 
+  @state()
+  private _hasMainContent = true;
+
   static styles = [
     contextColors,
     componentSizes,
@@ -207,6 +210,10 @@ export class EchoCard extends LitElement {
         padding-bottom: var(--card-padding);
       }
 
+      .card__content--hidden {
+        display: none;
+      }
+
       /* Footer */
       .card__footer {
         display: flex;
@@ -344,13 +351,14 @@ export class EchoCard extends LitElement {
     const contentClasses = [
       'card__content',
       !hasHeader ? 'card__content--no-header' : '',
+      !this._hasMainContent ? 'card__content--hidden' : '',
     ]
       .filter(Boolean)
       .join(' ');
 
     return html`
       <div class="${contentClasses}">
-        <slot></slot>
+        <slot data-main-content @slotchange=${this._handleMainContentSlotChange}></slot>
       </div>
     `;
   }
@@ -387,8 +395,28 @@ export class EchoCard extends LitElement {
     }
   }
 
+  private _handleMainContentSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    const nodes = slot.assignedNodes({ flatten: true });
+    const hasContent = nodes.some(
+      (node) =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+    );
+    if (hasContent !== this._hasMainContent) {
+      this._hasMainContent = hasContent;
+    }
+  }
+
   firstUpdated(): void {
-    // Check if footer slot has content after initial render
+    // Use setTimeout to ensure slots are fully initialized
+    setTimeout(() => {
+      this._checkSlotContent();
+    }, 0);
+  }
+
+  private _checkSlotContent(): void {
+    // Check footer slot
     const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
     if (footerSlot) {
       const nodes = footerSlot.assignedNodes({ flatten: true });
@@ -397,7 +425,25 @@ export class EchoCard extends LitElement {
           node.nodeType === Node.ELEMENT_NODE ||
           (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
       );
-      this._hasFooterContent = hasContent;
+      if (hasContent !== this._hasFooterContent) {
+        this._hasFooterContent = hasContent;
+        this.requestUpdate();
+      }
+    }
+
+    // Check main content slot
+    const mainContentSlot = this.shadowRoot?.querySelector('slot[data-main-content]') as HTMLSlotElement;
+    if (mainContentSlot) {
+      const nodes = mainContentSlot.assignedNodes({ flatten: true });
+      const hasContent = nodes.some(
+        (node) =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      );
+      if (hasContent !== this._hasMainContent) {
+        this._hasMainContent = hasContent;
+        this.requestUpdate();
+      }
     }
   }
 

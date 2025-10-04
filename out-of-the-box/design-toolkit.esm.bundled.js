@@ -691,7 +691,7 @@ const iconLibrary = {
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M12 6v4M7 17l4-3M17 17l-4-3"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-`,
+`
 };
 
 /**
@@ -1274,6 +1274,8 @@ let EchoCard = class EchoCard extends i$1 {
         this.closable = false;
         this.disabled = false;
         this._isVisible = true;
+        this._hasFooterContent = false;
+        this._hasMainContent = true;
     }
     render() {
         if (!this._isVisible) {
@@ -1293,7 +1295,11 @@ let EchoCard = class EchoCard extends i$1 {
       <div class="${classes}" ?disabled=${this.disabled}>
         ${hasHeader ? this._renderHeader() : ''}
         ${this._renderContent(hasHeader)}
-        ${this._renderFooter()}
+        ${this._hasFooterContent ? this._renderFooter() : ''}
+        <!-- Debug info -->
+        <div style="background: yellow; padding: 5px; font-size: 12px;">
+          DEBUG: _hasMainContent = ${this._hasMainContent}
+        </div>
       </div>
     `;
     }
@@ -1342,19 +1348,20 @@ let EchoCard = class EchoCard extends i$1 {
         const contentClasses = [
             'card__content',
             !hasHeader ? 'card__content--no-header' : '',
+            !this._hasMainContent ? 'card__content--hidden' : '',
         ]
             .filter(Boolean)
             .join(' ');
         return x `
       <div class="${contentClasses}">
-        <slot></slot>
+        <slot @slotchange=${this._handleMainContentSlotChange}></slot>
       </div>
     `;
     }
     _renderFooter() {
         return x `
       <div class="card__footer">
-        <slot name="footer"></slot>
+        <slot name="footer" @slotchange=${this._handleFooterSlotChange}></slot>
       </div>
     `;
     }
@@ -1365,6 +1372,58 @@ let EchoCard = class EchoCard extends i$1 {
             large: 'large',
         };
         return sizeMap[this.size];
+    }
+    _handleFooterSlotChange(e) {
+        const slot = e.target;
+        const nodes = slot.assignedNodes({ flatten: true });
+        const hasContent = nodes.some((node) => node.nodeType === Node.ELEMENT_NODE ||
+            (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()));
+        if (hasContent !== this._hasFooterContent) {
+            this._hasFooterContent = hasContent;
+        }
+    }
+    _handleMainContentSlotChange(e) {
+        const slot = e.target;
+        const nodes = slot.assignedNodes({ flatten: true });
+        console.log('Slot change - nodes:', nodes);
+        const hasContent = nodes.some((node) => node.nodeType === Node.ELEMENT_NODE ||
+            (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()));
+        console.log('Slot change - has content:', hasContent);
+        if (hasContent !== this._hasMainContent) {
+            this._hasMainContent = hasContent;
+        }
+    }
+    firstUpdated() {
+        // Use setTimeout to ensure slots are fully initialized
+        setTimeout(() => {
+            this._checkSlotContent();
+        }, 0);
+    }
+    _checkSlotContent() {
+        // Check footer slot
+        const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]');
+        if (footerSlot) {
+            const nodes = footerSlot.assignedNodes({ flatten: true });
+            const hasContent = nodes.some((node) => node.nodeType === Node.ELEMENT_NODE ||
+                (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()));
+            if (hasContent !== this._hasFooterContent) {
+                this._hasFooterContent = hasContent;
+                this.requestUpdate();
+            }
+        }
+        // Check main content slot
+        const mainContentSlot = this.shadowRoot?.querySelector('slot:not([name])');
+        if (mainContentSlot) {
+            const nodes = mainContentSlot.assignedNodes({ flatten: true });
+            console.log('Main content slot nodes:', nodes);
+            const hasContent = nodes.some((node) => node.nodeType === Node.ELEMENT_NODE ||
+                (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()));
+            console.log('Has main content:', hasContent);
+            if (hasContent !== this._hasMainContent) {
+                this._hasMainContent = hasContent;
+                this.requestUpdate();
+            }
+        }
     }
     _handleClose() {
         if (this.disabled)
@@ -1546,6 +1605,10 @@ EchoCard.styles = [
         padding-bottom: var(--card-padding);
       }
 
+      .card__content--hidden {
+        display: none;
+      }
+
       /* Footer */
       .card__footer {
         display: flex;
@@ -1637,9 +1700,497 @@ __decorate([
 __decorate([
     r()
 ], EchoCard.prototype, "_isVisible", void 0);
+__decorate([
+    r()
+], EchoCard.prototype, "_hasFooterContent", void 0);
+__decorate([
+    r()
+], EchoCard.prototype, "_hasMainContent", void 0);
 EchoCard = __decorate([
     t$1('echo-card')
 ], EchoCard);
+
+/**
+ * Shared layout styles for Design Toolkit components
+ *
+ * This module provides CSS classes for different layout properties
+ * that can be reused across multiple web components.
+ *
+ * Usage:
+ * ```typescript
+ * import { layoutStyles } from '../styles/layout-styles.js';
+ *
+ * static styles = css`
+ *   ${layoutStyles}
+ *   // ... other styles
+ * `;
+ * ```
+ */
+const layoutStyles = i$4 `
+  /* Layout Display */
+  .layout--flex {
+    display: flex;
+  }
+
+  .layout--grid {
+    display: grid;
+  }
+
+  .layout--block {
+    display: block;
+  }
+
+  .layout--inline-flex {
+    display: inline-flex;
+  }
+
+  .layout--inline-grid {
+    display: inline-grid;
+  }
+
+  /* Flex Direction */
+  .layout--row {
+    flex-direction: row;
+  }
+
+  .layout--column {
+    flex-direction: column;
+  }
+
+  .layout--row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .layout--column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  /* Flex Wrap */
+  .layout--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  .layout--wrap {
+    flex-wrap: wrap;
+  }
+
+  .layout--wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  /* Alignment */
+  .layout--align-start {
+    align-items: flex-start;
+  }
+
+  .layout--align-end {
+    align-items: flex-end;
+  }
+
+  .layout--align-center {
+    align-items: center;
+  }
+
+  .layout--align-stretch {
+    align-items: stretch;
+  }
+
+  .layout--align-baseline {
+    align-items: baseline;
+  }
+
+  /* Justification */
+  .layout--justify-start {
+    justify-content: flex-start;
+  }
+
+  .layout--justify-end {
+    justify-content: flex-end;
+  }
+
+  .layout--justify-center {
+    justify-content: center;
+  }
+
+  .layout--justify-between {
+    justify-content: space-between;
+  }
+
+  .layout--justify-around {
+    justify-content: space-around;
+  }
+
+  .layout--justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  /* Gap Sizes */
+  .layout--gap-none {
+    gap: 0;
+  }
+
+  .layout--gap-xs {
+    gap: 4px;
+  }
+
+  .layout--gap-small {
+    gap: 8px;
+  }
+
+  .layout--gap-medium {
+    gap: 16px;
+  }
+
+  .layout--gap-large {
+    gap: 24px;
+  }
+
+  .layout--gap-xl {
+    gap: 32px;
+  }
+
+  /* Layout Sizes 
+  .layout--size-xs {
+    padding: 4px;
+  }
+
+  .layout--size-small {
+    padding: 8px;
+  }
+
+  .layout--size-medium {
+    padding: 16px;
+  }
+
+  .layout--size-large {
+    padding: 24px;
+  }
+*/
+  /* Grid specific */
+  .layout--grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .layout--grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .layout--grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+`;
+/**
+ * Layout styles CSS custom properties as a plain CSS string
+ * Useful for non-Lit components or when you need raw CSS
+ */
+const layoutStylesCSS = `
+  /* Layout Display */
+  .layout--flex {
+    display: flex;
+  }
+
+  .layout--grid {
+    display: grid;
+  }
+
+  .layout--block {
+    display: block;
+  }
+
+  .layout--inline-flex {
+    display: inline-flex;
+  }
+
+  .layout--inline-grid {
+    display: inline-grid;
+  }
+
+  /* Flex Direction */
+  .layout--row {
+    flex-direction: row;
+  }
+
+  .layout--column {
+    flex-direction: column;
+  }
+
+  .layout--row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .layout--column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  /* Flex Wrap */
+  .layout--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  .layout--wrap {
+    flex-wrap: wrap;
+  }
+
+  .layout--wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  /* Alignment */
+  .layout--align-start {
+    align-items: flex-start;
+  }
+
+  .layout--align-end {
+    align-items: flex-end;
+  }
+
+  .layout--align-center {
+    align-items: center;
+  }
+
+  .layout--align-stretch {
+    align-items: stretch;
+  }
+
+  .layout--align-baseline {
+    align-items: baseline;
+  }
+
+  /* Justification */
+  .layout--justify-start {
+    justify-content: flex-start;
+  }
+
+  .layout--justify-end {
+    justify-content: flex-end;
+  }
+
+  .layout--justify-center {
+    justify-content: center;
+  }
+
+  .layout--justify-between {
+    justify-content: space-between;
+  }
+
+  .layout--justify-around {
+    justify-content: space-around;
+  }
+
+  .layout--justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  /* Gap Sizes */
+  .layout--gap-none {
+    gap: 0;
+  }
+
+  .layout--gap-xs {
+    gap: 4px;
+  }
+
+  .layout--gap-small {
+    gap: 8px;
+  }
+
+  .layout--gap-medium {
+    gap: 16px;
+  }
+
+  .layout--gap-large {
+    gap: 24px;
+  }
+
+  .layout--gap-xl {
+    gap: 32px;
+  }
+
+  /* Layout Sizes */
+  .layout--size-xs {
+    padding: 4px;
+  }
+
+  .layout--size-small {
+    padding: 8px;
+  }
+
+  .layout--size-medium {
+    padding: 16px;
+  }
+
+  .layout--size-large {
+    padding: 24px;
+  }
+
+  /* Grid specific */
+  .layout--grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .layout--grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .layout--grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+`;
+
+let EchoLayout = class EchoLayout extends i$1 {
+    constructor() {
+        super(...arguments);
+        this.display = 'flex';
+        this.direction = 'row';
+        this.wrap = 'nowrap';
+        this.align = 'stretch';
+        this.justify = 'start';
+        this.gap = 'medium';
+        this.columns = 'auto';
+        this.rows = 'auto';
+        this.size = 'medium';
+    }
+    render() {
+        const classes = this._buildClassList();
+        const styles = this._buildCustomStyles();
+        return x `
+      <div class="${classes}" style="${styles}">
+        <slot></slot>
+      </div>
+    `;
+    }
+    _buildClassList() {
+        const classes = [
+            'layout',
+            `layout--${this.display}`,
+            `layout--gap-${this.gap}`,
+            `layout--size-${this.size}`,
+        ];
+        // Add flex-specific classes
+        if (this.display === 'flex' || this.display === 'inline-flex') {
+            classes.push(`layout--${this.direction}`, `layout--${this.wrap}`, `layout--align-${this.align}`, `layout--justify-${this.justify}`);
+        }
+        // Add grid-specific classes
+        if (this.display === 'grid' || this.display === 'inline-grid') {
+            if (typeof this.columns === 'number') {
+                classes.push('layout--grid-custom-columns');
+            }
+            else if (this.columns === 'auto-fit') {
+                classes.push('layout--grid-auto-fit');
+            }
+            else if (this.columns === 'auto-fill') {
+                classes.push('layout--grid-auto-fill');
+            }
+            else {
+                classes.push('layout--grid-auto');
+            }
+            if (typeof this.rows === 'number') {
+                classes.push('layout--grid-custom-rows');
+            }
+        }
+        return classes.filter(Boolean).join(' ');
+    }
+    _buildCustomStyles() {
+        const styles = [];
+        // Handle custom grid columns
+        if (this.display === 'grid' || this.display === 'inline-grid') {
+            if (typeof this.columns === 'number') {
+                styles.push(`--layout-columns-custom: repeat(${this.columns}, 1fr)`);
+            }
+        }
+        // Handle custom grid rows
+        if (this.display === 'grid' || this.display === 'inline-grid') {
+            if (typeof this.rows === 'number') {
+                styles.push(`--layout-rows-custom: repeat(${this.rows}, 1fr)`);
+            }
+        }
+        return styles.join('; ');
+    }
+    // Public methods for dynamic updates
+    setDisplay(display) {
+        this.display = display;
+    }
+    setDirection(direction) {
+        this.direction = direction;
+    }
+    setAlign(align) {
+        this.align = align;
+    }
+    setJustify(justify) {
+        this.justify = justify;
+    }
+    setGap(gap) {
+        this.gap = gap;
+    }
+    setColumns(columns) {
+        this.columns = columns;
+    }
+    setRows(rows) {
+        this.rows = rows;
+    }
+};
+EchoLayout.styles = [
+    layoutStyles,
+    i$4 `
+      :host {
+        display: block;
+        --layout-columns: var(--layout-columns-custom, auto);
+        --layout-rows: var(--layout-rows-custom, auto);
+      }
+
+      .layout {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Grid specific styles */
+      .layout--grid-custom-columns {
+        grid-template-columns: var(--layout-columns);
+      }
+
+      .layout--grid-custom-rows {
+        grid-template-rows: var(--layout-rows);
+      }
+
+      /* Responsive behavior */
+      @media (max-width: 768px) {
+        .layout--responsive {
+          flex-direction: column;
+        }
+      }
+    `,
+];
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "display", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "direction", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "wrap", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "align", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "justify", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "gap", void 0);
+__decorate([
+    n({ type: [Number, String] })
+], EchoLayout.prototype, "columns", void 0);
+__decorate([
+    n({ type: [Number, String] })
+], EchoLayout.prototype, "rows", void 0);
+__decorate([
+    n({ type: String })
+], EchoLayout.prototype, "size", void 0);
+EchoLayout = __decorate([
+    t$1('echo-layout')
+], EchoLayout);
 
 /**
  * Icon system types for Design Toolkit
@@ -1797,5 +2348,5 @@ const iconNames = [
     'shield-x',
 ];
 
-export { EchoButton, EchoCard, EchoIcon, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoIconSizeNames, echoIconVariantNames, getAvailableIconNames, getLoadedIcons, iconNames, loadIcon, preloadIcons };
+export { EchoButton, EchoCard, EchoIcon, EchoLayout, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoIconSizeNames, echoIconVariantNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
 //# sourceMappingURL=design-toolkit.esm.bundled.js.map

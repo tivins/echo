@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.2] - 2025-01-04
+
+### Fixed
+- **EchoCard Component**: Fixed content visibility issue where empty main content was still being displayed
+  - Main content section now only appears when there is actual content in the main slot
+  - Added slot content detection mechanism for main content slot to properly handle dynamic content
+  - Improved component performance by avoiding unnecessary DOM rendering for empty content sections
+  - Both footer and main content sections now follow the same intelligent visibility logic
+
 ## [1.8.1] - 2025-01-04
 
 ### Fixed

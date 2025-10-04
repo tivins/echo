@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Card Content Visibility Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Echo Card Content Visibility Test</h1>
+    <p>This test verifies that the card content section only appears when there is actual content in the main slot.</p>
+    
+    <div class="test-container">
+        <!-- Test 1: Card without main content -->
+        <div class="test-section">
+            <h2>Test 1: Card without main content</h2>
+            <div class="description">This card should NOT show a content section since there's no content in the main slot.</div>
+            <echo-card title="Card without content" variant="default" size="medium">
+            </echo-card>
+        </div>
+        
+        <!-- Test 2: Card with main content -->
+        <div class="test-section">
+            <h2>Test 2: Card with main content</h2>
+            <div class="description">This card SHOULD show a content section since there is content in the main slot.</div>
+            <echo-card title="Card with content" variant="default" size="medium">
+                <p>This is the main content of the card. There is actual content provided.</p>
+            </echo-card>
+        </div>
+        
+        <!-- Test 3: Card with empty main content slot -->
+        <div class="test-section">
+            <h2>Test 3: Card with empty main content</h2>
+            <div class="description">This card should NOT show a content section since the main slot is empty.</div>
+            <echo-card title="Card with empty content" variant="outlined" size="medium">
+                <div></div>
+            </echo-card>
+        </div>
+        
+        <!-- Test 4: Card with text-only content -->
+        <div class="test-section">
+            <h2>Test 4: Card with text-only content</h2>
+            <div class="description">This card SHOULD show a content section since there is text content in the main slot.</div>
+            <echo-card title="Card with text content" variant="elevated" size="medium">
+                <span>Simple text content</span>
+            </echo-card>
+        </div>
+        
+        <!-- Test 5: Card with whitespace-only content -->
+        <div class="test-section">
+            <h2>Test 5: Card with whitespace-only content</h2>
+            <div class="description">This card should NOT show a content section since the main slot contains only whitespace.</div>
+            <echo-card title="Card with whitespace content" variant="flat" size="medium">
+                <div>   </div>
+            </echo-card>
+        </div>
+        
+        <!-- Test 6: Card with header only (no content, no footer) -->
+        <div class="test-section">
+            <h2>Test 6: Card with header only</h2>
+            <div class="description">This card should show only the header since there's no content or footer.</div>
+            <echo-card title="Header only card" variant="default" size="medium" closable>
+            </echo-card>
+        </div>
+        
+        <!-- Test 7: Card with content and footer -->
+        <div class="test-section">
+            <h2>Test 7: Card with content and footer</h2>
+            <div class="description">This card SHOULD show both content and footer sections.</div>
+            <echo-card title="Complete card" variant="default" size="medium">
+                <p>This card has both main content and footer content.</p>
+                <div slot="footer">
+                    <echo-button variant="soft" size="small">Save</echo-button>
+                </div>
+            </echo-card>
+        </div>
+        
+        <!-- Test 8: Card with complex content -->
+        <div class="test-section">
+            <h2>Test 8: Card with complex content</h2>
+            <div class="description">This card SHOULD show content section with complex HTML structure.</div>
+            <echo-card title="Complex content card" variant="elevated" size="large">
+                <h3>Section Title</h3>
+                <p>This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+                <ul>
+                    <li>First item</li>
+                    <li>Second item</li>
+                </ul>
+                <div slot="footer">
+                    <echo-button variant="outline" size="small">Cancel</echo-button>
+                    <echo-button variant="default" size="small">Submit</echo-button>
+                </div>
+            </echo-card>
+        </div>
+    </div>
+
+    <script type="module" src="../dist/design-toolkit.esm.js"></script>
+</body>
+</html>
