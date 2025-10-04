@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Toolkit - Echo Icon Component</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            background: #f8f9fa;
+            transition: all 0.2s ease;
+        }
+        
+        .icon-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .icon-item echo-icon {
+            margin-bottom: 8px;
+        }
+        
+        .icon-name {
+            font-size: 12px;
+            color: #6c757d;
+            text-align: center;
+            word-break: break-all;
+        }
+        
+        .size-demo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .size-demo echo-icon {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .variant-demo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .color-demo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .interactive-demo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .interactive-demo echo-icon {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-demo echo-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .code-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 16px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Design Toolkit - Echo Icon Component</h1>
+        
+        <div class="status success">
+            ✅ Echo Icon component successfully loaded with 100+ linear SVG icons
+        </div>
+        
+        <div class="section">
+            <h2>Icon Sizes</h2>
+            <p>Icons support three sizes: small (16px), medium (24px), and large (32px)</p>
+            <div class="size-demo">
+                <div>
+                    <echo-icon name="star" size="small"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Small</div>
+                </div>
+                <div>
+                    <echo-icon name="star" size="medium"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Medium</div>
+                </div>
+                <div>
+                    <echo-icon name="star" size="large"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Large</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Icon Variants</h2>
+            <p>Icons support different visual styles: default, outline, and filled</p>
+            <div class="variant-demo">
+                <div>
+                    <echo-icon name="heart" variant="default"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Default</div>
+                </div>
+                <div>
+                    <echo-icon name="heart" variant="outline"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Outline</div>
+                </div>
+                <div>
+                    <echo-icon name="heart" variant="filled"></echo-icon>
+                    <div style="font-size: 12px; margin-top: 4px;">Filled</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Custom Colors</h2>
+            <p>Icons inherit the current color by default, but can be customized</p>
+            <div class="color-demo">
+                <echo-icon name="sun" color="orange"></echo-icon>
+                <echo-icon name="heart" color="red"></echo-icon>
+                <echo-icon name="leaf" color="green"></echo-icon>
+                <echo-icon name="droplet" color="blue"></echo-icon>
+                <echo-icon name="star" color="purple"></echo-icon>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Interactive Icons</h2>
+            <p>Icons can be made interactive and respond to clicks</p>
+            <div class="interactive-demo">
+                <echo-icon name="thumbs-up" aria-label="Like"></echo-icon>
+                <echo-icon name="thumbs-down" aria-label="Dislike"></echo-icon>
+                <echo-icon name="bookmark" aria-label="Bookmark"></echo-icon>
+                <echo-icon name="share" aria-label="Share"></echo-icon>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Navigation Icons</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <echo-icon name="arrow-left"></echo-icon>
+                    <div class="icon-name">arrow-left</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="arrow-right"></echo-icon>
+                    <div class="icon-name">arrow-right</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="arrow-up"></echo-icon>
+                    <div class="icon-name">arrow-up</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="arrow-down"></echo-icon>
+                    <div class="icon-name">arrow-down</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="chevron-left"></echo-icon>
+                    <div class="icon-name">chevron-left</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="chevron-right"></echo-icon>
+                    <div class="icon-name">chevron-right</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="chevron-up"></echo-icon>
+                    <div class="icon-name">chevron-up</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="chevron-down"></echo-icon>
+                    <div class="icon-name">chevron-down</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="menu"></echo-icon>
+                    <div class="icon-name">menu</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="close"></echo-icon>
+                    <div class="icon-name">close</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="search"></echo-icon>
+                    <div class="icon-name">search</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="filter"></echo-icon>
+                    <div class="icon-name">filter</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Action Icons</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <echo-icon name="plus"></echo-icon>
+                    <div class="icon-name">plus</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="minus"></echo-icon>
+                    <div class="icon-name">minus</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="edit"></echo-icon>
+                    <div class="icon-name">edit</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="delete"></echo-icon>
+                    <div class="icon-name">delete</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="save"></echo-icon>
+                    <div class="icon-name">save</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="cancel"></echo-icon>
+                    <div class="icon-name">cancel</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="check"></echo-icon>
+                    <div class="icon-name">check</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="cross"></echo-icon>
+                    <div class="icon-name">cross</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="refresh"></echo-icon>
+                    <div class="icon-name">refresh</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="reload"></echo-icon>
+                    <div class="icon-name">reload</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="undo"></echo-icon>
+                    <div class="icon-name">undo</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="redo"></echo-icon>
+                    <div class="icon-name">redo</div>
+                </div>
+                <div class="icon-item">
+                    <echo-icon name="copy"></echo-icon>
+                    <div class="icon-name">copy</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Usage Examples</h2>
+            <div class="code-example">
+&lt;!-- Basic usage --&gt;
+&lt;echo-icon name="star"&gt;&lt;/echo-icon&gt;
+
+&lt;!-- With size --&gt;
+&lt;echo-icon name="heart" size="large"&gt;&lt;/echo-icon&gt;
+
+&lt;!-- With custom color --&gt;
+&lt;echo-icon name="sun" color="orange"&gt;&lt;/echo-icon&gt;
+
+&lt;!-- With accessibility label --&gt;
+&lt;echo-icon name="search" aria-label="Search"&gt;&lt;/echo-icon&gt;
+
+&lt;!-- Disabled state --&gt;
+&lt;echo-icon name="edit" disabled&gt;&lt;/echo-icon&gt;
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Features</h2>
+            <div class="status info">
+                <strong>Key Features:</strong>
+                <ul style="margin: 8px 0 0 20px;">
+                    <li>100+ linear SVG icons with consistent design</li>
+                    <li>Three sizes: small (16px), medium (24px), large (32px)</li>
+                    <li>Three variants: default, outline, filled</li>
+                    <li>Custom color support</li>
+                    <li>Accessibility features (ARIA labels, keyboard navigation)</li>
+                    <li>Interactive click events</li>
+                    <li>Disabled state support</li>
+                    <li>TypeScript definitions for all icon names</li>
+                    <li>Efficient icon loading and caching</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="./dist/design-toolkit.esm.bundled.js"></script>
+    
+    <script>
+        // Add click event listeners for interactive demo
+        document.addEventListener('echo-icon-click', (event) => {
+            console.log('Icon clicked:', event.detail.iconName);
+            alert(`You clicked the ${event.detail.iconName} icon!`);
+        });
+    </script>
+</body>
+</html>

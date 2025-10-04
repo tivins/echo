@@ -75,6 +75,111 @@ npm install design-toolkit
 
 ## Components
 
+### EchoIcon
+
+A clean, modern icon component with 60 carefully selected linear SVG icons inspired by Lucide design principles. Features consistent styling, multiple sizes, variants, and custom colors.
+
+```html
+<!-- Basic usage -->
+<echo-icon name="star"></echo-icon>
+<echo-icon name="heart"></echo-icon>
+<echo-icon name="search"></echo-icon>
+
+<!-- Sizes -->
+<echo-icon name="star" size="small"></echo-icon>
+<echo-icon name="star" size="medium"></echo-icon>
+<echo-icon name="star" size="large"></echo-icon>
+
+<!-- Variants -->
+<echo-icon name="heart" variant="default"></echo-icon>
+<echo-icon name="heart" variant="outline"></echo-icon>
+<echo-icon name="heart" variant="filled"></echo-icon>
+
+<!-- Custom colors -->
+<echo-icon name="sun" color="orange"></echo-icon>
+<echo-icon name="heart" color="red"></echo-icon>
+<echo-icon name="leaf" color="green"></echo-icon>
+
+<!-- Accessibility -->
+<echo-icon name="search" aria-label="Search"></echo-icon>
+
+<!-- Interactive -->
+<echo-icon name="thumbs-up" aria-label="Like"></echo-icon>
+<echo-icon name="bookmark" aria-label="Bookmark"></echo-icon>
+
+<!-- Disabled state -->
+<echo-icon name="edit" disabled></echo-icon>
+```
+
+#### Available Icons
+
+The icon library includes 60 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
+
+**Navigation & Arrows:** arrow-left, arrow-right, arrow-up, arrow-down, chevron-left, chevron-right, chevron-up, chevron-down, menu, x, search, filter, more-horizontal, more-vertical
+
+**Actions:** plus, minus, edit, trash, save, check, refresh, copy, download, upload, share, link, external-link
+
+**Media & Files:** image, file, folder, folder-open, video, music, camera
+
+**Communication:** mail, phone, message-circle, bell, heart, star
+
+**Settings & Tools:** settings, user, users, lock, unlock
+
+**Status & Feedback:** check-circle, x-circle, alert-circle, info
+
+**Technology:** wifi, battery, power, play, pause, stop, volume, volume-off
+
+**Weather & Nature:** sun, moon, cloud, droplet
+
+**Business & Finance:** dollar-sign, credit-card, shopping-cart, home
+
+**Data & Analytics:** bar-chart, pie-chart, calendar, clock
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `name` | `IconName` | `'x'` | Name of the icon to display |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Icon size (16px, 24px, 32px) |
+| `variant` | `'default' \| 'outline' \| 'filled'` | `'default'` | Icon visual style variant |
+| `color` | `string` | `'currentColor'` | Custom color for the icon |
+| `aria-label` | `string` | `name` | Accessibility label for screen readers |
+| `disabled` | `boolean` | `false` | Whether the icon is disabled |
+
+#### TypeScript Types
+
+```typescript
+import type { IconName, EchoIconSize, EchoIconVariant } from 'design-toolkit';
+
+// IconName: Union type of all available icon names
+// EchoIconSize: 'small' | 'medium' | 'large'
+// EchoIconVariant: 'default' | 'outline' | 'filled'
+```
+
+#### Events
+
+| Event | Description |
+|-------|-------------|
+| `echo-icon-click` | Fired when the icon is clicked (Enter/Space key) |
+
+#### Icon Utilities
+
+```typescript
+import { loadIcon, preloadIcons, getLoadedIcons, getAvailableIconNames } from 'design-toolkit';
+
+// Load a single icon
+const svgContent = await loadIcon('star');
+
+// Preload multiple icons
+await preloadIcons(['star', 'heart', 'search']);
+
+// Get all loaded icon names
+const loadedIcons = getLoadedIcons();
+
+// List every icon that is actually available in the bundle
+const available = getAvailableIconNames();
+```
+
 ### EchoButton
 
 A customizable button component with multiple variants and sizes.
@@ -151,7 +256,7 @@ npm install
 npm run dev
 ```
 
-The development server runs at `http://localhost:3000`.
+The development server runs at `http://localhost:3000` and automatically handles port conflicts by terminating any existing processes using the port.
 
 ### Scripts
 
@@ -189,8 +294,16 @@ The build process creates multiple formats:
 ```
 src/
 ├── components/          # Web components
-│   └── echo-button.ts
+│   ├── echo-button.ts
+│   └── echo-icon.ts
+├── icons/              # Icon system
+│   ├── icon-library.ts
+│   └── icon-registry.ts
+├── styles/             # Shared styles
+│   ├── component-sizes.ts
+│   └── context-colors.ts
 ├── types/              # TypeScript type definitions
+│   ├── icon-types.ts
 │   └── index.ts
 └── index.ts            # Main entry point
 ```

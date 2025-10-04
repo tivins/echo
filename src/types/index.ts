@@ -9,3 +9,17 @@ export { contextColorNames } from '../styles/context-colors.js';
 // Re-export component size types from shared styles
 export type { ComponentSizeName } from '../styles/component-sizes.js';
 export { componentSizeNames } from '../styles/component-sizes.js';
+
+// Re-export icon types
+export type { 
+  EchoIconSize, 
+  EchoIconVariant, 
+  IconName, 
+  IconSizeName, 
+  IconVariantName 
+} from './icon-types.js';
+export { 
+  echoIconSizeNames, 
+  echoIconVariantNames, 
+  iconNames 
+} from './icon-types.js';

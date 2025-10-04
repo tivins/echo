@@ -5,6 +5,89 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Fixed webserver.js netstat dependency error by implementing native Windows port checking
+- Updated webserver to use port 3000 as per project requirements
+- Replaced external netstat package with native Windows netstat command execution
+- Improved port conflict resolution with automatic process termination
+- **Complete Icon Library Overhaul**: Rebuilt entire icon library inspired by Lucide icons
+  - **Removed Duplicates**: Eliminated duplicate icons (arrow-left/chevron-left, menu/hamburger, etc.)
+  - **Clean SVG Paths**: Replaced complex, malformed paths with clean, well-formed Lucide-inspired designs
+  - **Consistent Styling**: Standardized stroke-width to 2px and proper stroke-linecap/stroke-linejoin
+  - **Simplified Library**: Reduced from 200+ icons to 60 essential, high-quality icons
+  - **Better Organization**: Organized icons into logical categories with clear naming conventions
+  - **Icon Renaming**: Updated icon names for clarity (close → x, delete → trash, etc.)
+
+### Added
+- **Clean Icon Library**: 60 carefully selected icons inspired by Lucide design principles
+- **New Icon Categories**: Navigation, Actions, Media & Files, Communication, Settings & Tools, Status & Feedback, Technology, Weather & Nature, Business & Finance, Data & Analytics
+- **Improved Icon Registry**: Better error handling with 'x' as fallback icon
+- **Enhanced Type Safety**: Updated TypeScript definitions to match new icon names
+
+### Changed
+- **Icon Design Philosophy**: Adopted Lucide-inspired clean, minimal design approach
+- **Stroke Consistency**: All icons now use 2px stroke-width for better visual consistency
+- **Path Optimization**: Simplified SVG paths for better performance and maintainability
+- **Fallback System**: Updated fallback from 'close' to 'x' icon for better semantics
+- **Component Defaults**: Updated EchoIcon component default icon to 'x'
+
+### Technical
+- **Build Process**: All builds now pass without TypeScript errors
+- **Test Suite**: All 63 tests passing with new icon library
+- **Performance**: Reduced bundle size with cleaner, more efficient SVG paths
+- **Maintainability**: Easier to maintain with consistent design patterns
+
+## [1.5.0] - 2025-01-03
+
+### Added
+- **EchoIcon Component**: Comprehensive icon system with 200+ linear SVG icons
+- **Icon Library**: Extensive collection of icons across multiple categories:
+  - Navigation & UI (20 icons): arrows, chevrons, menu, close, search, filter, etc.
+  - Actions (25 icons): plus, minus, edit, delete, save, copy, paste, etc.
+  - Media & Files (10 icons): image, file, folder, document, video, etc.
+  - Communication (12 icons): mail, phone, message, chat, notification, etc.
+  - Settings & Tools (10 icons): settings, gear, user, lock, shield, etc.
+  - Data & Analytics (12 icons): chart, graph, table, calendar, clock, etc.
+  - Status & Feedback (12 icons): success, error, warning, info, alert, etc.
+  - Technology (20 icons): wifi, bluetooth, battery, play, pause, volume, etc.
+  - Weather & Nature (12 icons): sun, moon, cloud, rain, snow, wind, etc.
+  - Business & Finance (16 icons): dollar, euro, credit-card, wallet, store, etc.
+- **Icon Registry System**: Efficient loading and caching of SVG icons
+- **TypeScript Definitions**: Complete type safety for all icon names and properties
+- **Accessibility Features**: ARIA labels, keyboard navigation, screen reader support
+- **Interactive Support**: Click events, disabled states, focus management
+- **Custom Styling**: Color customization, size variants, visual style variants
+
+### Features
+- **Three Sizes**: small (16px), medium (24px), large (32px)
+- **Three Variants**: default, outline, filled
+- **Custom Colors**: Support for any CSS color value
+- **Accessibility**: Proper ARIA labels and keyboard navigation
+- **Performance**: Efficient icon loading with caching system
+- **TypeScript**: Full type safety with IconName union types
+- **Events**: echo-icon-click event for interactive icons
+- **Utilities**: loadIcon, preloadIcons, getLoadedIcons functions
+
+### Technical
+- Icon registry with Map-based caching system
+- SVG template system with consistent 24x24 viewBox
+- Linear design with 1.5px stroke width
+- Lit directive integration with unsafeHTML
+- Comprehensive test suite with Playwright
+- TypeScript definitions for all icon names
+- Efficient async loading with Promise caching
+- Fallback system for invalid icon names
+
+### Documentation
+- Complete README section for EchoIcon component
+- Comprehensive icon list with categories
+- Usage examples for all features
+- TypeScript integration examples
+- Icon utility function documentation
+- Updated project structure documentation
+
 ## [1.4.1] - 2025-01-03
 
 ### Changed

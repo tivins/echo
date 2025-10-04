@@ -8,9 +8,42 @@
 </head>
 <body>
     <h1>Echo Toolkit (out-of-the-box)</h1>
-    <p>Cette page n'a aucun style. Elle utilise le bundle de <strong>Echo Toolkit</strong>. 
-        <echo-button variant="ghost" context="warning">Click me!</echo-button>
-        or <echo-button variant="outline">Click me!</echo-button>
+    <p>
+        This page has no styles. It is pure HTML.
+        The purpose of this page is to verify that the <strong>Echo Toolkit</strong> bundle is correctly generated.
     </p>
+
+    <h3>Button Component</h3>
+    <fieldset>
+        <echo-button>Button</echo-button>
+        <echo-button variant="ghost">Ghost Button</echo-button>
+        <echo-button variant="outline">Outline Button</echo-button>
+        <echo-button variant="link">Link Button</echo-button>
+        <hr>
+        <echo-button context="primary">Primary Button</echo-button>
+        <echo-button context="secondary">Secondary Button</echo-button>
+        <echo-button context="success">Success Button</echo-button>
+        <echo-button context="info">Info Button</echo-button>
+        <echo-button context="warning">Warning Button</echo-button>
+        <echo-button context="danger">Danger Button</echo-button>
+        <hr>
+        <echo-button size="small">Small Button</echo-button>
+        <echo-button size="medium">Medium Button</echo-button>
+        <echo-button size="large">Large Button</echo-button>
+        <hr>
+        <echo-button disabled>Disabled Button</echo-button>
+        <hr>
+        <echo-button variant="default" context="success">Success Default</echo-button>
+        <echo-button variant="outline" context="danger">Danger Outline</echo-button>
+        <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
+        <echo-button variant="link" context="info">Info Link</echo-button>
+    </fieldset>
+
+    <h3>Icon Library</h3>
+    <div>
+        <fieldset id="icon-library"></fieldset>
+    </div>
+    
+    <script type="module" src="main.js"></script>
 </body>
 </html>
