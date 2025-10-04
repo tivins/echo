@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroke Width Test - Design Toolkit</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin-top: 0;
+      color: #333;
+    }
+    .test-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+    .test-section h2 {
+      margin-top: 0;
+      color: #666;
+      font-size: 1.2rem;
+    }
+    .icon-row {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .icon-item label {
+      font-size: 0.875rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Echo Icon - Stroke Width Test</h1>
+    
+    <div class="test-section">
+      <h2>Default Stroke Width (1.5)</h2>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="x" size="small"></echo-icon>
+          <label>small (default)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="x" size="medium"></echo-icon>
+          <label>medium (default)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="x" size="large"></echo-icon>
+          <label>large (default)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>Custom Stroke Widths</h2>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="0.5"></echo-icon>
+          <label>stroke-width: 0.5</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="1"></echo-icon>
+          <label>stroke-width: 1</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="1.5"></echo-icon>
+          <label>stroke-width: 1.5 (default)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="2"></echo-icon>
+          <label>stroke-width: 2</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="2.5"></echo-icon>
+          <label>stroke-width: 2.5</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="check" stroke-width="3"></echo-icon>
+          <label>stroke-width: 3</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>Different Icons with Various Stroke Widths</h2>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="alert-triangle" stroke-width="1"></echo-icon>
+          <label>alert-triangle (1)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="alert-triangle" stroke-width="1.5"></echo-icon>
+          <label>alert-triangle (1.5)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="alert-triangle" stroke-width="2"></echo-icon>
+          <label>alert-triangle (2)</label>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="heart" stroke-width="1"></echo-icon>
+          <label>heart (1)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="heart" stroke-width="1.5"></echo-icon>
+          <label>heart (1.5)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="heart" stroke-width="2"></echo-icon>
+          <label>heart (2)</label>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="info" stroke-width="1"></echo-icon>
+          <label>info (1)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="info" stroke-width="1.5"></echo-icon>
+          <label>info (1.5)</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="info" stroke-width="2"></echo-icon>
+          <label>info (2)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>Size + Stroke Width Combinations</h2>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="star" size="small" stroke-width="1"></echo-icon>
+          <label>small + width 1</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="star" size="small" stroke-width="2"></echo-icon>
+          <label>small + width 2</label>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="star" size="medium" stroke-width="1"></echo-icon>
+          <label>medium + width 1</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="star" size="medium" stroke-width="2"></echo-icon>
+          <label>medium + width 2</label>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-item">
+          <echo-icon name="star" size="large" stroke-width="1"></echo-icon>
+          <label>large + width 1</label>
+        </div>
+        <div class="icon-item">
+          <echo-icon name="star" size="large" stroke-width="2"></echo-icon>
+          <label>large + width 2</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import './dist/design-toolkit.esm.js';
+  </script>
+</body>
+</html>
+

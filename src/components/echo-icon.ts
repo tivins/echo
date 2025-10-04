@@ -33,6 +33,9 @@ export class EchoIcon extends LitElement {
   @property({ type: Boolean })
   disabled = false;
 
+  @property({ type: Number, attribute: 'stroke-width' })
+  strokeWidth = 1.5;
+
   private _svgContent = '';
   private _isLoading = false;
 
@@ -106,7 +109,11 @@ export class EchoIcon extends LitElement {
   updated(changedProperties: Map<string | number | symbol, unknown>): void {
     super.updated(changedProperties);
 
-    if (changedProperties.has('name') || changedProperties.has('variant')) {
+    if (
+      changedProperties.has('name') ||
+      changedProperties.has('variant') ||
+      changedProperties.has('strokeWidth')
+    ) {
       this._loadIcon();
     }
   }
@@ -132,13 +139,29 @@ export class EchoIcon extends LitElement {
   }
 
   private _transformSVGForVariant(svgContent: string): string {
+    let transformed = svgContent;
+
+    // Apply stroke-width
+    transformed = transformed.replace(
+      /stroke-width="[^"]*"/g,
+      `stroke-width="${this.strokeWidth}"`
+    );
+    // Add stroke-width if not present on path elements
+    if (!transformed.includes('stroke-width=')) {
+      transformed = transformed.replace(
+        /<path /g,
+        `<path stroke-width="${this.strokeWidth}" `
+      );
+    }
+
     if (this.variant === 'filled') {
       // For filled variant, replace stroke with fill and set stroke to none
-      return svgContent
+      transformed = transformed
         .replace(/stroke="currentColor"/g, 'fill="currentColor" stroke="none"')
         .replace(/fill="none"/g, '');
     }
-    return svgContent;
+
+    return transformed;
   }
 
   render() {

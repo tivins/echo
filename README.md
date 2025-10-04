@@ -100,6 +100,12 @@ A clean, modern icon component with 60 carefully selected linear SVG icons inspi
 <echo-icon name="heart" color="red"></echo-icon>
 <echo-icon name="leaf" color="green"></echo-icon>
 
+<!-- Custom stroke width -->
+<echo-icon name="check" stroke-width="1"></echo-icon>
+<echo-icon name="check" stroke-width="1.5"></echo-icon>
+<echo-icon name="check" stroke-width="2"></echo-icon>
+<echo-icon name="check" stroke-width="2.5"></echo-icon>
+
 <!-- Accessibility -->
 <echo-icon name="search" aria-label="Search"></echo-icon>
 
@@ -153,6 +159,7 @@ The icon library includes 120 carefully selected icons inspired by Lucide design
 | `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Icon size (16px, 24px, 32px) |
 | `variant` | `'default' \| 'outline' \| 'filled'` | `'default'` | Icon visual style variant |
 | `color` | `string` | `'currentColor'` | Custom color for the icon |
+| `stroke-width` | `number` | `1.5` | Stroke width of the icon lines |
 | `aria-label` | `string` | `name` | Accessibility label for screen readers |
 | `disabled` | `boolean` | `false` | Whether the icon is disabled |
 

@@ -639,6 +639,7 @@ let EchoIcon = class EchoIcon extends i$1 {
         this.context = null;
         this.ariaLabel = null;
         this.disabled = false;
+        this.strokeWidth = 1.5;
         this._svgContent = '';
         this._isLoading = false;
     }
@@ -648,7 +649,9 @@ let EchoIcon = class EchoIcon extends i$1 {
     }
     updated(changedProperties) {
         super.updated(changedProperties);
-        if (changedProperties.has('name') || changedProperties.has('variant')) {
+        if (changedProperties.has('name') ||
+            changedProperties.has('variant') ||
+            changedProperties.has('strokeWidth')) {
             this._loadIcon();
         }
     }
@@ -673,13 +676,20 @@ let EchoIcon = class EchoIcon extends i$1 {
         }
     }
     _transformSVGForVariant(svgContent) {
+        let transformed = svgContent;
+        // Apply stroke-width
+        transformed = transformed.replace(/stroke-width="[^"]*"/g, `stroke-width="${this.strokeWidth}"`);
+        // Add stroke-width if not present on path elements
+        if (!transformed.includes('stroke-width=')) {
+            transformed = transformed.replace(/<path /g, `<path stroke-width="${this.strokeWidth}" `);
+        }
         if (this.variant === 'filled') {
             // For filled variant, replace stroke with fill and set stroke to none
-            return svgContent
+            transformed = transformed
                 .replace(/stroke="currentColor"/g, 'fill="currentColor" stroke="none"')
                 .replace(/fill="none"/g, '');
         }
-        return svgContent;
+        return transformed;
     }
     render() {
         const classes = [
@@ -810,6 +820,9 @@ __decorate([
 __decorate([
     n({ type: Boolean })
 ], EchoIcon.prototype, "disabled", void 0);
+__decorate([
+    n({ type: Number, attribute: 'stroke-width' })
+], EchoIcon.prototype, "strokeWidth", void 0);
 EchoIcon = __decorate([
     t$1('echo-icon')
 ], EchoIcon);

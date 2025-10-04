@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **EchoIcon Stroke Width Property**: Added configurable `stroke-width` property to echo-icon component
+  - Default stroke-width set to 1.5 for optimal visual appearance
+  - Allows customization of icon line thickness via `stroke-width` attribute
+  - Dynamic updates when stroke-width property changes
+  - Works seamlessly with all icon variants and sizes
 - **Extra Small (XS) Component Size**: Added "xs" size option to all components
   - XS size: 24px height, 12px font-size, 4px/8px padding
   - Perfect for compact UIs, inline actions, dense tables, and toolbar buttons
