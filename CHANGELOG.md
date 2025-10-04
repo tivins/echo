@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Redesigned 'settings' icon with cleaner gear design inspired by Lucide Icons for better visual consistency
+- Redesigned 'key' icon with Font Awesome-inspired vertical design (round handle at top, vertical shaft, and side teeth)
+
 ### Fixed
 - Fixed webserver.js netstat dependency error by implementing native Windows port checking
 - Updated webserver to use port 3000 as per project requirements
