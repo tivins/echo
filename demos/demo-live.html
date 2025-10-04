@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Toolkit - Demo</title>
+</head>
+<body>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h1>Design Toolkit - Demo</h1>
+    <p>This is a demo of the Design Toolkit.</p>
+    <echo-separator></echo-separator>
+
+    <echo-card title="Card with actions" icon="star" context="success" closable>
+        test 
+        <echo-button variant="ghost" size="small" icon="x">Button</echo-button>
+        <echo-button variant="ghost" size="small" icon="x"></echo-button>
+    </echo-card>
+  </div>
+
+
+  <script type="module">
+    import '../src/index.ts';
+  </script>
+</body>
+</html>

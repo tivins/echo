@@ -49,8 +49,8 @@ export class EchoCard extends LitElement {
     css`
       :host {
         display: block;
-        --card-border-radius: 12px;
-        --card-padding: 20px;
+        --card-border-radius: 1px;
+        --card-padding: 10px;
         --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
         --card-border: 1px solid rgba(0, 0, 0, 0.06);
         --card-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -65,12 +65,10 @@ export class EchoCard extends LitElement {
         overflow: hidden;
         font-family:
           -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        position: relative;
       }
 
       .card:hover {
         box-shadow: var(--card-hover-shadow);
-        transform: translateY(-1px);
       }
 
       .card:disabled {
@@ -104,18 +102,18 @@ export class EchoCard extends LitElement {
 
       /* Sizes */
       .card--small {
+        --card-padding: 12px;
+        --card-border-radius: 6px;
+      }
+
+      .card--medium {
         --card-padding: 16px;
         --card-border-radius: 8px;
       }
 
-      .card--medium {
-        --card-padding: 20px;
-        --card-border-radius: 12px;
-      }
-
       .card--large {
         --card-padding: 24px;
-        --card-border-radius: 16px;
+        --card-border-radius: 12px;
       }
 
       /* Header */
@@ -313,14 +311,15 @@ export class EchoCard extends LitElement {
 
     const closeButton = this.closable
       ? html`
-          <button
-            class="card__close-button"
+          <echo-button
+            variant="ghost"
+            size="small"
             @click=${this._handleClose}
             ?disabled=${this.disabled}
             aria-label="Close card"
+            icon="x"
           >
-            <echo-icon name="x" size="small"></echo-icon>
-          </button>
+          </echo-button>
         `
       : null;
 

@@ -7,6 +7,7 @@
     <title>Echo Toolkit</title>
 </head>
 <body>
+    <div style="max-width: 1200px; margin: 0 auto;">
     <h1>Echo Toolkit (out-of-the-box)</h1>
     <p>
         This page has no styles. It is pure HTML.
@@ -14,7 +15,7 @@
     </p>
 
     <h3>Button Component</h3>
-    <fieldset>
+    <echo-card>
         <echo-button>Button</echo-button>
         <echo-button variant="soft">Soft Button</echo-button>
         <echo-button variant="ghost">Ghost Button</echo-button>
@@ -36,7 +37,7 @@
         <echo-button size="large">Large Button</echo-button>
         <echo-separator thickness="thin"></echo-separator>
         <echo-button disabled>Disabled Button</echo-button>
-        <echo-separator thickness="thin" margin="large"><echo-icon name="star" size="small"></echo-icon></echo-separator>
+        <echo-separator thickness="thin" margin="large"><echo-icon name="star" size="small"></echo-icon> combined</echo-separator>
         <echo-button variant="default" context="success">Success Default</echo-button>
         <echo-button variant="outline" context="danger">Danger Outline</echo-button>
         <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
@@ -55,13 +56,17 @@
         <echo-button size="large" icon="heart" context="success" icon-position="right" variant="default" icon-variant="filled">Heart</echo-button>
         <echo-button size="small" icon="heart" context="success" icon-position="right" variant="default">Heart</echo-button>
         <echo-button size="xs" icon="heart" context="success" icon-position="right" variant="link">Heart</echo-button>
-    </fieldset>
+    </echo-card>
 
-    <echo-card title="Card avec icône" icon="star" closable variant="outlined" style="margin-top: 20px;">
+    <echo-card title="Card avec icône" icon="star" context="success"  closable style="margin-top: 20px;">
+        <div slot="header-actions">
+            <echo-button variant="ghost" size="small" icon="mail">Message</echo-button>
+            <echo-button variant="ghost" size="small" icon="phone">Call</echo-button>
+        </div>
         <div>Cette card peut être fermée</div>
         <div slot="footer">
-          <echo-button variant="outline" size="small">Annuler</echo-button>
-          <echo-button variant="default" size="small">Sauvegarder</echo-button>
+          <echo-button variant="soft" size="small" context="warning" icon="undo">Annuler</echo-button>
+          <echo-button variant="default" size="small" icon="save" icon-position="right">Sauvegarder</echo-button>
         </div>
     </echo-card>
 
@@ -90,7 +95,7 @@
     <div>
         <fieldset id="icon-library"></fieldset>
     </div>
-    
+</div>
     <script type="module" src="main.js"></script>
 </body>
 </html>

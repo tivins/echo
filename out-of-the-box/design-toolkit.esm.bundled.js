@@ -1363,8 +1363,8 @@ EchoCard.styles = [
     i$4 `
       :host {
         display: block;
-        --card-border-radius: 12px;
-        --card-padding: 20px;
+        --card-border-radius: 1px;
+        --card-padding: 38px;
         --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
         --card-border: 1px solid rgba(0, 0, 0, 0.06);
         --card-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -1379,12 +1379,10 @@ EchoCard.styles = [
         overflow: hidden;
         font-family:
           -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        position: relative;
       }
 
       .card:hover {
         box-shadow: var(--card-hover-shadow);
-        transform: translateY(-1px);
       }
 
       .card:disabled {
