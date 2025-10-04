@@ -16,7 +16,7 @@ export class EchoSeparator extends LitElement {
   orientation: EchoSeparatorOrientation = 'horizontal';
 
   @property({ type: String })
-  thickness: EchoSeparatorThickness = 'medium';
+  thickness: EchoSeparatorThickness = 'thin';
 
   @property({ type: String })
   context: EchoContext = 'secondary';
