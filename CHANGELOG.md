@@ -14,14 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Impact**: Icons now properly follow button text color in all hover states across all variants
 
 ### Changed
-- **EchoButton Icon API Simplification**: Streamlined and improved the icon property API
+- **EchoButton Icon API Hybrid Approach**: Implemented best-of-both-worlds API design
   - **Main Property**: Renamed `icon-name` to `icon` for cleaner, more intuitive usage
-  - **CamelCase Properties**: Changed all icon properties to camelCase for consistency with Lit conventions
-    - `icon-name` → `icon`
-    - `icon-position` → `iconPosition`
-    - `icon-size` → `iconSize`
-    - `icon-variant` → `iconVariant`
-  - **Backward Compatibility**: Breaking change - old kebab-case properties no longer supported
+  - **Hybrid Naming**: Properties use camelCase in JavaScript but kebab-case in HTML attributes
+    - JavaScript: `iconPosition`, `iconSize`, `iconVariant`
+    - HTML: `icon-position`, `icon-size`, `icon-variant`
+  - **Lit Integration**: Uses `attribute` parameter in `@property` decorator for proper HTML attribute mapping
+  - **Developer Experience**: Clean JavaScript API with readable HTML attributes
 
 ### Technical
 - **Improved Color Inheritance**: Icons now use `--icon-color: currentColor` via inline styles for reliable color inheritance
@@ -31,21 +30,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Examples
 ```html
-<!-- New simplified API -->
+<!-- New hybrid API -->
 <echo-button icon="plus" context="primary">Add Item</echo-button>
 <echo-button icon="trash" context="danger">Delete</echo-button>
 
-<!-- Icon positioning -->
-<echo-button icon="arrow-left" iconPosition="left" context="primary">Back</echo-button>
-<echo-button icon="arrow-right" iconPosition="right" context="primary">Next</echo-button>
+<!-- Icon positioning (HTML attributes) -->
+<echo-button icon="arrow-left" icon-position="left" context="primary">Back</echo-button>
+<echo-button icon="arrow-right" icon-position="right" context="primary">Next</echo-button>
 
-<!-- Custom properties -->
-<echo-button icon="settings" iconSize="small" context="primary">Small Icon</echo-button>
-<echo-button icon="settings" iconVariant="filled" context="primary">Filled Icon</echo-button>
+<!-- Custom properties (HTML attributes) -->
+<echo-button icon="settings" icon-size="small" context="primary">Small Icon</echo-button>
+<echo-button icon="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
 
 <!-- Icon-only buttons -->
 <echo-button icon="plus" context="primary"></echo-button>
 <echo-button icon="edit" context="secondary"></echo-button>
+```
+
+### JavaScript API
+```javascript
+// JavaScript properties use camelCase
+const button = document.querySelector('echo-button');
+button.icon = 'plus';
+button.iconPosition = 'right';
+button.iconSize = 'large';
+button.iconVariant = 'filled';
 ```
 
 ### Migration Guide
@@ -53,8 +62,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- Old API (no longer supported) -->
 <echo-button icon-name="plus" icon-position="left" icon-size="small">Add</echo-button>
 
-<!-- New API -->
-<echo-button icon="plus" iconPosition="left" iconSize="small">Add</echo-button>
+<!-- New API (HTML attributes) -->
+<echo-button icon="plus" icon-position="left" icon-size="small">Add</echo-button>
 ```
 
 ## [1.6.4] - 2025-01-04

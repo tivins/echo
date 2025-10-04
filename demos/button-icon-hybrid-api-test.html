@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Button Hybrid API Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .test-description {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .code-example {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        
+        .test-result {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .api-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .api-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .api-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Echo Button Hybrid API Test</h1>
+    
+    <div class="test-container">
+        <h2>🔄 Hybrid API Approach</h2>
+        <div class="test-description">
+            This test verifies that the EchoButton component uses a hybrid API approach:
+            <ul>
+                <li><strong>HTML Attributes:</strong> Use kebab-case (`icon-position`, `icon-size`, `icon-variant`)</li>
+                <li><strong>JavaScript Properties:</strong> Use camelCase (`iconPosition`, `iconSize`, `iconVariant`)</li>
+                <li><strong>Main Property:</strong> Simplified to just `icon` (no kebab-case needed)</li>
+            </ul>
+        </div>
+        
+        <div class="api-comparison">
+            <div class="api-section">
+                <h3>HTML Usage (Attributes)</h3>
+                <div class="code-example">
+&lt;echo-button icon="plus" icon-position="left"&gt;Add&lt;/echo-button&gt;
+&lt;echo-button icon="settings" icon-size="large"&gt;Settings&lt;/echo-button&gt;
+&lt;echo-button icon="star" icon-variant="filled"&gt;Star&lt;/echo-button&gt;
+                </div>
+            </div>
+            
+            <div class="api-section">
+                <h3>JavaScript Usage (Properties)</h3>
+                <div class="code-example">
+button.icon = 'plus';
+button.iconPosition = 'left';
+button.iconSize = 'large';
+button.iconVariant = 'filled';
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-result" id="api-test">Testing hybrid API...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>🎯 HTML Attributes Test</h2>
+        <div class="test-description">
+            Test buttons using HTML attributes with kebab-case naming.
+        </div>
+        
+        <div class="button-group">
+            <echo-button icon="plus" icon-position="left" context="primary">Left Icon</echo-button>
+            <echo-button icon="arrow-right" icon-position="right" context="primary">Right Icon</echo-button>
+            <echo-button icon="settings" icon-size="small" context="secondary">Small Icon</echo-button>
+            <echo-button icon="settings" icon-size="large" context="secondary">Large Icon</echo-button>
+            <echo-button icon="star" icon-variant="filled" context="warning">Filled Icon</echo-button>
+        </div>
+        
+        <div class="code-example">
+&lt;echo-button icon="plus" icon-position="left" context="primary"&gt;Left Icon&lt;/echo-button&gt;
+&lt;echo-button icon="arrow-right" icon-position="right" context="primary"&gt;Right Icon&lt;/echo-button&gt;
+&lt;echo-button icon="settings" icon-size="small" context="secondary"&gt;Small Icon&lt;/echo-button&gt;
+&lt;echo-button icon="settings" icon-size="large" context="secondary"&gt;Large Icon&lt;/echo-button&gt;
+&lt;echo-button icon="star" icon-variant="filled" context="warning"&gt;Filled Icon&lt;/echo-button&gt;
+        </div>
+        
+        <div class="test-result" id="html-test">Testing HTML attributes...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>🔧 JavaScript Properties Test</h2>
+        <div class="test-description">
+            Test buttons created and modified via JavaScript using camelCase properties.
+        </div>
+        
+        <div class="button-group" id="js-buttons">
+            <!-- Buttons will be created via JavaScript -->
+        </div>
+        
+        <div class="code-example">
+// JavaScript code that will be executed:
+const button1 = document.createElement('echo-button');
+button1.icon = 'heart';
+button1.iconPosition = 'left';
+button1.context = 'danger';
+button1.textContent = 'Heart Left';
+
+const button2 = document.createElement('echo-button');
+button2.icon = 'heart';
+button2.iconPosition = 'right';
+button2.context = 'danger';
+button2.textContent = 'Heart Right';
+        </div>
+        
+        <div class="test-result" id="js-test">Testing JavaScript properties...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>🎨 Combined Properties Test</h2>
+        <div class="test-description">
+            Test buttons with multiple custom properties.
+        </div>
+        
+        <div class="button-group">
+            <echo-button icon="star" icon-position="right" icon-size="small" icon-variant="filled" context="warning">Custom</echo-button>
+            <echo-button icon="heart" icon-position="left" icon-size="large" icon-variant="outline" context="danger">Custom</echo-button>
+            <echo-button icon="settings" icon-position="right" icon-size="medium" icon-variant="filled" context="info">Custom</echo-button>
+        </div>
+        
+        <div class="code-example">
+&lt;echo-button icon="star" icon-position="right" icon-size="small" icon-variant="filled" context="warning"&gt;Custom&lt;/echo-button&gt;
+&lt;echo-button icon="heart" icon-position="left" icon-size="large" icon-variant="outline" context="danger"&gt;Custom&lt;/echo-button&gt;
+&lt;echo-button icon="settings" icon-position="right" icon-size="medium" icon-variant="filled" context="info"&gt;Custom&lt;/echo-button&gt;
+        </div>
+        
+        <div class="test-result" id="combined-test">Testing combined properties...</div>
+    </div>
+    
+    <script type="module" src="../out-of-the-box/main.js"></script>
+    <script>
+        // Test script to verify hybrid API
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                // Test HTML attributes
+                const htmlButtons = document.querySelectorAll('echo-button');
+                let htmlTestResults = {
+                    icon: 0,
+                    iconPosition: 0,
+                    iconSize: 0,
+                    iconVariant: 0
+                };
+                
+                htmlButtons.forEach(button => {
+                    if (button.getAttribute('icon')) htmlTestResults.icon++;
+                    if (button.getAttribute('icon-position')) htmlTestResults.iconPosition++;
+                    if (button.getAttribute('icon-size')) htmlTestResults.iconSize++;
+                    if (button.getAttribute('icon-variant')) htmlTestResults.iconVariant++;
+                });
+                
+                // Test JavaScript properties
+                const jsContainer = document.getElementById('js-buttons');
+                
+                const button1 = document.createElement('echo-button');
+                button1.icon = 'heart';
+                button1.iconPosition = 'left';
+                button1.context = 'danger';
+                button1.textContent = 'Heart Left';
+                jsContainer.appendChild(button1);
+                
+                const button2 = document.createElement('echo-button');
+                button2.icon = 'heart';
+                button2.iconPosition = 'right';
+                button2.context = 'danger';
+                button2.textContent = 'Heart Right';
+                jsContainer.appendChild(button2);
+                
+                const button3 = document.createElement('echo-button');
+                button3.icon = 'star';
+                button3.iconSize = 'large';
+                button3.iconVariant = 'filled';
+                button3.context = 'warning';
+                button3.textContent = 'Star Large';
+                jsContainer.appendChild(button3);
+                
+                // Update test results
+                document.getElementById('api-test').textContent = 
+                    `Hybrid API: HTML attributes use kebab-case, JavaScript properties use camelCase`;
+                document.getElementById('html-test').textContent = 
+                    `HTML Test: ${htmlTestResults.icon} icons, ${htmlTestResults.iconPosition} positions, ${htmlTestResults.iconSize} sizes, ${htmlTestResults.iconVariant} variants`;
+                document.getElementById('js-test').textContent = 
+                    `JavaScript Test: 3 buttons created with camelCase properties`;
+                document.getElementById('combined-test').textContent = 
+                    `Combined Test: 3 buttons with multiple custom properties`;
+                
+                // Overall result
+                const totalHtmlTests = Object.values(htmlTestResults).reduce((a, b) => a + b, 0);
+                
+                if (totalHtmlTests > 0) {
+                    document.body.insertAdjacentHTML('beforeend', 
+                        '<div class="test-container"><div class="test-result success">✅ Hybrid API working perfectly! HTML uses kebab-case attributes, JavaScript uses camelCase properties.</div></div>'
+                    );
+                } else {
+                    document.body.insertAdjacentHTML('beforeend', 
+                        '<div class="test-container"><div class="test-result error">❌ Some tests failed. Check console for errors.</div></div>'
+                    );
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

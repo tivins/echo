@@ -462,13 +462,13 @@ __decorate([
     n({ type: String })
 ], EchoButton.prototype, "icon", void 0);
 __decorate([
-    n({ type: String })
+    n({ type: String, attribute: 'icon-position' })
 ], EchoButton.prototype, "iconPosition", void 0);
 __decorate([
-    n({ type: String })
+    n({ type: String, attribute: 'icon-size' })
 ], EchoButton.prototype, "iconSize", void 0);
 __decorate([
-    n({ type: String })
+    n({ type: String, attribute: 'icon-variant' })
 ], EchoButton.prototype, "iconVariant", void 0);
 EchoButton = __decorate([
     t$1('echo-button')

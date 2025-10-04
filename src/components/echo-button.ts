@@ -28,13 +28,13 @@ export class EchoButton extends LitElement {
   @property({ type: String })
   icon: IconName | null = null;
 
-  @property({ type: String })
+  @property({ type: String, attribute: 'icon-position' })
   iconPosition: 'left' | 'right' = 'left';
 
-  @property({ type: String })
+  @property({ type: String, attribute: 'icon-size' })
   iconSize: EchoIconSize | null = null;
 
-  @property({ type: String })
+  @property({ type: String, attribute: 'icon-variant' })
   iconVariant: EchoIconVariant | null = null;
 
   static styles = [

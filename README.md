@@ -325,8 +325,8 @@ A customizable button component with multiple variants, sizes, and built-in icon
 <echo-button icon="save" context="success">Save</echo-button>
 
 <!-- Icon Position -->
-<echo-button icon="arrow-left" iconPosition="left" context="primary">Back</echo-button>
-<echo-button icon="arrow-right" iconPosition="right" context="primary">Next</echo-button>
+<echo-button icon="arrow-left" icon-position="left" context="primary">Back</echo-button>
+<echo-button icon="arrow-right" icon-position="right" context="primary">Next</echo-button>
 
 <!-- Icon Only Buttons -->
 <echo-button icon="plus" context="primary"></echo-button>
@@ -334,8 +334,8 @@ A customizable button component with multiple variants, sizes, and built-in icon
 <echo-button icon="trash" context="danger"></echo-button>
 
 <!-- Custom Icon Properties -->
-<echo-button icon="settings" iconSize="small" context="primary">Small Icon</echo-button>
-<echo-button icon="settings" iconVariant="filled" context="primary">Filled Icon</echo-button>
+<echo-button icon="settings" icon-size="small" context="primary">Small Icon</echo-button>
+<echo-button icon="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
 
 <!-- Disabled state -->
 <echo-button disabled>Disabled</echo-button>
@@ -351,9 +351,9 @@ A customizable button component with multiple variants, sizes, and built-in icon
 | `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Button size (24px, 32px, 40px, 48px) |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
 | `icon` | `IconName \| null` | `null` | Name of the icon to display in the button |
-| `iconPosition` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text |
-| `iconSize` | `EchoIconSize \| null` | `null` | Override icon size (auto-mapped from button size if null) |
-| `iconVariant` | `EchoIconVariant \| null` | `null` | Override icon variant (defaults to 'default' if null) |
+| `iconPosition` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text (HTML: `icon-position`) |
+| `iconSize` | `EchoIconSize \| null` | `null` | Override icon size (HTML: `icon-size`) |
+| `iconVariant` | `EchoIconVariant \| null` | `null` | Override icon variant (HTML: `icon-variant`) |
 
 #### TypeScript Types
 
