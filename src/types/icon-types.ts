@@ -47,7 +47,7 @@ export const iconNames = [
   'filter',
   'more-horizontal',
   'more-vertical',
-  
+
   // Actions
   'plus',
   'minus',
@@ -62,7 +62,7 @@ export const iconNames = [
   'share',
   'link',
   'external-link',
-  
+
   // Media & Files
   'image',
   'file',
@@ -71,7 +71,7 @@ export const iconNames = [
   'video',
   'music',
   'camera',
-  
+
   // Communication
   'mail',
   'phone',
@@ -79,20 +79,20 @@ export const iconNames = [
   'bell',
   'heart',
   'star',
-  
+
   // Settings & Tools
   'settings',
   'user',
   'users',
   'lock',
   'unlock',
-  
+
   // Status & Feedback
   'check-circle',
   'x-circle',
   'alert-circle',
   'info',
-  
+
   // Technology
   'wifi',
   'battery',
@@ -102,24 +102,85 @@ export const iconNames = [
   'stop',
   'volume',
   'volume-off',
-  
+
   // Weather & Nature
   'sun',
   'moon',
   'cloud',
   'droplet',
-  
+
   // Business & Finance
   'dollar-sign',
   'credit-card',
   'shopping-cart',
   'home',
-  
+
   // Data & Analytics
   'bar-chart',
   'pie-chart',
   'calendar',
-  'clock'
+  'clock',
+
+  // Additional Navigation & UI
+  'grid',
+  'list',
+  'layout',
+  'sidebar',
+  'panel-left',
+  'panel-right',
+  'sidebar-open',
+  'sidebar-close',
+  'maximize',
+  'minimize',
+  'maximize-2',
+  'minimize-2',
+
+  // Additional Actions
+  'undo',
+  'redo',
+  'cut',
+  'paste',
+  'scissors',
+  'move',
+  'rotate-cw',
+  'rotate-ccw',
+  'zoom-in',
+  'zoom-out',
+
+  // Additional Media & Files
+  'folder-plus',
+  'folder-minus',
+  'file-plus',
+  'file-minus',
+  'file-text',
+  'file-image',
+  'file-video',
+  'file-audio',
+  'archive',
+  'package',
+
+  // Additional Communication
+  'mail-open',
+  'mail-check',
+  'mail-plus',
+  'message-square',
+  'message-square-plus',
+  'send',
+  'reply',
+  'forward',
+  'at-sign',
+  'hash',
+
+  // Additional Settings & Tools
+  'tool',
+  'wrench',
+  'hammer',
+  'screwdriver',
+  'key',
+  'shield',
+  'shield-check',
+  'shield-alert',
+  'shield-x',
 ] as const;
 
 /**

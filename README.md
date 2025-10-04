@@ -113,7 +113,7 @@ A clean, modern icon component with 60 carefully selected linear SVG icons inspi
 
 #### Available Icons
 
-The icon library includes 60 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
+The icon library includes 120 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
 
 **Navigation & Arrows:** arrow-left, arrow-right, arrow-up, arrow-down, chevron-left, chevron-right, chevron-up, chevron-down, menu, x, search, filter, more-horizontal, more-vertical
 
@@ -134,6 +134,16 @@ The icon library includes 60 carefully selected icons inspired by Lucide design 
 **Business & Finance:** dollar-sign, credit-card, shopping-cart, home
 
 **Data & Analytics:** bar-chart, pie-chart, calendar, clock
+
+**Additional Navigation & UI:** grid, list, layout, sidebar, panel-left, panel-right, sidebar-open, sidebar-close, maximize, minimize, maximize-2, minimize-2
+
+**Additional Actions:** undo, redo, cut, paste, scissors, move, rotate-cw, rotate-ccw, zoom-in, zoom-out
+
+**Additional Media & Files:** folder-plus, folder-minus, file-plus, file-minus, file-text, file-image, file-video, file-audio, archive, package
+
+**Additional Communication:** mail-open, mail-check, mail-plus, message-square, message-square-plus, send, reply, forward, at-sign, hash
+
+**Additional Settings & Tools:** tool, wrench, hammer, screwdriver, key, shield, shield-check, shield-alert, shield-x
 
 #### Properties
 

@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Icon Renaming**: Updated icon names for clarity (close → x, delete → trash, etc.)
 
 ### Added
+- **Expanded Icon Library**: Added 50 new icons for a total of 120 carefully selected icons inspired by Lucide design principles
+- **New Icon Categories**: Additional Navigation & UI, Additional Actions, Additional Media & Files, Additional Communication, Additional Settings & Tools
+- **Enhanced Icon Variants**: Added variants for existing icons (folder-plus, folder-minus, file-plus, file-minus, etc.)
+- **UI Layout Icons**: Added comprehensive set of layout and interface icons (grid, list, layout, sidebar, panels, maximize/minimize)
+- **Communication Extensions**: Added advanced communication icons (mail-open, mail-check, send, reply, forward, at-sign, hash)
+- **Tool & Security Icons**: Added professional tool icons (tool, wrench, hammer, screwdriver, key, shield variants)
+- **Action Extensions**: Added advanced action icons (undo, redo, cut, paste, scissors, move, rotate, zoom)
+- **File Management**: Added comprehensive file type icons (file-text, file-image, file-video, file-audio, archive, package)
 - **Clean Icon Library**: 60 carefully selected icons inspired by Lucide design principles
 - **New Icon Categories**: Navigation, Actions, Media & Files, Communication, Settings & Tools, Status & Feedback, Technology, Weather & Nature, Business & Finance, Data & Analytics
 - **Improved Icon Registry**: Better error handling with 'x' as fallback icon
