@@ -1,4 +1,4 @@
-# Design Toolkit
+# Echo Toolkit
 
 A modern web component library built with Lit, TypeScript, and Vite. Provides framework-agnostic, accessible UI components for modern web applications.
 
@@ -292,6 +292,7 @@ A customizable button component with multiple variants and sizes.
 ```html
 <!-- Variants -->
 <echo-button variant="default">Default</echo-button>
+<echo-button variant="soft">Soft</echo-button>
 <echo-button variant="link">Link</echo-button>
 <echo-button variant="outline">Outline</echo-button>
 <echo-button variant="ghost">Ghost</echo-button>
@@ -323,7 +324,7 @@ A customizable button component with multiple variants and sizes.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `variant` | `'default' \| 'link' \| 'outline' \| 'ghost'` | `'default'` | Button visual style variant |
+| `variant` | `'default' \| 'soft' \| 'link' \| 'outline' \| 'ghost'` | `'default'` | Button visual style variant |
 | `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Button semantic context/color |
 | `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Button size (24px, 32px, 40px, 48px) |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
@@ -337,7 +338,7 @@ import type { EchoButtonVariant, EchoSize, EchoContext } from 'design-toolkit';
 
 // EchoSize: 'xs' | 'small' | 'medium' | 'large'
 // EchoContext: 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary'
-// EchoButtonVariant: 'default' | 'link' | 'outline' | 'ghost'
+// EchoButtonVariant: 'default' | 'soft' | 'link' | 'outline' | 'ghost'
 ```
 
 #### Events

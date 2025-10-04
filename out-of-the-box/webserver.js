@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
 
   fs.stat(pathname, (err, stats) => {
     if (err) {
-      console.error("File not found:", err.message);
+      console.error("File not found:", pathname);
       res.statusCode = 404;
       res.end("Not Found");
       return;

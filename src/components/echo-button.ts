@@ -94,6 +94,17 @@ export class EchoButton extends LitElement {
       .button--ghost:hover:not(:disabled) {
         background-color: var(--context-color-alpha);
       }
+
+      .button--soft {
+        background-color: var(--context-color-alpha);
+        color: var(--context-color);
+        border: none;
+      }
+
+      .button--soft:hover:not(:disabled) {
+        background-color: var(--context-color);
+        color: white;
+      }
     `,
   ];
 

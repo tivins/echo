@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **EchoButton Soft Variant**: Added new "soft" variant to echo-button component
+  - Default state displays with context color alpha background and colored text (like ghost:hover)
+  - Hover state displays with solid context color background and white text (like default)
+  - Provides a middle ground between ghost and default variants for subtle visual hierarchy
+  - Fully compatible with all context colors and sizes
+  - Updated TypeScript types to include 'soft' variant
 - **EchoIcon Stroke Width Property**: Added configurable `stroke-width` property to echo-icon component
   - Default stroke-width set to 1.5 for optimal visual appearance
   - Allows customization of icon line thickness via `stroke-width` attribute
