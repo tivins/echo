@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c",
+    "build": "rollup -c && npm run deploy",
     "build:vite": "tsc && vite build",
     "build:all": "npm run build && npm run build:vite",
     "preview": "vite preview",
@@ -22,8 +22,9 @@
     "format": "prettier --write src/**/*.ts",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "ootbw": "npm run build && powershell -Command \"Copy-Item 'dist/design-toolkit.esm.bundled.js' 'out-of-the-box/'\" && cd out-of-the-box && node webserver.js",
-    "ootb": "npm run build && cp dist/design-toolkit.esm.bundled.js out-of-the-box/ && cd out-of-the-box && node webserver.js"
+    "ootb": "npm run build && cd out-of-the-box && node webserver.js",
+    "pages": "npm run build && cd docs && node webserver.js",
+    "deploy": "copyfiles -u 1 dist/design-toolkit.esm.bundled.js out-of-the-box/ && copyfiles -u 1 dist/design-toolkit.esm.bundled.js docs/"
   },
   "keywords": [
     "web-components",
@@ -48,6 +49,7 @@
     "@rollup/plugin-typescript": "^12.1.4",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
