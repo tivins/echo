@@ -190,6 +190,94 @@ const loadedIcons = getLoadedIcons();
 const available = getAvailableIconNames();
 ```
 
+### EchoSeparator
+
+A versatile and flexible separator component based on the HTML `<hr>` element with extensive customization options.
+
+```html
+<!-- Basic usage -->
+<echo-separator></echo-separator>
+
+<!-- Variants -->
+<echo-separator variant="solid"></echo-separator>
+<echo-separator variant="dotted"></echo-separator>
+<echo-separator variant="dashed"></echo-separator>
+<echo-separator variant="double"></echo-separator>
+<echo-separator variant="gradient"></echo-separator>
+
+<!-- Thickness -->
+<echo-separator thickness="thin"></echo-separator>
+<echo-separator thickness="medium"></echo-separator>
+<echo-separator thickness="thick"></echo-separator>
+
+<!-- Margins -->
+<echo-separator margin="small"></echo-separator>
+<echo-separator margin="medium"></echo-separator>
+<echo-separator margin="large"></echo-separator>
+
+<!-- Context Colors -->
+<echo-separator context="primary"></echo-separator>
+<echo-separator context="success"></echo-separator>
+<echo-separator context="danger"></echo-separator>
+
+<!-- Custom Colors -->
+<echo-separator color="#ff6b6b"></echo-separator>
+<echo-separator color="rgba(255, 107, 107, 0.5)"></echo-separator>
+
+<!-- Orientation -->
+<echo-separator orientation="horizontal"></echo-separator>
+<echo-separator orientation="vertical"></echo-separator>
+
+<!-- With Content -->
+<echo-separator><span>OR</span></echo-separator>
+<echo-separator context="primary">
+  <echo-icon name="star" size="small"></echo-icon>
+</echo-separator>
+
+<!-- Combinations -->
+<echo-separator variant="dashed" thickness="thick" context="primary"></echo-separator>
+<echo-separator variant="gradient" context="success" margin="large"></echo-separator>
+```
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `variant` | `'solid' \| 'dotted' \| 'dashed' \| 'double' \| 'gradient'` | `'solid'` | Separator line style |
+| `margin` | `'small' \| 'medium' \| 'large'` | `'medium'` | Spacing around the separator (8px, 16px, 32px) |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Direction of the separator |
+| `thickness` | `'thin' \| 'medium' \| 'thick'` | `'medium'` | Line thickness (1px, 2px, 4px) |
+| `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'secondary'` | Semantic context color |
+| `color` | `string` | `null` | Custom color (overrides context color) |
+
+#### TypeScript Types
+
+```typescript
+import type { 
+  EchoSeparatorVariant, 
+  EchoSeparatorMargin, 
+  EchoSeparatorThickness, 
+  EchoSeparatorOrientation 
+} from 'design-toolkit';
+
+// EchoSeparatorVariant: 'solid' | 'dotted' | 'dashed' | 'double' | 'gradient'
+// EchoSeparatorMargin: 'small' | 'medium' | 'large'
+// EchoSeparatorThickness: 'thin' | 'medium' | 'thick'
+// EchoSeparatorOrientation: 'horizontal' | 'vertical'
+```
+
+#### Features
+
+- Five visual variants (solid, dotted, dashed, double, gradient)
+- Horizontal and vertical orientations
+- Three thickness options
+- Three margin sizes
+- Full integration with Design Toolkit context colors
+- Custom color support
+- Content slot for text or icons within the separator
+- Fully accessible with proper ARIA attributes
+- Built with Lit for performance and reusability
+
 ### EchoButton
 
 A customizable button component with multiple variants and sizes.
@@ -305,7 +393,8 @@ The build process creates multiple formats:
 src/
 ├── components/          # Web components
 │   ├── echo-button.ts
-│   └── echo-icon.ts
+│   ├── echo-icon.ts
+│   └── echo-separator.ts
 ├── icons/              # Icon system
 │   ├── icon-library.ts
 │   └── icon-registry.ts

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **EchoSeparator Component**: Versatile separator component based on HTML `<hr>` element
+- **Separator Variants**: Five visual styles (solid, dotted, dashed, double, gradient)
+- **Separator Orientations**: Both horizontal and vertical support
+- **Separator Thickness**: Three thickness options (thin, medium, thick)
+- **Separator Margins**: Three margin sizes (small, medium, large)
+- **Separator Content Slot**: Support for text or icon content within separator
+- **Separator Context Colors**: Full integration with Design Toolkit context colors
+- **Separator Custom Colors**: Support for custom color values
+- **Separator Accessibility**: Proper ARIA attributes and semantic HTML
+- **Separator TypeScript Types**: Complete type definitions for all separator properties
+- **Separator Tests**: Comprehensive Playwright test suite
+- **Separator Demo Page**: Full-featured demo page showing all variants and combinations
+
 ### Changed
 - Redesigned 'settings' icon with cleaner gear design inspired by Lucide Icons for better visual consistency
 - Redesigned 'key' icon with Font Awesome-inspired vertical design (round handle at top, vertical shaft, and side teeth)

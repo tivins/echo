@@ -2,6 +2,12 @@ export type EchoButtonVariant = 'default' | 'link' | 'outline' | 'ghost';
 export type EchoSize = 'small' | 'medium' | 'large';
 export type EchoContext = 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary';
 
+// Echo Separator types
+export type EchoSeparatorVariant = 'solid' | 'dotted' | 'dashed' | 'double' | 'gradient';
+export type EchoSeparatorMargin = 'small' | 'medium' | 'large';
+export type EchoSeparatorThickness = 'thin' | 'medium' | 'thick';
+export type EchoSeparatorOrientation = 'horizontal' | 'vertical';
+
 // Re-export context color types from shared styles
 export type { ContextColorName } from '../styles/context-colors.js';
 export { contextColorNames } from '../styles/context-colors.js';
