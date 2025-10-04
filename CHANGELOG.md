@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **EchoIcon Context Property**: Added support for context colors (primary, secondary, success, danger, warning, info) in echo-icon component
+  - Context colors integrate with the shared Design Toolkit color system
+  - Context property works alongside existing color property (color takes precedence)
+  - Full compatibility with all icon variants (default, outline, filled)
+
+### Changed
+- **EchoIcon imports**: Standardized type imports to use centralized `types/index.js` file, matching the pattern used in EchoSeparator
+- **EchoIcon color handling**: Updated color application to use CSS variables for better context color integration
+
 ### Fixed
 - **EchoIcon Filled Variant**: Implemented the filled variant functionality that was previously non-functional
   - Added SVG transformation logic to convert stroke-based icons to fill-based for filled variant

@@ -52,6 +52,22 @@ test.describe('EchoIcon Component', () => {
     await expect(filledIcon.locator('.icon--filled')).toBeVisible();
   });
 
+  test('renders with context color', async ({ page }) => {
+    await page.setContent(`
+      <echo-icon name="close" context="primary"></echo-icon>
+      <echo-icon name="close" context="success"></echo-icon>
+      <echo-icon name="close" context="danger"></echo-icon>
+    `);
+    
+    const primaryIcon = page.locator('echo-icon').first();
+    const successIcon = page.locator('echo-icon').nth(1);
+    const dangerIcon = page.locator('echo-icon').last();
+    
+    await expect(primaryIcon.locator('.context--primary')).toBeVisible();
+    await expect(successIcon.locator('.context--success')).toBeVisible();
+    await expect(dangerIcon.locator('.context--danger')).toBeVisible();
+  });
+
   test('renders with custom color', async ({ page }) => {
     await page.setContent(`
       <echo-icon name="close" color="red"></echo-icon>

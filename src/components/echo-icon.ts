@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement, property } from 'lit/decorators.js';
-import type { EchoIconSize, EchoIconVariant, IconName } from '../types/icon-types.js';
+import type { EchoIconSize, EchoIconVariant, IconName, EchoContext } from '../types/index.js';
 import { loadIcon } from '../icons/icon-registry.js';
+import { contextColors } from '../styles/context-colors.js';
 
 @customElement('echo-icon')
 export class EchoIcon extends LitElement {
@@ -19,6 +20,9 @@ export class EchoIcon extends LitElement {
   @property({ type: String })
   color = 'currentColor';
 
+  @property({ type: String })
+  context: EchoContext | null = null;
+
   @property({ type: String, attribute: 'aria-label' })
   ariaLabel: string | null = null;
 
@@ -28,64 +32,67 @@ export class EchoIcon extends LitElement {
   private _svgContent = '';
   private _isLoading = false;
 
-  static styles = css`
-    :host {
-      display: inline-block;
-      vertical-align: middle;
-    }
+  static styles = [
+    contextColors,
+    css`
+      :host {
+        display: inline-block;
+        vertical-align: middle;
+      }
 
-    .icon {
-      display: inline-block;
-      color: var(--icon-color, currentColor);
-      transition: color 0.124s ease-in-out;
-    }
+      .icon {
+        display: inline-block;
+        color: var(--icon-color, var(--context-color, currentColor));
+        transition: color 0.124s ease-in-out;
+      }
 
-    .icon:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+      .icon:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-    /* Size variants */
-    .icon--small {
-      width: 16px;
-      height: 16px;
-    }
+      /* Size variants */
+      .icon--small {
+        width: 16px;
+        height: 16px;
+      }
 
-    .icon--medium {
-      width: 24px;
-      height: 24px;
-    }
+      .icon--medium {
+        width: 24px;
+        height: 24px;
+      }
 
-    .icon--large {
-      width: 32px;
-      height: 32px;
-    }
+      .icon--large {
+        width: 32px;
+        height: 32px;
+      }
 
-    /* Variant styles */
-    .icon--outline {
-      /* Outline variant uses stroke only */
-    }
+      /* Variant styles */
+      .icon--outline {
+        /* Outline variant uses stroke only */
+      }
 
-    .icon--filled {
-      /* Filled variant uses fill */
-    }
+      .icon--filled {
+        /* Filled variant uses fill */
+      }
 
-    .icon--default {
-      /* Default variant uses stroke */
-    }
+      .icon--default {
+        /* Default variant uses stroke */
+      }
 
-    /* Loading state */
-    .icon--loading {
-      opacity: 0.6;
-    }
+      /* Loading state */
+      .icon--loading {
+        opacity: 0.6;
+      }
 
-    /* Accessibility */
-    .icon:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-  `;
+      /* Accessibility */
+      .icon:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+    `
+  ];
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -135,11 +142,12 @@ export class EchoIcon extends LitElement {
       'icon',
       `icon--${this.size}`,
       `icon--${this.variant}`,
+      this.context ? `context--${this.context}` : '',
       this._isLoading ? 'icon--loading' : '',
       this.disabled ? 'icon--disabled' : ''
     ].filter(Boolean).join(' ');
 
-    const style = this.color !== 'currentColor' ? `color: ${this.color}` : '';
+    const style = this.color !== 'currentColor' ? `--icon-color: ${this.color}` : '';
 
     return html`
       <div 

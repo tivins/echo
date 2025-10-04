@@ -628,6 +628,7 @@ let EchoIcon = class EchoIcon extends i$1 {
         this.size = 'medium';
         this.variant = 'default';
         this.color = 'currentColor';
+        this.context = null;
         this.ariaLabel = null;
         this.disabled = false;
         this._svgContent = '';
@@ -677,10 +678,11 @@ let EchoIcon = class EchoIcon extends i$1 {
             'icon',
             `icon--${this.size}`,
             `icon--${this.variant}`,
+            this.context ? `context--${this.context}` : '',
             this._isLoading ? 'icon--loading' : '',
             this.disabled ? 'icon--disabled' : ''
         ].filter(Boolean).join(' ');
-        const style = this.color !== 'currentColor' ? `color: ${this.color}` : '';
+        const style = this.color !== 'currentColor' ? `--icon-color: ${this.color}` : '';
         return x `
       <div 
         class="${classes}"
@@ -714,64 +716,67 @@ let EchoIcon = class EchoIcon extends i$1 {
         }
     }
 };
-EchoIcon.styles = i$4 `
-    :host {
-      display: inline-block;
-      vertical-align: middle;
-    }
+EchoIcon.styles = [
+    contextColors,
+    i$4 `
+      :host {
+        display: inline-block;
+        vertical-align: middle;
+      }
 
-    .icon {
-      display: inline-block;
-      color: var(--icon-color, currentColor);
-      transition: color 0.124s ease-in-out;
-    }
+      .icon {
+        display: inline-block;
+        color: var(--icon-color, var(--context-color, currentColor));
+        transition: color 0.124s ease-in-out;
+      }
 
-    .icon:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+      .icon:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
 
-    /* Size variants */
-    .icon--small {
-      width: 16px;
-      height: 16px;
-    }
+      /* Size variants */
+      .icon--small {
+        width: 16px;
+        height: 16px;
+      }
 
-    .icon--medium {
-      width: 24px;
-      height: 24px;
-    }
+      .icon--medium {
+        width: 24px;
+        height: 24px;
+      }
 
-    .icon--large {
-      width: 32px;
-      height: 32px;
-    }
+      .icon--large {
+        width: 32px;
+        height: 32px;
+      }
 
-    /* Variant styles */
-    .icon--outline {
-      /* Outline variant uses stroke only */
-    }
+      /* Variant styles */
+      .icon--outline {
+        /* Outline variant uses stroke only */
+      }
 
-    .icon--filled {
-      /* Filled variant uses fill */
-    }
+      .icon--filled {
+        /* Filled variant uses fill */
+      }
 
-    .icon--default {
-      /* Default variant uses stroke */
-    }
+      .icon--default {
+        /* Default variant uses stroke */
+      }
 
-    /* Loading state */
-    .icon--loading {
-      opacity: 0.6;
-    }
+      /* Loading state */
+      .icon--loading {
+        opacity: 0.6;
+      }
 
-    /* Accessibility */
-    .icon:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-  `;
+      /* Accessibility */
+      .icon:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+    `
+];
 __decorate([
     n({ type: String })
 ], EchoIcon.prototype, "name", void 0);
@@ -784,6 +789,9 @@ __decorate([
 __decorate([
     n({ type: String })
 ], EchoIcon.prototype, "color", void 0);
+__decorate([
+    n({ type: String })
+], EchoIcon.prototype, "context", void 0);
 __decorate([
     n({ type: String, attribute: 'aria-label' })
 ], EchoIcon.prototype, "ariaLabel", void 0);
