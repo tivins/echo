@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.2] - 2025-01-04
+
+### Fixed
+- **EchoButton Icon Spacing Issue**: Resolved critical spacing problem where icons had unwanted margins even when no text was present
+  - **Root Cause**: Fixed margin-based spacing system applied margins unconditionally, even for icon-only buttons
+  - **Solution**: Replaced margin-based spacing with modern Flexbox `gap` property for intelligent spacing
+  - **Impact**: Icon-only buttons now have no extra spacing, while icon+text buttons maintain proper spacing
+
+### Improved
+- **EchoButton Spacing System**: Upgraded to modern CSS Flexbox gap approach
+  - **Flexbox Gap**: Replaced all `margin-right` and `margin-left` rules with `gap: var(--button-gap)`
+  - **CSS Custom Properties**: Implemented size-specific gap variables (xs: 4px, small: 6px, medium: 8px, large: 10px)
+  - **Intelligent Spacing**: Gap only applies between elements that are actually present, eliminating unwanted margins
+  - **Simplified CSS**: Removed complex margin rules and size-specific overrides
+  - **Better Maintainability**: Single gap property instead of multiple margin rules per size
+
+### Technical
+- **Modern CSS**: Leveraged CSS Flexbox `gap` property for robust, automatic spacing
+- **CSS Variables**: Implemented `--button-gap` custom property system for consistent theming
+- **Simplified Architecture**: Reduced CSS complexity by eliminating conditional margin rules
+- **Cross-Browser Support**: Flexbox gap is supported in all modern browsers
+- **Performance**: More efficient CSS with fewer rules and calculations
+
+### Examples
+```html
+<!-- Before: Unwanted margin on icon-only buttons -->
+<echo-button icon="plus" size="small"></echo-button> <!-- Had 6px margin-right -->
+
+<!-- After: Clean icon-only buttons with no extra spacing -->
+<echo-button icon="plus" size="small"></echo-button> <!-- No unwanted spacing -->
+
+<!-- Icon + text buttons maintain proper spacing -->
+<echo-button icon="plus" size="small">Add</echo-button> <!-- Proper 6px gap -->
+```
+
 ## [1.7.1] - 2025-01-04
 
 ### Fixed

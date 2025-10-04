@@ -501,9 +501,20 @@ The EchoButton component includes comprehensive icon support:
 - **Flexible Positioning**: Icons can be positioned on the left (default) or right side of the text
 - **Custom Overrides**: Icon size and variant can be overridden independently
 - **Icon-Only Buttons**: Buttons can contain only icons without text
+- **Intelligent Spacing**: Modern Flexbox gap system ensures proper spacing only when needed
 - **Disabled State**: Icons respect the button's disabled state
 - **All Variants Supported**: Icons work with all button variants (default, outline, ghost, soft, link)
 - **Accessibility**: Icons inherit proper accessibility attributes from the button
+
+#### Spacing System
+
+The EchoButton uses a modern Flexbox gap approach for intelligent spacing:
+
+- **Flexbox Gap**: Uses `gap: var(--button-gap)` for automatic spacing between elements
+- **Size-Specific Gaps**: Different gap sizes per button size (xs: 4px, small: 6px, medium: 8px, large: 10px)
+- **Smart Spacing**: Gap only applies between elements that are actually present
+- **Icon-Only Optimization**: Buttons with only icons have no unwanted spacing
+- **Icon+Text Spacing**: Proper spacing maintained between icons and text
 
 ## Development
 

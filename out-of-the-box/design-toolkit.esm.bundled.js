@@ -330,6 +330,7 @@ EchoButton.styles = [
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: var(--button-gap, 8px);
         border: none;
         border-radius: 4px;
         font-family:
@@ -404,7 +405,7 @@ EchoButton.styles = [
         color: white;
       }
 
-      /* Icon spacing */
+      /* Icon styling */
       .button__icon {
         display: inline-flex;
         align-items: center;
@@ -412,37 +413,21 @@ EchoButton.styles = [
         line-height: 1;
       }
 
-      .button__icon--left {
-        margin-right: 8px;
+      /* Gap spacing for different sizes */
+      .size--xs {
+        --button-gap: 4px;
       }
 
-      .button__icon--right {
-        margin-left: 8px;
+      .size--small {
+        --button-gap: 6px;
       }
 
-      /* Adjust spacing for different sizes */
-      .size--xs .button__icon--left {
-        margin-right: 4px;
+      .size--medium {
+        --button-gap: 8px;
       }
 
-      .size--xs .button__icon--right {
-        margin-left: 4px;
-      }
-
-      .size--small .button__icon--left {
-        margin-right: 6px;
-      }
-
-      .size--small .button__icon--right {
-        margin-left: 6px;
-      }
-
-      .size--large .button__icon--left {
-        margin-right: 10px;
-      }
-
-      .size--large .button__icon--right {
-        margin-left: 10px;
+      .size--large {
+        --button-gap: 10px;
       }
     `,
 ];
@@ -1287,14 +1272,15 @@ let EchoCard = class EchoCard extends i$1 {
             : null;
         const closeButton = this.closable
             ? x `
-          <button
-            class="card__close-button"
+          <echo-button
+            variant="ghost"
+            size="small"
             @click=${this._handleClose}
             ?disabled=${this.disabled}
             aria-label="Close card"
+            icon="x"
           >
-            <echo-icon name="x" size="small"></echo-icon>
-          </button>
+          </echo-button>
         `
             : null;
         return x `
@@ -1364,7 +1350,7 @@ EchoCard.styles = [
       :host {
         display: block;
         --card-border-radius: 1px;
-        --card-padding: 38px;
+        --card-padding: 10px;
         --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
         --card-border: 1px solid rgba(0, 0, 0, 0.06);
         --card-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
@@ -1416,18 +1402,18 @@ EchoCard.styles = [
 
       /* Sizes */
       .card--small {
+        --card-padding: 12px;
+        --card-border-radius: 6px;
+      }
+
+      .card--medium {
         --card-padding: 16px;
         --card-border-radius: 8px;
       }
 
-      .card--medium {
-        --card-padding: 20px;
-        --card-border-radius: 12px;
-      }
-
       .card--large {
         --card-padding: 24px;
-        --card-border-radius: 16px;
+        --card-border-radius: 12px;
       }
 
       /* Header */

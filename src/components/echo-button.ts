@@ -49,6 +49,7 @@ export class EchoButton extends LitElement {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: var(--button-gap, 8px);
         border: none;
         border-radius: 4px;
         font-family:
@@ -123,7 +124,7 @@ export class EchoButton extends LitElement {
         color: white;
       }
 
-      /* Icon spacing */
+      /* Icon styling */
       .button__icon {
         display: inline-flex;
         align-items: center;
@@ -131,37 +132,21 @@ export class EchoButton extends LitElement {
         line-height: 1;
       }
 
-      .button__icon--left {
-        margin-right: 8px;
+      /* Gap spacing for different sizes */
+      .size--xs {
+        --button-gap: 4px;
       }
 
-      .button__icon--right {
-        margin-left: 8px;
+      .size--small {
+        --button-gap: 6px;
       }
 
-      /* Adjust spacing for different sizes */
-      .size--xs .button__icon--left {
-        margin-right: 4px;
+      .size--medium {
+        --button-gap: 8px;
       }
 
-      .size--xs .button__icon--right {
-        margin-left: 4px;
-      }
-
-      .size--small .button__icon--left {
-        margin-right: 6px;
-      }
-
-      .size--small .button__icon--right {
-        margin-left: 6px;
-      }
-
-      .size--large .button__icon--left {
-        margin-right: 10px;
-      }
-
-      .size--large .button__icon--right {
-        margin-left: 10px;
+      .size--large {
+        --button-gap: 10px;
       }
     `,
   ];
