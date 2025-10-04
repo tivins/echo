@@ -5,6 +5,111 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2025-01-04
+
+### Added
+- **EchoLayout Component**: New abstract layout component for flex/grid, alignment, gaps, and direction management
+  - **Display Types**: Support for `flex`, `grid`, `block`, `inline-flex`, `inline-grid`
+  - **Flex Direction**: `row`, `column`, `row-reverse`, `column-reverse` options
+  - **Flex Wrap**: `nowrap`, `wrap`, `wrap-reverse` for flexible wrapping
+  - **Alignment**: `start`, `end`, `center`, `stretch`, `baseline` for cross-axis alignment
+  - **Justification**: `start`, `end`, `center`, `between`, `around`, `evenly` for main-axis distribution
+  - **Gap Sizes**: `none`, `xs`, `small`, `medium`, `large`, `xl` for consistent spacing
+  - **Grid Columns**: Support for `auto`, `auto-fit`, `auto-fill`, or fixed number of columns
+  - **Grid Rows**: Support for `auto` or fixed number of rows
+  - **Size Variants**: `xs`, `small`, `medium`, `large` for consistent padding
+  - **Dynamic Updates**: Public methods for programmatic property changes
+  - **TypeScript Support**: Complete type definitions for all layout properties
+
+### Technical
+- **Layout Styles Module**: Created `src/styles/layout-styles.ts` with comprehensive CSS classes
+- **CSS Custom Properties**: Implemented CSS variables for dynamic grid column/row configuration
+- **Responsive Design**: Built-in responsive behavior with media query support
+- **Component Integration**: Seamless integration with existing Design Toolkit components
+- **Performance**: Efficient CSS class generation and minimal DOM manipulation
+- **Accessibility**: Proper semantic HTML structure and ARIA support
+
+### Documentation
+- **Comprehensive Demo**: Created `demos/echo-layout-demo.html` with interactive examples
+- **API Documentation**: Complete property, method, and usage documentation
+- **Test Coverage**: Full Playwright test suite covering all layout features
+- **Real-world Examples**: Card layouts, button groups, form layouts, and complex combinations
+- **Interactive Controls**: Live property modification with real-time updates
+
+### Examples
+```html
+<!-- Basic flex layout -->
+<echo-layout display="flex" direction="row" gap="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</echo-layout>
+
+<!-- Grid layout with auto-fit columns -->
+<echo-layout display="grid" columns="auto-fit" gap="large">
+  <div>Grid Item 1</div>
+  <div>Grid Item 2</div>
+  <div>Grid Item 3</div>
+</echo-layout>
+
+<!-- Complex flex layout -->
+<echo-layout display="flex" direction="column" align="center" justify="between" gap="large" size="large">
+  <div>Header</div>
+  <div>Content</div>
+  <div>Footer</div>
+</echo-layout>
+
+<!-- Fixed grid with custom rows -->
+<echo-layout display="grid" columns="3" rows="2" gap="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+  <div>Item 5</div>
+  <div>Item 6</div>
+</echo-layout>
+```
+
+### JavaScript API
+```javascript
+// Dynamic property updates
+const layout = document.querySelector('echo-layout');
+layout.setDisplay('grid');
+layout.setDirection('column');
+layout.setAlign('center');
+layout.setJustify('between');
+layout.setGap('large');
+layout.setColumns(4);
+layout.setRows(3);
+```
+
+### Integration Examples
+```html
+<!-- Card grid layout -->
+<echo-layout display="grid" columns="auto-fit" gap="large">
+  <echo-card title="Card 1" size="small">Content 1</echo-card>
+  <echo-card title="Card 2" size="small">Content 2</echo-card>
+  <echo-card title="Card 3" size="small">Content 3</echo-card>
+</echo-layout>
+
+<!-- Button group layout -->
+<echo-layout display="flex" gap="small" align="center">
+  <echo-button variant="default" context="primary">Primary</echo-button>
+  <echo-button variant="outline" context="secondary">Secondary</echo-button>
+  <echo-button variant="ghost" context="danger">Danger</echo-button>
+</echo-layout>
+
+<!-- Form layout -->
+<echo-layout display="flex" direction="column" gap="medium">
+  <input type="text" placeholder="Name">
+  <input type="email" placeholder="Email">
+  <echo-layout display="flex" gap="small" justify="end">
+    <echo-button variant="outline">Cancel</echo-button>
+    <echo-button variant="default" context="primary">Submit</echo-button>
+  </echo-layout>
+</echo-layout>
+```
+
 ## [1.7.4] - 2025-01-04
 
 ### Added

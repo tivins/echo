@@ -75,6 +75,99 @@ npm install design-toolkit
 
 ## Components
 
+### EchoLayout
+
+An abstract layout component for managing flex/grid layouts, alignment, gaps, and direction. Provides a clean, declarative API for common layout patterns.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `display` | `'flex' \| 'grid' \| 'block' \| 'inline-flex' \| 'inline-grid'` | `'flex'` | Layout display type |
+| `direction` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'` | `'row'` | Flex direction (flex only) |
+| `wrap` | `'nowrap' \| 'wrap' \| 'wrap-reverse'` | `'nowrap'` | Flex wrap behavior (flex only) |
+| `align` | `'start' \| 'end' \| 'center' \| 'stretch' \| 'baseline'` | `'stretch'` | Cross-axis alignment |
+| `justify` | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | `'start'` | Main-axis justification |
+| `gap` | `'none' \| 'xs' \| 'small' \| 'medium' \| 'large' \| 'xl'` | `'medium'` | Spacing between items |
+| `columns` | `number \| 'auto' \| 'auto-fit' \| 'auto-fill'` | `'auto'` | Grid columns (grid only) |
+| `rows` | `number \| 'auto'` | `'auto'` | Grid rows (grid only) |
+| `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Component padding size |
+
+#### Methods
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `setDisplay()` | `display: EchoLayoutDisplay` | Update display type |
+| `setDirection()` | `direction: EchoLayoutDirection` | Update flex direction |
+| `setAlign()` | `align: EchoLayoutAlign` | Update alignment |
+| `setJustify()` | `justify: EchoLayoutJustify` | Update justification |
+| `setGap()` | `gap: EchoLayoutGap` | Update gap size |
+| `setColumns()` | `columns: EchoLayoutColumns` | Update grid columns |
+| `setRows()` | `rows: EchoLayoutRows` | Update grid rows |
+
+#### Examples
+
+```html
+<!-- Basic flex layout -->
+<echo-layout display="flex" direction="row" gap="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</echo-layout>
+
+<!-- Grid layout with auto-fit columns -->
+<echo-layout display="grid" columns="auto-fit" gap="large">
+  <div>Grid Item 1</div>
+  <div>Grid Item 2</div>
+  <div>Grid Item 3</div>
+</echo-layout>
+
+<!-- Complex flex layout -->
+<echo-layout display="flex" direction="column" align="center" justify="between" gap="large" size="large">
+  <div>Header</div>
+  <div>Content</div>
+  <div>Footer</div>
+</echo-layout>
+
+<!-- Fixed grid with custom rows -->
+<echo-layout display="grid" columns="3" rows="2" gap="medium">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+  <div>Item 5</div>
+  <div>Item 6</div>
+</echo-layout>
+
+<!-- Card grid layout -->
+<echo-layout display="grid" columns="auto-fit" gap="large">
+  <echo-card title="Card 1" size="small">Content 1</echo-card>
+  <echo-card title="Card 2" size="small">Content 2</echo-card>
+  <echo-card title="Card 3" size="small">Content 3</echo-card>
+</echo-layout>
+
+<!-- Button group layout -->
+<echo-layout display="flex" gap="small" align="center">
+  <echo-button variant="default" context="primary">Primary</echo-button>
+  <echo-button variant="outline" context="secondary">Secondary</echo-button>
+  <echo-button variant="ghost" context="danger">Danger</echo-button>
+</echo-layout>
+```
+
+#### JavaScript API
+
+```javascript
+// Dynamic property updates
+const layout = document.querySelector('echo-layout');
+layout.setDisplay('grid');
+layout.setDirection('column');
+layout.setAlign('center');
+layout.setJustify('between');
+layout.setGap('large');
+layout.setColumns(4);
+layout.setRows(3);
+```
+
 ### EchoIcon
 
 A clean, modern icon component with 60 carefully selected linear SVG icons inspired by Lucide design principles. Features consistent styling, multiple sizes, variants, and custom colors.
