@@ -151,7 +151,7 @@ The icon library includes 121 carefully selected icons inspired by Lucide design
 
 **Additional Settings & Tools:** tool, wrench, hammer, screwdriver, key, shield, shield-check, shield-alert, shield-x
 
-**Gaming & Rewards:** trophy, medal, coin, gold, sword, ingot
+**Gaming & Rewards:** trophy, medal, coin, gold, sword, ingot, ticket
 
 #### Properties
 

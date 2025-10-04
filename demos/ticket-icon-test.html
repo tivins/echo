@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Icon Test - Design Toolkit</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: all 0.2s ease;
+        }
+        
+        .icon-item:hover {
+            border-color: #007bff;
+            background: #f0f8ff;
+        }
+        
+        .icon-item h3 {
+            margin: 10px 0 5px 0;
+            color: #555;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .icon-item p {
+            margin: 0;
+            color: #777;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .size-demo {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .size-demo h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .size-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        
+        .size-label {
+            min-width: 80px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .color-demo {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .color-demo h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .color-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+        
+        .color-label {
+            min-width: 120px;
+            font-weight: 500;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ticket Icon Test</h1>
+        
+        <div class="icon-grid">
+            <div class="icon-item">
+                <echo-icon name="ticket" size="large"></echo-icon>
+                <h3>Ticket Icon</h3>
+                <p>Large size (24px)</p>
+            </div>
+            
+            <div class="icon-item">
+                <echo-icon name="ticket" size="medium"></echo-icon>
+                <h3>Ticket Icon</h3>
+                <p>Medium size (20px)</p>
+            </div>
+            
+            <div class="icon-item">
+                <echo-icon name="ticket" size="small"></echo-icon>
+                <h3>Ticket Icon</h3>
+                <p>Small size (16px)</p>
+            </div>
+            
+            <div class="icon-item">
+                <echo-icon name="ticket" size="x-small"></echo-icon>
+                <h3>Ticket Icon</h3>
+                <p>X-Small size (12px)</p>
+            </div>
+        </div>
+        
+        <div class="size-demo">
+            <h2>Size Variations</h2>
+            
+            <div class="size-row">
+                <span class="size-label">X-Small:</span>
+                <echo-icon name="ticket" size="x-small"></echo-icon>
+                <span>12px</span>
+            </div>
+            
+            <div class="size-row">
+                <span class="size-label">Small:</span>
+                <echo-icon name="ticket" size="small"></echo-icon>
+                <span>16px</span>
+            </div>
+            
+            <div class="size-row">
+                <span class="size-label">Medium:</span>
+                <echo-icon name="ticket" size="medium"></echo-icon>
+                <span>20px</span>
+            </div>
+            
+            <div class="size-row">
+                <span class="size-label">Large:</span>
+                <echo-icon name="ticket" size="large"></echo-icon>
+                <span>24px</span>
+            </div>
+        </div>
+        
+        <div class="color-demo">
+            <h2>Color Variations</h2>
+            
+            <div class="color-row">
+                <span class="color-label">Default:</span>
+                <echo-icon name="ticket" size="medium"></echo-icon>
+                <span>currentColor</span>
+            </div>
+            
+            <div class="color-row">
+                <span class="color-label">Primary:</span>
+                <echo-icon name="ticket" size="medium" color="primary"></echo-icon>
+                <span>Primary theme color</span>
+            </div>
+            
+            <div class="color-row">
+                <span class="color-label">Success:</span>
+                <echo-icon name="ticket" size="medium" color="success"></echo-icon>
+                <span>Success theme color</span>
+            </div>
+            
+            <div class="color-row">
+                <span class="color-label">Warning:</span>
+                <echo-icon name="ticket" size="medium" color="warning"></echo-icon>
+                <span>Warning theme color</span>
+            </div>
+            
+            <div class="color-row">
+                <span class="color-label">Error:</span>
+                <echo-icon name="ticket" size="medium" color="error"></echo-icon>
+                <span>Error theme color</span>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="../dist/design-toolkit.esm.js"></script>
+</body>
+</html>

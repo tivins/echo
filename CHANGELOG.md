@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.3] - 2025-01-04
+
+### Added
+- **Ticket Icon**: Added new ticket icon to the icon library
+  - **Source**: Based on SVG from SVG Repo (https://www.svgrepo.com/show/473432/ticket.svg)
+  - **Design**: Clean ticket design with perforated edges and central content area
+  - **Integration**: Fully integrated with EchoIcon component and all size/color variants
+  - **Usage**: Available as `ticket` icon name in all icon contexts
+
+### Technical
+- **Icon Library**: Added ticket icon to src/icons/icon-library.ts
+- **Consistent Styling**: Follows Design Toolkit principles with 2px stroke width and proper viewBox
+- **Demo Page**: Created comprehensive test page (demos/ticket-icon-test.html) showcasing all variants
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic ticket icon usage -->
+<echo-icon name="ticket" size="medium"></echo-icon>
+
+<!-- Ticket icon in button -->
+<echo-button icon="ticket" context="primary">Buy Ticket</echo-button>
+
+<!-- Ticket icon with different sizes -->
+<echo-icon name="ticket" size="small"></echo-icon>
+<echo-icon name="ticket" size="large"></echo-icon>
+
+<!-- Ticket icon with context colors -->
+<echo-icon name="ticket" color="success"></echo-icon>
+<echo-icon name="ticket" color="warning"></echo-icon>
+```
+
 ## [1.7.2] - 2025-01-04
 
 ### Fixed
