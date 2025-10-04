@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import type { EchoSeparatorVariant, EchoSeparatorMargin, EchoSeparatorThickness, EchoSeparatorOrientation, EchoContext } from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
 
@@ -23,6 +23,9 @@ export class EchoSeparator extends LitElement {
 
   @property({ type: String })
   color: string | null = null;
+
+  @state()
+  private _hasContent = false;
 
   static styles = [
     contextColors,
@@ -191,7 +194,6 @@ export class EchoSeparator extends LitElement {
   ];
 
   render() {
-    const hasContent = this._hasSlottedContent();
     const classes = [
       `separator--${this.variant}`,
       `thickness--${this.thickness}`,
@@ -201,7 +203,7 @@ export class EchoSeparator extends LitElement {
 
     const customColor = this.color ? `--separator-color: ${this.color}` : '';
 
-    if (hasContent) {
+    if (this._hasContent) {
       // Render separator with content
       const containerClasses = [
         'separator-container',
@@ -226,14 +228,14 @@ export class EchoSeparator extends LitElement {
         <div class="${containerClasses}" style="${customColor}">
           <hr class="${lineClasses}" aria-hidden="true" />
           <div class="${contentClasses}">
-            <slot></slot>
+            <slot @slotchange=${this._handleSlotChange}></slot>
           </div>
           <hr class="${lineClasses}" aria-hidden="true" />
         </div>
       `;
     }
 
-    // Render simple separator
+    // Render simple separator (but always include the slot to detect content)
     return html`
       <hr 
         class="separator--${this.orientation} ${classes}"
@@ -241,22 +243,21 @@ export class EchoSeparator extends LitElement {
         role="separator"
         aria-orientation="${this.orientation}"
       />
+      <slot @slotchange=${this._handleSlotChange} style="display: none;"></slot>
     `;
   }
 
-  private _hasSlottedContent(): boolean {
-    const slot = this.shadowRoot?.querySelector('slot');
-    if (!slot) return false;
+  private _handleSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
-    return nodes.some(node => 
+    const hasContent = nodes.some(node => 
       node.nodeType === Node.ELEMENT_NODE || 
       (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
     );
-  }
-
-  protected firstUpdated(): void {
-    // Force re-render after slot content is available
-    this.requestUpdate();
+    
+    if (hasContent !== this._hasContent) {
+      this._hasContent = hasContent;
+    }
   }
 }
 
