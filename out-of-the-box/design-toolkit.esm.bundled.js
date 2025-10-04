@@ -639,7 +639,7 @@ let EchoIcon = class EchoIcon extends i$1 {
     }
     updated(changedProperties) {
         super.updated(changedProperties);
-        if (changedProperties.has('name')) {
+        if (changedProperties.has('name') || changedProperties.has('variant')) {
             this._loadIcon();
         }
     }
@@ -649,17 +649,28 @@ let EchoIcon = class EchoIcon extends i$1 {
         this._isLoading = true;
         this.requestUpdate();
         try {
-            this._svgContent = await loadIcon(this.name);
+            let svgContent = await loadIcon(this.name);
+            this._svgContent = this._transformSVGForVariant(svgContent);
         }
         catch (error) {
             console.error(`Failed to load icon: ${this.name}`, error);
             // Fallback to a default icon
-            this._svgContent = await loadIcon('x');
+            let svgContent = await loadIcon('x');
+            this._svgContent = this._transformSVGForVariant(svgContent);
         }
         finally {
             this._isLoading = false;
             this.requestUpdate();
         }
+    }
+    _transformSVGForVariant(svgContent) {
+        if (this.variant === 'filled') {
+            // For filled variant, replace stroke with fill and set stroke to none
+            return svgContent
+                .replace(/stroke="currentColor"/g, 'fill="currentColor" stroke="none"')
+                .replace(/fill="none"/g, '');
+        }
+        return svgContent;
     }
     render() {
         const classes = [

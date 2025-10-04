@@ -95,7 +95,7 @@ export class EchoIcon extends LitElement {
   updated(changedProperties: Map<string | number | symbol, unknown>): void {
     super.updated(changedProperties);
     
-    if (changedProperties.has('name')) {
+    if (changedProperties.has('name') || changedProperties.has('variant')) {
       this._loadIcon();
     }
   }
@@ -107,15 +107,27 @@ export class EchoIcon extends LitElement {
     this.requestUpdate();
     
     try {
-      this._svgContent = await loadIcon(this.name);
+      let svgContent = await loadIcon(this.name);
+      this._svgContent = this._transformSVGForVariant(svgContent);
     } catch (error) {
       console.error(`Failed to load icon: ${this.name}`, error);
       // Fallback to a default icon
-      this._svgContent = await loadIcon('x');
+      let svgContent = await loadIcon('x');
+      this._svgContent = this._transformSVGForVariant(svgContent);
     } finally {
       this._isLoading = false;
       this.requestUpdate();
     }
+  }
+
+  private _transformSVGForVariant(svgContent: string): string {
+    if (this.variant === 'filled') {
+      // For filled variant, replace stroke with fill and set stroke to none
+      return svgContent
+        .replace(/stroke="currentColor"/g, 'fill="currentColor" stroke="none"')
+        .replace(/fill="none"/g, '');
+    }
+    return svgContent;
   }
 
   render() {

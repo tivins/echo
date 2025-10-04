@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **EchoIcon Filled Variant**: Implemented the filled variant functionality that was previously non-functional
+  - Added SVG transformation logic to convert stroke-based icons to fill-based for filled variant
+  - Icon now properly reloads when variant property changes
+  - Filled variant now correctly renders with fill instead of stroke
+
 ### Added
 - **EchoSeparator Component**: Versatile separator component based on HTML `<hr>` element
 - **Separator Variants**: Five visual styles (solid, dotted, dashed, double, gradient)
