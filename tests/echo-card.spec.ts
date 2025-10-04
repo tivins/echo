@@ -187,4 +187,66 @@ test.describe('EchoCard Component', () => {
     await expect(cardElement).toHaveClass(/card--large/);
     await expect(cardElement).toHaveClass(/context--success/);
   });
+
+  test('should not show footer when footer slot is empty', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card without footer content
+    const cardWithoutFooter = page.locator('echo-card[title="Card without footer"]').first();
+    await expect(cardWithoutFooter).toBeVisible();
+    
+    // Footer should not be visible
+    const footer = cardWithoutFooter.locator('.card__footer');
+    await expect(footer).not.toBeVisible();
+  });
+
+  test('should show footer when footer slot has content', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with footer content
+    const cardWithFooter = page.locator('echo-card[title="Card with footer"]').first();
+    await expect(cardWithFooter).toBeVisible();
+    
+    // Footer should be visible
+    const footer = cardWithFooter.locator('.card__footer');
+    await expect(footer).toBeVisible();
+    
+    // Footer should contain buttons
+    await expect(footer.locator('echo-button')).toHaveCount(2);
+  });
+
+  test('should not show footer when footer slot contains only whitespace', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with whitespace-only footer
+    const cardWithWhitespaceFooter = page.locator('echo-card[title="Card with whitespace footer"]').first();
+    await expect(cardWithWhitespaceFooter).toBeVisible();
+    
+    // Footer should not be visible
+    const footer = cardWithWhitespaceFooter.locator('.card__footer');
+    await expect(footer).not.toBeVisible();
+  });
+
+  test('should show footer when footer slot has text content', async ({ page }) => {
+    // Navigate to our specific test page
+    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.waitForFunction(() => customElements.get('echo-card'));
+    
+    // Test card with text-only footer
+    const cardWithTextFooter = page.locator('echo-card[title="Card with text footer"]').first();
+    await expect(cardWithTextFooter).toBeVisible();
+    
+    // Footer should be visible
+    const footer = cardWithTextFooter.locator('.card__footer');
+    await expect(footer).toBeVisible();
+    
+    // Footer should contain text
+    await expect(footer.locator('span')).toHaveText('Footer text content');
+  });
 });

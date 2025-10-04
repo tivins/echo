@@ -478,7 +478,7 @@ A flexible card component with header, content, and footer sections. Supports ic
 
 - Default slot: Main card content
 - `header-actions`: Additional buttons in the header
-- `footer`: Footer content (typically buttons)
+- `footer`: Footer content (typically buttons) - **Note**: Footer only appears when there is actual content in this slot
 
 #### Events
 

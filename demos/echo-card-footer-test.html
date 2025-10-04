@@ -7,157 +7,111 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 20px;
-            background-color: #f8f9fa;
+            margin: 0;
             padding: 20px;
+            background-color: #f5f5f5;
         }
         
         .test-container {
             max-width: 800px;
             margin: 0 auto;
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .test-section {
-            margin-bottom: 30px;
-        }
-        
-        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-top: 20px;
         }
         
-        .test-description {
-            background: #e3f2fd;
-            padding: 15px;
+        .test-section {
+            background: white;
+            padding: 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            color: #1976d2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .description {
+            color: #666;
             font-size: 14px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
+    <h1>Echo Card Footer Visibility Test</h1>
+    <p>This test verifies that the card footer only appears when there is content in the footer slot.</p>
+    
     <div class="test-container">
-        <h1>Echo Card Footer Test</h1>
-        
+        <!-- Test 1: Card without footer content -->
         <div class="test-section">
-            <div class="test-description">
-                <strong>Test 1:</strong> Card with footer buttons - The footer should be visible with action buttons.
-            </div>
-            <div class="cards-grid">
-                <echo-card title="Card with Footer" variant="default">
-                    <p>This card has a footer with action buttons. The footer should be clearly visible.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Cancel</echo-button>
-                        <echo-button variant="default" size="small">Save</echo-button>
-                    </div>
-                </echo-card>
-            </div>
+            <h2>Test 1: Card without footer content</h2>
+            <div class="description">This card should NOT show a footer since there's no content in the footer slot.</div>
+            <echo-card title="Card without footer" variant="default" size="medium">
+                <p>This is the main content of the card. There is no footer content provided.</p>
+            </echo-card>
         </div>
         
+        <!-- Test 2: Card with footer content -->
         <div class="test-section">
-            <div class="test-description">
-                <strong>Test 2:</strong> Card with header actions and footer - Both header actions and footer should be visible.
-            </div>
-            <div class="cards-grid">
-                <echo-card title="Complex Card" icon="settings" closable variant="elevated">
-                    <div slot="header-actions">
-                        <echo-button variant="ghost" size="small" icon="edit">Edit</echo-button>
-                        <echo-button variant="ghost" size="small" icon="more-horizontal"></echo-button>
-                    </div>
-                    <p>This card has both header actions and footer buttons. All sections should be clearly visible.</p>
-                    <div slot="footer">
-                        <echo-button variant="soft" size="small">View Details</echo-button>
-                        <echo-button variant="default" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-            </div>
+            <h2>Test 2: Card with footer content</h2>
+            <div class="description">This card SHOULD show a footer since there is content in the footer slot.</div>
+            <echo-card title="Card with footer" variant="default" size="medium">
+                <p>This is the main content of the card. There is footer content provided below.</p>
+                <div slot="footer">
+                    <echo-button variant="default" size="small">Action</echo-button>
+                    <echo-button variant="ghost" size="small">Cancel</echo-button>
+                </div>
+            </echo-card>
         </div>
         
+        <!-- Test 3: Card with empty footer slot -->
         <div class="test-section">
-            <div class="test-description">
-                <strong>Test 3:</strong> Different card variants with footer - All variants should display footer correctly.
-            </div>
-            <div class="cards-grid">
-                <echo-card title="Default Card" variant="default">
-                    <p>Default variant with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-                
-                <echo-card title="Outlined Card" variant="outlined">
-                    <p>Outlined variant with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-                
-                <echo-card title="Elevated Card" variant="elevated">
-                    <p>Elevated variant with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-                
-                <echo-card title="Flat Card" variant="flat">
-                    <p>Flat variant with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-            </div>
+            <h2>Test 3: Card with empty footer slot</h2>
+            <div class="description">This card should NOT show a footer since the footer slot is empty.</div>
+            <echo-card title="Card with empty footer" variant="outlined" size="medium">
+                <p>This is the main content of the card. The footer slot exists but is empty.</p>
+                <div slot="footer"></div>
+            </echo-card>
         </div>
         
+        <!-- Test 4: Card with text-only footer -->
         <div class="test-section">
-            <div class="test-description">
-                <strong>Test 4:</strong> Different sizes with footer - All sizes should display footer correctly.
-            </div>
-            <div class="cards-grid">
-                <echo-card title="Small Card" size="small">
-                    <p>Small card with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-                
-                <echo-card title="Medium Card" size="medium">
-                    <p>Medium card with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-                
-                <echo-card title="Large Card" size="large">
-                    <p>Large card with footer.</p>
-                    <div slot="footer">
-                        <echo-button variant="outline" size="small">Action</echo-button>
-                    </div>
-                </echo-card>
-            </div>
+            <h2>Test 4: Card with text-only footer</h2>
+            <div class="description">This card SHOULD show a footer since there is text content in the footer slot.</div>
+            <echo-card title="Card with text footer" variant="elevated" size="medium">
+                <p>This is the main content of the card. The footer contains only text.</p>
+                <div slot="footer">
+                    <span>Footer text content</span>
+                </div>
+            </echo-card>
         </div>
         
+        <!-- Test 5: Card with whitespace-only footer -->
         <div class="test-section">
-            <div class="test-description">
-                <strong>Test 5:</strong> Card without footer - Should not show footer area.
-            </div>
-            <div class="cards-grid">
-                <echo-card title="No Footer Card">
-                    <p>This card has no footer, so no footer area should be visible.</p>
-                </echo-card>
-            </div>
+            <h2>Test 5: Card with whitespace-only footer</h2>
+            <div class="description">This card should NOT show a footer since the footer slot contains only whitespace.</div>
+            <echo-card title="Card with whitespace footer" variant="flat" size="medium">
+                <p>This is the main content of the card. The footer slot contains only whitespace.</p>
+                <div slot="footer">   </div>
+            </echo-card>
+        </div>
+        
+        <!-- Test 6: Card with closable and footer -->
+        <div class="test-section">
+            <h2>Test 6: Card with closable and footer</h2>
+            <div class="description">This card SHOULD show both header (with close button) and footer.</div>
+            <echo-card title="Closable card with footer" variant="default" size="medium" closable>
+                <p>This card has both a close button in the header and content in the footer.</p>
+                <div slot="footer">
+                    <echo-button variant="soft" size="small">Save</echo-button>
+                </div>
+            </echo-card>
         </div>
     </div>
 
-    <!-- Load the design toolkit -->
     <script type="module" src="../dist/design-toolkit.esm.js"></script>
 </body>
 </html>

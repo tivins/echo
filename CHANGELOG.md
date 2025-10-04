@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] - 2025-01-04
+
+### Fixed
+- **EchoCard Component**: Fixed footer visibility issue where empty footer was still being displayed
+  - Footer now only appears when there is actual content in the footer slot
+  - Added slot content detection mechanism to properly handle dynamic footer content
+  - Improved component performance by avoiding unnecessary DOM rendering
+
 ## [1.8.0] - 2025-01-04
 
 ### Added

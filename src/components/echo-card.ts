@@ -43,6 +43,9 @@ export class EchoCard extends LitElement {
   @state()
   private _isVisible = true;
 
+  @state()
+  private _hasFooterContent = false;
+
   static styles = [
     contextColors,
     componentSizes,
@@ -287,7 +290,7 @@ export class EchoCard extends LitElement {
       <div class="${classes}" ?disabled=${this.disabled}>
         ${hasHeader ? this._renderHeader() : ''}
         ${this._renderContent(hasHeader)}
-        ${this._renderFooter()}
+        ${this._hasFooterContent ? this._renderFooter() : ''}
       </div>
     `;
   }
@@ -355,7 +358,7 @@ export class EchoCard extends LitElement {
   private _renderFooter() {
     return html`
       <div class="card__footer">
-        <slot name="footer"></slot>
+        <slot name="footer" @slotchange=${this._handleFooterSlotChange}></slot>
       </div>
     `;
   }
@@ -368,6 +371,34 @@ export class EchoCard extends LitElement {
       large: 'large',
     };
     return sizeMap[this.size];
+  }
+
+  private _handleFooterSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    const nodes = slot.assignedNodes({ flatten: true });
+    const hasContent = nodes.some(
+      (node) =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+    );
+
+    if (hasContent !== this._hasFooterContent) {
+      this._hasFooterContent = hasContent;
+    }
+  }
+
+  firstUpdated(): void {
+    // Check if footer slot has content after initial render
+    const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+    if (footerSlot) {
+      const nodes = footerSlot.assignedNodes({ flatten: true });
+      const hasContent = nodes.some(
+        (node) =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      );
+      this._hasFooterContent = hasContent;
+    }
   }
 
   private _handleClose(): void {
