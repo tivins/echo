@@ -37,6 +37,9 @@ export class EchoButton extends LitElement {
   @property({ type: String, attribute: 'icon-variant' })
   iconVariant: EchoIconVariant | null = null;
 
+  @property({ type: Number, attribute: 'icon-stroke-width' })
+  iconStrokeWidth: number | null = null;
+
   static styles = [
     contextColors,
     componentSizes,
@@ -158,6 +161,7 @@ export class EchoButton extends LitElement {
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
+            stroke-width=${this.iconStrokeWidth || 1.5}
             class="button__icon button__icon--${this.iconPosition}"
             style="--icon-color: currentColor;"
           ></echo-icon>

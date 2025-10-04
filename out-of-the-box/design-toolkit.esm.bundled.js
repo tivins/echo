@@ -268,6 +268,7 @@ let EchoButton = class EchoButton extends i$1 {
         this.iconPosition = 'left';
         this.iconSize = null;
         this.iconVariant = null;
+        this.iconStrokeWidth = null;
     }
     render() {
         const iconElement = this.icon
@@ -276,6 +277,7 @@ let EchoButton = class EchoButton extends i$1 {
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
+            stroke-width=${this.iconStrokeWidth || 1.5}
             class="button__icon button__icon--${this.iconPosition}"
             style="--icon-color: currentColor;"
           ></echo-icon>
@@ -455,6 +457,9 @@ __decorate([
 __decorate([
     n({ type: String, attribute: 'icon-variant' })
 ], EchoButton.prototype, "iconVariant", void 0);
+__decorate([
+    n({ type: Number, attribute: 'icon-stroke-width' })
+], EchoButton.prototype, "iconStrokeWidth", void 0);
 EchoButton = __decorate([
     t$1('echo-button')
 ], EchoButton);
@@ -651,9 +656,40 @@ const iconLibrary = {
     <line x1="7" y1="14" x2="17" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   `,
     ticket: `
-  <path d="M3 7h18c0.6 0 1 0.4 1 1v2a2 2 0 0 0 0 4v2c0 0.6-0.4 1-1 1H3c-0.6 0-1-0.4-1-1v-2a2 2 0 0 0 0-4V8c0-0.6 0.4-1 1-1z" 
+  <path d="M2 6h20c0.6 0 1 0.4 1 1v3a2.5 2.5 0 0 0 0 5v3c0 0.6-0.4 1-1 1H2c-0.6 0-1-0.4-1-1v-3a2.5 2.5 0 0 0 0-5V7c0-0.6 0.4-1 1-1z"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <rect x="7" y="9" width="10" height="6" rx="1" 
+  <rect x="6.5" y="9" width="11" height="6" rx="1"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  `,
+    crm: `
+    <!-- Tête centrale -->
+    <circle cx="12" cy="7" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Corps central -->
+    <path d="M9 12c0-1.1 1.3-2 3-2s3 .9 3 2v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Tête gauche -->
+    <circle cx="5" cy="15" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Corps gauche -->
+    <path d="M3 20c0-1.1 1.3-2 3-2s3 .9 3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Tête droite -->
+    <circle cx="19" cy="15" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Corps droit -->
+    <path d="M17 20c0-1.1 1.3-2 3-2s3 .9 3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Liaisons -->
+    <path d="M8 14l2-2M16 14l-2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  `,
+    crm2: `
+  <rect x="10" y="10" width="4" height="4"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="12" cy="4" r="2"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="5" cy="18" r="2"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="19" cy="18" r="2"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 6v4M7 17l4-3M17 17l-4-3"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 `,
 };

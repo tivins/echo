@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.4] - 2025-01-04
+
+### Added
+- **EchoButton Icon Stroke Width Control**: Added `icon-stroke-width` property to echo-button component
+  - **New Property**: `iconStrokeWidth` (HTML: `icon-stroke-width`) allows controlling icon stroke width from the button
+  - **Default Value**: Uses 1.5 as default stroke width when not specified
+  - **Flexible Control**: Supports any numeric value for fine-tuned icon appearance
+  - **Integration**: Seamlessly integrates with existing icon properties (icon-size, icon-variant)
+  - **TypeScript Support**: Full type safety with number | null type definition
+
+### Technical
+- **Property Addition**: Added `iconStrokeWidth` property to EchoButton component with proper Lit decorator
+- **Icon Integration**: Modified icon rendering to pass stroke-width value to echo-icon component
+- **Default Handling**: Implemented fallback to 1.5 when iconStrokeWidth is null
+- **Documentation**: Updated README.md with comprehensive examples and API documentation
+- **Demo Page**: Created extensive test page (demos/button-icon-stroke-width-test.html) showcasing all stroke width variations
+
+### Examples
+```html
+<!-- Default stroke width (1.5) -->
+<echo-button icon="heart" context="primary">Default</echo-button>
+
+<!-- Thin stroke width -->
+<echo-button icon="heart" icon-stroke-width="0.5" context="primary">Thin</echo-button>
+
+<!-- Thick stroke width -->
+<echo-button icon="heart" icon-stroke-width="3.0" context="primary">Thick</echo-button>
+
+<!-- Very thick stroke width -->
+<echo-button icon="heart" icon-stroke-width="5.0" context="primary">Very Thick</echo-button>
+```
+
+### Documentation
+- **API Documentation**: Added iconStrokeWidth property to properties table
+- **Usage Examples**: Comprehensive examples showing different stroke width values
+- **Feature Description**: Updated icon features section to include stroke width control
+- **TypeScript Types**: Updated type definitions to include new property
+
 ## [1.7.3] - 2025-01-04
 
 ### Added

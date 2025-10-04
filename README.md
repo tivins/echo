@@ -445,6 +445,8 @@ A customizable button component with multiple variants, sizes, and built-in icon
 <!-- Custom Icon Properties -->
 <echo-button icon="settings" icon-size="small" context="primary">Small Icon</echo-button>
 <echo-button icon="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
+<echo-button icon="settings" icon-stroke-width="0.5" context="primary">Thin Icon</echo-button>
+<echo-button icon="settings" icon-stroke-width="3.0" context="primary">Thick Icon</echo-button>
 
 <!-- Disabled state -->
 <echo-button disabled>Disabled</echo-button>
@@ -463,6 +465,7 @@ A customizable button component with multiple variants, sizes, and built-in icon
 | `iconPosition` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text (HTML: `icon-position`) |
 | `iconSize` | `EchoIconSize \| null` | `null` | Override icon size (HTML: `icon-size`) |
 | `iconVariant` | `EchoIconVariant \| null` | `null` | Override icon variant (HTML: `icon-variant`) |
+| `iconStrokeWidth` | `number \| null` | `null` | Override icon stroke width (HTML: `icon-stroke-width`) |
 
 #### TypeScript Types
 
@@ -499,7 +502,7 @@ The EchoButton component includes comprehensive icon support:
 - **Automatic Context Inheritance**: Icons automatically inherit the button's context color
 - **Smart Size Mapping**: Icon size automatically maps to button size (xs→small, small→small, medium→medium, large→large)
 - **Flexible Positioning**: Icons can be positioned on the left (default) or right side of the text
-- **Custom Overrides**: Icon size and variant can be overridden independently
+- **Custom Overrides**: Icon size, variant, and stroke width can be overridden independently
 - **Icon-Only Buttons**: Buttons can contain only icons without text
 - **Intelligent Spacing**: Modern Flexbox gap system ensures proper spacing only when needed
 - **Disabled State**: Icons respect the button's disabled state
