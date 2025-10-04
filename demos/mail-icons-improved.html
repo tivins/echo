@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Mail Icons - Design Toolkit</title>
+    <script type="module" src="./dist/design-toolkit.esm.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        
+        .icon-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .icon-card {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .icon-card h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .size-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .size-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .size-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    #f8f8f8,
+                    #f8f8f8 4px,
+                    #fff 4px,
+                    #fff 8px
+                );
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .improvements {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .improvements h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .improvements ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .improvements li {
+            padding: 12px 0;
+            color: #444;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .improvements li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .comparison {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .comparison-section {
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .old {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+        }
+        
+        .new {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+        
+        .comparison-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .old h3 { color: #f57c00; }
+        .new h3 { color: #2e7d32; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Improved Mail Icons</h1>
+        <p class="subtitle">Redesigned with consistent proportions and visible additive elements</p>
+        
+        <div class="icon-showcase">
+            <div class="icon-card">
+                <h2>mail-open</h2>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">16px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-open" size="16"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">24px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-open" size="24"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">32px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-open" size="32"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">48px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-open" size="48"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">64px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-open" size="64"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="icon-card">
+                <h2>mail-check</h2>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">16px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-check" size="16"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">24px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-check" size="24"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">32px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-check" size="32"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">48px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-check" size="48"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">64px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-check" size="64"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="icon-card">
+                <h2>mail-plus</h2>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">16px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-plus" size="16"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">24px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-plus" size="24"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">32px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-plus" size="32"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="size-row">
+                    <div class="size-item">
+                        <div class="size-label">48px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-plus" size="48"></echo-icon>
+                        </div>
+                    </div>
+                    <div class="size-item">
+                        <div class="size-label">64px</div>
+                        <div class="icon-wrapper">
+                            <echo-icon name="mail-plus" size="64"></echo-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="improvements">
+            <h2>🎯 Key Improvements</h2>
+            <ul>
+                <li><strong>Consistent envelope proportions:</strong> All three icons now use a harmonious 18x14 envelope base (with 2px rounded corners)</li>
+                <li><strong>Improved mail-open:</strong> Redesigned with clear open flap at the top showing the envelope opening upward</li>
+                <li><strong>Larger check mark:</strong> The check mark in mail-check is now prominently positioned in the top-right corner and clearly visible at all sizes</li>
+                <li><strong>Larger plus sign:</strong> The plus symbol in mail-plus spans 6px vertically and horizontally, making it easily recognizable</li>
+                <li><strong>Better positioning:</strong> Additive elements (check and plus) are positioned in the upper-right corner where they don't overlap the main envelope shape</li>
+                <li><strong>Unified design language:</strong> All three icons share the same stroke width (2px) and line cap/join styles for visual consistency</li>
+            </ul>
+        </div>
+        
+        <div class="comparison">
+            <div class="comparison-section old">
+                <h3>❌ Previous Issues</h3>
+                <ul>
+                    <li>Inconsistent envelope shapes</li>
+                    <li>mail-open had different proportions</li>
+                    <li>Check mark too small & overlapping</li>
+                    <li>Plus sign barely visible</li>
+                    <li>Poor additive element positioning</li>
+                </ul>
+            </div>
+            <div class="comparison-section new">
+                <h3>✅ New Design</h3>
+                <ul>
+                    <li>Uniform envelope base shape</li>
+                    <li>Harmonious proportions throughout</li>
+                    <li>Clear, prominent check mark</li>
+                    <li>Visible plus symbol</li>
+                    <li>Smart corner positioning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

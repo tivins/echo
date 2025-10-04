@@ -19,6 +19,11 @@ export default [
         CustomEvent: 'readonly',
         HTMLElement: 'readonly',
         HTMLElementTagNameMap: 'readonly',
+        console: 'readonly',
+        KeyboardEvent: 'readonly',
+        HTMLSlotElement: 'readonly',
+        Node: 'readonly',
+        setTimeout: 'readonly',
       },
     },
     plugins: {

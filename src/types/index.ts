@@ -1,4 +1,9 @@
-export type EchoButtonVariant = 'default' | 'link' | 'outline' | 'ghost' | 'soft';
+export type EchoButtonVariant =
+  | 'default'
+  | 'link'
+  | 'outline'
+  | 'ghost'
+  | 'soft';
 export type EchoSize = 'xs' | 'small' | 'medium' | 'large';
 export type EchoContext =
   | 'danger'

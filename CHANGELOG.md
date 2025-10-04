@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2025-01-04
+
+### Changed
+- **Project Structure Reorganization**: Cleaned up and organized project files for better maintainability
+  - **Removed unused files**: Deleted pnpm-lock.yaml (project uses npm), temporary development scripts, and duplicate icon processing files
+  - **Organized demos**: Moved all HTML demo files to `demos/` directory for better organization
+  - **Documentation structure**: Moved technical documentation and reports to `docs/` directory
+  - **Test organization**: Confirmed proper test file organization in `tests/` directory
+  - **Updated documentation**: Updated README.md with new project structure and organization
+
+### Technical
+- **File cleanup**: Removed 12+ temporary and development files that were cluttering the root directory
+- **Better organization**: Created logical folder structure with `demos/` and `docs/` directories
+- **Maintained functionality**: All existing functionality preserved, only file organization improved
+- **Updated documentation**: README.md now reflects the clean, organized project structure
+
+## [1.6.1]
+
+### Added
+- **Gaming & Rewards Icons**: Added 6 new icons for gaming, achievements, and rewards systems
+  - **trophy**: Classic achievement trophy with handles and base
+  - **medal**: Victory medal with ribbon design
+  - **coin**: Currency coin with detailed engraving pattern
+  - **gold**: Precious gold bar/ingot with geometric facets
+  - **sword**: Classic sword with blade, guard, and handle
+  - **ingot**: Traditional gold bar with trapezoidal shape and horizontal detail lines
+  - All icons follow the same Design Toolkit principles: 24x24 viewBox, 2px stroke width, and consistent styling
+
+### Changed
+- **Mail Icons Redesign**: Completely redesigned `mail-open`, `mail-check`, and `mail-plus` icons
+  - **Consistent envelope proportions**: All three icons now use a harmonious 18x14 envelope base with consistent 2px rounded corners
+  - **Improved mail-open**: Redesigned with clear open flap at the top showing the envelope opening upward, replacing the previous inconsistent shape
+  - **Larger check mark**: The check mark in `mail-check` is now prominently positioned in the top-right corner (5x5 visible area) instead of overlapping the envelope
+  - **Larger plus sign**: The plus symbol in `mail-plus` now spans 6px vertically and horizontally, making it easily recognizable at all sizes
+  - **Better positioning**: Additive elements (check and plus) are positioned in the upper-right corner where they don't overlap the main envelope shape
+  - **Unified design language**: All three icons share the same stroke width (2px) and line cap/join styles for visual consistency
+
 ## [1.6.0]
 
 ### Added

@@ -119,7 +119,7 @@ A clean, modern icon component with 60 carefully selected linear SVG icons inspi
 
 #### Available Icons
 
-The icon library includes 120 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
+The icon library includes 121 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
 
 **Navigation & Arrows:** arrow-left, arrow-right, arrow-up, arrow-down, chevron-left, chevron-right, chevron-up, chevron-down, menu, x, search, filter, more-horizontal, more-vertical
 
@@ -150,6 +150,8 @@ The icon library includes 120 carefully selected icons inspired by Lucide design
 **Additional Communication:** mail-open, mail-check, mail-plus, message-square, message-square-plus, send, reply, forward, at-sign, hash
 
 **Additional Settings & Tools:** tool, wrench, hammer, screwdriver, key, shield, shield-check, shield-alert, shield-x
+
+**Gaming & Rewards:** trophy, medal, coin, gold, sword, ingot
 
 #### Properties
 
@@ -399,21 +401,38 @@ The build process creates multiple formats:
 ### Project Structure
 
 ```
-src/
-├── components/          # Web components
-│   ├── echo-button.ts
-│   ├── echo-icon.ts
-│   └── echo-separator.ts
-├── icons/              # Icon system
-│   ├── icon-library.ts
-│   └── icon-registry.ts
-├── styles/             # Shared styles
-│   ├── component-sizes.ts
-│   └── context-colors.ts
-├── types/              # TypeScript type definitions
-│   ├── icon-types.ts
-│   └── index.ts
-└── index.ts            # Main entry point
+design-toolkit/
+├── src/                 # Source code
+│   ├── components/      # Web components
+│   │   ├── echo-button.ts
+│   │   ├── echo-icon.ts
+│   │   └── echo-separator.ts
+│   ├── icons/           # Icon system
+│   │   ├── icon-library.ts
+│   │   └── icon-registry.ts
+│   ├── styles/          # Shared styles
+│   │   ├── component-sizes.ts
+│   │   └── context-colors.ts
+│   ├── types/           # TypeScript type definitions
+│   │   ├── icon-types.ts
+│   │   └── index.ts
+│   └── index.ts         # Main entry point
+├── tests/               # Test files
+│   ├── echo-button.spec.ts
+│   ├── echo-icon.spec.ts
+│   └── echo-separator.spec.ts
+├── demos/               # Demo and example files
+│   ├── example.html
+│   ├── icon-demo.html
+│   ├── separator-demo.html
+│   └── ... (other demo files)
+├── docs/                # Documentation and reports
+│   ├── ICON_IMPROVEMENTS.md
+│   ├── ICON_VALIDATION_REPORT.md
+│   └── icon-analysis-report.json
+├── dist/                # Built library files
+├── out-of-the-box/      # Self-contained demo
+└── test-results/        # Test execution results
 ```
 
 ## Theming
