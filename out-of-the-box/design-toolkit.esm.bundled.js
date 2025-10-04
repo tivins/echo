@@ -264,8 +264,28 @@ let EchoButton = class EchoButton extends i$1 {
         this.size = 'medium';
         this.context = 'primary';
         this.disabled = false;
+        this.iconName = null;
+        this.iconPosition = 'left';
+        this.iconSize = null;
+        this.iconVariant = null;
     }
     render() {
+        const iconElement = this.iconName
+            ? x `
+          <echo-icon
+            name=${this.iconName}
+            size=${this.iconSize || this._getIconSizeFromButtonSize()}
+            variant=${this.iconVariant || 'default'}
+            color="currentColor"
+            class="button__icon button__icon--${this.iconPosition}"
+          ></echo-icon>
+        `
+            : null;
+        const content = this.iconName
+            ? this.iconPosition === 'left'
+                ? x `${iconElement}<slot></slot>`
+                : x `<slot></slot>${iconElement}`
+            : x `<slot></slot>`;
         return x `
       <button
         class="button button--${this.variant} context--${this
@@ -273,9 +293,18 @@ let EchoButton = class EchoButton extends i$1 {
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >
-        <slot></slot>
+        ${content}
       </button>
     `;
+    }
+    _getIconSizeFromButtonSize() {
+        const sizeMap = {
+            xs: 'small',
+            small: 'small',
+            medium: 'medium',
+            large: 'large',
+        };
+        return sizeMap[this.size];
     }
     _handleClick(event) {
         if (this.disabled) {
@@ -310,6 +339,8 @@ EchoButton.styles = [
         transition: all 0.124s ease-in-out;
         text-decoration: none;
         outline: none;
+        vertical-align: middle;
+        line-height: 1;
       }
 
       .button:focus-visible {
@@ -372,6 +403,47 @@ EchoButton.styles = [
         background-color: var(--context-color);
         color: white;
       }
+
+      /* Icon spacing */
+      .button__icon {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        line-height: 1;
+      }
+
+      .button__icon--left {
+        margin-right: 8px;
+      }
+
+      .button__icon--right {
+        margin-left: 8px;
+      }
+
+      /* Adjust spacing for different sizes */
+      .size--xs .button__icon--left {
+        margin-right: 4px;
+      }
+
+      .size--xs .button__icon--right {
+        margin-left: 4px;
+      }
+
+      .size--small .button__icon--left {
+        margin-right: 6px;
+      }
+
+      .size--small .button__icon--right {
+        margin-left: 6px;
+      }
+
+      .size--large .button__icon--left {
+        margin-right: 10px;
+      }
+
+      .size--large .button__icon--right {
+        margin-left: 10px;
+      }
     `,
 ];
 __decorate([
@@ -386,6 +458,18 @@ __decorate([
 __decorate([
     n({ type: Boolean })
 ], EchoButton.prototype, "disabled", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "iconName", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "iconPosition", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "iconSize", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "iconVariant", void 0);
 EchoButton = __decorate([
     t$1('echo-button')
 ], EchoButton);

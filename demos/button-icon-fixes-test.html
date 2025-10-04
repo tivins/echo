@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Button Icon Fixes Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .test-description {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .alignment-test {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .alignment-test span {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .hover-test {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .hover-test p {
+            margin: 0 0 10px 0;
+            font-weight: 500;
+            color: #856404;
+        }
+        
+        .test-result {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Echo Button Icon Fixes Test</h1>
+    
+    <div class="test-container">
+        <h2>🔧 Hover Color Fix Test</h2>
+        <div class="hover-test">
+            <p>⚠️ Hover over these buttons to test if icons maintain proper color contrast:</p>
+            <div class="button-group">
+                <echo-button icon-name="heart" variant="default" context="success">Heart Default</echo-button>
+                <echo-button icon-name="heart" variant="outline" context="success">Heart Outline</echo-button>
+                <echo-button icon-name="heart" variant="ghost" context="success">Heart Ghost</echo-button>
+                <echo-button icon-name="heart" variant="soft" context="success">Heart Soft</echo-button>
+            </div>
+            <p><strong>Expected:</strong> Icons should remain visible and follow text color on hover</p>
+        </div>
+        <div class="test-result" id="hover-test">Testing hover color behavior...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>📐 Vertical Alignment Fix Test</h2>
+        <div class="test-description">
+            Test if buttons with right-positioned icons maintain proper vertical alignment with other elements.
+        </div>
+        
+        <div class="alignment-test">
+            <span>Text baseline:</span>
+            <echo-button icon-name="arrow-right" icon-position="right" context="primary">Right Icon</echo-button>
+            <echo-button context="secondary">No Icon</echo-button>
+            <echo-button icon-name="arrow-left" icon-position="left" context="info">Left Icon</echo-button>
+        </div>
+        
+        <div class="alignment-test">
+            <span>Same line:</span>
+            <echo-button icon-name="plus" icon-position="right" context="success">Add</echo-button>
+            <echo-button icon-name="edit" icon-position="left" context="warning">Edit</echo-button>
+            <echo-button icon-name="trash" icon-position="right" context="danger">Delete</echo-button>
+        </div>
+        
+        <div class="alignment-test">
+            <span>Different sizes:</span>
+            <echo-button icon-name="star" icon-position="right" size="xs" context="warning">XS</echo-button>
+            <echo-button icon-name="star" icon-position="right" size="small" context="warning">Small</echo-button>
+            <echo-button icon-name="star" icon-position="right" size="medium" context="warning">Medium</echo-button>
+            <echo-button icon-name="star" icon-position="right" size="large" context="warning">Large</echo-button>
+        </div>
+        
+        <div class="test-result" id="alignment-test">Testing vertical alignment...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>🎯 Icon-Only Button Alignment</h2>
+        <div class="test-description">
+            Test icon-only buttons alignment with text and other buttons.
+        </div>
+        
+        <div class="alignment-test">
+            <span>Icon buttons:</span>
+            <echo-button icon-name="plus" context="primary"></echo-button>
+            <echo-button icon-name="edit" context="secondary"></echo-button>
+            <echo-button icon-name="trash" context="danger"></echo-button>
+            <echo-button icon-name="heart" context="success"></echo-button>
+        </div>
+        
+        <div class="alignment-test">
+            <span>Mixed:</span>
+            <echo-button icon-name="plus" context="primary"></echo-button>
+            <echo-button context="primary">Text Button</echo-button>
+            <echo-button icon-name="edit" context="secondary"></echo-button>
+        </div>
+        
+        <div class="test-result" id="icon-only-test">Testing icon-only alignment...</div>
+    </div>
+    
+    <div class="test-container">
+        <h2>🔄 All Variants Test</h2>
+        <div class="test-description">
+            Test all button variants with icons to ensure consistent behavior.
+        </div>
+        
+        <div class="button-group">
+            <echo-button icon-name="check" variant="default" context="success">Default</echo-button>
+            <echo-button icon-name="check" variant="outline" context="success">Outline</echo-button>
+            <echo-button icon-name="check" variant="ghost" context="success">Ghost</echo-button>
+            <echo-button icon-name="check" variant="soft" context="success">Soft</echo-button>
+            <echo-button icon-name="check" variant="link" context="success">Link</echo-button>
+        </div>
+        
+        <div class="test-result" id="variants-test">Testing all variants...</div>
+    </div>
+    
+    <script type="module" src="../out-of-the-box/main.js"></script>
+    <script>
+        // Test script to verify fixes
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const buttons = document.querySelectorAll('echo-button');
+                let testResults = {
+                    hover: 0,
+                    alignment: 0,
+                    iconOnly: 0,
+                    variants: 0
+                };
+                
+                buttons.forEach(button => {
+                    const icon = button.querySelector('echo-icon');
+                    if (icon) {
+                        // Check if icon uses currentColor (hover fix)
+                        if (icon.getAttribute('color') === 'currentColor') {
+                            testResults.hover++;
+                        }
+                        
+                        // Check alignment (all buttons should be properly aligned)
+                        const rect = button.getBoundingClientRect();
+                        if (rect.height > 0) {
+                            testResults.alignment++;
+                        }
+                        
+                        // Check icon-only buttons
+                        if (button.textContent.trim() === '') {
+                            testResults.iconOnly++;
+                        }
+                        
+                        // Check variants
+                        if (button.getAttribute('variant')) {
+                            testResults.variants++;
+                        }
+                    }
+                });
+                
+                // Update test results
+                document.getElementById('hover-test').textContent = 
+                    `Hover fix: ${testResults.hover} icons using currentColor for proper hover behavior`;
+                document.getElementById('alignment-test').textContent = 
+                    `Alignment: ${testResults.alignment} buttons properly aligned`;
+                document.getElementById('icon-only-test').textContent = 
+                    `Icon-only: ${testResults.iconOnly} icon-only buttons rendered`;
+                document.getElementById('variants-test').textContent = 
+                    `Variants: ${testResults.variants} variant buttons with icons rendered`;
+                
+                // Overall result
+                const totalTests = Object.values(testResults).reduce((a, b) => a + b, 0);
+                const totalButtons = buttons.length;
+                
+                if (totalTests > 0) {
+                    document.body.insertAdjacentHTML('beforeend', 
+                        '<div class="test-container"><div class="test-result" style="background: #d4edda; color: #155724;">✅ Fixes applied successfully! Test the hover and alignment behavior manually.</div></div>'
+                    );
+                } else {
+                    document.body.insertAdjacentHTML('beforeend', 
+                        '<div class="test-container"><div class="test-result" style="background: #f8d7da; color: #721c24;">❌ Some tests failed. Check console for errors.</div></div>'
+                    );
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

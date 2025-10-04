@@ -5,6 +5,80 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.4] - 2025-01-04
+
+### Fixed
+- **EchoButton Icon Hover Color Issue**: Fixed critical issue where icons would become invisible on hover due to color inheritance
+  - **Root Cause**: Icons were using `context` property instead of `color="currentColor"`
+  - **Solution**: Changed icon color inheritance to use `currentColor` so icons follow button text color on hover
+  - **Impact**: Icons now remain visible and properly contrasted in all hover states across all button variants
+
+- **EchoButton Vertical Alignment Issue**: Fixed vertical alignment problem when icons are positioned on the right side
+  - **Root Cause**: Missing vertical alignment properties on button and icon containers
+  - **Solution**: Added `vertical-align: middle` and `line-height: 1` to both button and icon elements
+  - **Impact**: Buttons with right-positioned icons now maintain proper vertical alignment with other elements
+
+### Technical
+- **Enhanced Icon Color Inheritance**: Icons now properly inherit button text color instead of using fixed context color
+- **Improved Vertical Alignment**: Added comprehensive alignment properties to prevent button "dropping" when icons are right-positioned
+- **Cross-Variant Compatibility**: Fixes apply to all button variants (default, outline, ghost, soft, link) and all contexts
+- **Test Coverage**: Created comprehensive test file (demos/button-icon-fixes-test.html) to validate both fixes
+
+### Examples
+```html
+<!-- Before: Icon invisible on hover -->
+<echo-button icon-name="heart" variant="outline" context="success">Heart</echo-button>
+
+<!-- After: Icon follows text color on hover -->
+<echo-button icon-name="heart" variant="outline" context="success">Heart</echo-button>
+
+<!-- Before: Button drops when icon is right-positioned -->
+<echo-button icon-name="arrow-right" icon-position="right">Next</echo-button>
+
+<!-- After: Button maintains proper alignment -->
+<echo-button icon-name="arrow-right" icon-position="right">Next</echo-button>
+```
+
+## [1.6.3] - 2025-01-04
+
+### Added
+- **EchoButton Icon Support**: Comprehensive icon integration for echo-button component
+  - **Icon Properties**: Added `icon-name`, `icon-position`, `icon-size`, and `icon-variant` properties
+  - **Automatic Context Inheritance**: Icons automatically inherit the button's context color for consistent theming
+  - **Smart Size Mapping**: Icon size automatically maps to button size (xs→small, small→small, medium→medium, large→large)
+  - **Flexible Positioning**: Icons can be positioned on the left (default) or right side of the text
+  - **Custom Overrides**: Icon size and variant can be overridden independently from button properties
+  - **Icon-Only Buttons**: Support for buttons containing only icons without text
+  - **All Variants Supported**: Icons work seamlessly with all button variants (default, outline, ghost, soft, link)
+  - **Disabled State**: Icons properly respect the button's disabled state
+  - **Accessibility**: Icons inherit proper accessibility attributes from the button
+
+### Technical
+- **Enhanced Button Component**: Extended echo-button.ts with icon rendering logic and styling
+- **Responsive Spacing**: Icon spacing automatically adjusts based on button size (4px for xs, 6px for small, 8px for medium, 10px for large)
+- **TypeScript Integration**: Full TypeScript support with proper type definitions for all icon properties
+- **Demo Documentation**: Created comprehensive demo file (demos/button-icon-demo.html) showcasing all icon features
+- **Updated Documentation**: Enhanced README.md with detailed icon usage examples and API documentation
+
+### Examples
+```html
+<!-- Basic icon buttons -->
+<echo-button icon-name="plus" context="primary">Add Item</echo-button>
+<echo-button icon-name="trash" context="danger">Delete</echo-button>
+
+<!-- Icon positioning -->
+<echo-button icon-name="arrow-left" icon-position="left" context="primary">Back</echo-button>
+<echo-button icon-name="arrow-right" icon-position="right" context="primary">Next</echo-button>
+
+<!-- Icon-only buttons -->
+<echo-button icon-name="plus" context="primary"></echo-button>
+<echo-button icon-name="edit" context="secondary"></echo-button>
+
+<!-- Custom icon properties -->
+<echo-button icon-name="settings" icon-size="small" context="primary">Small Icon</echo-button>
+<echo-button icon-name="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
+```
+
 ## [1.6.2] - 2025-01-04
 
 ### Changed

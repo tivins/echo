@@ -4,6 +4,9 @@ import type {
   EchoButtonVariant,
   EchoSize,
   EchoContext,
+  IconName,
+  EchoIconSize,
+  EchoIconVariant,
 } from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
 import { componentSizes } from '../styles/component-sizes.js';
@@ -21,6 +24,18 @@ export class EchoButton extends LitElement {
 
   @property({ type: Boolean })
   disabled = false;
+
+  @property({ type: String })
+  iconName: IconName | null = null;
+
+  @property({ type: String })
+  iconPosition: 'left' | 'right' = 'left';
+
+  @property({ type: String })
+  iconSize: EchoIconSize | null = null;
+
+  @property({ type: String })
+  iconVariant: EchoIconVariant | null = null;
 
   static styles = [
     contextColors,
@@ -43,6 +58,8 @@ export class EchoButton extends LitElement {
         transition: all 0.124s ease-in-out;
         text-decoration: none;
         outline: none;
+        vertical-align: middle;
+        line-height: 1;
       }
 
       .button:focus-visible {
@@ -105,10 +122,69 @@ export class EchoButton extends LitElement {
         background-color: var(--context-color);
         color: white;
       }
+
+      /* Icon spacing */
+      .button__icon {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        line-height: 1;
+      }
+
+      .button__icon--left {
+        margin-right: 8px;
+      }
+
+      .button__icon--right {
+        margin-left: 8px;
+      }
+
+      /* Adjust spacing for different sizes */
+      .size--xs .button__icon--left {
+        margin-right: 4px;
+      }
+
+      .size--xs .button__icon--right {
+        margin-left: 4px;
+      }
+
+      .size--small .button__icon--left {
+        margin-right: 6px;
+      }
+
+      .size--small .button__icon--right {
+        margin-left: 6px;
+      }
+
+      .size--large .button__icon--left {
+        margin-right: 10px;
+      }
+
+      .size--large .button__icon--right {
+        margin-left: 10px;
+      }
     `,
   ];
 
   render() {
+    const iconElement = this.iconName
+      ? html`
+          <echo-icon
+            name=${this.iconName}
+            size=${this.iconSize || this._getIconSizeFromButtonSize()}
+            variant=${this.iconVariant || 'default'}
+            color="currentColor"
+            class="button__icon button__icon--${this.iconPosition}"
+          ></echo-icon>
+        `
+      : null;
+
+    const content = this.iconName
+      ? this.iconPosition === 'left'
+        ? html`${iconElement}<slot></slot>`
+        : html`<slot></slot>${iconElement}`
+      : html`<slot></slot>`;
+
     return html`
       <button
         class="button button--${this.variant} context--${this
@@ -116,9 +192,19 @@ export class EchoButton extends LitElement {
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >
-        <slot></slot>
+        ${content}
       </button>
     `;
+  }
+
+  private _getIconSizeFromButtonSize(): EchoIconSize {
+    const sizeMap: Record<EchoSize, EchoIconSize> = {
+      xs: 'small',
+      small: 'small',
+      medium: 'medium',
+      large: 'large',
+    };
+    return sizeMap[this.size];
   }
 
   private _handleClick(event: Event): void {

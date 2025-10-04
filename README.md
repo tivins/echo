@@ -289,7 +289,7 @@ import type {
 
 ### EchoButton
 
-A customizable button component with multiple variants and sizes.
+A customizable button component with multiple variants, sizes, and built-in icon support.
 
 ```html
 <!-- Variants -->
@@ -318,8 +318,28 @@ A customizable button component with multiple variants and sizes.
 <echo-button size="medium">Medium</echo-button>
 <echo-button size="large">Large</echo-button>
 
+<!-- Icon Support -->
+<echo-button icon-name="plus" context="primary">Add Item</echo-button>
+<echo-button icon-name="trash" context="danger">Delete</echo-button>
+<echo-button icon-name="edit" context="secondary">Edit</echo-button>
+<echo-button icon-name="save" context="success">Save</echo-button>
+
+<!-- Icon Position -->
+<echo-button icon-name="arrow-left" icon-position="left" context="primary">Back</echo-button>
+<echo-button icon-name="arrow-right" icon-position="right" context="primary">Next</echo-button>
+
+<!-- Icon Only Buttons -->
+<echo-button icon-name="plus" context="primary"></echo-button>
+<echo-button icon-name="edit" context="secondary"></echo-button>
+<echo-button icon-name="trash" context="danger"></echo-button>
+
+<!-- Custom Icon Properties -->
+<echo-button icon-name="settings" icon-size="small" context="primary">Small Icon</echo-button>
+<echo-button icon-name="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
+
 <!-- Disabled state -->
 <echo-button disabled>Disabled</echo-button>
+<echo-button icon-name="check" context="success" disabled>Disabled with Icon</echo-button>
 ```
 
 #### Properties
@@ -330,17 +350,31 @@ A customizable button component with multiple variants and sizes.
 | `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Button semantic context/color |
 | `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Button size (24px, 32px, 40px, 48px) |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
+| `icon-name` | `IconName \| null` | `null` | Name of the icon to display in the button |
+| `icon-position` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text |
+| `icon-size` | `EchoIconSize \| null` | `null` | Override icon size (auto-mapped from button size if null) |
+| `icon-variant` | `EchoIconVariant \| null` | `null` | Override icon variant (defaults to 'default' if null) |
 
 #### TypeScript Types
 
 The library exports reusable TypeScript types for extending components:
 
 ```typescript
-import type { EchoButtonVariant, EchoSize, EchoContext } from 'design-toolkit';
+import type { 
+  EchoButtonVariant, 
+  EchoSize, 
+  EchoContext, 
+  IconName, 
+  EchoIconSize, 
+  EchoIconVariant 
+} from 'design-toolkit';
 
 // EchoSize: 'xs' | 'small' | 'medium' | 'large'
 // EchoContext: 'danger' | 'success' | 'warning' | 'info' | 'primary' | 'secondary'
 // EchoButtonVariant: 'default' | 'soft' | 'link' | 'outline' | 'ghost'
+// IconName: Union type of all available icon names
+// EchoIconSize: 'small' | 'medium' | 'large'
+// EchoIconVariant: 'default' | 'outline' | 'filled'
 ```
 
 #### Events
@@ -348,6 +382,19 @@ import type { EchoButtonVariant, EchoSize, EchoContext } from 'design-toolkit';
 | Event | Description |
 |-------|-------------|
 | `echo-button-click` | Fired when the button is clicked |
+
+#### Icon Features
+
+The EchoButton component includes comprehensive icon support:
+
+- **Automatic Context Inheritance**: Icons automatically inherit the button's context color
+- **Smart Size Mapping**: Icon size automatically maps to button size (xs→small, small→small, medium→medium, large→large)
+- **Flexible Positioning**: Icons can be positioned on the left (default) or right side of the text
+- **Custom Overrides**: Icon size and variant can be overridden independently
+- **Icon-Only Buttons**: Buttons can contain only icons without text
+- **Disabled State**: Icons respect the button's disabled state
+- **All Variants Supported**: Icons work with all button variants (default, outline, ghost, soft, link)
+- **Accessibility**: Icons inherit proper accessibility attributes from the button
 
 ## Development
 
