@@ -26,7 +26,7 @@ export class EchoButton extends LitElement {
   disabled = false;
 
   @property({ type: String })
-  iconName: IconName | null = null;
+  icon: IconName | null = null;
 
   @property({ type: String })
   iconPosition: 'left' | 'right' = 'left';
@@ -167,19 +167,19 @@ export class EchoButton extends LitElement {
   ];
 
   render() {
-    const iconElement = this.iconName
+    const iconElement = this.icon
       ? html`
           <echo-icon
-            name=${this.iconName}
+            name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
-            color="currentColor"
             class="button__icon button__icon--${this.iconPosition}"
+            style="--icon-color: currentColor;"
           ></echo-icon>
         `
       : null;
 
-    const content = this.iconName
+    const content = this.icon
       ? this.iconPosition === 'left'
         ? html`${iconElement}<slot></slot>`
         : html`<slot></slot>${iconElement}`

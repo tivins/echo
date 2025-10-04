@@ -264,24 +264,24 @@ let EchoButton = class EchoButton extends i$1 {
         this.size = 'medium';
         this.context = 'primary';
         this.disabled = false;
-        this.iconName = null;
+        this.icon = null;
         this.iconPosition = 'left';
         this.iconSize = null;
         this.iconVariant = null;
     }
     render() {
-        const iconElement = this.iconName
+        const iconElement = this.icon
             ? x `
           <echo-icon
-            name=${this.iconName}
+            name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
-            color="currentColor"
             class="button__icon button__icon--${this.iconPosition}"
+            style="--icon-color: currentColor;"
           ></echo-icon>
         `
             : null;
-        const content = this.iconName
+        const content = this.icon
             ? this.iconPosition === 'left'
                 ? x `${iconElement}<slot></slot>`
                 : x `<slot></slot>${iconElement}`
@@ -460,7 +460,7 @@ __decorate([
 ], EchoButton.prototype, "disabled", void 0);
 __decorate([
     n({ type: String })
-], EchoButton.prototype, "iconName", void 0);
+], EchoButton.prototype, "icon", void 0);
 __decorate([
     n({ type: String })
 ], EchoButton.prototype, "iconPosition", void 0);

@@ -5,6 +5,58 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.5] - 2025-01-04
+
+### Fixed
+- **EchoButton Icon Hover Color Issue (Final Fix)**: Resolved persistent issue where icons remained invisible on hover
+  - **Root Cause**: Icon component was using `var(--context-color)` which overrode `currentColor`
+  - **Solution**: Set `--icon-color: currentColor` directly via inline style to ensure proper color inheritance
+  - **Impact**: Icons now properly follow button text color in all hover states across all variants
+
+### Changed
+- **EchoButton Icon API Simplification**: Streamlined and improved the icon property API
+  - **Main Property**: Renamed `icon-name` to `icon` for cleaner, more intuitive usage
+  - **CamelCase Properties**: Changed all icon properties to camelCase for consistency with Lit conventions
+    - `icon-name` → `icon`
+    - `icon-position` → `iconPosition`
+    - `icon-size` → `iconSize`
+    - `icon-variant` → `iconVariant`
+  - **Backward Compatibility**: Breaking change - old kebab-case properties no longer supported
+
+### Technical
+- **Improved Color Inheritance**: Icons now use `--icon-color: currentColor` via inline styles for reliable color inheritance
+- **Consistent API**: All properties now follow camelCase convention consistent with Lit framework
+- **Simplified Usage**: Main icon property simplified from `icon-name` to `icon` for better developer experience
+- **Enhanced Documentation**: Updated README.md and examples to reflect new API
+
+### Examples
+```html
+<!-- New simplified API -->
+<echo-button icon="plus" context="primary">Add Item</echo-button>
+<echo-button icon="trash" context="danger">Delete</echo-button>
+
+<!-- Icon positioning -->
+<echo-button icon="arrow-left" iconPosition="left" context="primary">Back</echo-button>
+<echo-button icon="arrow-right" iconPosition="right" context="primary">Next</echo-button>
+
+<!-- Custom properties -->
+<echo-button icon="settings" iconSize="small" context="primary">Small Icon</echo-button>
+<echo-button icon="settings" iconVariant="filled" context="primary">Filled Icon</echo-button>
+
+<!-- Icon-only buttons -->
+<echo-button icon="plus" context="primary"></echo-button>
+<echo-button icon="edit" context="secondary"></echo-button>
+```
+
+### Migration Guide
+```html
+<!-- Old API (no longer supported) -->
+<echo-button icon-name="plus" icon-position="left" icon-size="small">Add</echo-button>
+
+<!-- New API -->
+<echo-button icon="plus" iconPosition="left" iconSize="small">Add</echo-button>
+```
+
 ## [1.6.4] - 2025-01-04
 
 ### Fixed

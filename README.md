@@ -319,27 +319,27 @@ A customizable button component with multiple variants, sizes, and built-in icon
 <echo-button size="large">Large</echo-button>
 
 <!-- Icon Support -->
-<echo-button icon-name="plus" context="primary">Add Item</echo-button>
-<echo-button icon-name="trash" context="danger">Delete</echo-button>
-<echo-button icon-name="edit" context="secondary">Edit</echo-button>
-<echo-button icon-name="save" context="success">Save</echo-button>
+<echo-button icon="plus" context="primary">Add Item</echo-button>
+<echo-button icon="trash" context="danger">Delete</echo-button>
+<echo-button icon="edit" context="secondary">Edit</echo-button>
+<echo-button icon="save" context="success">Save</echo-button>
 
 <!-- Icon Position -->
-<echo-button icon-name="arrow-left" icon-position="left" context="primary">Back</echo-button>
-<echo-button icon-name="arrow-right" icon-position="right" context="primary">Next</echo-button>
+<echo-button icon="arrow-left" iconPosition="left" context="primary">Back</echo-button>
+<echo-button icon="arrow-right" iconPosition="right" context="primary">Next</echo-button>
 
 <!-- Icon Only Buttons -->
-<echo-button icon-name="plus" context="primary"></echo-button>
-<echo-button icon-name="edit" context="secondary"></echo-button>
-<echo-button icon-name="trash" context="danger"></echo-button>
+<echo-button icon="plus" context="primary"></echo-button>
+<echo-button icon="edit" context="secondary"></echo-button>
+<echo-button icon="trash" context="danger"></echo-button>
 
 <!-- Custom Icon Properties -->
-<echo-button icon-name="settings" icon-size="small" context="primary">Small Icon</echo-button>
-<echo-button icon-name="settings" icon-variant="filled" context="primary">Filled Icon</echo-button>
+<echo-button icon="settings" iconSize="small" context="primary">Small Icon</echo-button>
+<echo-button icon="settings" iconVariant="filled" context="primary">Filled Icon</echo-button>
 
 <!-- Disabled state -->
 <echo-button disabled>Disabled</echo-button>
-<echo-button icon-name="check" context="success" disabled>Disabled with Icon</echo-button>
+<echo-button icon="check" context="success" disabled>Disabled with Icon</echo-button>
 ```
 
 #### Properties
@@ -350,10 +350,10 @@ A customizable button component with multiple variants, sizes, and built-in icon
 | `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Button semantic context/color |
 | `size` | `'xs' \| 'small' \| 'medium' \| 'large'` | `'medium'` | Button size (24px, 32px, 40px, 48px) |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
-| `icon-name` | `IconName \| null` | `null` | Name of the icon to display in the button |
-| `icon-position` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text |
-| `icon-size` | `EchoIconSize \| null` | `null` | Override icon size (auto-mapped from button size if null) |
-| `icon-variant` | `EchoIconVariant \| null` | `null` | Override icon variant (defaults to 'default' if null) |
+| `icon` | `IconName \| null` | `null` | Name of the icon to display in the button |
+| `iconPosition` | `'left' \| 'right'` | `'left'` | Position of the icon relative to the text |
+| `iconSize` | `EchoIconSize \| null` | `null` | Override icon size (auto-mapped from button size if null) |
+| `iconVariant` | `EchoIconVariant \| null` | `null` | Override icon variant (defaults to 'default' if null) |
 
 #### TypeScript Types
 
