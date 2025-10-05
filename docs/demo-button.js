@@ -228,7 +228,143 @@ class ButtonDemo {
 
   updateHtmlCode() {
     const html = this.elements.button.outerHTML;
-    this.elements.htmlCode.textContent = html;
+    const formattedHtml = this.formatHtml(html);
+    this.elements.htmlCode.innerHTML = formattedHtml;
+  }
+
+  formatHtml(html) {
+    // First escape the HTML to prevent rendering
+    const escapedHtml = html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    
+    // Simple HTML formatter with syntax highlighting
+    let formatted = '';
+    let indentLevel = 0;
+    const indentSize = 2;
+    
+    // Split by tags while preserving them
+    const parts = escapedHtml.split(/(&lt;[^&]*&gt;)/);
+    
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      
+      if (part.startsWith('&lt;')) {
+        // This is a tag
+        if (part.startsWith('&lt;/')) {
+          // Closing tag - decrease indent first
+          indentLevel = Math.max(0, indentLevel - 1);
+          formatted += ' '.repeat(indentLevel * indentSize) + this.highlightTag(part) + '\n';
+        } else if (part.endsWith('/&gt;')) {
+          // Self-closing tag
+          formatted += ' '.repeat(indentLevel * indentSize) + this.highlightTag(part) + '\n';
+        } else {
+          // Opening tag - parse attributes and format them
+          const formattedTag = this.formatTagWithAttributes(part, indentLevel * indentSize);
+          formatted += formattedTag + '\n';
+          indentLevel++;
+        }
+      } else if (part.trim()) {
+        // This is content
+        formatted += ' '.repeat(indentLevel * indentSize) + this.highlightContent(part) + '\n';
+      }
+    }
+    
+    return formatted.trim();
+  }
+
+  formatTagWithAttributes(tag, baseIndent) {
+    // Extract tag name and attributes
+    const tagMatch = tag.match(/&lt;([a-zA-Z][a-zA-Z0-9-]*)(.*?)&gt;/);
+    if (!tagMatch) return this.highlightTag(tag);
+    
+    const tagName = tagMatch[1];
+    const attributesStr = tagMatch[2].trim();
+    
+    if (!attributesStr) {
+      // No attributes, just the tag name
+      return ' '.repeat(baseIndent) + this.highlightTag(tag);
+    }
+    
+    // Parse attributes
+    const attributes = this.parseAttributes(attributesStr);
+    
+    let result = ' '.repeat(baseIndent) + `<span class="html-tag">&lt;${tagName}</span>\n`;
+    
+    // Add each attribute on its own line
+    attributes.forEach(attr => {
+      const indent = ' '.repeat(baseIndent + 2);
+      if (attr.value === '') {
+        // Boolean attribute
+        result += indent + `<span class="html-attribute">${attr.name}</span>=""\n`;
+      } else {
+        // Attribute with value
+        result += indent + `<span class="html-attribute">${attr.name}</span>=<span class="html-value">"${attr.value}"</span>\n`;
+      }
+    });
+    
+    // Add closing bracket
+    result += ' '.repeat(baseIndent) + '<span class="html-tag">&gt;</span>';
+    
+    return result;
+  }
+
+  parseAttributes(attributesStr) {
+    const attributes = [];
+    let current = attributesStr.trim();
+    
+    while (current) {
+      // Match attribute=value or attribute=""
+      const match = current.match(/^([a-zA-Z][a-zA-Z0-9-]*)(?:=("([^"]*)")|="")?\s*/);
+      if (!match) break;
+      
+      const name = match[1];
+      const value = match[3] || ''; // Empty string for boolean attributes
+      
+      attributes.push({ name, value });
+      current = current.substring(match[0].length).trim();
+    }
+    
+    return attributes;
+  }
+
+  highlightTag(tag) {
+    // Highlight HTML tags with attributes and values
+    let highlighted = tag;
+    
+    // First, handle attributes with values (including hyphens)
+    highlighted = highlighted.replace(
+      /([a-zA-Z][a-zA-Z0-9-]*)=("([^"]*)")/g,
+      '<span class="html-attribute">$1</span>=<span class="html-value">$2</span>'
+    );
+    
+    // Handle boolean attributes (like disabled="")
+    highlighted = highlighted.replace(
+      /([a-zA-Z][a-zA-Z0-9-]*?)=""/g,
+      '<span class="html-attribute">$1</span>=""'
+    );
+    
+    // Handle tag names (including hyphens)
+    highlighted = highlighted.replace(
+      /&lt;(\/?)([a-zA-Z][a-zA-Z0-9-]*)/g,
+      '<span class="html-tag">&lt;$1$2</span>'
+    );
+    
+    // Handle closing brackets
+    highlighted = highlighted.replace(
+      /&gt;/g,
+      '<span class="html-tag">&gt;</span>'
+    );
+    
+    return highlighted;
+  }
+
+  highlightContent(content) {
+    return `<span class="html-content">${this.escapeHtml(content)}</span>`;
+  }
+
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   capitalizeFirst(str) {

@@ -6,12 +6,42 @@
   <script type="module" src="./design-toolkit.esm.bundled.js"></script>
   <title>Echo Toolkit</title>
   <style>
+   
     #html-code {
-        text-align: center;
+        text-align: left;
         font-family: 'Courier New', monospace;
         font-size: 13px;
         margin-top: 10px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
         overflow-x: auto;
+        white-space: pre-wrap;
+        line-height: 1.4;
+    }
+    
+    /* Syntax highlighting */
+    .html-tag {
+        color: #e83e8c;
+        font-weight: bold;
+    }
+    
+    .html-attribute {
+        color: #fd7e14;
+    }
+    
+    .html-value {
+        color: #20c997;
+    }
+    
+    .html-content {
+        color: #495057;
+    }
+    
+    .html-comment {
+        color: #6c757d;
+        font-style: italic;
     }
   </style>
 </head>
@@ -62,7 +92,7 @@
             </echo-layout>    
             
             <echo-separator margin="large"><echo-icon name="code" size="small"></echo-icon> Code</echo-separator>
-            <div id="html-code">&lt;echo-button&gt;Button&lt;/echo-button&gt;</div>
+            <pre id="html-code">Loading...</pre>
             
         </div>
         </echo-card>

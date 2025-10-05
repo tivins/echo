@@ -5,6 +5,52 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.7] - 2025-01-04
+
+### Enhanced
+- **Demo HTML Code Display**: Significantly improved HTML code formatting and syntax highlighting in demo pages
+  - **Formatted Output**: HTML code now displays with proper indentation and line breaks instead of single-line format
+  - **Syntax Highlighting**: Added color-coded syntax highlighting for HTML tags, attributes, and values
+  - **Better Readability**: Enhanced visual presentation with background, borders, and improved typography
+  - **Real-time Updates**: Formatted code updates automatically when component properties change
+
+### Technical
+- **HTML Formatter**: Added comprehensive HTML formatting function with intelligent indentation
+- **Syntax Highlighter**: Implemented color-coded highlighting for different HTML elements:
+  - **Tags**: Pink/magenta color (`#e83e8c`) for HTML tag names
+  - **Attributes**: Orange color (`#fd7e14`) for attribute names
+  - **Values**: Teal color (`#20c997`) for attribute values
+  - **Content**: Dark gray (`#495057`) for text content
+- **CSS Styling**: Enhanced code display with background, borders, padding, and improved font rendering
+- **Test Coverage**: Created comprehensive test page (demos/html-formatting-test.html) to validate formatting
+
+### Examples
+```html
+<!-- Before: Single line, no highlighting -->
+<echo-button variant="outline" context="secondary" size="medium" icon="more-horizontal" disabled="" icon-position="right" icon-size="medium" icon-variant="outline" icon-stroke-width="1.6">Button</echo-button>
+
+<!-- After: Formatted with syntax highlighting -->
+<echo-button
+  variant="outline"
+  context="secondary"
+  size="medium"
+  icon="more-horizontal"
+  disabled=""
+  icon-position="right"
+  icon-size="medium"
+  icon-variant="outline"
+  icon-stroke-width="1.6">
+  Button
+</echo-button>
+```
+
+### Visual Improvements
+- **Indentation**: Proper 2-space indentation for nested elements
+- **Line Breaks**: Each attribute on its own line for better readability
+- **Color Coding**: Visual distinction between different HTML elements
+- **Background**: Light gray background with subtle border for code blocks
+- **Typography**: Monospace font with improved line height and spacing
+
 ## [1.8.6] - 2025-01-04
 
 ### Fixed
