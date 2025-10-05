@@ -49,7 +49,7 @@
         <div class="test-section">
             <h2>Test 1: Card without main content</h2>
             <div class="description">This card should NOT show a content section since there's no content in the main slot.</div>
-            <echo-card title="Card without content" variant="default" size="medium">
+            <echo-card card-title="Card without content" variant="default" size="medium">
             </echo-card>
         </div>
         
@@ -57,7 +57,7 @@
         <div class="test-section">
             <h2>Test 2: Card with main content</h2>
             <div class="description">This card SHOULD show a content section since there is content in the main slot.</div>
-            <echo-card title="Card with content" variant="default" size="medium">
+            <echo-card card-title="Card with content" variant="default" size="medium">
                 <p>This is the main content of the card. There is actual content provided.</p>
             </echo-card>
         </div>
@@ -66,7 +66,7 @@
         <div class="test-section">
             <h2>Test 3: Card with empty main content</h2>
             <div class="description">This card should NOT show a content section since the main slot is empty.</div>
-            <echo-card title="Card with empty content" variant="outlined" size="medium">
+            <echo-card card-title="Card with empty content" variant="outlined" size="medium">
                 <div></div>
             </echo-card>
         </div>
@@ -75,7 +75,7 @@
         <div class="test-section">
             <h2>Test 4: Card with text-only content</h2>
             <div class="description">This card SHOULD show a content section since there is text content in the main slot.</div>
-            <echo-card title="Card with text content" variant="elevated" size="medium">
+            <echo-card card-title="Card with text content" variant="elevated" size="medium">
                 <span>Simple text content</span>
             </echo-card>
         </div>
@@ -84,7 +84,7 @@
         <div class="test-section">
             <h2>Test 5: Card with whitespace-only content</h2>
             <div class="description">This card should NOT show a content section since the main slot contains only whitespace.</div>
-            <echo-card title="Card with whitespace content" variant="flat" size="medium">
+            <echo-card card-title="Card with whitespace content" variant="flat" size="medium">
                 <div>   </div>
             </echo-card>
         </div>
@@ -93,7 +93,7 @@
         <div class="test-section">
             <h2>Test 6: Card with header only</h2>
             <div class="description">This card should show only the header since there's no content or footer.</div>
-            <echo-card title="Header only card" variant="default" size="medium" closable>
+            <echo-card card-title="Header only card" variant="default" size="medium" closable>
             </echo-card>
         </div>
         
@@ -101,7 +101,7 @@
         <div class="test-section">
             <h2>Test 7: Card with content and footer</h2>
             <div class="description">This card SHOULD show both content and footer sections.</div>
-            <echo-card title="Complete card" variant="default" size="medium">
+            <echo-card card-title="Complete card" variant="default" size="medium">
                 <p>This card has both main content and footer content.</p>
                 <div slot="footer">
                     <echo-button variant="soft" size="small">Save</echo-button>
@@ -113,7 +113,7 @@
         <div class="test-section">
             <h2>Test 8: Card with complex content</h2>
             <div class="description">This card SHOULD show content section with complex HTML structure.</div>
-            <echo-card title="Complex content card" variant="elevated" size="large">
+            <echo-card card-title="Complex content card" variant="elevated" size="large">
                 <h3>Section Title</h3>
                 <p>This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
                 <ul>

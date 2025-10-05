@@ -93,19 +93,19 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Default Card">
+                <echo-card variant="default" context="primary" card-title="Default Card">
                     <p>This is a default card with primary context. It has a subtle shadow and border.</p>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="success" title="Outlined Card">
+                <echo-card variant="outlined" context="success" card-title="Outlined Card">
                     <p>This is an outlined card with success context. It has a colored border.</p>
                 </echo-card>
                 
-                <echo-card variant="elevated" context="warning" title="Elevated Card">
+                <echo-card variant="elevated" context="warning" card-title="Elevated Card">
                     <p>This is an elevated card with warning context. It has a prominent shadow.</p>
                 </echo-card>
                 
-                <echo-card variant="flat" context="info" title="Flat Card">
+                <echo-card variant="flat" context="info" card-title="Flat Card">
                     <p>This is a flat card with info context. It has a colored background.</p>
                 </echo-card>
             </div>
@@ -120,19 +120,19 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Star Card" icon="star">
+                <echo-card variant="default" context="primary" card-title="Star Card" icon="star">
                     <p>This card has a star icon in the header.</p>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="success" title="Heart Card" icon="heart" icon-variant="filled">
+                <echo-card variant="outlined" context="success" card-title="Heart Card" icon="heart" icon-variant="filled">
                     <p>This card has a filled heart icon.</p>
                 </echo-card>
                 
-                <echo-card variant="elevated" context="danger" title="Alert Card" icon="alert-triangle" icon-size="large">
+                <echo-card variant="elevated" context="danger" card-title="Alert Card" icon="alert-triangle" icon-size="large">
                     <p>This card has a large alert triangle icon.</p>
                 </echo-card>
                 
-                <echo-card variant="flat" context="info" title="Info Card" icon="info" icon-variant="outline">
+                <echo-card variant="flat" context="info" card-title="Info Card" icon="info" icon-variant="outline">
                     <p>This card has an outlined info icon.</p>
                 </echo-card>
             </div>
@@ -147,7 +147,7 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Closable Card" closable>
+                <echo-card variant="default" context="primary" card-title="Closable Card" closable>
                     <p>This card can be closed by clicking the X button.</p>
                     <div slot="footer">
                         <echo-button variant="outline" size="small">Cancel</echo-button>
@@ -155,14 +155,14 @@
                     </div>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="warning" title="Warning Card" icon="alert-triangle" closable>
+                <echo-card variant="outlined" context="warning" card-title="Warning Card" icon="alert-triangle" closable>
                     <p>This is a warning card that can be dismissed.</p>
                     <div slot="footer">
                         <echo-button variant="ghost" size="small">Dismiss</echo-button>
                     </div>
                 </echo-card>
                 
-                <echo-card variant="elevated" context="success" title="Success Card" icon="check-circle" closable>
+                <echo-card variant="elevated" context="success" card-title="Success Card" icon="check-circle" closable>
                     <p>This is a success notification that can be closed.</p>
                 </echo-card>
             </div>
@@ -177,7 +177,7 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Settings Card" icon="settings" closable>
+                <echo-card variant="default" context="primary" card-title="Settings Card" icon="settings" closable>
                     <div slot="header-actions">
                         <echo-button variant="ghost" size="small" icon="edit">Edit</echo-button>
                         <echo-button variant="ghost" size="small" icon="more-horizontal"></echo-button>
@@ -189,7 +189,7 @@
                     </div>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="secondary" title="User Profile" icon="user" closable>
+                <echo-card variant="outlined" context="secondary" card-title="User Profile" icon="user" closable>
                     <div slot="header-actions">
                         <echo-button variant="ghost" size="small" icon="mail">Message</echo-button>
                         <echo-button variant="ghost" size="small" icon="phone">Call</echo-button>
@@ -211,15 +211,15 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Small Card" size="small" icon="star">
+                <echo-card variant="default" context="primary" card-title="Small Card" size="small" icon="star">
                     <p>This is a small card.</p>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="success" title="Medium Card" size="medium" icon="heart">
+                <echo-card variant="outlined" context="success" card-title="Medium Card" size="medium" icon="heart">
                     <p>This is a medium card (default size).</p>
                 </echo-card>
                 
-                <echo-card variant="elevated" context="warning" title="Large Card" size="large" icon="alert-triangle">
+                <echo-card variant="elevated" context="warning" card-title="Large Card" size="large" icon="alert-triangle">
                     <p>This is a large card with more padding and larger border radius.</p>
                 </echo-card>
             </div>
@@ -234,7 +234,7 @@
             </div>
             
             <div class="card-demo">
-                <echo-card variant="elevated" context="primary" title="Project Dashboard" icon="bar-chart" size="large" closable>
+                <echo-card variant="elevated" context="primary" card-title="Project Dashboard" icon="bar-chart" size="large" closable>
                     <div slot="header-actions">
                         <echo-button variant="ghost" size="small" icon="refresh">Refresh</echo-button>
                         <echo-button variant="ghost" size="small" icon="settings">Settings</echo-button>
@@ -278,14 +278,14 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Disabled Card" icon="lock" disabled>
+                <echo-card variant="default" context="primary" card-title="Disabled Card" icon="lock" disabled>
                     <p>This card is disabled and cannot be interacted with.</p>
                     <div slot="footer">
                         <echo-button variant="outline" size="small" disabled>Disabled Button</echo-button>
                     </div>
                 </echo-card>
                 
-                <echo-card variant="outlined" context="secondary" title="Disabled Closable" closable disabled>
+                <echo-card variant="outlined" context="secondary" card-title="Disabled Closable" closable disabled>
                     <p>This closable card is disabled. The close button won't work.</p>
                 </echo-card>
             </div>
@@ -300,7 +300,7 @@
             </div>
             
             <div class="cards-grid">
-                <echo-card variant="default" context="primary" title="Event Demo Card" icon="activity" closable id="event-card">
+                <echo-card variant="default" context="primary" card-title="Event Demo Card" icon="activity" closable id="event-card">
                     <p>This card demonstrates event handling. Close it to see the event in action.</p>
                     <div slot="footer">
                         <echo-button variant="default" size="small" id="show-card-btn">Show Card</echo-button>

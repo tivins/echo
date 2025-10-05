@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script type="module" src="/@vite/client"></script>
@@ -300,13 +300,13 @@
             const statusEl = document.getElementById('status-message');
             if (problematicIcons === 0) {
                 statusEl.className = 'status success';
-                statusEl.textContent = `â All ${allIconNames.length} icons are visually correct!`;
+                statusEl.textContent = `�?? All ${allIconNames.length} icons are visually correct!`;
             } else if (problematicIcons < 10) {
                 statusEl.className = 'status warning';
-                statusEl.textContent = `â ï¸ ${problematicIcons} icons need attention out of ${allIconNames.length} total icons.`;
+                statusEl.textContent = `�?�️ ${problematicIcons} icons need attention out of ${allIconNames.length} total icons.`;
             } else {
                 statusEl.className = 'status error';
-                statusEl.textContent = `â ${problematicIcons} icons have visual issues out of ${allIconNames.length} total icons.`;
+                statusEl.textContent = `�? ${problematicIcons} icons have visual issues out of ${allIconNames.length} total icons.`;
             }
         }
 

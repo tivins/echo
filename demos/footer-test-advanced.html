@@ -56,7 +56,7 @@
     <div class="test-section">
         <h2>Test 1: Card with visible footer content</h2>
         <div class="cards-container">
-            <echo-card title="Card with Buttons">
+            <echo-card card-title="Card with Buttons">
                 <p>This card has buttons in the footer.</p>
                 <div slot="footer">
                     <button>Save</button>
@@ -64,7 +64,7 @@
                 </div>
             </echo-card>
             
-            <echo-card title="Card with Text Footer">
+            <echo-card card-title="Card with Text Footer">
                 <p>This card has text in the footer.</p>
                 <span slot="footer">Last updated: 2024-01-15</span>
             </echo-card>
@@ -74,12 +74,12 @@
     <div class="test-section">
         <h2>Test 2: Card with empty footer slot</h2>
         <div class="cards-container">
-            <echo-card title="Card with Empty Footer">
+            <echo-card card-title="Card with Empty Footer">
                 <p>This card has an empty footer slot - should not show footer.</p>
                 <div slot="footer"></div>
             </echo-card>
             
-            <echo-card title="Card with Whitespace Footer">
+            <echo-card card-title="Card with Whitespace Footer">
                 <p>This card has whitespace-only footer - should not show footer.</p>
                 <div slot="footer">   </div>
             </echo-card>
@@ -89,7 +89,7 @@
     <div class="test-section">
         <h2>Test 3: Card without footer slot</h2>
         <div class="cards-container">
-            <echo-card title="Card without Footer">
+            <echo-card card-title="Card without Footer">
                 <p>This card has no footer slot at all - should not show footer.</p>
             </echo-card>
         </div>
@@ -98,7 +98,7 @@
     <div class="test-section">
         <h2>Test 4: Dynamic footer content</h2>
         <div class="cards-container">
-            <echo-card title="Dynamic Footer Test">
+            <echo-card card-title="Dynamic Footer Test">
                 <p>This card will have its footer content added dynamically.</p>
                 <div slot="footer" id="dynamic-footer"></div>
             </echo-card>

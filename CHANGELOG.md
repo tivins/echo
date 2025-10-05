@@ -5,6 +5,134 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.3] - 2025-01-05
+
+### Fixed
+- **EchoInput Attribute Rendering with ifDefined**: Fixed critical issue where null attributes were being rendered as empty strings instead of being omitted
+  - **Root Cause**: Using `|| ''` operator was converting `null` values to empty strings `""` in template literals
+  - **Solution**: Implemented Lit's `ifDefined` directive to properly conditionally render attributes only when values are not null/undefined
+  - **Impact**: Attributes like `min`, `max`, `step`, `minlength`, `maxlength`, and `pattern` are now properly omitted when not set
+  - **Technical**: Updated template rendering to use `min="${ifDefined(this.min)}"` instead of `min="${this.min || ''}"`
+
+### Technical
+- **Lit Directive**: Added `ifDefined` import from `lit/directives/if-defined.js`
+- **Template Rendering**: Fixed conditional attribute rendering for all optional input attributes using proper Lit directives
+- **HTML Compliance**: Ensures proper HTML5 validation behavior by not passing empty attribute values
+- **Browser Validation**: Fixes issues where empty string attributes could interfere with native HTML5 validation
+
+### Examples
+```html
+<!-- Before: min="" was rendered even when min was null -->
+<echo-input type="number" max="10" step="0.1"></echo-input>
+<!-- Generated: <input type="number" min="" max="10" step="0.1"> -->
+
+<!-- After: min attribute is omitted when min is null -->
+<echo-input type="number" max="10" step="0.1"></echo-input>
+<!-- Generated: <input type="number" max="10" step="0.1"> -->
+```
+
+## [1.10.2] - 2025-01-05
+
+### Fixed
+- **EchoInput Attribute Rendering**: Fixed critical issue where null attributes were being rendered as empty strings instead of being omitted
+  - **Root Cause**: Using `|| ''` operator was converting `null` values to empty strings `""` in template literals
+  - **Solution**: Changed to conditional rendering using ternary operators to only include attributes when values are not null
+  - **Impact**: Attributes like `min`, `max`, `step`, `minlength`, `maxlength`, and `pattern` are now properly omitted when not set
+  - **Technical**: Updated template rendering from `min="${this.min || ''}"` to `${this.min !== null ? `min="${this.min}"` : ''}`
+
+### Technical
+- **Template Rendering**: Fixed conditional attribute rendering for all optional input attributes
+- **HTML Compliance**: Ensures proper HTML5 validation behavior by not passing empty attribute values
+- **Browser Validation**: Fixes issues where empty string attributes could interfere with native HTML5 validation
+
+### Examples
+```html
+<!-- Before: min="" was rendered even when min was null -->
+<echo-input type="number" max="10" step="0.1"></echo-input>
+<!-- Generated: <input type="number" min="" max="10" step="0.1"> -->
+
+<!-- After: min attribute is omitted when min is null -->
+<echo-input type="number" max="10" step="0.1"></echo-input>
+<!-- Generated: <input type="number" max="10" step="0.1"> -->
+```
+
+## [1.10.1] - 2025-01-05
+
+### Added
+- **EchoInput Step Property**: Added `step` property support for number input types
+  - **New Property**: `step` (HTML: `step`) allows controlling increment steps for number inputs
+  - **Default Value**: Uses `null` as default when not specified (no step restriction)
+  - **Flexible Control**: Supports any numeric value for fine-tuned number input behavior
+  - **Integration**: Seamlessly integrates with existing input validation properties
+  - **TypeScript Support**: Full type safety with `number | null` type definition
+  - **Attribute Management**: Proper handling of attribute changes and property resets
+- **EchoInput Min/Max Properties**: Added `min` and `max` property support for number input types
+  - **New Properties**: `min` and `max` (HTML: `min`, `max`) allow controlling value ranges for number inputs
+  - **Default Value**: Uses `null` as default when not specified (no range restriction)
+  - **Flexible Control**: Supports any numeric value for precise value range control
+  - **Integration**: Seamlessly integrates with existing input validation properties
+  - **TypeScript Support**: Full type safety with `number | null` type definition
+  - **Attribute Management**: Proper handling of attribute changes and property resets
+
+### Technical
+- **Property Addition**: Added `step`, `min`, and `max` properties to EchoInput component with proper Lit decorators
+- **Input Integration**: Modified input rendering to include step, min, and max attributes in HTML input element
+- **Default Handling**: Implemented fallback to empty string when properties are null
+- **Documentation**: Updated README.md with comprehensive examples and API documentation
+- **Test Page**: Created extensive test page (demos/echo-input-step-test.html) showcasing all number attribute variations
+- **Attribute Callback**: Updated attributeChangedCallback to handle step, min, and max attribute removal
+
+### Examples
+```html
+<!-- Integer step (whole numbers only) -->
+<echo-input type="number" label="Quantity" step="1" placeholder="Whole numbers only"></echo-input>
+
+<!-- Decimal step (price with cents) -->
+<echo-input type="number" label="Price" step="0.01" placeholder="Decimal prices"></echo-input>
+
+<!-- Custom step (multiples of 5) -->
+<echo-input type="number" label="Multiples of 5" step="5" placeholder="5, 10, 15..."></echo-input>
+
+<!-- Fraction step (quarter increments) -->
+<echo-input type="number" label="Temperature" step="0.25" placeholder="Precise temperature"></echo-input>
+
+<!-- Min/Max constraints -->
+<echo-input type="number" label="Age" min="0" max="120" step="1" placeholder="Enter age"></echo-input>
+<echo-input type="number" label="Temperature" min="-50" max="50" step="0.1" placeholder="°C"></echo-input>
+<echo-input type="number" label="Percentage" min="0" max="100" step="0.01" placeholder="0-100%"></echo-input>
+<echo-input type="number" label="Score" min="0" max="10" step="0.5" placeholder="0-10"></echo-input>
+```
+
+### Documentation
+- **API Documentation**: Added step, min, and max properties to properties table
+- **Usage Examples**: Comprehensive examples showing different step, min, and max values
+- **Feature Description**: Updated input features section to include step, min, and max control
+- **TypeScript Types**: Updated type definitions to include new properties
+
+## [1.10.0] - 2025-01-05
+
+### BREAKING CHANGES
+- **EchoCard Component**: Renamed `title` property to `cardTitle` to avoid HTML tooltip conflicts
+  - **Migration Required**: All `title` attributes must be changed to `card-title` attributes
+  - **Reason**: The `title` property was conflicting with HTML's native `title` attribute, causing unwanted tooltips
+  - **Solution**: Renamed property to `cardTitle` with `card-title` attribute mapping
+  - **Impact**: This is a breaking change requiring code updates in all applications using EchoCard
+
+### Fixed
+- **EchoCard Component**: Fixed tooltip issue with title property
+  - **Problem**: The `title` property was conflicting with HTML's native `title` attribute, causing unwanted tooltips
+  - **Solution**: Renamed `title` property to `cardTitle` with `card-title` attribute mapping
+  - **Migration**: All demos and tests updated to use the new attribute name
+
+### Technical
+- **Component**: Updated EchoCard property from `title` to `cardTitle` with proper attribute mapping
+- **Tests**: Updated all test files to use `card-title` attribute instead of `title`
+- **Demos**: Updated all demonstration files to use the new attribute name
+- **Documentation**: Updated README.md with new examples using `card-title`
+- **Build**: Verified build process works correctly with the changes
+
+## [1.9.3] - 2025-01-05
+
 ## [1.9.2] - 2025-01-05
 
 ### Added

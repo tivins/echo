@@ -26,14 +26,14 @@ class ButtonDemo {
       iconPosition: document.querySelector('select[name="icon-position"]'),
       iconSize: document.querySelector('select[name="icon-size"]'),
       iconVariant: document.querySelector('select[name="icon-variant"]'),
-      iconStrokeWidth: document.querySelector('input[name="icon-stroke-width"]'),
-      text: document.querySelector('input[name="text"]'), 
+      iconStrokeWidth: document.querySelector('echo-input[name="icon-stroke-width"]'),
+      text: document.querySelector('echo-input[name="text"]'), 
     };
   }
 
   getElements() {
     return {
-      button: document.querySelector('echo-button'),
+      button: document.querySelector('#preview-button'),
       htmlCode: document.querySelector('#html-code'),
     };
   }
@@ -143,8 +143,8 @@ class ButtonDemo {
     this.controls.iconPosition.addEventListener('change', () => this.handleIconPositionChange());
     this.controls.iconSize.addEventListener('change', () => this.handleIconSizeChange());
     this.controls.iconVariant.addEventListener('change', () => this.handleIconVariantChange());
-    this.controls.iconStrokeWidth.addEventListener('change', () => this.handleIconStrokeWidthChange());
-    this.controls.text.addEventListener('change', () => this.handleTextChange());
+    this.controls.iconStrokeWidth.addEventListener('echo-input-change', () => this.handleIconStrokeWidthChange());
+    this.controls.text.addEventListener('echo-input-change', () => this.handleTextChange());
   }
 
   handleVariantChange() {
@@ -400,4 +400,8 @@ class ButtonDemo {
 // Initialize the demo when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new ButtonDemo();
+  document.getElementById('back-to-homepage').addEventListener('click', () => {
+      console.log('back to homepage');
+      window.location.href = 'index.html';
+  });
 });

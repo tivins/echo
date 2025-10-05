@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import type {
   EchoInputVariant,
   EchoInputSize,
@@ -73,6 +74,15 @@ export class EchoInput extends LitElement {
 
   @property({ type: String })
   pattern: string | null = null;
+
+  @property({ type: Number })
+  step: number | null = null;
+
+  @property({ type: Number })
+  min: number | null = null;
+
+  @property({ type: Number })
+  max: number | null = null;
 
 
   static styles = [
@@ -349,6 +359,7 @@ export class EchoInput extends LitElement {
       `input-description--${this.size}`,
     ].filter(Boolean).join(' ');
 
+
     const iconElement = this.icon
       ? html`
           <echo-icon
@@ -382,9 +393,12 @@ export class EchoInput extends LitElement {
             ?required="${this.required}"
             ?readonly="${this.readonly}"
             name="${this.name}"
-            minlength="${this.minlength || ''}"
-            maxlength="${this.maxlength || ''}"
-            pattern="${this.pattern || ''}"
+            minlength="${ifDefined(this.minlength)}"
+            maxlength="${ifDefined(this.maxlength)}"
+            pattern="${ifDefined(this.pattern)}"
+            step="${ifDefined(this.step)}"
+            min="${ifDefined(this.min)}"
+            max="${ifDefined(this.max)}"
             @input="${this._handleInput}"
             @focus="${this._handleFocus}"
             @blur="${this._handleBlur}"
@@ -529,6 +543,15 @@ export class EchoInput extends LitElement {
           break;
         case 'pattern':
           this.pattern = null;
+          break;
+        case 'step':
+          this.step = null;
+          break;
+        case 'min':
+          this.min = null;
+          break;
+        case 'max':
+          this.max = null;
           break;
       }
     }

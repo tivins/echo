@@ -149,9 +149,9 @@ An abstract layout component for managing flex/grid layouts, alignment, gaps, an
 
 <!-- Card grid layout -->
 <echo-layout display="grid" columns="auto-fit" gap="large">
-  <echo-card title="Card 1" size="small">Content 1</echo-card>
-  <echo-card title="Card 2" size="small">Content 2</echo-card>
-  <echo-card title="Card 3" size="small">Content 3</echo-card>
+  <echo-card card-title="Card 1" size="small">Content 1</echo-card>
+  <echo-card card-title="Card 2" size="small">Content 2</echo-card>
+  <echo-card card-title="Card 3" size="small">Content 3</echo-card>
 </echo-layout>
 
 <!-- Button group layout -->
@@ -204,6 +204,9 @@ A comprehensive input component with label support, icon integration, validation
 | `minlength` | `number \| null` | `null` | Minimum length validation |
 | `maxlength` | `number \| null` | `null` | Maximum length validation |
 | `pattern` | `string \| null` | `null` | Pattern validation |
+| `step` | `number \| null` | `null` | Step increment for number inputs |
+| `min` | `number \| null` | `null` | Minimum value for number inputs |
+| `max` | `number \| null` | `null` | Maximum value for number inputs |
 
 #### Events
 
@@ -287,6 +290,18 @@ A comprehensive input component with label support, icon integration, validation
 <echo-input type="search" label="Search" placeholder="Search..."></echo-input>
 <echo-input type="date" label="Birth Date" placeholder="Select date"></echo-input>
 <echo-input type="time" label="Time" placeholder="Select time"></echo-input>
+
+<!-- Number inputs with step attribute -->
+<echo-input type="number" label="Quantity" step="1" placeholder="Whole numbers only"></echo-input>
+<echo-input type="number" label="Price" step="0.01" placeholder="Decimal prices"></echo-input>
+<echo-input type="number" label="Temperature" step="0.1" placeholder="Precise temperature"></echo-input>
+<echo-input type="number" label="Multiples of 5" step="5" placeholder="5, 10, 15..."></echo-input>
+
+<!-- Number inputs with min/max constraints -->
+<echo-input type="number" label="Age" min="0" max="120" step="1" placeholder="Enter age"></echo-input>
+<echo-input type="number" label="Temperature" min="-50" max="50" step="0.1" placeholder="°C"></echo-input>
+<echo-input type="number" label="Percentage" min="0" max="100" step="0.01" placeholder="0-100%"></echo-input>
+<echo-input type="number" label="Score" min="0" max="10" step="0.5" placeholder="0-10"></echo-input>
 
 <!-- Form integration -->
 <form>
@@ -580,39 +595,39 @@ A flexible card component with header, content, and footer sections. Supports ic
 
 ```html
 <!-- Basic card -->
-<echo-card title="Card Title">
+<echo-card card-title="Card Title">
   <p>Card content goes here.</p>
 </echo-card>
 
 <!-- Card with icon -->
-<echo-card title="Card with Icon" icon="star">
+<echo-card card-title="Card with Icon" icon="star">
   <p>This card has an icon in the header.</p>
 </echo-card>
 
 <!-- Closable card -->
-<echo-card title="Closable Card" closable>
+<echo-card card-title="Closable Card" closable>
   <p>This card can be closed by clicking the X button.</p>
 </echo-card>
 
 <!-- Card variants -->
-<echo-card variant="default" title="Default Card">Content</echo-card>
-<echo-card variant="outlined" title="Outlined Card">Content</echo-card>
-<echo-card variant="elevated" title="Elevated Card">Content</echo-card>
-<echo-card variant="flat" title="Flat Card">Content</echo-card>
+<echo-card variant="default" card-title="Default Card">Content</echo-card>
+<echo-card variant="outlined" card-title="Outlined Card">Content</echo-card>
+<echo-card variant="elevated" card-title="Elevated Card">Content</echo-card>
+<echo-card variant="flat" card-title="Flat Card">Content</echo-card>
 
 <!-- Card sizes -->
-<echo-card size="small" title="Small Card">Content</echo-card>
-<echo-card size="medium" title="Medium Card">Content</echo-card>
-<echo-card size="large" title="Large Card">Content</echo-card>
+<echo-card size="small" card-title="Small Card">Content</echo-card>
+<echo-card size="medium" card-title="Medium Card">Content</echo-card>
+<echo-card size="large" card-title="Large Card">Content</echo-card>
 
 <!-- Card with context colors -->
-<echo-card context="primary" title="Primary Card">Content</echo-card>
-<echo-card context="success" title="Success Card">Content</echo-card>
-<echo-card context="warning" title="Warning Card">Content</echo-card>
-<echo-card context="danger" title="Danger Card">Content</echo-card>
+<echo-card context="primary" card-title="Primary Card">Content</echo-card>
+<echo-card context="success" card-title="Success Card">Content</echo-card>
+<echo-card context="warning" card-title="Warning Card">Content</echo-card>
+<echo-card context="danger" card-title="Danger Card">Content</echo-card>
 
 <!-- Card with header actions -->
-<echo-card title="Card with Actions" closable>
+<echo-card card-title="Card with Actions" closable>
   <div slot="header-actions">
     <echo-button variant="ghost" size="small" icon="edit">Edit</echo-button>
     <echo-button variant="ghost" size="small" icon="more-horizontal"></echo-button>
@@ -621,7 +636,7 @@ A flexible card component with header, content, and footer sections. Supports ic
 </echo-card>
 
 <!-- Card with footer -->
-<echo-card title="Card with Footer">
+<echo-card card-title="Card with Footer">
   <p>This card has a footer with buttons.</p>
   <div slot="footer">
     <echo-button variant="outline" size="small">Cancel</echo-button>
@@ -630,7 +645,7 @@ A flexible card component with header, content, and footer sections. Supports ic
 </echo-card>
 
 <!-- Complex card example -->
-<echo-card variant="elevated" context="primary" title="Dashboard" icon="bar-chart" size="large" closable>
+<echo-card variant="elevated" context="primary" card-title="Dashboard" icon="bar-chart" size="large" closable>
   <div slot="header-actions">
     <echo-button variant="ghost" size="small" icon="refresh">Refresh</echo-button>
     <echo-button variant="ghost" size="small" icon="settings">Settings</echo-button>
@@ -651,7 +666,7 @@ A flexible card component with header, content, and footer sections. Supports ic
 </echo-card>
 
 <!-- Disabled card -->
-<echo-card title="Disabled Card" disabled>
+<echo-card card-title="Disabled Card" disabled>
   <p>This card is disabled.</p>
 </echo-card>
 ```

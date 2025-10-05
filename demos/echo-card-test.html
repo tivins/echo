@@ -37,15 +37,15 @@
     <div class="test-section">
         <h2>Basic Cards</h2>
         <div class="cards-container">
-            <echo-card title="Simple Card">
+            <echo-card card-title="Simple Card">
                 <p>This is a basic card with just a title and content.</p>
             </echo-card>
             
-            <echo-card title="Card with Icon" icon="star">
+            <echo-card card-title="Card with Icon" icon="star">
                 <p>This card has an icon in the header.</p>
             </echo-card>
             
-            <echo-card title="Closable Card" closable>
+            <echo-card card-title="Closable Card" closable>
                 <p>This card can be closed by clicking the X button.</p>
             </echo-card>
         </div>
@@ -54,19 +54,19 @@
     <div class="test-section">
         <h2>Card Variants</h2>
         <div class="cards-container">
-            <echo-card variant="default" title="Default Card">
+            <echo-card variant="default" card-title="Default Card">
                 <p>Default variant with shadow and border.</p>
             </echo-card>
             
-            <echo-card variant="outlined" title="Outlined Card">
+            <echo-card variant="outlined" card-title="Outlined Card">
                 <p>Outlined variant with colored border.</p>
             </echo-card>
             
-            <echo-card variant="elevated" title="Elevated Card">
+            <echo-card variant="elevated" card-title="Elevated Card">
                 <p>Elevated variant with prominent shadow.</p>
             </echo-card>
             
-            <echo-card variant="flat" title="Flat Card">
+            <echo-card variant="flat" card-title="Flat Card">
                 <p>Flat variant with colored background.</p>
             </echo-card>
         </div>
@@ -75,7 +75,7 @@
     <div class="test-section">
         <h2>Card with Footer</h2>
         <div class="cards-container">
-            <echo-card title="Card with Footer" closable>
+            <echo-card card-title="Card with Footer" closable>
                 <p>This card has a footer with action buttons.</p>
                 <div slot="footer">
                     <echo-button variant="outline" size="small">Cancel</echo-button>
@@ -83,7 +83,7 @@
                 </div>
             </echo-card>
             
-            <echo-card title="Card with Header Actions" icon="settings" closable>
+            <echo-card card-title="Card with Header Actions" icon="settings" closable>
                 <div slot="header-actions">
                     <echo-button variant="ghost" size="small" icon="edit">Edit</echo-button>
                     <echo-button variant="ghost" size="small" icon="more-horizontal"></echo-button>
@@ -99,7 +99,7 @@
     <div class="test-section">
         <h2>Event Handling Test</h2>
         <div class="cards-container">
-            <echo-card title="Event Test Card" closable id="event-test-card">
+            <echo-card card-title="Event Test Card" closable id="event-test-card">
                 <p>Close this card to test the event handling.</p>
                 <div slot="footer">
                     <echo-button variant="default" size="small" id="show-card-btn">Show Card</echo-button>

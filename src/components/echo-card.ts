@@ -22,8 +22,8 @@ export class EchoCard extends LitElement {
   @property({ type: String })
   context: EchoContext = 'primary';
 
-  @property({ type: String })
-  title = '';
+  @property({ type: String, attribute: 'card-title' })
+  cardTitle = '';
 
   @property({ type: String })
   icon: IconName | null = null;
@@ -301,7 +301,7 @@ export class EchoCard extends LitElement {
       .filter(Boolean)
       .join(' ');
 
-    const hasHeader = !!this.title || !!this.icon || this.closable;
+    const hasHeader = !!this.cardTitle || !!this.icon || this.closable;
 
     return html`
       <div class="${classes}" ?disabled=${this.disabled}>
@@ -343,8 +343,8 @@ export class EchoCard extends LitElement {
       <div class="card__header">
         <div class="card__header-content">
           ${iconElement}
-          ${this.title
-            ? html`<h3 class="${titleClasses}">${this.title}</h3>`
+          ${this.cardTitle
+            ? html`<h3 class="${titleClasses}">${this.cardTitle}</h3>`
             : ''}
           <slot name="header-actions"></slot>
         </div>

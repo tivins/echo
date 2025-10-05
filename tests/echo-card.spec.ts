@@ -51,7 +51,7 @@ test.describe('EchoCard Component', () => {
   });
 
   test('should render card with title', async ({ page }) => {
-    const cardWithTitle = page.locator('echo-card[title="Test Card"]').first();
+    const cardWithTitle = page.locator('echo-card[card-title="Test Card"]').first();
     await expect(cardWithTitle).toBeVisible();
     await expect(cardWithTitle.locator('.card__title')).toHaveText('Test Card');
   });
@@ -63,7 +63,7 @@ test.describe('EchoCard Component', () => {
   });
 
   test('should render card with title and icon', async ({ page }) => {
-    const cardWithBoth = page.locator('echo-card[title="Card with Icon"][icon="heart"]').first();
+    const cardWithBoth = page.locator('echo-card[card-title="Card with Icon"][icon="heart"]').first();
     await expect(cardWithBoth).toBeVisible();
     await expect(cardWithBoth.locator('.card__title')).toHaveText('Card with Icon');
     await expect(cardWithBoth.locator('echo-icon[name="heart"]')).toBeVisible();
@@ -194,7 +194,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card without footer content
-    const cardWithoutFooter = page.locator('echo-card[title="Card without footer"]').first();
+    const cardWithoutFooter = page.locator('echo-card[card-title="Card without footer"]').first();
     await expect(cardWithoutFooter).toBeVisible();
     
     // Footer should not be visible
@@ -208,7 +208,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with footer content
-    const cardWithFooter = page.locator('echo-card[title="Card with footer"]').first();
+    const cardWithFooter = page.locator('echo-card[card-title="Card with footer"]').first();
     await expect(cardWithFooter).toBeVisible();
     
     // Footer should be visible
@@ -225,7 +225,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with whitespace-only footer
-    const cardWithWhitespaceFooter = page.locator('echo-card[title="Card with whitespace footer"]').first();
+    const cardWithWhitespaceFooter = page.locator('echo-card[card-title="Card with whitespace footer"]').first();
     await expect(cardWithWhitespaceFooter).toBeVisible();
     
     // Footer should not be visible
@@ -239,7 +239,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with text-only footer
-    const cardWithTextFooter = page.locator('echo-card[title="Card with text footer"]').first();
+    const cardWithTextFooter = page.locator('echo-card[card-title="Card with text footer"]').first();
     await expect(cardWithTextFooter).toBeVisible();
     
     // Footer should be visible
@@ -256,7 +256,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card without main content
-    const cardWithoutContent = page.locator('echo-card[title="Card without content"]').first();
+    const cardWithoutContent = page.locator('echo-card[card-title="Card without content"]').first();
     await expect(cardWithoutContent).toBeVisible();
     
     // Content should not be visible
@@ -270,7 +270,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with main content
-    const cardWithContent = page.locator('echo-card[title="Card with content"]').first();
+    const cardWithContent = page.locator('echo-card[card-title="Card with content"]').first();
     await expect(cardWithContent).toBeVisible();
     
     // Content should be visible
@@ -287,7 +287,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with whitespace-only content
-    const cardWithWhitespaceContent = page.locator('echo-card[title="Card with whitespace content"]').first();
+    const cardWithWhitespaceContent = page.locator('echo-card[card-title="Card with whitespace content"]').first();
     await expect(cardWithWhitespaceContent).toBeVisible();
     
     // Content should not be visible
@@ -301,7 +301,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with text-only content
-    const cardWithTextContent = page.locator('echo-card[title="Card with text content"]').first();
+    const cardWithTextContent = page.locator('echo-card[card-title="Card with text content"]').first();
     await expect(cardWithTextContent).toBeVisible();
     
     // Content should be visible
@@ -318,7 +318,7 @@ test.describe('EchoCard Component', () => {
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with header only
-    const headerOnlyCard = page.locator('echo-card[title="Header only card"]').first();
+    const headerOnlyCard = page.locator('echo-card[card-title="Header only card"]').first();
     await expect(headerOnlyCard).toBeVisible();
     
     // Header should be visible
