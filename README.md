@@ -5,7 +5,7 @@ A modern web component library built with Lit, TypeScript, and Vite. Provides fr
 ## Installation
 
 ```bash
-npm install design-toolkit
+npm install echo
 ```
 
 ## Quick Start
@@ -72,6 +72,14 @@ npm install design-toolkit
 </script>
 <echo-button variant="primary">Click me!</echo-button>
 ```
+
+## Live Demo
+
+You can see the Echo Toolkit components in action on our GitHub Pages demo:
+
+🔗 **[Live Demo](https://tivins.github.io/echo/demo-button.html)**
+
+The demo showcases all available components with interactive controls to test different variants, sizes, contexts, and configurations.
 
 ## Components
 

@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.8] - 2025-01-05
+
+### Fixed
+- **GitHub Pages Demo**: Fixed import error in demo-button.js that prevented the demo from loading on GitHub Pages
+  - **Import Resolution**: Replaced relative imports from `../src/types/index.js` with direct constant definitions
+  - **GitHub Pages Compatibility**: Demo now works correctly when deployed via GitHub Pages
+  - **Live Demo**: Added link to live demo in README for easy access
+
+### Documentation
+- **Live Demo Section**: Added dedicated section in README with link to GitHub Pages demo
+- **GitHub Pages Support**: Documented GitHub Pages deployment and live demo availability
+
 ## [1.8.7] - 2025-01-04
 
 ### Enhanced

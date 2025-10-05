@@ -5,7 +5,7 @@ import {
   echoButtonVariantNames,
   echoSizeNames,
   echoContextNames,
-} from '../src/types/index.js';
+} from './design-toolkit.esm.bundled.js';
 
 class ButtonDemo {
   constructor() {
