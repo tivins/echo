@@ -18,14 +18,14 @@ class ButtonDemo {
 
   getControls() {
     return {
-      variant: document.querySelector('select[name="variant"]'),
-      context: document.querySelector('select[name="context"]'),
-      size: document.querySelector('select[name="size"]'),
+      variant: document.querySelector('echo-select[name="variant"]'),
+      context: document.querySelector('echo-select[name="context"]'),
+      size: document.querySelector('echo-select[name="size"]'),
       disabled: document.querySelector('input[name="disabled"]'),
-      icon: document.querySelector('select[name="icon"]'),
-      iconPosition: document.querySelector('select[name="icon-position"]'),
-      iconSize: document.querySelector('select[name="icon-size"]'),
-      iconVariant: document.querySelector('select[name="icon-variant"]'),
+      icon: document.querySelector('echo-select[name="icon"]'),
+      iconPosition: document.querySelector('echo-select[name="icon-position"]'),
+      iconSize: document.querySelector('echo-select[name="icon-size"]'),
+      iconVariant: document.querySelector('echo-select[name="icon-variant"]'),
       iconStrokeWidth: document.querySelector('echo-input[name="icon-stroke-width"]'),
       text: document.querySelector('echo-input[name="text"]'), 
     };
@@ -50,49 +50,47 @@ class ButtonDemo {
 
   populateVariantSelector() {
     // Clear existing options except the first empty one
-    this.controls.variant.innerHTML = '<option></option>';
+    this.controls.variant.clearOptions();
+    this.controls.variant.addOption({ value: '', label: '' });
     
     echoButtonVariantNames.forEach(variant => {
+      /*
       const option = document.createElement('option');
       option.value = variant;
       option.textContent = this.capitalizeFirst(variant);
       this.controls.variant.appendChild(option);
+      */
+      this.controls.variant.addOption({ value: variant, label: this.capitalizeFirst(variant) });
     });
   }
 
   populateContextSelector() {
     // Clear existing options except the first empty one
-    this.controls.context.innerHTML = '<option></option>';
+    this.controls.context.clearOptions();
+    this.controls.context.addOption({ value: '', label: '' });
     
     echoContextNames.forEach(context => {
-      const option = document.createElement('option');
-      option.value = context;
-      option.textContent = this.capitalizeFirst(context);
-      this.controls.context.appendChild(option);
+      this.controls.context.addOption({ value: context, label: this.capitalizeFirst(context) });
     });
   }
 
   populateSizeSelector() {
     // Clear existing options except the first empty one
-    this.controls.size.innerHTML = '<option></option>';
+    this.controls.size.clearOptions();
+    this.controls.size.addOption({ value: '', label: '' });
     
     echoSizeNames.forEach(size => {
-      const option = document.createElement('option');
-      option.value = size;
-      option.textContent = this.getSizeDisplayName(size);
-      this.controls.size.appendChild(option);
+      this.controls.size.addOption({ value: size, label: this.getSizeDisplayName(size) });
     });
   }
 
   populateIconSelector() {
     // Clear existing options except the first empty one
-    this.controls.icon.innerHTML = '<option></option>';
+    this.controls.icon.clearOptions();
+    this.controls.icon.addOption({ value: '', label: '' });
     
     iconNames.forEach(iconName => {
-      const option = document.createElement('option');
-      option.value = iconName;
-      option.textContent = this.getIconDisplayName(iconName);
-      this.controls.icon.appendChild(option);
+      this.controls.icon.addOption({ value: iconName, label: this.getIconDisplayName(iconName) });
     });
   }
 
@@ -100,49 +98,43 @@ class ButtonDemo {
     const positions = ['left', 'right'];
     
     // Clear existing options except the first empty one
-    this.controls.iconPosition.innerHTML = '<option></option>';
+    this.controls.iconPosition.clearOptions();
+    this.controls.iconPosition.addOption({ value: '', label: '' });
     
     positions.forEach(position => {
-      const option = document.createElement('option');
-      option.value = position;
-      option.textContent = this.capitalizeFirst(position);
-      this.controls.iconPosition.appendChild(option);
+      this.controls.iconPosition.addOption({ value: position, label: this.capitalizeFirst(position) });
     });
   }
 
   populateIconSizeSelector() {
     // Clear existing options except the first empty one
-    this.controls.iconSize.innerHTML = '<option></option>';
+    this.controls.iconSize.clearOptions();
+    this.controls.iconSize.addOption({ value: '', label: '' });
     
     echoIconSizeNames.forEach(size => {
-      const option = document.createElement('option');
-      option.value = size;
-      option.textContent = this.capitalizeFirst(size);
-      this.controls.iconSize.appendChild(option);
+      this.controls.iconSize.addOption({ value: size, label: this.capitalizeFirst(size) });
     });
   }
 
   populateIconVariantSelector() {
     // Clear existing options except the first empty one
-    this.controls.iconVariant.innerHTML = '<option></option>';
+    this.controls.iconVariant.clearOptions();
+    this.controls.iconVariant.addOption({ value: '', label: '' });
     
     echoIconVariantNames.forEach(variant => {
-      const option = document.createElement('option');
-      option.value = variant;
-      option.textContent = this.capitalizeFirst(variant);
-      this.controls.iconVariant.appendChild(option);
+      this.controls.iconVariant.addOption({ value: variant, label: this.capitalizeFirst(variant) });
     });
   }
 
   setupEventListeners() {
-    this.controls.variant.addEventListener('change', () => this.handleVariantChange());
-    this.controls.context.addEventListener('change', () => this.handleContextChange());
-    this.controls.size.addEventListener('change', () => this.handleSizeChange());
+    this.controls.variant.addEventListener('echo-select-change', () => this.handleVariantChange());
+    this.controls.context.addEventListener('echo-select-change', () => this.handleContextChange());
+    this.controls.size.addEventListener('echo-select-change', () => this.handleSizeChange());
     this.controls.disabled.addEventListener('change', () => this.handleDisabledChange());
-    this.controls.icon.addEventListener('change', () => this.handleIconChange());
-    this.controls.iconPosition.addEventListener('change', () => this.handleIconPositionChange());
-    this.controls.iconSize.addEventListener('change', () => this.handleIconSizeChange());
-    this.controls.iconVariant.addEventListener('change', () => this.handleIconVariantChange());
+    this.controls.icon.addEventListener('echo-select-change', () => this.handleIconChange());
+    this.controls.iconPosition.addEventListener('echo-select-change', () => this.handleIconPositionChange());
+    this.controls.iconSize.addEventListener('echo-select-change', () => this.handleIconSizeChange());
+    this.controls.iconVariant.addEventListener('echo-select-change', () => this.handleIconVariantChange());
     this.controls.iconStrokeWidth.addEventListener('echo-input-change', () => this.handleIconStrokeWidthChange());
     this.controls.text.addEventListener('echo-input-change', () => this.handleTextChange());
   }

@@ -5,6 +5,7 @@ import './components/echo-separator.js';
 import './components/echo-card.js';
 import './components/echo-layout.js';
 import './components/echo-input.js';
+import './components/echo-select.js';
 
 // Export all components
 export { EchoButton } from './components/echo-button.js';
@@ -13,6 +14,7 @@ export { EchoSeparator } from './components/echo-separator.js';
 export { EchoCard } from './components/echo-card.js';
 export { EchoLayout } from './components/echo-layout.js';
 export { EchoInput } from './components/echo-input.js';
+export { EchoSelect } from './components/echo-select.js';
 
 // Export types
 export type {
@@ -43,6 +45,9 @@ export type {
   EchoInputVariant,
   EchoInputSize,
   EchoInputType,
+  EchoSelectVariant,
+  EchoSelectSize,
+  EchoSelectOption,
 } from './types/index.js';
 
 // Export type value arrays

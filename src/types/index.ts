@@ -108,6 +108,16 @@ export type EchoInputType =
   | 'month'
   | 'week';
 
+// Echo Select types
+export type EchoSelectVariant = 'default' | 'outlined' | 'filled' | 'underlined';
+export type EchoSelectSize = 'small' | 'medium' | 'large';
+export type EchoSelectOption = {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  selected?: boolean;
+};
+
 // Re-export icon types
 export type {
   EchoIconSize,

@@ -5,6 +5,82 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2025-01-05
+
+### Added
+- **Echo Select Component**: Added new `echo-select` web component following the same design patterns as `echo-input`
+  - **Variants**: Support for default, outlined, filled, and underlined variants
+  - **Sizes**: Small, medium, and large size options
+  - **Contexts**: Primary, secondary, success, danger, warning, and info contexts
+  - **Icons**: Left and right icon positioning with customizable icon size and variant
+  - **States**: Support for disabled, required, and multiple selection states
+  - **Accessibility**: Proper label association and ARIA attributes
+  - **Events**: Custom events for change, focus, and blur interactions
+  - **API**: Methods for focus, blur, validity checking, and option management
+
+### Technical
+- **Types**: Added EchoSelectVariant, EchoSelectSize, and EchoSelectOption types
+- **Component**: Created src/components/echo-select.ts with comprehensive styling and functionality
+- **Exports**: Updated src/index.ts to export EchoSelect component and related types
+- **Tests**: Created comprehensive test suite in tests/echo-select.spec.ts
+- **Demo**: Created interactive demo page (demos/echo-select-demo.html) showcasing all features
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic select usage -->
+<echo-select 
+    label="Choose a country"
+    placeholder="Select a country"
+    description="Please select your country of residence">
+</echo-select>
+
+<!-- With variants and contexts -->
+<echo-select 
+    variant="outlined"
+    context="success"
+    size="large"
+    label="Success Select"
+    placeholder="Choose an option">
+</echo-select>
+
+<!-- With icons -->
+<echo-select 
+    icon="mail"
+    icon-position="left"
+    icon-size="medium"
+    icon-variant="filled"
+    label="Email Provider"
+    placeholder="Choose email provider">
+</echo-select>
+
+<!-- Multiple selection -->
+<echo-select 
+    multiple
+    required
+    label="Select Multiple Items"
+    placeholder="Choose multiple options">
+</echo-select>
+```
+
+### JavaScript API
+```javascript
+const select = document.querySelector('echo-select');
+
+// Event handling
+select.addEventListener('echo-select-change', (event) => {
+    console.log('Value changed:', event.detail.value);
+    console.log('Selected index:', event.detail.selectedIndex);
+});
+
+// Public methods
+select.focus();
+select.blur();
+select.addOption({ value: 'new', label: 'New Option' });
+select.removeOption('old');
+select.clearOptions();
+```
+
 ## [1.10.4] - 2025-01-05
 
 ### Added

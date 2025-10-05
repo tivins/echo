@@ -377,6 +377,139 @@ form.addEventListener('submit', (event) => {
 });
 ```
 
+### EchoSelect
+
+A comprehensive select component with label support, icon integration, validation, and multiple visual variants. Perfect for dropdown selections and form scenarios.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `variant` | `'default' \| 'outlined' \| 'filled' \| 'underlined'` | `'default'` | Visual style variant |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Select size |
+| `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Context color theme |
+| `label` | `string` | `''` | Select label text |
+| `placeholder` | `string` | `''` | Placeholder text |
+| `value` | `string` | `''` | Selected value |
+| `description` | `string` | `''` | Help text below select |
+| `icon` | `IconName \| null` | `null` | Icon name for select field |
+| `iconPosition` | `'left' \| 'right'` | `'left'` | Icon position inside select |
+| `iconSize` | `EchoIconSize \| null` | `null` | Icon size override |
+| `iconVariant` | `EchoIconVariant \| null` | `null` | Icon variant override |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `required` | `boolean` | `false` | Required field |
+| `name` | `string` | `''` | Form field name |
+| `id` | `string` | `''` | Select ID |
+| `multiple` | `boolean` | `false` | Multiple selection |
+| `options` | `EchoSelectOption[]` | `[]` | Array of select options |
+
+#### EchoSelectOption Type
+
+```typescript
+interface EchoSelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+  selected?: boolean;
+}
+```
+
+#### Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `echo-select-change` | `{ value: string, selectedIndex: number, originalEvent: Event }` | Fired when select value changes |
+| `echo-select-focus` | `{ originalEvent: Event }` | Fired when select receives focus |
+| `echo-select-blur` | `{ originalEvent: Event }` | Fired when select loses focus |
+
+#### Methods
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `focus()` | None | Focus the select field |
+| `blur()` | None | Blur the select field |
+| `checkValidity()` | None | Check if select is valid |
+| `reportValidity()` | None | Report validation status to user |
+| `addOption(option: EchoSelectOption)` | `option` | Add a new option to the select |
+| `removeOption(value: string)` | `value` | Remove an option by value |
+| `clearOptions()` | None | Remove all options |
+
+#### Examples
+
+```html
+<!-- Basic select with label -->
+<echo-select label="Country" placeholder="Select a country"></echo-select>
+
+<!-- Select with icon and description -->
+<echo-select 
+  label="Email Provider" 
+  icon="mail" 
+  icon-position="left"
+  placeholder="Choose email provider"
+  description="Select your preferred email service">
+</echo-select>
+
+<!-- Select with right-positioned icon -->
+<echo-select 
+  label="Language" 
+  icon="globe" 
+  icon-position="right"
+  placeholder="Select language">
+</echo-select>
+
+<!-- Select with validation -->
+<echo-select 
+  label="Category" 
+  required
+  placeholder="Choose a category"
+  description="This field is required">
+</echo-select>
+
+<!-- Multiple selection -->
+<echo-select 
+  label="Skills" 
+  multiple
+  placeholder="Select multiple skills"
+  description="Choose all that apply">
+</echo-select>
+
+<!-- Different variants -->
+<echo-select variant="outlined" label="Outlined Select"></echo-select>
+<echo-select variant="filled" label="Filled Select"></echo-select>
+<echo-select variant="underlined" label="Underlined Select"></echo-select>
+
+<!-- Different contexts -->
+<echo-select context="success" label="Success Select"></echo-select>
+<echo-select context="danger" label="Danger Select"></echo-select>
+<echo-select context="warning" label="Warning Select"></echo-select>
+```
+
+#### JavaScript API
+
+```javascript
+const select = document.querySelector('echo-select');
+
+// Set options programmatically
+select.options = [
+  { value: 'option1', label: 'Option 1' },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3', disabled: true }
+];
+
+// Event handling
+select.addEventListener('echo-select-change', (event) => {
+  console.log('Value changed:', event.detail.value);
+  console.log('Selected index:', event.detail.selectedIndex);
+});
+
+// Public methods
+select.focus();
+select.blur();
+select.addOption({ value: 'new', label: 'New Option' });
+select.removeOption('old');
+select.clearOptions();
+```
+
 ### EchoIcon
 
 A clean, modern icon component with 60 carefully selected linear SVG icons inspired by Lucide design principles. Features consistent styling, multiple sizes, variants, and custom colors.

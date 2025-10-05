@@ -58,42 +58,39 @@
             
                 <echo-input type="text" name="text" id="text" 
                     icon="text"
-                    value="Button" label="Text" size="small" variant="filled"
+                    value="Button" label="Text" size="small"
                     description="The text to display on the button"></echo-input>
             
+                <echo-select name="variant" 
+                    id="variant" label="Variant" size="small"></echo-select>
             
-                <label>
-                    <div>Variant</div>
-                    <select name="variant"></select>
-                </label>
-                <label>
-                    <div>Context</div>
-                    <select name="context"></select>
-                </label>
-                <label>
-                    <div>Size</div>
-                    <select name="size"></select>
-                </label>
+                <echo-select name="context" 
+                    id="context" label="Context" size="small"></echo-select>
+            
+                <echo-select name="size" 
+                    id="size" label="Size" size="small"></echo-select>
+
                 <label>
                     <div>Disabled</div>
                     <input type="checkbox" name="disabled" id="disabled">
                 </label>
-                <label>
-                    <div>Icon</div>
-                    <select name="icon"></select>
-                </label>
-                <label>
-                    <div>Icon Position</div>
-                    <select name="icon-position"></select>
-                </label>
-                <label>
-                    <div>Icon Size</div>
-                    <select name="icon-size"></select>
-                </label>
-                <label>
-                    <div>Icon Variant</div>
-                    <select name="icon-variant"></select>
-                </label>
+                </echo-layout>
+                
+                <echo-separator margin="large" variant="dotted"><echo-icon name="wrench" size="small"></echo-icon> Icon</echo-separator>
+            <echo-layout gap="medium" justify="center" wrap="wrap">
+
+                <echo-select name="icon" 
+                    id="icon" label="Icon" size="small"></echo-select>
+        
+                <echo-select name="icon-position" 
+                    id="icon-position" label="Icon Position" size="small"></echo-select>
+                
+                <echo-select name="icon-size" 
+                    id="icon-size" label="Icon Size" size="small"></echo-select>
+
+                <echo-select name="icon-variant" 
+                    id="icon-variant" label="Icon Variant" size="small"></echo-select>
+
                 <echo-input 
                     size="small" type="number" step="0.1" min="0" max="10" value="1.5" 
                     name="icon-stroke-width" id="icon-stroke-width" label="Icon Stroke Width"
