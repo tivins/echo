@@ -229,6 +229,10 @@ export class EchoCard extends LitElement {
         background-color: rgba(0, 0, 0, 0.01);
       }
 
+      .card__footer[hidden] {
+        display: none;
+      }
+
       .card__footer--left {
         justify-content: flex-start;
       }
@@ -299,7 +303,7 @@ export class EchoCard extends LitElement {
       <div class="${classes}" ?disabled=${this.disabled}>
         ${hasHeader ? this._renderHeader() : ''}
         ${this._renderContent(hasHeader)}
-        ${this._hasFooterContent ? this._renderFooter() : ''}
+        ${this._renderFooter()}
       </div>
     `;
   }
@@ -367,7 +371,7 @@ export class EchoCard extends LitElement {
 
   private _renderFooter() {
     return html`
-      <div class="card__footer">
+      <div class="card__footer" ?hidden=${!this._hasFooterContent}>
         <slot name="footer" @slotchange=${this._handleFooterSlotChange}></slot>
       </div>
     `;

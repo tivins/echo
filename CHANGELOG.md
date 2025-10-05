@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.3] - 2025-01-04
+
+### Fixed
+- **EchoCard Footer Display Issue**: Fixed critical bug where footer content was never displayed
+  - **Root Cause**: Footer rendering was conditional based on `_hasFooterContent` state, but the footer slot was never rendered to allow content detection
+  - **Solution**: Footer is now always rendered but hidden with CSS when empty, allowing proper slot content detection
+  - **Impact**: Footer content now displays correctly in all scenarios (with content, empty, whitespace-only)
+  - **Technical**: Used `hidden` attribute with CSS `display: none` for clean empty state handling
+
 ## [1.8.2] - 2025-01-04
 
 ### Fixed
