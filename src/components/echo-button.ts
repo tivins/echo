@@ -210,6 +210,46 @@ export class EchoButton extends LitElement {
       })
     );
   }
+
+  /**
+   * Handle attribute changes to reset properties to default values when attributes are removed
+   */
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+    super.attributeChangedCallback(name, oldValue, newValue);
+    
+    // If attribute is removed (newValue is null), reset property to default value
+    if (newValue === null) {
+      switch (name) {
+        case 'variant':
+          this.variant = 'default';
+          break;
+        case 'size':
+          this.size = 'medium';
+          break;
+        case 'context':
+          this.context = 'primary';
+          break;
+        case 'disabled':
+          this.disabled = false;
+          break;
+        case 'icon':
+          this.icon = null;
+          break;
+        case 'icon-position':
+          this.iconPosition = 'left';
+          break;
+        case 'icon-size':
+          this.iconSize = null;
+          break;
+        case 'icon-variant':
+          this.iconVariant = null;
+          break;
+        case 'icon-stroke-width':
+          this.iconStrokeWidth = null;
+          break;
+      }
+    }
+  }
 }
 
 declare global {

@@ -319,6 +319,44 @@ let EchoButton = class EchoButton extends i$1 {
             composed: true,
         }));
     }
+    /**
+     * Handle attribute changes to reset properties to default values when attributes are removed
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        // If attribute is removed (newValue is null), reset property to default value
+        if (newValue === null) {
+            switch (name) {
+                case 'variant':
+                    this.variant = 'default';
+                    break;
+                case 'size':
+                    this.size = 'medium';
+                    break;
+                case 'context':
+                    this.context = 'primary';
+                    break;
+                case 'disabled':
+                    this.disabled = false;
+                    break;
+                case 'icon':
+                    this.icon = null;
+                    break;
+                case 'icon-position':
+                    this.iconPosition = 'left';
+                    break;
+                case 'icon-size':
+                    this.iconSize = null;
+                    break;
+                case 'icon-variant':
+                    this.iconVariant = null;
+                    break;
+                case 'icon-stroke-width':
+                    this.iconStrokeWidth = null;
+                    break;
+            }
+        }
+    }
 };
 EchoButton.styles = [
     contextColors,
@@ -2314,5 +2352,28 @@ const iconNames = [
     'shield-x',
 ];
 
-export { EchoButton, EchoCard, EchoIcon, EchoLayout, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoIconSizeNames, echoIconVariantNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
+// Export arrays of values for runtime use
+const echoButtonVariantNames = [
+    'default',
+    'link',
+    'outline',
+    'ghost',
+    'soft',
+];
+const echoSizeNames = [
+    'xs',
+    'small',
+    'medium',
+    'large',
+];
+const echoContextNames = [
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+];
+
+export { EchoButton, EchoCard, EchoIcon, EchoLayout, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
 //# sourceMappingURL=design-toolkit.esm.bundled.js.map

@@ -13,6 +13,31 @@ export type EchoContext =
   | 'primary'
   | 'secondary';
 
+// Export arrays of values for runtime use
+export const echoButtonVariantNames: EchoButtonVariant[] = [
+  'default',
+  'link',
+  'outline',
+  'ghost',
+  'soft',
+];
+
+export const echoSizeNames: EchoSize[] = [
+  'xs',
+  'small',
+  'medium',
+  'large',
+];
+
+export const echoContextNames: EchoContext[] = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+];
+
 // Echo Separator types
 export type EchoSeparatorVariant =
   | 'solid'

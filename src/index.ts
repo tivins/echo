@@ -15,25 +15,21 @@ export { EchoLayout } from './components/echo-layout.js';
 // Export types
 export type {
   EchoButtonVariant,
+  EchoSize,
   EchoContext,
   ContextColorName,
   ComponentSizeName,
-} from './types/index.js';
-export type {
   EchoIconSize,
   EchoIconVariant,
   IconName,
   IconSizeName,
   IconVariantName,
-} from './types/index.js';
-export type {
   EchoSeparatorVariant,
   EchoSeparatorMargin,
   EchoSeparatorThickness,
   EchoSeparatorOrientation,
-} from './types/index.js';
-export type { EchoCardVariant, EchoCardSize } from './types/index.js';
-export type {
+  EchoCardVariant,
+  EchoCardSize,
   EchoLayoutDisplay,
   EchoLayoutDirection,
   EchoLayoutWrap,
@@ -43,11 +39,17 @@ export type {
   EchoLayoutColumns,
   EchoLayoutRows,
 } from './types/index.js';
-export { contextColorNames, componentSizeNames } from './types/index.js';
+
+// Export type value arrays
 export {
+  contextColorNames,
+  componentSizeNames,
   echoIconSizeNames,
   echoIconVariantNames,
   iconNames,
+  echoButtonVariantNames,
+  echoSizeNames,
+  echoContextNames,
 } from './types/index.js';
 
 // Export shared styles

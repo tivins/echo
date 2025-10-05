@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="module" src="./design-toolkit.esm.bundled.js"></script>
   <title>Echo Toolkit</title>
-
+  <style>
+    #html-code {
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        margin-top: 10px;
+        overflow-x: auto;
+    }
+  </style>
 </head>
 <body>
     <div style="max-width: 1200px; margin: 0 auto;">
@@ -54,13 +62,13 @@
             </echo-layout>    
             
             <echo-separator margin="large"><echo-icon name="code" size="small"></echo-icon> Code</echo-separator>
-            <pre id="html-code" style="text-align: center;">&lt;echo-button&gt;Button&lt;/echo-button&gt;</pre>
+            <div id="html-code">&lt;echo-button&gt;Button&lt;/echo-button&gt;</div>
             
         </div>
         </echo-card>
 
 
-        <script type="module" src="demo-button.ts"></script>
+        <script type="module" src="demo-button.js"></script>
     </div>
 </body>
 </html>

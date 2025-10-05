@@ -5,6 +5,84 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.6] - 2025-01-04
+
+### Fixed
+- **EchoButton Attribute Removal Issue**: Fixed critical issue where properties were not reset to default values when attributes were removed using `removeAttribute()`
+  - **Root Cause**: Lit components don't automatically reset properties to default values when attributes are removed
+  - **Solution**: Added `attributeChangedCallback()` method to handle attribute removal and reset properties to their default values
+  - **Impact**: Properties now correctly reset to defaults when attributes are removed (e.g., `obj.removeAttribute("size")` resets `size` to "medium")
+  - **Technical**: Implemented proper attribute change detection with null value checking for attribute removal
+
+### Technical
+- **Attribute Change Handling**: Added comprehensive `attributeChangedCallback()` method to EchoButton component
+- **Default Value Reset**: All properties (variant, size, context, disabled, icon, iconPosition, iconSize, iconVariant, iconStrokeWidth) now reset to defaults when attributes are removed
+- **Test Coverage**: Created comprehensive test page (demos/attribute-removal-test.html) to validate attribute removal behavior
+- **Documentation**: Updated README.md with attribute removal examples and behavior explanation
+
+### Examples
+```javascript
+// Before: Property kept previous value after attribute removal
+const button = document.querySelector('echo-button');
+button.setAttribute('size', 'large');
+button.removeAttribute('size');
+console.log(button.size); // Still "large" (incorrect)
+
+// After: Property resets to default value
+const button = document.querySelector('echo-button');
+button.setAttribute('size', 'large');
+button.removeAttribute('size');
+console.log(button.size); // "medium" (correct default)
+```
+
+### Test Page
+- **Interactive Testing**: Created `demos/attribute-removal-test.html` with comprehensive test interface
+- **Real-time Validation**: Live property display and test result tracking
+- **All Properties Covered**: Tests for size, variant, context, disabled, and icon-related properties
+- **Visual Feedback**: Success/failure indicators for each test case
+
+## [1.8.5] - 2025-01-04
+
+### Added
+- **Type Value Arrays**: Added runtime arrays for all TypeScript union types to enable dynamic value access
+  - **EchoButtonVariant**: `echoButtonVariantNames` array with all button variant values
+  - **EchoSize**: `echoSizeNames` array with all component size values  
+  - **EchoContext**: `echoContextNames` array with all context color values
+  - **Integration**: All arrays exported from `src/types/index.ts` and `src/index.ts`
+  - **Usage**: Enables JavaScript applications to dynamically populate selectors and forms
+
+### Changed
+- **Demo Conversion**: Converted `docs/demo-button.ts` to `docs/demo-button.js` for broader compatibility
+  - **TypeScript to JavaScript**: Removed all TypeScript type annotations and interfaces
+  - **Dynamic Type Values**: Updated demo to use exported type arrays instead of hardcoded values
+  - **Runtime Population**: Selectors now automatically populate from component type definitions
+  - **Maintainability**: Demo automatically updates when new variants/sizes/contexts are added
+
+### Technical
+- **Type System Enhancement**: Added runtime arrays alongside TypeScript union types
+- **Export Structure**: Consolidated type exports in `src/index.ts` to prevent duplication
+- **Build Process**: All builds pass without TypeScript errors
+- **Demo Architecture**: JavaScript demo uses same dynamic population pattern as TypeScript version
+- **Backward Compatibility**: Original TypeScript demo preserved alongside JavaScript version
+
+### Examples
+```javascript
+// Import type value arrays
+import { 
+  echoButtonVariantNames, 
+  echoSizeNames, 
+  echoContextNames 
+} from 'design-toolkit';
+
+// Dynamic selector population
+echoButtonVariantNames.forEach(variant => {
+  const option = document.createElement('option');
+  option.value = variant;
+  option.textContent = capitalizeFirst(variant);
+  variantSelector.appendChild(option);
+});
+```
+
 ## [1.8.4] - 2025-01-04
 
 ### Added

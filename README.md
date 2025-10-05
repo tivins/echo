@@ -560,6 +560,42 @@ A customizable button component with multiple variants, sizes, and built-in icon
 | `iconVariant` | `EchoIconVariant \| null` | `null` | Override icon variant (HTML: `icon-variant`) |
 | `iconStrokeWidth` | `number \| null` | `null` | Override icon stroke width (HTML: `icon-stroke-width`) |
 
+#### Attribute Behavior
+
+EchoButton components properly handle attribute removal and reset properties to their default values:
+
+```javascript
+const button = document.querySelector('echo-button');
+
+// Set attribute
+button.setAttribute('size', 'large');
+console.log(button.size); // "large"
+
+// Remove attribute - property resets to default
+button.removeAttribute('size');
+console.log(button.size); // "medium" (default)
+
+// Same behavior for all properties
+button.setAttribute('variant', 'outline');
+button.removeAttribute('variant');
+console.log(button.variant); // "default" (default)
+
+button.setAttribute('context', 'danger');
+button.removeAttribute('context');
+console.log(button.context); // "primary" (default)
+```
+
+**Default Values:**
+- `variant`: `"default"`
+- `size`: `"medium"`
+- `context`: `"primary"`
+- `disabled`: `false`
+- `icon`: `null`
+- `iconPosition`: `"left"`
+- `iconSize`: `null`
+- `iconVariant`: `null`
+- `iconStrokeWidth`: `null`
+
 #### TypeScript Types
 
 The library exports reusable TypeScript types for extending components:
@@ -632,9 +668,9 @@ The development server runs at `http://localhost:3000` and automatically handles
 
 ### Interactive Demos
 
-The `docs/` directory contains interactive TypeScript demos:
+The `docs/` directory contains interactive demos:
 
-- **Button Demo** (`docs/demo-button.html`): Interactive demo showcasing all EchoButton properties with TypeScript implementation that automatically populates selectors from component types.
+- **Button Demo** (`docs/demo-button.html`): Interactive demo showcasing all EchoButton properties with JavaScript implementation that automatically populates selectors from component types using exported type arrays.
 
 ### Scripts
 
@@ -696,8 +732,9 @@ design-toolkit/
 │   ├── separator-demo.html
 │   └── ... (other demo files)
 ├── docs/                # Documentation and interactive demos
-│   ├── demo-button.html # Interactive TypeScript button demo
-│   ├── demo-button.ts   # TypeScript demo implementation
+│   ├── demo-button.html # Interactive JavaScript button demo
+│   ├── demo-button.js   # JavaScript demo implementation
+│   ├── demo-button.ts   # Original TypeScript demo (converted to JS)
 │   ├── index.html       # Main documentation page
 │   └── webserver.js     # Development server
 ├── dist/                # Built library files
