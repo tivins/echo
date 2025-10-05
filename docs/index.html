@@ -23,9 +23,9 @@
     </p>
   </echo-card>
 
-  <echo-card title="Button Component" icon="heart">
+  <echo-card title="Button Component" icon="stop">
     <div slot="header-actions">
-        <echo-button variant="ghost" size="small" icon="shield">Action</echo-button>
+        <echo-button id="demo-button" variant="ghost" size="small" icon="bolt">See it in action</echo-button>
     </div>
     <echo-button>Button</echo-button>
     <echo-button variant="soft">Soft Button</echo-button>
@@ -48,7 +48,7 @@
     <echo-button size="large">Large Button</echo-button>
     <echo-separator thickness="thin"></echo-separator>
     <echo-button disabled>Disabled Button</echo-button>
-    <echo-separator thickness="thin" margin="large">
+    <echo-separator margin="large">
       <echo-icon name="star" size="small"></echo-icon>
       combined
     </echo-separator>
@@ -58,15 +58,8 @@
     <echo-button variant="link" context="info">Info Link</echo-button>
     <echo-button variant="soft" context="success">Success Soft</echo-button>
 
-    <echo-layout display="grid">
-      test
-      <echo-separator orientation="vertical" variant="dotted">
-        <echo-icon name="cut"></echo-icon>
-      </echo-separator>
-      test
-    </echo-layout>
 
-    <echo-separator thickness="thin"></echo-separator>
+    <echo-separator margin="large">Icon</echo-separator>
     <echo-button icon="heart" context="warning" variant="ghost">Heart</echo-button>
     <echo-button icon="ticket" context="success" variant="outline" icon-stroke-width="1">Icon</echo-button>
     <echo-button icon="heart" context="success" icon-position="right" variant="outline">Heart</echo-button>
@@ -76,6 +69,45 @@
     </echo-button>
     <echo-button size="small" icon="heart" context="success" icon-position="right" variant="default">Heart</echo-button>
     <echo-button size="xs" icon="heart" context="success" icon-position="right" variant="link">Heart</echo-button>
+  </echo-card>
+
+  
+  <echo-card title="Form Inputs" icon="heart">
+    <echo-layout direction="column" gap="medium">
+      <echo-input
+      label="Email" 
+      icon="mail"
+      icon-position="right"
+      type="email"
+      placeholder="Enter your email"
+      description="We'll never share your email"
+      context="success"
+      variant="filled"
+      style="margin-bottom: 10px;">  
+    </echo-input>
+    <echo-input 
+                        variant="underlined"
+                        label="Website" 
+                        icon="globe"
+                        type="url"
+                        placeholder="https://yourwebsite.com"
+                        description="Your personal or professional website"
+                        name="website">
+                    </echo-input>
+                    <echo-input 
+                        variant="outlined"
+                        size="large"
+                        label="Username" 
+                        icon="user"
+                        required
+                        placeholder="Choose a username"
+                        description="This will be your public display name"
+                        minlength="3"
+                        maxlength="20"
+                        pattern="[a-zA-Z0-9_]+"
+                        name="username">
+                    </echo-input>
+    </echo-layout>
   </echo-card>
 
   <echo-card title="Separator" icon="more-horizontal">

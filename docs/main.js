@@ -9,3 +9,8 @@ iconLibrary.innerHTML = `<div>${safeNames.length} icons</div><div style="display
             <echo-icon name="${name}" size="large"></echo-icon>
         </div>
         `).join('') + '</div>';
+
+
+document.getElementById('demo-button').addEventListener('click', () => {
+    window.location.href = 'demo-button.html';
+});

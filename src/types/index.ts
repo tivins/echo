@@ -91,6 +91,23 @@ export type EchoLayoutGap = 'none' | 'xs' | 'small' | 'medium' | 'large' | 'xl';
 export type EchoLayoutColumns = number | 'auto' | 'auto-fit' | 'auto-fill';
 export type EchoLayoutRows = number | 'auto';
 
+// Echo Input types
+export type EchoInputVariant = 'default' | 'outlined' | 'filled' | 'underlined';
+export type EchoInputSize = 'small' | 'medium' | 'large';
+export type EchoInputType = 
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'date'
+  | 'time'
+  | 'datetime-local'
+  | 'month'
+  | 'week';
+
 // Re-export icon types
 export type {
   EchoIconSize,

@@ -580,9 +580,11 @@ const iconLibrary = {
     info: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     // Technology
     wifi: '<path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="20" x2="12.01" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    globe: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     code: '<polyline points="16,18 22,12 16,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8,6 2,12 8,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     battery: '<rect width="18" height="10" x="2" y="7" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><line x1="22" y1="11" x2="22" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     power: '<path d="M18.36 6.64a9 9 0 1 1-12.73 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+    bolt: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     play: '<polygon points="5,3 19,12 5,21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     pause: '<rect width="4" height="16" x="6" y="4" stroke="currentColor" stroke-width="2"/><rect width="4" height="16" x="14" y="4" stroke="currentColor" stroke-width="2"/>',
     stop: '<rect width="18" height="18" x="3" y="3" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>',
@@ -2196,6 +2198,561 @@ EchoLayout = __decorate([
     t$1('echo-layout')
 ], EchoLayout);
 
+let EchoInput = class EchoInput extends i$1 {
+    constructor() {
+        super(...arguments);
+        this.variant = 'default';
+        this.size = 'medium';
+        this.context = 'primary';
+        this.type = 'text';
+        this.label = '';
+        this.placeholder = '';
+        this.value = '';
+        this.description = '';
+        this.icon = null;
+        this.iconPosition = 'left';
+        this.iconSize = null;
+        this.iconVariant = null;
+        this.disabled = false;
+        this.required = false;
+        this.readonly = false;
+        this.name = '';
+        this.id = '';
+        this.minlength = null;
+        this.maxlength = null;
+        this.pattern = null;
+    }
+    render() {
+        const inputId = this.id || `echo-input-${Math.random().toString(36).substr(2, 9)}`;
+        const inputClasses = [
+            'input-field',
+            `input-field--${this.variant}`,
+            `input-field--${this.size}`,
+            this.icon ? `input-field--with-icon-${this.iconPosition}` : '',
+            this.disabled ? 'input-field--disabled' : '',
+            this.readonly ? 'input-field--readonly' : '',
+        ].filter(Boolean).join(' ');
+        const labelClasses = [
+            'input-label',
+            `input-label--${this.size}`,
+            this.required ? 'input-label--required' : '',
+        ].filter(Boolean).join(' ');
+        const descriptionClasses = [
+            'input-description',
+            `input-description--${this.size}`,
+        ].filter(Boolean).join(' ');
+        const iconElement = this.icon
+            ? x `
+          <echo-icon
+            name=${this.icon}
+            size=${this.iconSize || this._getIconSizeFromInputSize()}
+            variant=${this.iconVariant || 'default'}
+            class="input-icon input-icon--${this.iconPosition} input-icon--${this.size}"
+            style="--icon-color: #6b7280;"
+          ></echo-icon>
+        `
+            : null;
+        return x `
+      <div class="input-container context--${this.context}">
+        ${this.label
+            ? x `
+              <label for="${inputId}" class="${labelClasses}">
+                ${this.label}
+              </label>
+            `
+            : ''}
+        
+        <div class="input-wrapper">
+          <input
+            id="${inputId}"
+            class="${inputClasses}"
+            type="${this.type}"
+            placeholder="${this.placeholder}"
+            .value="${this.value}"
+            ?disabled="${this.disabled}"
+            ?required="${this.required}"
+            ?readonly="${this.readonly}"
+            name="${this.name}"
+            minlength="${this.minlength || ''}"
+            maxlength="${this.maxlength || ''}"
+            pattern="${this.pattern || ''}"
+            @input="${this._handleInput}"
+            @focus="${this._handleFocus}"
+            @blur="${this._handleBlur}"
+            @change="${this._handleChange}"
+          />
+          ${iconElement}
+        </div>
+        
+        ${this.description
+            ? x `<div class="${descriptionClasses}">${this.description}</div>`
+            : ''}
+      </div>
+    `;
+    }
+    _getIconSizeFromInputSize() {
+        const sizeMap = {
+            small: 'small',
+            medium: 'medium',
+            large: 'large',
+        };
+        return sizeMap[this.size];
+    }
+    _handleInput(event) {
+        const input = event.target;
+        this.value = input.value;
+        this.dispatchEvent(new CustomEvent('echo-input-change', {
+            detail: {
+                value: this.value,
+                originalEvent: event
+            },
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    _handleFocus(event) {
+        this.dispatchEvent(new CustomEvent('echo-input-focus', {
+            detail: { originalEvent: event },
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    _handleBlur(event) {
+        this.dispatchEvent(new CustomEvent('echo-input-blur', {
+            detail: { originalEvent: event },
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    _handleChange(event) {
+        const input = event.target;
+        this.value = input.value;
+        this.dispatchEvent(new CustomEvent('echo-input-change', {
+            detail: {
+                value: this.value,
+                originalEvent: event
+            },
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    /**
+     * Handle attribute changes to reset properties to default values when attributes are removed
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        // If attribute is removed (newValue is null), reset property to default value
+        if (newValue === null) {
+            switch (name) {
+                case 'variant':
+                    this.variant = 'default';
+                    break;
+                case 'size':
+                    this.size = 'medium';
+                    break;
+                case 'context':
+                    this.context = 'primary';
+                    break;
+                case 'type':
+                    this.type = 'text';
+                    break;
+                case 'label':
+                    this.label = '';
+                    break;
+                case 'placeholder':
+                    this.placeholder = '';
+                    break;
+                case 'value':
+                    this.value = '';
+                    break;
+                case 'description':
+                    this.description = '';
+                    break;
+                case 'icon':
+                    this.icon = null;
+                    break;
+                case 'icon-position':
+                    this.iconPosition = 'left';
+                    break;
+                case 'icon-size':
+                    this.iconSize = null;
+                    break;
+                case 'icon-variant':
+                    this.iconVariant = null;
+                    break;
+                case 'disabled':
+                    this.disabled = false;
+                    break;
+                case 'required':
+                    this.required = false;
+                    break;
+                case 'readonly':
+                    this.readonly = false;
+                    break;
+                case 'name':
+                    this.name = '';
+                    break;
+                case 'id':
+                    this.id = '';
+                    break;
+                case 'minlength':
+                    this.minlength = null;
+                    break;
+                case 'maxlength':
+                    this.maxlength = null;
+                    break;
+                case 'pattern':
+                    this.pattern = null;
+                    break;
+            }
+        }
+    }
+    // Public methods
+    focus() {
+        const input = this.shadowRoot?.querySelector('input');
+        if (input) {
+            input.focus();
+        }
+    }
+    blur() {
+        const input = this.shadowRoot?.querySelector('input');
+        if (input) {
+            input.blur();
+        }
+    }
+    select() {
+        const input = this.shadowRoot?.querySelector('input');
+        if (input) {
+            input.select();
+        }
+    }
+    get validity() {
+        const input = this.shadowRoot?.querySelector('input');
+        return input ? input.validity : null;
+    }
+    checkValidity() {
+        const input = this.shadowRoot?.querySelector('input');
+        return input ? input.checkValidity() : false;
+    }
+    reportValidity() {
+        const input = this.shadowRoot?.querySelector('input');
+        return input ? input.reportValidity() : false;
+    }
+};
+EchoInput.styles = [
+    contextColors,
+    componentSizes,
+    i$4 `
+      :host {
+        display: block;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .input-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 4px;
+      }
+
+      .input-label--required::after {
+        content: '*';
+        color: #ef4444;
+        margin-left: 2px;
+      }
+
+      .input-field {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-family: inherit;
+        background-color: white;
+        color: #111827;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        box-sizing: border-box;
+      }
+
+      .input-field:focus {
+        border-color: var(--context-color);
+        box-shadow: 0 0 0 3px var(--context-color-alpha);
+      }
+
+      .input-field:disabled {
+        background-color: #f9fafb;
+        color: #9ca3af;
+        cursor: not-allowed;
+        border-color: #e5e7eb;
+      }
+
+      .input-field:read-only {
+        background-color: #f9fafb;
+        cursor: default;
+      }
+
+      .input-field::placeholder {
+        color: #9ca3af;
+      }
+
+      .input-icon {
+        position: absolute;
+        color: #6b7280;
+        pointer-events: none;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .input-icon--left {
+        left: 12px;
+      }
+
+      .input-icon--right {
+        right: 12px;
+      }
+
+
+      .input-description {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 2px;
+        line-height: 1.4;
+      }
+
+      /* Variants */
+      .input-field--default {
+        border: 1px solid #d1d5db;
+        background-color: white;
+      }
+
+      .input-field--outlined {
+        border: 2px solid #d1d5db;
+        background-color: white;
+      }
+
+      .input-field--outlined:focus {
+        border-color: var(--context-color);
+        box-shadow: 0 0 0 3px var(--context-color-alpha);
+      }
+
+      .input-field--filled {
+        border: none;
+        background-color: #f3f4f6;
+        border-bottom: 2px solid #d1d5db;
+        border-radius: 6px 6px 0 0;
+      }
+
+      .input-field--filled:focus {
+        background-color: white;
+        border-bottom-color: var(--context-color);
+        box-shadow: 0 2px 0 0 var(--context-color);
+      }
+
+      .input-field--underlined {
+        border: none;
+        border-bottom: 2px solid #d1d5db;
+        background-color: transparent;
+        border-radius: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .input-field--underlined:focus {
+        border-bottom-color: var(--context-color);
+        box-shadow: 0 2px 0 0 var(--context-color);
+      }
+
+      .input-field--underlined.input-field--with-icon {
+        padding-left: 28px;
+      }
+
+      /* Sizes */
+      .input-field--small {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      .input-field--medium {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .input-field--large {
+        padding: 16px 20px;
+        font-size: 16px;
+      }
+
+      /* Icon padding overrides for different sizes */
+      .input-field--small.input-field--with-icon-left {
+        padding-left: 36px !important;
+      }
+
+      .input-field--small.input-field--with-icon-right {
+        padding-right: 36px !important;
+      }
+
+      .input-field--medium.input-field--with-icon-left {
+        padding-left: 40px !important;
+      }
+
+      .input-field--medium.input-field--with-icon-right {
+        padding-right: 40px !important;
+      }
+
+      .input-field--large.input-field--with-icon-left {
+        padding-left: 48px !important;
+      }
+
+      .input-field--large.input-field--with-icon-right {
+        padding-right: 48px !important;
+      }
+
+      .input-label--small {
+        font-size: 13px;
+      }
+
+      .input-label--large {
+        font-size: 15px;
+      }
+
+      .input-description--small {
+        font-size: 11px;
+      }
+
+      .input-description--large {
+        font-size: 13px;
+      }
+
+      /* Icon sizing */
+      .input-icon--small.input-icon--left {
+        left: 10px;
+      }
+
+      .input-icon--small.input-icon--right {
+        right: 10px;
+      }
+
+      .input-icon--large.input-icon--left {
+        left: 14px;
+      }
+
+      .input-icon--large.input-icon--right {
+        right: 14px;
+      }
+
+      /* Error state */
+      .input-field--error {
+        border-color: #ef4444;
+      }
+
+      .input-field--error:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+
+      .input-description--error {
+        color: #ef4444;
+      }
+
+      /* Success state */
+      .input-field--success {
+        border-color: #10b981;
+      }
+
+      .input-field--success:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      }
+
+      .input-description--success {
+        color: #10b981;
+      }
+    `,
+];
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "variant", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "size", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "context", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "type", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "label", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "placeholder", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "value", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "description", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "icon", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-position' })
+], EchoInput.prototype, "iconPosition", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-size' })
+], EchoInput.prototype, "iconSize", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-variant' })
+], EchoInput.prototype, "iconVariant", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoInput.prototype, "disabled", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoInput.prototype, "required", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoInput.prototype, "readonly", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "name", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "id", void 0);
+__decorate([
+    n({ type: Number })
+], EchoInput.prototype, "minlength", void 0);
+__decorate([
+    n({ type: Number })
+], EchoInput.prototype, "maxlength", void 0);
+__decorate([
+    n({ type: String })
+], EchoInput.prototype, "pattern", void 0);
+EchoInput = __decorate([
+    t$1('echo-input')
+], EchoInput);
+
 /**
  * Icon system types for Design Toolkit
  *
@@ -2375,5 +2932,5 @@ const echoContextNames = [
     'info',
 ];
 
-export { EchoButton, EchoCard, EchoIcon, EchoLayout, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
+export { EchoButton, EchoCard, EchoIcon, EchoInput, EchoLayout, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
 //# sourceMappingURL=design-toolkit.esm.bundled.js.map

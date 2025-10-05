@@ -27,6 +27,7 @@ class ButtonDemo {
       iconSize: document.querySelector('select[name="icon-size"]'),
       iconVariant: document.querySelector('select[name="icon-variant"]'),
       iconStrokeWidth: document.querySelector('input[name="icon-stroke-width"]'),
+      text: document.querySelector('input[name="text"]'), 
     };
   }
 
@@ -143,6 +144,7 @@ class ButtonDemo {
     this.controls.iconSize.addEventListener('change', () => this.handleIconSizeChange());
     this.controls.iconVariant.addEventListener('change', () => this.handleIconVariantChange());
     this.controls.iconStrokeWidth.addEventListener('change', () => this.handleIconStrokeWidthChange());
+    this.controls.text.addEventListener('change', () => this.handleTextChange());
   }
 
   handleVariantChange() {
@@ -223,6 +225,11 @@ class ButtonDemo {
     } else {
       this.elements.button.setAttribute('icon-stroke-width', this.controls.iconStrokeWidth.value);
     }
+    this.updateHtmlCode();
+  }
+
+  handleTextChange() {
+    this.elements.button.innerHTML = this.controls.text.value;
     this.updateHtmlCode();
   }
 

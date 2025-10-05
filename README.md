@@ -176,6 +176,192 @@ layout.setColumns(4);
 layout.setRows(3);
 ```
 
+### EchoInput
+
+A comprehensive input component with label support, icon integration, validation, and multiple visual variants. Perfect for forms and user input scenarios.
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `variant` | `'default' \| 'outlined' \| 'filled' \| 'underlined'` | `'default'` | Visual style variant |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Input size |
+| `context` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | Context color theme |
+| `type` | `'text' \| 'email' \| 'password' \| 'number' \| 'tel' \| 'url' \| 'search' \| 'date' \| 'time' \| 'datetime-local' \| 'month' \| 'week'` | `'text'` | HTML input type |
+| `label` | `string` | `''` | Input label text |
+| `placeholder` | `string` | `''` | Placeholder text |
+| `value` | `string` | `''` | Input value |
+| `description` | `string` | `''` | Help text below input |
+| `icon` | `IconName \| null` | `null` | Icon name for input field |
+| `iconPosition` | `'left' \| 'right'` | `'left'` | Icon position inside input |
+| `iconSize` | `EchoIconSize \| null` | `null` | Icon size override |
+| `iconVariant` | `EchoIconVariant \| null` | `null` | Icon variant override |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `required` | `boolean` | `false` | Required field |
+| `readonly` | `boolean` | `false` | Read-only state |
+| `name` | `string` | `''` | Form field name |
+| `id` | `string` | `''` | Input ID |
+| `minlength` | `number \| null` | `null` | Minimum length validation |
+| `maxlength` | `number \| null` | `null` | Maximum length validation |
+| `pattern` | `string \| null` | `null` | Pattern validation |
+
+#### Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `echo-input-change` | `{ value: string, originalEvent: Event }` | Fired when input value changes |
+| `echo-input-focus` | `{ originalEvent: Event }` | Fired when input receives focus |
+| `echo-input-blur` | `{ originalEvent: Event }` | Fired when input loses focus |
+
+#### Methods
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `focus()` | None | Focus the input field |
+| `blur()` | None | Blur the input field |
+| `select()` | None | Select all text in the input |
+| `checkValidity()` | None | Check if input is valid |
+| `reportValidity()` | None | Report validation status to user |
+
+#### Examples
+
+```html
+<!-- Basic input with label -->
+<echo-input label="Username" placeholder="Enter your username"></echo-input>
+
+<!-- Input with icon and description -->
+<echo-input 
+  label="Email" 
+  icon="mail" 
+  icon-position="left"
+  type="email"
+  placeholder="Enter your email"
+  description="We'll never share your email">
+</echo-input>
+
+<!-- Input with right-positioned icon -->
+<echo-input 
+  label="Search" 
+  icon="search" 
+  icon-position="right"
+  type="search"
+  placeholder="Search...">
+</echo-input>
+
+<!-- Input with validation -->
+<echo-input 
+  label="Password" 
+  type="password"
+  required
+  minlength="8"
+  placeholder="Create password"
+  description="Must be at least 8 characters">
+</echo-input>
+
+<!-- Different variants -->
+<echo-input variant="outlined" label="Outlined Input"></echo-input>
+<echo-input variant="filled" label="Filled Input"></echo-input>
+<echo-input variant="underlined" label="Underlined Input"></echo-input>
+
+<!-- Different contexts -->
+<echo-input context="success" label="Success Input"></echo-input>
+<echo-input context="danger" label="Error Input"></echo-input>
+<echo-input context="warning" label="Warning Input"></echo-input>
+
+<!-- Different sizes -->
+<echo-input size="small" label="Small Input"></echo-input>
+<echo-input size="medium" label="Medium Input"></echo-input>
+<echo-input size="large" label="Large Input"></echo-input>
+
+<!-- Input states -->
+<echo-input label="Disabled Input" disabled value="Cannot edit"></echo-input>
+<echo-input label="Readonly Input" readonly value="Cannot edit"></echo-input>
+<echo-input label="Required Input" required placeholder="This field is required"></echo-input>
+
+<!-- Input types -->
+<echo-input type="email" label="Email" placeholder="user@example.com"></echo-input>
+<echo-input type="password" label="Password" placeholder="Enter password"></echo-input>
+<echo-input type="number" label="Age" placeholder="Enter age"></echo-input>
+<echo-input type="tel" label="Phone" placeholder="+1 (555) 123-4567"></echo-input>
+<echo-input type="url" label="Website" placeholder="https://example.com"></echo-input>
+<echo-input type="search" label="Search" placeholder="Search..."></echo-input>
+<echo-input type="date" label="Birth Date" placeholder="Select date"></echo-input>
+<echo-input type="time" label="Time" placeholder="Select time"></echo-input>
+
+<!-- Form integration -->
+<form>
+  <echo-input 
+    label="Full Name" 
+    required
+    minlength="2"
+    maxlength="50"
+    name="fullName">
+  </echo-input>
+  
+  <echo-input 
+    label="Email" 
+    type="email"
+    required
+    name="email">
+  </echo-input>
+  
+  <echo-input 
+    label="Phone" 
+    type="tel"
+    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    name="phone">
+  </echo-input>
+  
+  <echo-button type="submit">Submit</echo-button>
+</form>
+```
+
+#### JavaScript API
+
+```javascript
+// Event handling
+const input = document.querySelector('echo-input');
+input.addEventListener('echo-input-change', (event) => {
+  console.log('Value changed:', event.detail.value);
+});
+
+input.addEventListener('echo-input-focus', () => {
+  console.log('Input focused');
+});
+
+input.addEventListener('echo-input-blur', () => {
+  console.log('Input blurred');
+});
+
+// Public methods
+input.focus();
+input.blur();
+input.select();
+input.checkValidity();
+input.reportValidity();
+
+// Property access
+console.log(input.value);
+console.log(input.validity);
+
+// Form validation
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  const inputs = form.querySelectorAll('echo-input');
+  let isValid = true;
+  
+  inputs.forEach(input => {
+    if (!input.checkValidity()) {
+      isValid = false;
+    }
+  });
+  
+  if (!isValid) {
+    event.preventDefault();
+  }
+});
+```
+
 ### EchoIcon
 
 A clean, modern icon component with 60 carefully selected linear SVG icons inspired by Lucide design principles. Features consistent styling, multiple sizes, variants, and custom colors.
@@ -220,7 +406,7 @@ A clean, modern icon component with 60 carefully selected linear SVG icons inspi
 
 #### Available Icons
 
-The icon library includes 121 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
+The icon library includes 123 carefully selected icons inspired by Lucide design principles. All icons feature clean, consistent linear style with 2px stroke width and proper shapes for optimal visual clarity.
 
 **Navigation & Arrows:** arrow-left, arrow-right, arrow-up, arrow-down, chevron-left, chevron-right, chevron-up, chevron-down, menu, x, search, filter, more-horizontal, more-vertical
 
@@ -234,7 +420,7 @@ The icon library includes 121 carefully selected icons inspired by Lucide design
 
 **Status & Feedback:** check-circle, x-circle, alert-circle, info
 
-**Technology:** wifi, code, battery, power, play, pause, stop, volume, volume-off
+**Technology:** wifi, globe, code, battery, power, bolt, play, pause, stop, volume, volume-off
 
 **Weather & Nature:** sun, moon, cloud, droplet
 

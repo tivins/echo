@@ -1,6 +1,6 @@
 {
   "name": "design-toolkit",
-  "version": "1.8.8",
+  "version": "1.9.2",
   "description": "A modern web component library built with Lit",
   "type": "module",
   "main": "dist/design-toolkit.umd.js",

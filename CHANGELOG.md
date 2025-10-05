@@ -5,6 +5,202 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.2] - 2025-01-05
+
+### Added
+- **Bolt Icon**: Added new "bolt" icon to the icon library
+  - **Design**: Clean lightning bolt design representing energy, power, and speed
+  - **Integration**: Fully integrated with EchoIcon component and all size/color variants
+  - **Usage**: Available as `bolt` icon name in all icon contexts
+  - **Category**: Added to Technology section alongside wifi, battery, power icons
+
+### Technical
+- **Icon Library**: Added bolt icon to src/icons/icon-library.ts
+- **Consistent Styling**: Follows Design Toolkit principles with 2px stroke width and proper viewBox
+- **Demo Page**: Created comprehensive test page (demos/bolt-icon-test.html) showcasing all variants
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic bolt icon usage -->
+<echo-icon name="bolt" size="medium"></echo-icon>
+
+<!-- Bolt icon in button -->
+<echo-button icon="bolt" context="primary">Quick Action</echo-button>
+
+<!-- Bolt icon with different sizes -->
+<echo-icon name="bolt" size="small"></echo-icon>
+<echo-icon name="bolt" size="large"></echo-icon>
+
+<!-- Bolt icon with context colors -->
+<echo-icon name="bolt" color="warning"></echo-icon>
+<echo-icon name="bolt" color="success"></echo-icon>
+```
+
+## [1.9.1] - 2025-01-05
+
+### Added
+- **Globe Icon**: Added new "globe" icon to the icon library
+  - **Design**: Clean globe design with circle outline and meridian lines representing Earth's longitude lines
+  - **Integration**: Fully integrated with EchoIcon component and all size/color variants
+  - **Usage**: Available as `globe` icon name in all icon contexts
+  - **Category**: Added to Technology section alongside wifi, battery, power icons
+
+### Technical
+- **Icon Library**: Added globe icon to src/icons/icon-library.ts
+- **Consistent Styling**: Follows Design Toolkit principles with 2px stroke width and proper viewBox
+- **Demo Page**: Created comprehensive test page (demos/globe-icon-test.html) showcasing all variants
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic globe icon usage -->
+<echo-icon name="globe" size="medium"></echo-icon>
+
+<!-- Globe icon in button -->
+<echo-button icon="globe" context="primary">Visit Website</echo-button>
+
+<!-- Globe icon with different sizes -->
+<echo-icon name="globe" size="small"></echo-icon>
+<echo-icon name="globe" size="large"></echo-icon>
+
+<!-- Globe icon with context colors -->
+<echo-icon name="globe" color="success"></echo-icon>
+<echo-icon name="globe" color="warning"></echo-icon>
+```
+
+## [1.9.0] - 2025-01-05
+
+### Added
+- **EchoInput Component**: New comprehensive input component with extensive features
+  - **Label Support**: Optional label with icon integration and required indicator
+  - **Input Variants**: Four visual styles (default, outlined, filled, underlined)
+  - **Size Options**: Three sizes (small, medium, large) with consistent styling
+  - **Context Colors**: Full support for all context colors (primary, secondary, success, danger, warning, info)
+  - **Input Types**: Support for all HTML input types (text, email, password, number, tel, url, search, date, time, datetime-local, month, week)
+  - **Icon Integration**: Built-in support for icons in labels with size and variant options
+  - **Description Text**: Optional description text below input field
+  - **Validation Support**: Built-in support for HTML5 validation attributes (required, minlength, maxlength, pattern)
+  - **State Management**: Support for disabled, readonly, and required states
+  - **Event System**: Comprehensive event handling (echo-input-change, echo-input-focus, echo-input-blur)
+  - **Public Methods**: focus(), blur(), select(), checkValidity(), reportValidity() methods
+  - **Accessibility**: Proper ARIA labels, keyboard navigation, and screen reader support
+  - **TypeScript Support**: Complete type definitions for all input properties and events
+
+### Technical
+- **TypeScript Types**: Added EchoInputVariant, EchoInputSize, and EchoInputType types
+- **Component Integration**: EchoInput uses EchoIcon component internally for label icons
+- **CSS Custom Properties**: Consistent theming with context colors and component sizes
+- **Responsive Design**: Flexible layout that adapts to content and screen size
+- **Event Handling**: Proper event bubbling and composition for input interactions
+- **Validation Integration**: Seamless integration with HTML5 form validation
+- **Attribute Management**: Proper handling of attribute changes and property resets
+
+### Documentation
+- **Comprehensive Examples**: Added detailed usage examples in README.md
+- **API Documentation**: Complete property, event, and method documentation
+- **Demo Page**: Created echo-input-demo.html with extensive examples and interactive features
+- **Test Coverage**: Full Playwright test suite for all input features
+- **Form Examples**: Complete form examples showing validation and event handling
+
+### Examples
+```html
+<!-- Basic input with label -->
+<echo-input label="Username" placeholder="Enter your username"></echo-input>
+
+<!-- Input with icon and description -->
+<echo-input 
+  label="Email" 
+  icon="mail" 
+  type="email"
+  placeholder="Enter your email"
+  description="We'll never share your email">
+</echo-input>
+
+<!-- Input with validation -->
+<echo-input 
+  label="Password" 
+  type="password"
+  required
+  minlength="8"
+  placeholder="Create password"
+  description="Must be at least 8 characters">
+</echo-input>
+
+<!-- Different variants -->
+<echo-input variant="outlined" label="Outlined Input"></echo-input>
+<echo-input variant="filled" label="Filled Input"></echo-input>
+<echo-input variant="underlined" label="Underlined Input"></echo-input>
+
+<!-- Different contexts -->
+<echo-input context="success" label="Success Input"></echo-input>
+<echo-input context="danger" label="Error Input"></echo-input>
+<echo-input context="warning" label="Warning Input"></echo-input>
+
+<!-- Different sizes -->
+<echo-input size="small" label="Small Input"></echo-input>
+<echo-input size="medium" label="Medium Input"></echo-input>
+<echo-input size="large" label="Large Input"></echo-input>
+```
+
+### JavaScript API
+```javascript
+// Event handling
+const input = document.querySelector('echo-input');
+input.addEventListener('echo-input-change', (event) => {
+  console.log('Value changed:', event.detail.value);
+});
+
+input.addEventListener('echo-input-focus', () => {
+  console.log('Input focused');
+});
+
+input.addEventListener('echo-input-blur', () => {
+  console.log('Input blurred');
+});
+
+// Public methods
+input.focus();
+input.blur();
+input.select();
+input.checkValidity();
+input.reportValidity();
+
+// Property access
+console.log(input.value);
+console.log(input.validity);
+```
+
+### Form Integration
+```html
+<!-- Complete form example -->
+<form>
+  <echo-input 
+    label="Full Name" 
+    required
+    minlength="2"
+    maxlength="50"
+    name="fullName">
+  </echo-input>
+  
+  <echo-input 
+    label="Email" 
+    type="email"
+    required
+    name="email">
+  </echo-input>
+  
+  <echo-input 
+    label="Phone" 
+    type="tel"
+    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    name="phone">
+  </echo-input>
+  
+  <echo-button type="submit">Submit</echo-button>
+</form>
+```
+
 ## [1.8.8] - 2025-01-05
 
 ### Fixed
