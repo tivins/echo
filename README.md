@@ -630,6 +630,12 @@ npm run dev
 
 The development server runs at `http://localhost:3000` and automatically handles port conflicts by terminating any existing processes using the port.
 
+### Interactive Demos
+
+The `docs/` directory contains interactive TypeScript demos:
+
+- **Button Demo** (`docs/demo-button.html`): Interactive demo showcasing all EchoButton properties with TypeScript implementation that automatically populates selectors from component types.
+
 ### Scripts
 
 - `npm run dev` - Start development server
@@ -689,10 +695,11 @@ design-toolkit/
 │   ├── icon-demo.html
 │   ├── separator-demo.html
 │   └── ... (other demo files)
-├── docs/                # Documentation and reports
-│   ├── ICON_IMPROVEMENTS.md
-│   ├── ICON_VALIDATION_REPORT.md
-│   └── icon-analysis-report.json
+├── docs/                # Documentation and interactive demos
+│   ├── demo-button.html # Interactive TypeScript button demo
+│   ├── demo-button.ts   # TypeScript demo implementation
+│   ├── index.html       # Main documentation page
+│   └── webserver.js     # Development server
 ├── dist/                # Built library files
 ├── out-of-the-box/      # Self-contained demo
 └── test-results/        # Test execution results
