@@ -226,7 +226,7 @@ The icon library includes 121 carefully selected icons inspired by Lucide design
 
 **Status & Feedback:** check-circle, x-circle, alert-circle, info
 
-**Technology:** wifi, battery, power, play, pause, stop, volume, volume-off
+**Technology:** wifi, code, battery, power, play, pause, stop, volume, volume-off
 
 **Weather & Nature:** sun, moon, cloud, droplet
 

@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.4] - 2025-01-04
+
+### Added
+- **Code Icon**: Added new "code" icon to the icon library
+  - **Design**: Clean angled brackets (`<` and `>`) representing code/HTML tags
+  - **Integration**: Fully integrated with EchoIcon component and all size/color variants
+  - **Usage**: Available as `code` icon name in all icon contexts
+  - **Category**: Added to Technology section alongside wifi, battery, power icons
+
+### Technical
+- **Icon Library**: Added code icon to src/icons/icon-library.ts
+- **Consistent Styling**: Follows Design Toolkit principles with 2px stroke width and proper viewBox
+- **Demo Page**: Created comprehensive test page (demos/code-icon-test.html) showcasing all variants
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic code icon usage -->
+<echo-icon name="code" size="medium"></echo-icon>
+
+<!-- Code icon in button -->
+<echo-button icon="code" context="primary">View Code</echo-button>
+
+<!-- Code icon with different sizes -->
+<echo-icon name="code" size="small"></echo-icon>
+<echo-icon name="code" size="large"></echo-icon>
+
+<!-- Code icon with context colors -->
+<echo-icon name="code" color="success"></echo-icon>
+<echo-icon name="code" color="warning"></echo-icon>
+```
+
 ## [1.8.3] - 2025-01-04
 
 ### Fixed

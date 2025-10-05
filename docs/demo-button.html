@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="./design-toolkit.esm.bundled.js"></script>
+  <title>Echo Toolkit</title>
+
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+
+        <echo-card title="Button Component">
+            <echo-separator margin="large"><echo-icon name="video" size="small"></echo-icon> Preview</echo-separator>
+            <div style="text-align: center;"><echo-button>Button</echo-button></div>
+            <echo-separator margin="large"><echo-icon name="wrench" size="small"></echo-icon> Options</echo-separator>
+            <echo-layout gap="medium" justify="center" wrap="wrap">
+                <label>
+                    <div>Variant</div>
+                    <select name="variant">
+                        <option></option>
+                        <option value="default">Default</option>
+                        <option value="link">Link</option>
+                        <option value="outline">Outline</option>
+                        <option value="ghost">Ghost</option>
+                        <option value="soft">Soft</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Context</div>
+                    <select name="context">
+                        <option></option>
+                        <option value="primary">Primary</option>
+                        <option value="secondary">Secondary</option>
+                        <option value="success">Success</option>
+                        <option value="danger">Danger</option>
+                        <option value="warning">Warning</option>
+                        <option value="info">Info</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Size</div>
+                    <select name="size">
+                        <option></option>
+                        <option value="xs">Extra Small</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Disabled</div>
+                    <input type="checkbox" name="disabled" id="disabled">
+                </label>
+                <label>
+                    <div>Icon</div>
+                    <select name="icon">
+                        <option></option>
+                        <option value="settings">Settings</option>
+                        <option value="code">Code</option>
+                        <option value="wrench">Wrench</option>
+                        <option value="video">Video</option>
+                        <option value="home">Home</option>
+                        <option value="heart">Heart</option>
+                        <option value="arrow-right">Arrow Right</option>
+                        <option value="arrow-left">Arrow Left</option>
+                        <option value="download">Download</option>
+                        <option value="upload">Upload</option>
+                        <option value="trash">Trash</option>
+                        <option value="edit">Edit</option>
+                        <option value="plus">Plus</option>
+                        <option value="minus">Minus</option>
+                        <option value="star">Star</option>
+                        <option value="heart">Heart</option>
+                        <option value="check">Check</option>
+                        <option value="x">X</option>
+                        <option value="arrow-right">Arrow Right</option>
+                        <option value="arrow-left">Arrow Left</option>
+                        <option value="arrow-up">Arrow Up</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Icon Position</div>
+                    <select name="icon-position">
+                        <option></option>
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Icon Size</div>
+                    <select name="icon-size">
+                        <option></option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Icon Variant</div>
+                    <select name="icon-variant">
+                        <option></option>
+                        <option value="default">Default</option>
+                        <option value="outline">Outline</option>
+                        <option value="filled">Filled</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Icon Stroke Width</div>
+                    <input type="number" name="icon-stroke-width" id="icon-stroke-width">
+                </label>
+            </echo-layout>    
+            
+            <echo-separator margin="large"><echo-icon name="code" size="small"></echo-icon> Code</echo-separator>
+            <pre id="html-code" style="text-align: center;">&lt;echo-button&gt;Button&lt;/echo-button&gt;</pre>
+            
+        </div>
+        </echo-card>
+
+
+        <script type="module" src="demo-button.js"></script>
+    </div>
+</body>
+</html>
+    
