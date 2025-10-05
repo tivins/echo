@@ -75,6 +75,57 @@
     <echo-button size="xs" icon="heart" context="success" icon-position="right" variant="link">Heart</echo-button>
   </echo-card>
 
+  <echo-card title="Separator" icon="more-horizontal">
+
+
+    <echo-layout direction="column" gap="medium">
+      <b>Default</b>
+      <echo-card variant="flat" context="secondary">
+        <echo-separator></echo-separator>
+        <pre>&lt;echo-separator&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+  
+      <b>Variants</b>
+      <echo-card variant="flat" context="secondary">
+        <echo-separator variant="solid"></echo-separator>
+        is equivalent to<pre>&lt;echo-separator variant="solid"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+
+      <echo-card variant="flat" context="secondary">
+        <echo-separator variant="dashed"></echo-separator>
+        <pre>&lt;echo-separator variant="dashed"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+
+      <echo-card variant="flat" context="secondary">
+        <echo-separator variant="dotted"></echo-separator>
+        <pre>&lt;echo-separator variant="dotted"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+
+      <b>Margins</b>
+      <echo-card variant="flat" context="secondary">
+        <echo-separator margin="small"></echo-separator>
+        <pre>&lt;echo-separator margin="small"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+      
+      <echo-card variant="flat" context="secondary">
+        <echo-separator margin="medium"></echo-separator>
+        <pre>&lt;echo-separator margin="medium"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+
+      <echo-card variant="flat" context="secondary">
+        <echo-separator margin="large"></echo-separator>
+        <pre>&lt;echo-separator margin="large"&gt;&lt;/echo-separator&gt;</pre>
+      </echo-card>
+
+    </echo-layout>
+
+    <echo-layout display="flex" columns="auto-fill" gap="medium" justify="center" align="center">
+      This is a test
+      <echo-separator orientation="vertical" variant="dotted">or</echo-separator>
+      This is a test
+    </echo-layout>
+  </echo-card>
+
     <echo-layout display="grid">
   <echo-card title="Card avec icône" icon="star" context="success" closable>
     <div slot="header-actions">

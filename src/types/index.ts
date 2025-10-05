@@ -37,11 +37,31 @@ export type EchoCardVariant = 'default' | 'outlined' | 'elevated' | 'flat';
 export type EchoCardSize = 'small' | 'medium' | 'large';
 
 // Echo Layout types
-export type EchoLayoutDisplay = 'flex' | 'grid' | 'block' | 'inline-flex' | 'inline-grid';
-export type EchoLayoutDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
+export type EchoLayoutDisplay =
+  | 'flex'
+  | 'grid'
+  | 'block'
+  | 'inline-flex'
+  | 'inline-grid';
+export type EchoLayoutDirection =
+  | 'row'
+  | 'column'
+  | 'row-reverse'
+  | 'column-reverse';
 export type EchoLayoutWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
-export type EchoLayoutAlign = 'start' | 'end' | 'center' | 'stretch' | 'baseline';
-export type EchoLayoutJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
+export type EchoLayoutAlign =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'stretch'
+  | 'baseline';
+export type EchoLayoutJustify =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly';
 export type EchoLayoutGap = 'none' | 'xs' | 'small' | 'medium' | 'large' | 'xl';
 export type EchoLayoutColumns = number | 'auto' | 'auto-fit' | 'auto-fill';
 export type EchoLayoutRows = number | 'auto';

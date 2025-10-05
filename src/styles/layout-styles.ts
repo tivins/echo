@@ -139,23 +139,6 @@ export const layoutStyles = css`
     gap: 32px;
   }
 
-  /* Layout Sizes 
-  .layout--size-xs {
-    padding: 4px;
-  }
-
-  .layout--size-small {
-    padding: 8px;
-  }
-
-  .layout--size-medium {
-    padding: 16px;
-  }
-
-  .layout--size-large {
-    padding: 24px;
-  }
-*/
   /* Grid specific */
   .layout--grid-auto {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -297,23 +280,6 @@ export const layoutStylesCSS = `
     gap: 32px;
   }
 
-  /* Layout Sizes */
-  .layout--size-xs {
-    padding: 4px;
-  }
-
-  .layout--size-small {
-    padding: 8px;
-  }
-
-  .layout--size-medium {
-    padding: 16px;
-  }
-
-  .layout--size-large {
-    padding: 24px;
-  }
-
   /* Grid specific */
   .layout--grid-auto {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -331,12 +297,23 @@ export const layoutStylesCSS = `
 /**
  * Available layout display names
  */
-export const layoutDisplayNames = ['flex', 'grid', 'block', 'inline-flex', 'inline-grid'] as const;
+export const layoutDisplayNames = [
+  'flex',
+  'grid',
+  'block',
+  'inline-flex',
+  'inline-grid',
+] as const;
 
 /**
  * Available layout direction names
  */
-export const layoutDirectionNames = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
+export const layoutDirectionNames = [
+  'row',
+  'column',
+  'row-reverse',
+  'column-reverse',
+] as const;
 
 /**
  * Available layout wrap names
@@ -346,22 +323,37 @@ export const layoutWrapNames = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 /**
  * Available layout align names
  */
-export const layoutAlignNames = ['start', 'end', 'center', 'stretch', 'baseline'] as const;
+export const layoutAlignNames = [
+  'start',
+  'end',
+  'center',
+  'stretch',
+  'baseline',
+] as const;
 
 /**
  * Available layout justify names
  */
-export const layoutJustifyNames = ['start', 'end', 'center', 'between', 'around', 'evenly'] as const;
+export const layoutJustifyNames = [
+  'start',
+  'end',
+  'center',
+  'between',
+  'around',
+  'evenly',
+] as const;
 
 /**
  * Available layout gap names
  */
-export const layoutGapNames = ['none', 'xs', 'small', 'medium', 'large', 'xl'] as const;
-
-/**
- * Available layout size names
- */
-export const layoutSizeNames = ['xs', 'small', 'medium', 'large'] as const;
+export const layoutGapNames = [
+  'none',
+  'xs',
+  'small',
+  'medium',
+  'large',
+  'xl',
+] as const;
 
 /**
  * Type for layout display names
@@ -392,8 +384,3 @@ export type LayoutJustifyName = (typeof layoutJustifyNames)[number];
  * Type for layout gap names
  */
 export type LayoutGapName = (typeof layoutGapNames)[number];
-
-/**
- * Type for layout size names
- */
-export type LayoutSizeName = (typeof layoutSizeNames)[number];

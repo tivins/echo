@@ -282,7 +282,7 @@ export const iconLibrary: Record<string, string> = {
     <line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7" y1="14" x2="17" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   `,
-  ticket:  `
+  ticket: `
   <path d="M2 6h20c0.6 0 1 0.4 1 1v3a2.5 2.5 0 0 0 0 5v3c0 0.6-0.4 1-1 1H2c-0.6 0-1-0.4-1-1v-3a2.5 2.5 0 0 0 0-5V7c0-0.6 0.4-1 1-1z"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <rect x="6.5" y="9" width="11" height="6" rx="1"
@@ -321,6 +321,5 @@ export const iconLibrary: Record<string, string> = {
   <line x1="12" y1="6"  x2="12" y2="10"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="10.3" y1="13.7" x2="6.7" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="13.7" y1="13.7" x2="17.3" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-`
-
+`,
 };

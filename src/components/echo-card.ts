@@ -57,9 +57,11 @@ export class EchoCard extends LitElement {
         display: block;
         --card-border-radius: 1px;
         --card-padding: 10px;
-        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+        --card-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
         --card-border: 1px solid rgba(0, 0, 0, 0.06);
-        --card-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+        --card-hover-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
       }
 
       .card {
@@ -97,7 +99,9 @@ export class EchoCard extends LitElement {
       }
 
       .card--elevated {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+        box-shadow:
+          0 8px 25px rgba(0, 0, 0, 0.12),
+          0 3px 10px rgba(0, 0, 0, 0.08);
         border: none;
         background-color: white;
       }
@@ -298,21 +302,17 @@ export class EchoCard extends LitElement {
       .join(' ');
 
     const hasHeader = !!this.title || !!this.icon || this.closable;
-    
+
     return html`
       <div class="${classes}" ?disabled=${this.disabled}>
         ${hasHeader ? this._renderHeader() : ''}
-        ${this._renderContent(hasHeader)}
-        ${this._renderFooter()}
+        ${this._renderContent(hasHeader)} ${this._renderFooter()}
       </div>
     `;
   }
 
   private _renderHeader() {
-    const titleClasses = [
-      'card__title',
-      `card__title--${this.size}`,
-    ].join(' ');
+    const titleClasses = ['card__title', `card__title--${this.size}`].join(' ');
 
     const iconElement = this.icon
       ? html`
@@ -343,12 +343,12 @@ export class EchoCard extends LitElement {
       <div class="card__header">
         <div class="card__header-content">
           ${iconElement}
-          ${this.title ? html`<h3 class="${titleClasses}">${this.title}</h3>` : ''}
+          ${this.title
+            ? html`<h3 class="${titleClasses}">${this.title}</h3>`
+            : ''}
           <slot name="header-actions"></slot>
         </div>
-        <div class="card__header-actions">
-          ${closeButton}
-        </div>
+        <div class="card__header-actions">${closeButton}</div>
       </div>
     `;
   }
@@ -364,7 +364,10 @@ export class EchoCard extends LitElement {
 
     return html`
       <div class="${contentClasses}">
-        <slot data-main-content @slotchange=${this._handleMainContentSlotChange}></slot>
+        <slot
+          data-main-content
+          @slotchange=${this._handleMainContentSlotChange}
+        ></slot>
       </div>
     `;
   }
@@ -376,7 +379,6 @@ export class EchoCard extends LitElement {
       </div>
     `;
   }
-
 
   private _getIconSizeFromCardSize(): EchoIconSize {
     const sizeMap: Record<EchoCardSize, EchoIconSize> = {
@@ -423,7 +425,9 @@ export class EchoCard extends LitElement {
 
   private _checkSlotContent(): void {
     // Check footer slot
-    const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+    const footerSlot = this.shadowRoot?.querySelector(
+      'slot[name="footer"]'
+    ) as HTMLSlotElement;
     if (footerSlot) {
       const nodes = footerSlot.assignedNodes({ flatten: true });
       const hasContent = nodes.some(
@@ -438,7 +442,9 @@ export class EchoCard extends LitElement {
     }
 
     // Check main content slot
-    const mainContentSlot = this.shadowRoot?.querySelector('slot[data-main-content]') as HTMLSlotElement;
+    const mainContentSlot = this.shadowRoot?.querySelector(
+      'slot[data-main-content]'
+    ) as HTMLSlotElement;
     if (mainContentSlot) {
       const nodes = mainContentSlot.assignedNodes({ flatten: true });
       const hasContent = nodes.some(

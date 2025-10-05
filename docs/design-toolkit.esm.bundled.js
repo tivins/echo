@@ -694,7 +694,7 @@ const iconLibrary = {
   <line x1="12" y1="6"  x2="12" y2="10"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="10.3" y1="13.7" x2="6.7" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="13.7" y1="13.7" x2="17.3" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-`
+`,
 };
 
 /**
@@ -1297,16 +1297,12 @@ let EchoCard = class EchoCard extends i$1 {
         return x `
       <div class="${classes}" ?disabled=${this.disabled}>
         ${hasHeader ? this._renderHeader() : ''}
-        ${this._renderContent(hasHeader)}
-        ${this._renderFooter()}
+        ${this._renderContent(hasHeader)} ${this._renderFooter()}
       </div>
     `;
     }
     _renderHeader() {
-        const titleClasses = [
-            'card__title',
-            `card__title--${this.size}`,
-        ].join(' ');
+        const titleClasses = ['card__title', `card__title--${this.size}`].join(' ');
         const iconElement = this.icon
             ? x `
           <echo-icon
@@ -1334,12 +1330,12 @@ let EchoCard = class EchoCard extends i$1 {
       <div class="card__header">
         <div class="card__header-content">
           ${iconElement}
-          ${this.title ? x `<h3 class="${titleClasses}">${this.title}</h3>` : ''}
+          ${this.title
+            ? x `<h3 class="${titleClasses}">${this.title}</h3>`
+            : ''}
           <slot name="header-actions"></slot>
         </div>
-        <div class="card__header-actions">
-          ${closeButton}
-        </div>
+        <div class="card__header-actions">${closeButton}</div>
       </div>
     `;
     }
@@ -1353,7 +1349,10 @@ let EchoCard = class EchoCard extends i$1 {
             .join(' ');
         return x `
       <div class="${contentClasses}">
-        <slot data-main-content @slotchange=${this._handleMainContentSlotChange}></slot>
+        <slot
+          data-main-content
+          @slotchange=${this._handleMainContentSlotChange}
+        ></slot>
       </div>
     `;
     }
@@ -1447,9 +1446,11 @@ EchoCard.styles = [
         display: block;
         --card-border-radius: 1px;
         --card-padding: 10px;
-        --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+        --card-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
         --card-border: 1px solid rgba(0, 0, 0, 0.06);
-        --card-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+        --card-hover-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
       }
 
       .card {
@@ -1487,7 +1488,9 @@ EchoCard.styles = [
       }
 
       .card--elevated {
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+        box-shadow:
+          0 8px 25px rgba(0, 0, 0, 0.12),
+          0 3px 10px rgba(0, 0, 0, 0.08);
         border: none;
         background-color: white;
       }
@@ -1850,23 +1853,6 @@ const layoutStyles = i$4 `
     gap: 32px;
   }
 
-  /* Layout Sizes 
-  .layout--size-xs {
-    padding: 4px;
-  }
-
-  .layout--size-small {
-    padding: 8px;
-  }
-
-  .layout--size-medium {
-    padding: 16px;
-  }
-
-  .layout--size-large {
-    padding: 24px;
-  }
-*/
   /* Grid specific */
   .layout--grid-auto {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -2007,23 +1993,6 @@ const layoutStylesCSS = `
     gap: 32px;
   }
 
-  /* Layout Sizes */
-  .layout--size-xs {
-    padding: 4px;
-  }
-
-  .layout--size-small {
-    padding: 8px;
-  }
-
-  .layout--size-medium {
-    padding: 16px;
-  }
-
-  .layout--size-large {
-    padding: 24px;
-  }
-
   /* Grid specific */
   .layout--grid-auto {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -2049,7 +2018,6 @@ let EchoLayout = class EchoLayout extends i$1 {
         this.gap = 'medium';
         this.columns = 'auto';
         this.rows = 'auto';
-        this.size = 'medium';
     }
     render() {
         const classes = this._buildClassList();
@@ -2065,7 +2033,6 @@ let EchoLayout = class EchoLayout extends i$1 {
             'layout',
             `layout--${this.display}`,
             `layout--gap-${this.gap}`,
-            `layout--size-${this.size}`,
         ];
         // Add flex-specific classes
         if (this.display === 'flex' || this.display === 'inline-flex') {
@@ -2186,9 +2153,6 @@ __decorate([
 __decorate([
     n({ type: [Number, String] })
 ], EchoLayout.prototype, "rows", void 0);
-__decorate([
-    n({ type: String })
-], EchoLayout.prototype, "size", void 0);
 EchoLayout = __decorate([
     t$1('echo-layout')
 ], EchoLayout);

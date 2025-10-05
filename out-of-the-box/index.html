@@ -14,8 +14,7 @@
         The purpose of this page is to verify that the <strong>Echo Toolkit</strong> bundle is correctly generated.
     </p>
 
-    <h3>Button Component</h3>
-    <echo-card>
+    <echo-card title="Button Component">
         <echo-button>Button</echo-button>
         <echo-button variant="soft">Soft Button</echo-button>
         <echo-button variant="ghost">Ghost Button</echo-button>
@@ -43,8 +42,19 @@
         <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
         <echo-button variant="link" context="info">Info Link</echo-button>
         <echo-button variant="soft" context="success">Success Soft</echo-button>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            test
+
+        <echo-separator></echo-separator>
+
+        <echo-layout display="flex" columns="auto-fill" gap="medium" justify="center" align="center">
+            This is a test
+            <echo-separator orientation="vertical" variant="dotted">or</echo-separator>
+            This is a test
+        </echo-layout>
+
+        <echo-separator></echo-separator>
+
+        <echo-layout gap="small">
+            testa
             <echo-separator orientation="vertical" variant="dotted"><echo-icon name="cut"></echo-icon></echo-separator>
             test
         </div>

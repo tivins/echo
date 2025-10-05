@@ -9,7 +9,6 @@ import type {
   EchoLayoutGap,
   EchoLayoutColumns,
   EchoLayoutRows,
-  EchoSize,
 } from '../types/index.js';
 import { layoutStyles } from '../styles/layout-styles.js';
 
@@ -38,9 +37,6 @@ export class EchoLayout extends LitElement {
 
   @property({ type: [Number, String] })
   rows: EchoLayoutRows = 'auto';
-
-  @property({ type: String })
-  size: EchoSize = 'medium';
 
   static styles = [
     layoutStyles,
@@ -91,7 +87,6 @@ export class EchoLayout extends LitElement {
       'layout',
       `layout--${this.display}`,
       `layout--gap-${this.gap}`,
-      `layout--size-${this.size}`,
     ];
 
     // Add flex-specific classes

@@ -15,7 +15,6 @@ export { EchoLayout } from './components/echo-layout.js';
 // Export types
 export type {
   EchoButtonVariant,
-  EchoSize,
   EchoContext,
   ContextColorName,
   ComponentSizeName,
@@ -33,10 +32,7 @@ export type {
   EchoSeparatorThickness,
   EchoSeparatorOrientation,
 } from './types/index.js';
-export type {
-  EchoCardVariant,
-  EchoCardSize,
-} from './types/index.js';
+export type { EchoCardVariant, EchoCardSize } from './types/index.js';
 export type {
   EchoLayoutDisplay,
   EchoLayoutDirection,
