@@ -308,16 +308,19 @@ export const iconLibrary: Record<string, string> = {
     <path d="M8 14l2-2M16 14l-2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   `,
   crm2: `
-  <rect x="10" y="10" width="4" height="4"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="12" cy="4" r="2"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="5" cy="18" r="2"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="19" cy="18" r="2"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M12 6v4M7 17l4-3M17 17l-4-3"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Centre = CRM -->
+  <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="12" cy="12" r="0.5" fill="currentColor"/>
+
+  <!-- Clients -->
+  <circle cx="12" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="5" cy="18" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="19" cy="18" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Connexions précises centre-à-centre -->
+  <line x1="12" y1="6"  x2="12" y2="10"  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10.3" y1="13.7" x2="6.7" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="13.7" y1="13.7" x2="17.3" y2="16.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 `
 
 };

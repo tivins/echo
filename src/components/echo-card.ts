@@ -73,9 +73,11 @@ export class EchoCard extends LitElement {
           -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
+      /*
       .card:hover {
         box-shadow: var(--card-hover-shadow);
       }
+      */
 
       .card:disabled {
         opacity: 0.6;
