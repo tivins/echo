@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.4] - 2025-01-05
+
+### Added
+- **Text Icon**: Added new "text" icon to the icon library
+  - **Design**: Clean text lines representing typography and text content
+  - **Integration**: Fully integrated with EchoIcon component and all size/color variants
+  - **Usage**: Available as `text` icon name in all icon contexts
+  - **Category**: Added to Text & Typography section for content-related functionality
+
+### Technical
+- **Icon Library**: Added text icon to src/icons/icon-library.ts
+- **Consistent Styling**: Follows Design Toolkit principles with 2px stroke width and proper viewBox
+- **Demo Page**: Created comprehensive test page (demos/text-icon-test.html) showcasing all variants
+- **Build Process**: Successfully integrated into build system with no errors
+
+### Examples
+```html
+<!-- Basic text icon usage -->
+<echo-icon name="text" size="medium"></echo-icon>
+
+<!-- Text icon in button -->
+<echo-button icon="text" context="primary">Edit Text</echo-button>
+
+<!-- Text icon with different sizes -->
+<echo-icon name="text" size="small"></echo-icon>
+<echo-icon name="text" size="large"></echo-icon>
+
+<!-- Text icon with context colors -->
+<echo-icon name="text" color="success"></echo-icon>
+<echo-icon name="text" color="warning"></echo-icon>
+```
+
 ## [1.10.3] - 2025-01-05
 
 ### Fixed

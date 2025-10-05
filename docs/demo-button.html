@@ -53,8 +53,15 @@
             <echo-separator margin="large"><echo-icon name="video" size="small"></echo-icon> Preview</echo-separator>
             <div style="text-align: center;"><echo-button id="preview-button">Button</echo-button></div>
             <echo-separator margin="large"><echo-icon name="wrench" size="small"></echo-icon> Options</echo-separator>
+            
             <echo-layout gap="medium" justify="center" wrap="wrap">
-                <echo-input type="text" name="text" id="text" value="Button" label="Text" size="small" variant="filled"></echo-input>
+            
+                <echo-input type="text" name="text" id="text" 
+                    icon="text"
+                    value="Button" label="Text" size="small" variant="filled"
+                    description="The text to display on the button"></echo-input>
+            
+            
                 <label>
                     <div>Variant</div>
                     <select name="variant"></select>
