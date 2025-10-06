@@ -1,5 +1,7 @@
 # Custom rules (do not delete)
 .cursor/
+ai/docs/excluded/
+ai/docs/chat/
 
 # Dependencies
 node_modules/

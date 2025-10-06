@@ -355,6 +355,71 @@ export class EchoPop extends LitElement {
         opacity: 1;
       }
 
+      /* Animation transforms - override placement transforms when animating */
+      .pop-content--slide-top[data-placement='top'] {
+        transform: translateX(-50%) translateY(-100%) translateY(10px) scale(0.95) !important;
+      }
+
+      .pop-content--slide-top[data-placement='top'].pop-content--visible {
+        transform: translateX(-50%) translateY(-100%) scale(0.95) !important;
+      }
+
+      .pop-content--slide-bottom[data-placement='bottom'] {
+        transform: translateX(-50%) translateY(-10px) scale(0.95) !important;
+      }
+
+      .pop-content--slide-bottom[data-placement='bottom'].pop-content--visible {
+        transform: translateX(-50%) scale(0.95) !important;
+      }
+
+      .pop-content--slide-top[data-placement='left'] {
+        transform: translateX(-100%) translateY(-50%) translateX(10px) scale(0.95) !important;
+      }
+
+      .pop-content--slide-top[data-placement='left'].pop-content--visible {
+        transform: translateX(-100%) translateY(-50%) scale(0.95) !important;
+      }
+
+      .pop-content--slide-bottom[data-placement='right'] {
+        transform: translateY(-50%) translateX(-10px) scale(0.95) !important;
+      }
+
+      .pop-content--slide-bottom[data-placement='right'].pop-content--visible {
+        transform: translateY(-50%) scale(0.95) !important;
+      }
+
+      .pop-content--scale[data-placement='top'] {
+        transform: translateX(-50%) translateY(-100%) scale(0.8) !important;
+      }
+
+      .pop-content--scale[data-placement='top'].pop-content--visible {
+        transform: translateX(-50%) translateY(-100%) scale(0.95) !important;
+      }
+
+      .pop-content--scale[data-placement='bottom'] {
+        transform: translateX(-50%) scale(0.8) !important;
+      }
+
+      .pop-content--scale[data-placement='bottom'].pop-content--visible {
+        transform: translateX(-50%) scale(0.95) !important;
+      }
+
+      .pop-content--scale[data-placement='left'] {
+        transform: translateX(-100%) translateY(-50%) scale(0.8) !important;
+      }
+
+      .pop-content--scale[data-placement='left'].pop-content--visible {
+        transform: translateX(-100%) translateY(-50%) scale(0.95) !important;
+      }
+
+      .pop-content--scale[data-placement='right'] {
+        transform: translateY(-50%) scale(0.8) !important;
+      }
+
+      .pop-content--scale[data-placement='right'].pop-content--visible {
+        transform: translateY(-50%) scale(0.95) !important;
+      }
+
       /* Context colors */
       .pop-content.context--primary {
         --context-color: #3b82f6;
@@ -687,7 +752,15 @@ export class EchoPop extends LitElement {
         y = anchorRect.bottom + 8;
     }
 
-    this._position = { x, y, placement: computedPlacement };
+    // Adjust position if popup would go outside viewport
+    const adjustedPosition = this._adjustPositionForViewport(
+      { x, y, placement: computedPlacement },
+      popupSize,
+      viewportWidth,
+      viewportHeight
+    );
+
+    this._position = adjustedPosition;
   }
 
   private _calculateOptimalPlacement(
@@ -715,18 +788,61 @@ export class EchoPop extends LitElement {
     const fitsLeft = spaceLeft >= estimatedPopupSize.width;
     const fitsRight = spaceRight >= estimatedPopupSize.width;
 
-    // Prefer bottom placement if it fits
+    // Smart placement logic
+    // 1. If both vertical directions fit, prefer bottom
+    if (fitsAbove && fitsBelow) return 'bottom';
+    
+    // 2. If both horizontal directions fit, prefer right
+    if (fitsLeft && fitsRight) return 'right';
+    
+    // 3. Choose the direction that fits
     if (fitsBelow) return 'bottom';
     if (fitsAbove) return 'top';
     if (fitsRight) return 'right';
     if (fitsLeft) return 'left';
 
-    // Fallback: choose placement with most space
+    // 4. Fallback: choose placement with most space
     const maxSpace = Math.max(spaceAbove, spaceBelow, spaceLeft, spaceRight);
     if (maxSpace === spaceAbove) return 'top';
     if (maxSpace === spaceBelow) return 'bottom';
     if (maxSpace === spaceLeft) return 'left';
     return 'right';
+  }
+
+  private _adjustPositionForViewport(
+    position: PopPosition,
+    popupSize?: { width: number; height: number },
+    viewportWidth?: number,
+    viewportHeight?: number
+  ): PopPosition {
+    if (!popupSize || !viewportWidth || !viewportHeight) {
+      return position;
+    }
+
+    const margin = 16;
+    let { x, y, placement } = position;
+
+    // Adjust horizontal position
+    if (placement === 'top' || placement === 'bottom') {
+      const halfWidth = popupSize.width / 2;
+      if (x - halfWidth < margin) {
+        x = margin + halfWidth;
+      } else if (x + halfWidth > viewportWidth - margin) {
+        x = viewportWidth - margin - halfWidth;
+      }
+    }
+
+    // Adjust vertical position
+    if (placement === 'left' || placement === 'right') {
+      const halfHeight = popupSize.height / 2;
+      if (y - halfHeight < margin) {
+        y = margin + halfHeight;
+      } else if (y + halfHeight > viewportHeight - margin) {
+        y = viewportHeight - margin - halfHeight;
+      }
+    }
+
+    return { x, y, placement };
   }
 
   private _updateAnchorElement(): void {
