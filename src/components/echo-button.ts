@@ -214,9 +214,13 @@ export class EchoButton extends LitElement {
   /**
    * Handle attribute changes to reset properties to default values when attributes are removed
    */
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    newValue: string | null
+  ): void {
     super.attributeChangedCallback(name, oldValue, newValue);
-    
+
     // If attribute is removed (newValue is null), reset property to default value
     if (newValue === null) {
       switch (name) {

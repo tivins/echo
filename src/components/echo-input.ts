@@ -85,14 +85,14 @@ export class EchoInput extends LitElement {
   @property({ type: Number })
   max: number | null = null;
 
-
   static styles = [
     contextColors,
     componentSizes,
     css`
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .input-container {
@@ -177,7 +177,6 @@ export class EchoInput extends LitElement {
       .input-icon--right {
         right: 12px;
       }
-
 
       .input-description {
         font-size: 12px;
@@ -338,8 +337,9 @@ export class EchoInput extends LitElement {
   ];
 
   render() {
-    const inputId = this.id || `echo-input-${Math.random().toString(36).substr(2, 9)}`;
-    
+    const inputId =
+      this.id || `echo-input-${Math.random().toString(36).substr(2, 9)}`;
+
     const inputClasses = [
       'input-field',
       `input-field--${this.variant}`,
@@ -347,19 +347,24 @@ export class EchoInput extends LitElement {
       this.icon ? `input-field--with-icon-${this.iconPosition}` : '',
       this.disabled ? 'input-field--disabled' : '',
       this.readonly ? 'input-field--readonly' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const labelClasses = [
       'input-label',
       `input-label--${this.size}`,
       this.required ? 'input-label--required' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const descriptionClasses = [
       'input-description',
       `input-description--${this.size}`,
-    ].filter(Boolean).join(' ');
-
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const iconElement = this.icon
       ? html`
@@ -367,7 +372,8 @@ export class EchoInput extends LitElement {
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromInputSize()}
             variant=${this.iconVariant || 'default'}
-            class="input-icon input-icon--${this.iconPosition} input-icon--${this.size}"
+            class="input-icon input-icon--${this
+              .iconPosition} input-icon--${this.size}"
             style="--icon-color: #6b7280;"
           ></echo-icon>
         `
@@ -382,7 +388,7 @@ export class EchoInput extends LitElement {
               </label>
             `
           : ''}
-        
+
         <div class="input-wrapper">
           <input
             id="${inputId}"
@@ -407,9 +413,11 @@ export class EchoInput extends LitElement {
           />
           ${iconElement}
         </div>
-        
+
         ${this.description
-          ? html`<div class="${descriptionClasses}">${unsafeHTML(this.description)}</div>`
+          ? html`<div class="${descriptionClasses}">
+              ${unsafeHTML(this.description)}
+            </div>`
           : ''}
       </div>
     `;
@@ -427,12 +435,12 @@ export class EchoInput extends LitElement {
   private _handleInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.value = input.value;
-    
+
     this.dispatchEvent(
       new CustomEvent('echo-input-change', {
-        detail: { 
+        detail: {
           value: this.value,
-          originalEvent: event 
+          originalEvent: event,
         },
         bubbles: true,
         composed: true,
@@ -463,12 +471,12 @@ export class EchoInput extends LitElement {
   private _handleChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.value = input.value;
-    
+
     this.dispatchEvent(
       new CustomEvent('echo-input-change', {
-        detail: { 
+        detail: {
           value: this.value,
-          originalEvent: event 
+          originalEvent: event,
         },
         bubbles: true,
         composed: true,
@@ -479,9 +487,13 @@ export class EchoInput extends LitElement {
   /**
    * Handle attribute changes to reset properties to default values when attributes are removed
    */
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    newValue: string | null
+  ): void {
     super.attributeChangedCallback(name, oldValue, newValue);
-    
+
     // If attribute is removed (newValue is null), reset property to default value
     if (newValue === null) {
       switch (name) {

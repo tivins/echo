@@ -5,6 +5,124 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.2] - 2025-01-05
+
+### Fixed
+- **Echo Pop Component**: Fixed Lit template directive error (`currentDirective._$initialize is not a function`)
+  - **Template Simplification**: Replaced complex ternary expressions in templates with cleaner class array logic
+  - **Better Template Structure**: Improved template readability and maintainability
+  - **Lit Compatibility**: Ensured full compatibility with Lit's template system
+
+## [1.13.1] - 2025-01-05
+
+### Fixed
+- **Echo Pop Component**: Completely refactored positioning system to fix major positioning issues
+  - **Portal System**: Implemented proper portal-based rendering for better isolation
+  - **Fixed Positioning**: Replaced absolute positioning with fixed positioning for accurate viewport coordinates
+  - **Improved Anchor Detection**: Enhanced anchor element detection logic for more reliable positioning
+  - **Better Collision Detection**: Improved automatic placement calculation with proper space detection
+  - **Modal Centering**: Fixed modal variant to properly center in viewport
+  - **Scroll Handling**: Enhanced scroll event handling for dynamic positioning updates
+  - **Focus Management**: Improved focus trap and restoration for better accessibility
+
+## [1.13.0] - 2025-01-05
+
+### Added
+- **Echo Pop Component**: Added new `echo-pop` web component - a versatile pop-in/modal component that serves as the foundation for dropdowns, tooltips, modals, and other overlay interfaces
+  - **Multiple Variants**: Support for default, overlay, tooltip, dropdown, and modal variants
+  - **Flexible Sizing**: Small, medium, large, and auto size options
+  - **Smart Positioning**: Auto, top, bottom, left, right, and corner-based placement options
+  - **Animation System**: Fade, slide, scale, and none animation types with customizable duration
+  - **Trigger Options**: Click, hover, focus, and manual trigger behaviors
+  - **Dismissible Control**: Configurable dismissible and persistent states
+  - **Context Colors**: Full integration with Design Toolkit context color system
+  - **Icon Support**: Built-in icon support for headers with size and variant options
+  - **Slot System**: Named slots for trigger, header, footer, and main content
+  - **Event System**: Comprehensive event handling (echo-pop-open, echo-pop-close, echo-pop-position)
+  - **Public API**: Methods for show(), hide(), toggle(), and updatePosition()
+  - **Accessibility**: Full keyboard navigation, focus management, and screen reader support
+  - **Portal Rendering**: Modal variant uses portal rendering for proper z-index management
+  - **Responsive Design**: Smart positioning with collision detection and viewport boundaries
+
+### Technical Details
+- **Types**: Added EchoPopVariant, EchoPopSize, EchoPopPlacement, EchoPopAnimation, and EchoPopTrigger type definitions
+- **Component Architecture**: Built with Lit framework following Design Toolkit patterns
+- **Positioning System**: Smart positioning with anchor element detection and viewport collision handling
+- **Animation Framework**: CSS-based animations with customizable duration and easing
+- **Event Management**: Comprehensive event system with proper bubbling and composition
+- **Focus Management**: Focus trap for modals and proper focus restoration
+- **Resize Handling**: ResizeObserver integration for dynamic position updates
+- **Scroll Management**: Scroll event handling for position maintenance
+
+### Documentation
+- **Comprehensive Examples**: Added detailed usage examples in README.md
+- **API Documentation**: Complete property, event, and method documentation
+- **Demo Page**: Created extensive demo page (demos/echo-pop-demo.html) showcasing all features
+- **Test Coverage**: Full Playwright test suite covering all pop-in variants and interactions
+- **Design Document**: Created design document (docs/echo-pop-design.md) outlining architecture and future plans
+
+### Examples
+```html
+<!-- Basic pop-in -->
+<echo-pop title="Pop-in Title" content="This is a pop-in">
+  <echo-button slot="trigger">Open Pop-in</echo-button>
+</echo-pop>
+
+<!-- Tooltip variant -->
+<echo-pop variant="tooltip" content="This is a tooltip">
+  <echo-button slot="trigger">Hover me</echo-button>
+</echo-pop>
+
+<!-- Dropdown variant -->
+<echo-pop variant="dropdown" title="Menu">
+  <echo-button slot="trigger">Open Menu</echo-button>
+  <div slot="footer">
+    <echo-button variant="ghost" size="small">Action 1</echo-button>
+    <echo-button variant="ghost" size="small">Action 2</echo-button>
+  </div>
+</echo-pop>
+
+<!-- Modal variant -->
+<echo-pop variant="modal" title="Modal Dialog" content="This is a modal dialog">
+  <echo-button slot="trigger">Open Modal</echo-button>
+  <div slot="footer">
+    <echo-button variant="ghost">Cancel</echo-button>
+    <echo-button context="primary">Confirm</echo-button>
+  </div>
+</echo-pop>
+```
+
+### JavaScript API
+```javascript
+const pop = document.querySelector('echo-pop');
+
+// Event handling
+pop.addEventListener('echo-pop-open', (event) => {
+  console.log('Pop opened:', event.detail.placement);
+});
+
+pop.addEventListener('echo-pop-close', () => {
+  console.log('Pop closed');
+});
+
+// Public methods
+pop.show();
+pop.hide();
+pop.toggle();
+pop.updatePosition();
+
+// Property access
+console.log(pop.open);
+console.log(pop.variant);
+console.log(pop.placement);
+```
+
+### Future Integration
+- **Echo Select Enhancement**: Planned integration to replace native select dropdown with searchable, service-connected pop-in
+- **Menu System**: Foundation for context menus, dropdown menus, and action sheets
+- **Command Palettes**: Base component for command palette interfaces
+- **Advanced Positioning**: Future integration with @floating-ui/dom for enhanced collision detection
+
 ## [1.12.0] - 2025-01-05
 
 ### Added

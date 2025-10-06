@@ -72,7 +72,8 @@ export class EchoSelect extends LitElement {
     css`
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .select-container {
@@ -333,8 +334,9 @@ export class EchoSelect extends LitElement {
   ];
 
   render() {
-    const selectId = this.id || `echo-select-${Math.random().toString(36).substr(2, 9)}`;
-    
+    const selectId =
+      this.id || `echo-select-${Math.random().toString(36).substr(2, 9)}`;
+
     const selectClasses = [
       'select-field',
       `select-field--${this.variant}`,
@@ -342,18 +344,24 @@ export class EchoSelect extends LitElement {
       this.icon ? `select-field--with-icon-${this.iconPosition}` : '',
       this.disabled ? 'select-field--disabled' : '',
       this.multiple ? 'select-field--multiple' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const labelClasses = [
       'select-label',
       `select-label--${this.size}`,
       this.required ? 'select-label--required' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const descriptionClasses = [
       'select-description',
       `select-description--${this.size}`,
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const iconElement = this.icon
       ? html`
@@ -361,7 +369,8 @@ export class EchoSelect extends LitElement {
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromSelectSize()}
             variant=${this.iconVariant || 'default'}
-            class="select-icon select-icon--${this.iconPosition} select-icon--${this.size}"
+            class="select-icon select-icon--${this
+              .iconPosition} select-icon--${this.size}"
             style="--icon-color: #6b7280;"
           ></echo-icon>
         `
@@ -376,7 +385,7 @@ export class EchoSelect extends LitElement {
               </label>
             `
           : ''}
-        
+
         <div class="select-wrapper">
           <select
             id="${selectId}"
@@ -393,10 +402,10 @@ export class EchoSelect extends LitElement {
             ${this.placeholder && !this.multiple
               ? html`<option value="" disabled>${this.placeholder}</option>`
               : ''}
-            ${this.options.map(option => 
-              html`
-                <option 
-                  value="${option.value}" 
+            ${this.options.map(
+              (option) => html`
+                <option
+                  value="${option.value}"
                   ?disabled="${option.disabled}"
                   ?selected="${option.selected}"
                 >
@@ -407,9 +416,11 @@ export class EchoSelect extends LitElement {
           </select>
           ${iconElement}
         </div>
-        
+
         ${this.description
-          ? html`<div class="${descriptionClasses}">${unsafeHTML(this.description)}</div>`
+          ? html`<div class="${descriptionClasses}">
+              ${unsafeHTML(this.description)}
+            </div>`
           : ''}
       </div>
     `;
@@ -427,13 +438,13 @@ export class EchoSelect extends LitElement {
   private _handleChange(event: Event): void {
     const select = event.target as HTMLSelectElement;
     this.value = select.value;
-    
+
     this.dispatchEvent(
       new CustomEvent('echo-select-change', {
-        detail: { 
+        detail: {
           value: this.value,
           selectedIndex: select.selectedIndex,
-          originalEvent: event 
+          originalEvent: event,
         },
         bubbles: true,
         composed: true,
@@ -464,9 +475,13 @@ export class EchoSelect extends LitElement {
   /**
    * Handle attribute changes to reset properties to default values when attributes are removed
    */
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    newValue: string | null
+  ): void {
     super.attributeChangedCallback(name, oldValue, newValue);
-    
+
     // If attribute is removed (newValue is null), reset property to default value
     if (newValue === null) {
       switch (name) {
@@ -524,31 +539,41 @@ export class EchoSelect extends LitElement {
 
   // Public methods
   public focus(): void {
-    const select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
+    const select = this.shadowRoot?.querySelector(
+      'select'
+    ) as HTMLSelectElement;
     if (select) {
       select.focus();
     }
   }
 
   public blur(): void {
-    const select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
+    const select = this.shadowRoot?.querySelector(
+      'select'
+    ) as HTMLSelectElement;
     if (select) {
       select.blur();
     }
   }
 
   public get validity(): ValidityState | null {
-    const select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
+    const select = this.shadowRoot?.querySelector(
+      'select'
+    ) as HTMLSelectElement;
     return select ? select.validity : null;
   }
 
   public checkValidity(): boolean {
-    const select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
+    const select = this.shadowRoot?.querySelector(
+      'select'
+    ) as HTMLSelectElement;
     return select ? select.checkValidity() : false;
   }
 
   public reportValidity(): boolean {
-    const select = this.shadowRoot?.querySelector('select') as HTMLSelectElement;
+    const select = this.shadowRoot?.querySelector(
+      'select'
+    ) as HTMLSelectElement;
     return select ? select.reportValidity() : false;
   }
 
@@ -557,7 +582,7 @@ export class EchoSelect extends LitElement {
   }
 
   public removeOption(value: string): void {
-    this.options = this.options.filter(option => option.value !== value);
+    this.options = this.options.filter((option) => option.value !== value);
   }
 
   public clearOptions(): void {

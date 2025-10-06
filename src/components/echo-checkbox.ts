@@ -55,7 +55,8 @@ export class EchoCheckbox extends LitElement {
     css`
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .checkbox-container {
@@ -256,11 +257,13 @@ export class EchoCheckbox extends LitElement {
         transform: translateX(20px);
       }
 
-      .checkbox-visual--toggle.checkbox-visual--small.checkbox-visual--checked .checkbox-toggle-thumb {
+      .checkbox-visual--toggle.checkbox-visual--small.checkbox-visual--checked
+        .checkbox-toggle-thumb {
         transform: translateX(16px);
       }
 
-      .checkbox-visual--toggle.checkbox-visual--large.checkbox-visual--checked .checkbox-toggle-thumb {
+      .checkbox-visual--toggle.checkbox-visual--large.checkbox-visual--checked
+        .checkbox-toggle-thumb {
         transform: translateX(24px);
       }
 
@@ -331,12 +334,15 @@ export class EchoCheckbox extends LitElement {
   ];
 
   render() {
-    const checkboxId = this.id || `echo-checkbox-${Math.random().toString(36).substr(2, 9)}`;
-    
+    const checkboxId =
+      this.id || `echo-checkbox-${Math.random().toString(36).substr(2, 9)}`;
+
     const wrapperClasses = [
       'checkbox-wrapper',
       this.disabled ? 'checkbox-wrapper--disabled' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const visualClasses = [
       'checkbox-visual',
@@ -345,18 +351,24 @@ export class EchoCheckbox extends LitElement {
       `checkbox-visual--${this.variant}`,
       this.checked ? 'checkbox-visual--checked' : '',
       this.disabled ? 'checkbox-visual--disabled' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const labelClasses = [
       'checkbox-label',
       `checkbox-label--${this.size}`,
       this.required ? 'checkbox-label--required' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const descriptionClasses = [
       'checkbox-description',
       `checkbox-description--${this.size}`,
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     const visualElement = this._renderVisualElement();
 
@@ -376,7 +388,12 @@ export class EchoCheckbox extends LitElement {
             @focus="${this._handleFocus}"
             @blur="${this._handleBlur}"
           />
-          <div class="${visualClasses}" tabindex="0" role="checkbox" aria-checked="${this.checked}">
+          <div
+            class="${visualClasses}"
+            tabindex="0"
+            role="checkbox"
+            aria-checked="${this.checked}"
+          >
             ${visualElement}
           </div>
           <div class="checkbox-content">
@@ -388,7 +405,9 @@ export class EchoCheckbox extends LitElement {
                 `
               : ''}
             ${this.description
-              ? html`<div class="${descriptionClasses}">${this.description}</div>`
+              ? html`<div class="${descriptionClasses}">
+                  ${this.description}
+                </div>`
               : ''}
           </div>
         </div>
@@ -439,7 +458,7 @@ export class EchoCheckbox extends LitElement {
     if (this.disabled) {
       return;
     }
-    
+
     event.preventDefault();
     this.checked = !this.checked;
     this._dispatchChangeEvent();
@@ -454,9 +473,9 @@ export class EchoCheckbox extends LitElement {
   private _handleFocus(event: Event): void {
     this.dispatchEvent(
       new CustomEvent('echo-checkbox-focus', {
-        detail: { 
+        detail: {
           checked: this.checked,
-          originalEvent: event 
+          originalEvent: event,
         },
         bubbles: true,
         composed: true,
@@ -467,9 +486,9 @@ export class EchoCheckbox extends LitElement {
   private _handleBlur(event: Event): void {
     this.dispatchEvent(
       new CustomEvent('echo-checkbox-blur', {
-        detail: { 
+        detail: {
           checked: this.checked,
-          originalEvent: event 
+          originalEvent: event,
         },
         bubbles: true,
         composed: true,
@@ -480,10 +499,10 @@ export class EchoCheckbox extends LitElement {
   private _dispatchChangeEvent(): void {
     this.dispatchEvent(
       new CustomEvent('echo-checkbox-change', {
-        detail: { 
+        detail: {
           checked: this.checked,
           value: this.value,
-          type: this.type
+          type: this.type,
         },
         bubbles: true,
         composed: true,
@@ -494,9 +513,13 @@ export class EchoCheckbox extends LitElement {
   /**
    * Handle attribute changes to reset properties to default values when attributes are removed
    */
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  attributeChangedCallback(
+    name: string,
+    oldValue: string | null,
+    newValue: string | null
+  ): void {
     super.attributeChangedCallback(name, oldValue, newValue);
-    
+
     // If attribute is removed (newValue is null), reset property to default value
     if (newValue === null) {
       switch (name) {
@@ -542,14 +565,18 @@ export class EchoCheckbox extends LitElement {
 
   // Public methods
   public focus(): void {
-    const visual = this.shadowRoot?.querySelector('.checkbox-visual') as HTMLElement;
+    const visual = this.shadowRoot?.querySelector(
+      '.checkbox-visual'
+    ) as HTMLElement;
     if (visual) {
       visual.focus();
     }
   }
 
   public blur(): void {
-    const visual = this.shadowRoot?.querySelector('.checkbox-visual') as HTMLElement;
+    const visual = this.shadowRoot?.querySelector(
+      '.checkbox-visual'
+    ) as HTMLElement;
     if (visual) {
       visual.blur();
     }

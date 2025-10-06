@@ -2242,23 +2242,30 @@ let EchoInput = class EchoInput extends i$1 {
             this.icon ? `input-field--with-icon-${this.iconPosition}` : '',
             this.disabled ? 'input-field--disabled' : '',
             this.readonly ? 'input-field--readonly' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const labelClasses = [
             'input-label',
             `input-label--${this.size}`,
             this.required ? 'input-label--required' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const descriptionClasses = [
             'input-description',
             `input-description--${this.size}`,
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const iconElement = this.icon
             ? x `
           <echo-icon
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromInputSize()}
             variant=${this.iconVariant || 'default'}
-            class="input-icon input-icon--${this.iconPosition} input-icon--${this.size}"
+            class="input-icon input-icon--${this
+                .iconPosition} input-icon--${this.size}"
             style="--icon-color: #6b7280;"
           ></echo-icon>
         `
@@ -2272,7 +2279,7 @@ let EchoInput = class EchoInput extends i$1 {
               </label>
             `
             : ''}
-        
+
         <div class="input-wrapper">
           <input
             id="${inputId}"
@@ -2297,9 +2304,11 @@ let EchoInput = class EchoInput extends i$1 {
           />
           ${iconElement}
         </div>
-        
+
         ${this.description
-            ? x `<div class="${descriptionClasses}">${o$1(this.description)}</div>`
+            ? x `<div class="${descriptionClasses}">
+              ${o$1(this.description)}
+            </div>`
             : ''}
       </div>
     `;
@@ -2318,7 +2327,7 @@ let EchoInput = class EchoInput extends i$1 {
         this.dispatchEvent(new CustomEvent('echo-input-change', {
             detail: {
                 value: this.value,
-                originalEvent: event
+                originalEvent: event,
             },
             bubbles: true,
             composed: true,
@@ -2344,7 +2353,7 @@ let EchoInput = class EchoInput extends i$1 {
         this.dispatchEvent(new CustomEvent('echo-input-change', {
             detail: {
                 value: this.value,
-                originalEvent: event
+                originalEvent: event,
             },
             bubbles: true,
             composed: true,
@@ -2468,7 +2477,8 @@ EchoInput.styles = [
     i$4 `
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .input-container {
@@ -2553,7 +2563,6 @@ EchoInput.styles = [
       .input-icon--right {
         right: 12px;
       }
-
 
       .input-description {
         font-size: 12px;
@@ -2815,23 +2824,30 @@ let EchoSelect = class EchoSelect extends i$1 {
             this.icon ? `select-field--with-icon-${this.iconPosition}` : '',
             this.disabled ? 'select-field--disabled' : '',
             this.multiple ? 'select-field--multiple' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const labelClasses = [
             'select-label',
             `select-label--${this.size}`,
             this.required ? 'select-label--required' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const descriptionClasses = [
             'select-description',
             `select-description--${this.size}`,
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const iconElement = this.icon
             ? x `
           <echo-icon
             name=${this.icon}
             size=${this.iconSize || this._getIconSizeFromSelectSize()}
             variant=${this.iconVariant || 'default'}
-            class="select-icon select-icon--${this.iconPosition} select-icon--${this.size}"
+            class="select-icon select-icon--${this
+                .iconPosition} select-icon--${this.size}"
             style="--icon-color: #6b7280;"
           ></echo-icon>
         `
@@ -2845,7 +2861,7 @@ let EchoSelect = class EchoSelect extends i$1 {
               </label>
             `
             : ''}
-        
+
         <div class="select-wrapper">
           <select
             id="${selectId}"
@@ -2862,9 +2878,9 @@ let EchoSelect = class EchoSelect extends i$1 {
             ${this.placeholder && !this.multiple
             ? x `<option value="" disabled>${this.placeholder}</option>`
             : ''}
-            ${this.options.map(option => x `
-                <option 
-                  value="${option.value}" 
+            ${this.options.map((option) => x `
+                <option
+                  value="${option.value}"
                   ?disabled="${option.disabled}"
                   ?selected="${option.selected}"
                 >
@@ -2874,9 +2890,11 @@ let EchoSelect = class EchoSelect extends i$1 {
           </select>
           ${iconElement}
         </div>
-        
+
         ${this.description
-            ? x `<div class="${descriptionClasses}">${o$1(this.description)}</div>`
+            ? x `<div class="${descriptionClasses}">
+              ${o$1(this.description)}
+            </div>`
             : ''}
       </div>
     `;
@@ -2896,7 +2914,7 @@ let EchoSelect = class EchoSelect extends i$1 {
             detail: {
                 value: this.value,
                 selectedIndex: select.selectedIndex,
-                originalEvent: event
+                originalEvent: event,
             },
             bubbles: true,
             composed: true,
@@ -3004,7 +3022,7 @@ let EchoSelect = class EchoSelect extends i$1 {
         this.options = [...this.options, option];
     }
     removeOption(value) {
-        this.options = this.options.filter(option => option.value !== value);
+        this.options = this.options.filter((option) => option.value !== value);
     }
     clearOptions() {
         this.options = [];
@@ -3016,7 +3034,8 @@ EchoSelect.styles = [
     i$4 `
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .select-container {
@@ -3351,7 +3370,9 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
         const wrapperClasses = [
             'checkbox-wrapper',
             this.disabled ? 'checkbox-wrapper--disabled' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const visualClasses = [
             'checkbox-visual',
             `checkbox-visual--${this.type}`,
@@ -3359,16 +3380,22 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
             `checkbox-visual--${this.variant}`,
             this.checked ? 'checkbox-visual--checked' : '',
             this.disabled ? 'checkbox-visual--disabled' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const labelClasses = [
             'checkbox-label',
             `checkbox-label--${this.size}`,
             this.required ? 'checkbox-label--required' : '',
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const descriptionClasses = [
             'checkbox-description',
             `checkbox-description--${this.size}`,
-        ].filter(Boolean).join(' ');
+        ]
+            .filter(Boolean)
+            .join(' ');
         const visualElement = this._renderVisualElement();
         return x `
       <div class="checkbox-container context--${this.context}">
@@ -3386,7 +3413,12 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
             @focus="${this._handleFocus}"
             @blur="${this._handleBlur}"
           />
-          <div class="${visualClasses}" tabindex="0" role="checkbox" aria-checked="${this.checked}">
+          <div
+            class="${visualClasses}"
+            tabindex="0"
+            role="checkbox"
+            aria-checked="${this.checked}"
+          >
             ${visualElement}
           </div>
           <div class="checkbox-content">
@@ -3398,7 +3430,9 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
                 `
             : ''}
             ${this.description
-            ? x `<div class="${descriptionClasses}">${this.description}</div>`
+            ? x `<div class="${descriptionClasses}">
+                  ${this.description}
+                </div>`
             : ''}
           </div>
         </div>
@@ -3459,7 +3493,7 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
         this.dispatchEvent(new CustomEvent('echo-checkbox-focus', {
             detail: {
                 checked: this.checked,
-                originalEvent: event
+                originalEvent: event,
             },
             bubbles: true,
             composed: true,
@@ -3469,7 +3503,7 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
         this.dispatchEvent(new CustomEvent('echo-checkbox-blur', {
             detail: {
                 checked: this.checked,
-                originalEvent: event
+                originalEvent: event,
             },
             bubbles: true,
             composed: true,
@@ -3480,7 +3514,7 @@ let EchoCheckbox = class EchoCheckbox extends i$1 {
             detail: {
                 checked: this.checked,
                 value: this.value,
-                type: this.type
+                type: this.type,
             },
             bubbles: true,
             composed: true,
@@ -3559,7 +3593,8 @@ EchoCheckbox.styles = [
     i$4 `
       :host {
         display: block;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
 
       .checkbox-container {
@@ -3760,11 +3795,13 @@ EchoCheckbox.styles = [
         transform: translateX(20px);
       }
 
-      .checkbox-visual--toggle.checkbox-visual--small.checkbox-visual--checked .checkbox-toggle-thumb {
+      .checkbox-visual--toggle.checkbox-visual--small.checkbox-visual--checked
+        .checkbox-toggle-thumb {
         transform: translateX(16px);
       }
 
-      .checkbox-visual--toggle.checkbox-visual--large.checkbox-visual--checked .checkbox-toggle-thumb {
+      .checkbox-visual--toggle.checkbox-visual--large.checkbox-visual--checked
+        .checkbox-toggle-thumb {
         transform: translateX(24px);
       }
 
@@ -3872,6 +3909,785 @@ __decorate([
 EchoCheckbox = __decorate([
     t$1('echo-checkbox')
 ], EchoCheckbox);
+
+let EchoPop = class EchoPop extends i$1 {
+    constructor() {
+        super(...arguments);
+        this.variant = 'default';
+        this.size = 'medium';
+        this.context = 'primary';
+        this.placement = 'auto';
+        this.animation = 'fade';
+        this.trigger = 'click';
+        this.open = false;
+        this.dismissible = true;
+        this.persistent = false;
+        this.title = '';
+        this.content = '';
+        this.icon = null;
+        this.iconSize = null;
+        this.iconVariant = null;
+        this.animationDuration = 200;
+        this.anchorSelector = '';
+        this._isVisible = false;
+        this._isAnimating = false;
+        this._position = { x: 0, y: 0, placement: 'bottom' };
+        this._anchorElement = null;
+        this._portalElement = null;
+        this._resizeObserver = null;
+        this._scrollListener = null;
+        this._previousFocus = null;
+        this._handleTriggerClick = () => {
+            if (this.trigger === 'click' || this.trigger === 'manual') {
+                this.toggle();
+            }
+        };
+        this._handleKeydown = (event) => {
+            if (!this._isVisible)
+                return;
+            if (event.key === 'Escape' && this.dismissible) {
+                this._handleClose();
+            }
+        };
+        this._handleOutsideClick = (event) => {
+            if (!this._isVisible || this.persistent)
+                return;
+            const target = event.target;
+            const isInsidePop = this.shadowRoot?.contains(target) || this.contains(target);
+            if (!isInsidePop) {
+                this._handleClose();
+            }
+        };
+        this._handlePortalClick = (event) => {
+            if (this.persistent)
+                return;
+            const target = event.target;
+            if (target.classList.contains('pop-portal')) {
+                this._handleClose();
+            }
+        };
+        this._handleContentClick = (event) => {
+            // Prevent event bubbling for content clicks
+            event.stopPropagation();
+        };
+        this._handleClose = () => {
+            this.open = false;
+        };
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        this._setupEventListeners();
+        this._setupResizeObserver();
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this._cleanupEventListeners();
+        this._cleanupResizeObserver();
+        this._removePortal();
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        if (changedProperties.has('open')) {
+            this._handleOpenChange();
+        }
+        if (changedProperties.has('anchorSelector')) {
+            this._updateAnchorElement();
+        }
+    }
+    render() {
+        return x `
+      <slot name="trigger" @click="${this._handleTriggerClick}"></slot>
+      ${this._isVisible ? this._renderPortal() : ''}
+    `;
+    }
+    _renderPortal() {
+        if (this.variant === 'modal') {
+            return this._renderModalPortal();
+        }
+        return this._renderPopupPortal();
+    }
+    _renderModalPortal() {
+        const classes = [
+            'pop-content',
+            'pop-content--modal',
+            `pop-content--${this.size}`,
+            `context--${this.context}`,
+        ];
+        if (this._isVisible) {
+            classes.push('pop-content--visible');
+        }
+        if (this._isAnimating) {
+            classes.push('pop-content--animating');
+        }
+        return x `
+      <div
+        class="pop-portal pop-portal--modal"
+        @click="${this._handlePortalClick}"
+      >
+        <div
+          class="${classes.join(' ')}"
+          style="--animation-duration: ${this.animationDuration}ms;"
+          @click="${this._handleContentClick}"
+        >
+          ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
+        </div>
+      </div>
+    `;
+    }
+    _renderPopupPortal() {
+        const classes = [
+            'pop-content',
+            `pop-content--${this.variant}`,
+            `pop-content--${this.size}`,
+            `context--${this.context}`,
+            `pop-content--${this.animation}`,
+        ];
+        if (this._isVisible) {
+            classes.push('pop-content--visible');
+        }
+        if (this._isAnimating) {
+            classes.push('pop-content--animating');
+        }
+        return x `
+      <div class="pop-portal">
+        <div
+          class="${classes.join(' ')}"
+          data-placement="${this._position.placement}"
+          style="--animation-duration: ${this.animationDuration}ms; left: ${this
+            ._position.x}px; top: ${this._position.y}px;"
+          @click="${this._handleContentClick}"
+        >
+          ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
+        </div>
+      </div>
+    `;
+    }
+    _renderHeader() {
+        if (!this.title && !this.icon)
+            return x ``;
+        return x `
+      <div class="pop-header">
+        <div class="pop-header-content">
+          ${this.icon
+            ? x `
+                <echo-icon
+                  name="${this.icon}"
+                  size="${this.iconSize || 'medium'}"
+                  variant="${this.iconVariant || 'default'}"
+                ></echo-icon>
+              `
+            : ''}
+          ${this.title ? x `<h3 class="pop-title">${this.title}</h3>` : ''}
+        </div>
+        ${this.dismissible
+            ? x `
+              <button
+                class="pop-close-button"
+                @click="${this._handleClose}"
+                aria-label="Close"
+              >
+                <echo-icon name="x" size="small"></echo-icon>
+              </button>
+            `
+            : ''}
+      </div>
+    `;
+    }
+    _renderBody() {
+        const hasHeader = this.title || this.icon;
+        const hasFooter = this._hasFooterSlot();
+        const bodyClasses = ['pop-body'];
+        if (!hasHeader) {
+            bodyClasses.push('pop-body--no-header');
+        }
+        if (!hasFooter) {
+            bodyClasses.push('pop-body--no-footer');
+        }
+        return x `
+      <div class="${bodyClasses.join(' ')}">
+        ${this.content ? x `<p>${this.content}</p>` : ''}
+        <slot></slot>
+      </div>
+    `;
+    }
+    _renderFooter() {
+        if (!this._hasFooterSlot())
+            return x ``;
+        return x `
+      <div class="pop-footer">
+        <slot name="footer"></slot>
+      </div>
+    `;
+    }
+    _hasFooterSlot() {
+        return this.querySelector('[slot="footer"]') !== null;
+    }
+    _handleOpenChange() {
+        if (this.open) {
+            this._show();
+        }
+        else {
+            this._hide();
+        }
+    }
+    _show() {
+        this._isVisible = true;
+        this._isAnimating = true;
+        // Store current focus
+        this._previousFocus = document.activeElement;
+        // Update position immediately and after rendering
+        this._updatePosition();
+        requestAnimationFrame(() => {
+            this._updatePosition();
+            this._isAnimating = false;
+        });
+        this.dispatchEvent(new CustomEvent('echo-pop-open', {
+            detail: { placement: this._position.placement },
+            bubbles: true,
+            composed: true,
+        }));
+        // Focus management
+        this._trapFocus();
+    }
+    _hide() {
+        this._isAnimating = true;
+        setTimeout(() => {
+            this._isVisible = false;
+            this._isAnimating = false;
+        }, this.animationDuration);
+        this.dispatchEvent(new CustomEvent('echo-pop-close', {
+            bubbles: true,
+            composed: true,
+        }));
+        // Restore focus
+        this._restoreFocus();
+    }
+    _updatePosition() {
+        if (this.variant === 'modal') {
+            return; // Modal doesn't need positioning
+        }
+        // Find anchor element
+        if (!this._anchorElement) {
+            if (this.anchorSelector) {
+                this._anchorElement = document.querySelector(this.anchorSelector);
+            }
+            else {
+                // Use the trigger slot element
+                const triggerSlot = this.querySelector('[slot="trigger"]');
+                this._anchorElement = triggerSlot;
+            }
+        }
+        if (!this._anchorElement) {
+            console.warn('EchoPop: No anchor element found');
+            return;
+        }
+        const anchorRect = this._anchorElement.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        // Get popup size if available
+        const popupElement = this.shadowRoot?.querySelector('.pop-content');
+        const popupSize = popupElement ? {
+            width: popupElement.offsetWidth || 200,
+            height: popupElement.offsetHeight || 100
+        } : undefined;
+        // Calculate optimal placement with collision detection
+        const computedPlacement = this._calculateOptimalPlacement(anchorRect, viewportWidth, viewportHeight, popupSize);
+        // Calculate position based on computed placement
+        let x = 0;
+        let y = 0;
+        switch (computedPlacement) {
+            case 'top':
+                x = anchorRect.left + anchorRect.width / 2;
+                y = anchorRect.top - 8; // Position du TOP du popup
+                break;
+            case 'bottom':
+                x = anchorRect.left + anchorRect.width / 2;
+                y = anchorRect.bottom + 8; // Position du TOP du popup
+                break;
+            case 'left':
+                x = anchorRect.left - 8; // Position du RIGHT du popup
+                y = anchorRect.top + anchorRect.height / 2;
+                break;
+            case 'right':
+                x = anchorRect.right + 8; // Position du LEFT du popup
+                y = anchorRect.top + anchorRect.height / 2;
+                break;
+            default:
+                x = anchorRect.left + anchorRect.width / 2;
+                y = anchorRect.bottom + 8;
+        }
+        this._position = { x, y, placement: computedPlacement };
+    }
+    _calculateOptimalPlacement(anchorRect, viewportWidth, viewportHeight, popupSize) {
+        if (this.placement !== 'auto') {
+            return this.placement;
+        }
+        // Estimate popup size if not provided
+        const estimatedPopupSize = popupSize || { width: 200, height: 100 };
+        const margin = 16; // Minimum margin from viewport edge
+        const spaceAbove = anchorRect.top - margin;
+        const spaceBelow = viewportHeight - anchorRect.bottom - margin;
+        const spaceLeft = anchorRect.left - margin;
+        const spaceRight = viewportWidth - anchorRect.right - margin;
+        // Check if popup fits in each direction
+        const fitsAbove = spaceAbove >= estimatedPopupSize.height;
+        const fitsBelow = spaceBelow >= estimatedPopupSize.height;
+        const fitsLeft = spaceLeft >= estimatedPopupSize.width;
+        const fitsRight = spaceRight >= estimatedPopupSize.width;
+        // Prefer bottom placement if it fits
+        if (fitsBelow)
+            return 'bottom';
+        if (fitsAbove)
+            return 'top';
+        if (fitsRight)
+            return 'right';
+        if (fitsLeft)
+            return 'left';
+        // Fallback: choose placement with most space
+        const maxSpace = Math.max(spaceAbove, spaceBelow, spaceLeft, spaceRight);
+        if (maxSpace === spaceAbove)
+            return 'top';
+        if (maxSpace === spaceBelow)
+            return 'bottom';
+        if (maxSpace === spaceLeft)
+            return 'left';
+        return 'right';
+    }
+    _updateAnchorElement() {
+        if (this.anchorSelector) {
+            this._anchorElement = document.querySelector(this.anchorSelector);
+        }
+        else {
+            this._anchorElement = null;
+        }
+    }
+    _setupEventListeners() {
+        // Keyboard events
+        document.addEventListener('keydown', this._handleKeydown);
+        // Click outside
+        document.addEventListener('click', this._handleOutsideClick);
+        // Scroll events for position updates
+        this._scrollListener = () => this._updatePosition();
+        window.addEventListener('scroll', this._scrollListener, true);
+    }
+    _cleanupEventListeners() {
+        document.removeEventListener('keydown', this._handleKeydown);
+        document.removeEventListener('click', this._handleOutsideClick);
+        if (this._scrollListener) {
+            window.removeEventListener('scroll', this._scrollListener, true);
+        }
+    }
+    _setupResizeObserver() {
+        if (typeof ResizeObserver !== 'undefined') {
+            this._resizeObserver = new ResizeObserver(() => {
+                this._updatePosition();
+            });
+            if (this._anchorElement) {
+                this._resizeObserver.observe(this._anchorElement);
+            }
+        }
+    }
+    _cleanupResizeObserver() {
+        if (this._resizeObserver) {
+            this._resizeObserver.disconnect();
+        }
+    }
+    _removePortal() {
+        if (this._portalElement) {
+            this._portalElement.remove();
+            this._portalElement = null;
+        }
+    }
+    _trapFocus() {
+        // Simple focus trap - can be enhanced
+        const focusableElements = this.shadowRoot?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusableElements.length > 0) {
+            focusableElements[0].focus();
+        }
+    }
+    _restoreFocus() {
+        // Restore focus to previous element
+        if (this._previousFocus) {
+            this._previousFocus.focus();
+            this._previousFocus = null;
+        }
+    }
+    // Public methods
+    show() {
+        this.open = true;
+    }
+    hide() {
+        this.open = false;
+    }
+    toggle() {
+        this.open = !this.open;
+    }
+    updatePosition() {
+        this._updatePosition();
+    }
+};
+EchoPop.styles = [
+    contextColors,
+    componentSizes,
+    i$4 `
+      :host {
+        display: inline-block;
+        position: relative;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      /* Portal container for popup content */
+      .pop-portal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      .pop-portal--modal {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+      }
+
+      /* Popup content */
+      .pop-content {
+        position: fixed;
+        z-index: 1001;
+        background: white;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.07),
+          0 2px 4px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        opacity: 0;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: auto;
+        overflow: hidden;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .pop-content--visible {
+        opacity: 1;
+      }
+
+      .pop-content--animating {
+        transition-duration: var(--animation-duration, 200ms);
+      }
+
+      /* Variants */
+      .pop-content--default {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow:
+          0 4px 6px rgba(0, 0, 0, 0.07),
+          0 2px 4px rgba(0, 0, 0, 0.06);
+      }
+
+      .pop-content--overlay {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(4px);
+        border: none;
+        box-shadow:
+          0 8px 25px rgba(0, 0, 0, 0.12),
+          0 3px 10px rgba(0, 0, 0, 0.08);
+        color: white;
+      }
+
+      .pop-content--tooltip {
+        background: #1f2937;
+        color: white;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 12px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        max-width: 200px;
+      }
+
+      .pop-content--dropdown {
+        background: white;
+        border: 1px solid #e5e7eb;
+        box-shadow:
+          0 10px 15px rgba(0, 0, 0, 0.1),
+          0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        min-width: 120px;
+      }
+
+      .pop-content--modal {
+        background: white;
+        border: none;
+        box-shadow:
+          0 20px 25px rgba(0, 0, 0, 0.1),
+          0 10px 10px rgba(0, 0, 0, 0.04);
+        border-radius: 12px;
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+        transform: none;
+      }
+
+      /* Sizes */
+      .pop-content--small {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 80px;
+      }
+
+      .pop-content--medium {
+        padding: 12px 16px;
+        font-size: 14px;
+        min-width: 120px;
+      }
+
+      .pop-content--large {
+        padding: 16px 20px;
+        font-size: 16px;
+        min-width: 200px;
+      }
+
+      .pop-content--auto {
+        padding: 12px 16px;
+        font-size: 14px;
+        width: max-content;
+        max-width: 300px;
+      }
+
+      /* Header */
+      .pop-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.01);
+      }
+
+      .pop-header-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+      }
+
+      .pop-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin: 0;
+        line-height: 1.3;
+      }
+
+      .pop-close-button {
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        border-radius: 4px;
+        color: #666;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.7;
+      }
+
+      .pop-close-button:hover:not(:disabled) {
+        background-color: rgba(0, 0, 0, 0.05);
+        opacity: 1;
+        color: #333;
+      }
+
+      .pop-close-button:focus-visible {
+        outline: 2px solid var(--context-color);
+        outline-offset: 2px;
+      }
+
+      /* Content */
+      .pop-body {
+        padding: 12px 16px;
+        color: #4a4a4a;
+        line-height: 1.6;
+      }
+
+      .pop-body--no-header {
+        padding-top: 16px;
+      }
+
+      .pop-body--no-footer {
+        padding-bottom: 16px;
+      }
+
+      /* Footer */
+      .pop-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 12px 16px;
+        gap: 8px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0.01);
+      }
+
+      .pop-footer[hidden] {
+        display: none;
+      }
+
+      /* Placement-specific transform origins and centering */
+      .pop-content[data-placement='top'] {
+        transform-origin: center bottom;
+        transform: translateX(-50%) translateY(-100%) scale(0.95);
+      }
+
+      .pop-content[data-placement='bottom'] {
+        transform-origin: center top;
+        transform: translateX(-50%) scale(0.95);
+      }
+
+      .pop-content[data-placement='left'] {
+        transform-origin: right center;
+        transform: translateX(-100%) translateY(-50%) scale(0.95);
+      }
+
+      .pop-content[data-placement='right'] {
+        transform-origin: left center;
+        transform: translateY(-50%) scale(0.95);
+      }
+
+      /* Animations */
+      .pop-content--fade {
+        opacity: 0;
+      }
+
+      .pop-content--fade.pop-content--visible {
+        opacity: 1;
+      }
+
+      .pop-content--slide-top {
+        opacity: 0;
+      }
+
+      .pop-content--slide-top.pop-content--visible {
+        opacity: 1;
+      }
+
+      .pop-content--slide-bottom {
+        opacity: 0;
+      }
+
+      .pop-content--slide-bottom.pop-content--visible {
+        opacity: 1;
+      }
+
+      .pop-content--scale {
+        opacity: 0;
+      }
+
+      .pop-content--scale.pop-content--visible {
+        opacity: 1;
+      }
+
+      /* Context colors */
+      .pop-content.context--primary {
+        --context-color: #3b82f6;
+        --context-color-alpha: rgba(59, 130, 246, 0.1);
+      }
+
+      .pop-content.context--secondary {
+        --context-color: #6b7280;
+        --context-color-alpha: rgba(107, 114, 128, 0.1);
+      }
+
+      .pop-content.context--success {
+        --context-color: #10b981;
+        --context-color-alpha: rgba(16, 185, 129, 0.1);
+      }
+
+      .pop-content.context--warning {
+        --context-color: #f59e0b;
+        --context-color-alpha: rgba(245, 158, 11, 0.1);
+      }
+
+      .pop-content.context--danger {
+        --context-color: #ef4444;
+        --context-color-alpha: rgba(239, 68, 68, 0.1);
+      }
+
+      .pop-content.context--info {
+        --context-color: #3b82f6;
+        --context-color-alpha: rgba(59, 130, 246, 0.1);
+      }
+    `,
+];
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "variant", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "size", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "context", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "placement", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "animation", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "trigger", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoPop.prototype, "open", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoPop.prototype, "dismissible", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoPop.prototype, "persistent", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "title", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "content", void 0);
+__decorate([
+    n({ type: String })
+], EchoPop.prototype, "icon", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-size' })
+], EchoPop.prototype, "iconSize", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-variant' })
+], EchoPop.prototype, "iconVariant", void 0);
+__decorate([
+    n({ type: Number, attribute: 'animation-duration' })
+], EchoPop.prototype, "animationDuration", void 0);
+__decorate([
+    n({ type: String, attribute: 'anchor-selector' })
+], EchoPop.prototype, "anchorSelector", void 0);
+__decorate([
+    r()
+], EchoPop.prototype, "_isVisible", void 0);
+__decorate([
+    r()
+], EchoPop.prototype, "_isAnimating", void 0);
+__decorate([
+    r()
+], EchoPop.prototype, "_position", void 0);
+EchoPop = __decorate([
+    t$1('echo-pop')
+], EchoPop);
 
 /**
  * Icon system types for Design Toolkit
@@ -4037,12 +4853,7 @@ const echoButtonVariantNames = [
     'ghost',
     'soft',
 ];
-const echoSizeNames = [
-    'xs',
-    'small',
-    'medium',
-    'large',
-];
+const echoSizeNames = ['xs', 'small', 'medium', 'large'];
 const echoContextNames = [
     'primary',
     'secondary',
@@ -4052,5 +4863,5 @@ const echoContextNames = [
     'info',
 ];
 
-export { EchoButton, EchoCard, EchoCheckbox, EchoIcon, EchoInput, EchoLayout, EchoSelect, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
+export { EchoButton, EchoCard, EchoCheckbox, EchoIcon, EchoInput, EchoLayout, EchoPop, EchoSelect, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
 //# sourceMappingURL=design-toolkit.esm.bundled.js.map

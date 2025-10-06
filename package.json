@@ -1,6 +1,6 @@
 {
   "name": "design-toolkit",
-  "version": "1.12.0",
+  "version": "1.13.2",
   "description": "A modern web component library built with Lit",
   "type": "module",
   "main": "dist/design-toolkit.umd.js",
@@ -24,7 +24,7 @@
     "test:ui": "playwright test --ui",
     "ootb": "npm run build && cd out-of-the-box && node webserver.js",
     "pages": "npm run build && cd docs && node webserver.js",
-    "deploy": "copyfiles -u 1 dist/design-toolkit.esm.bundled.js out-of-the-box/ && copyfiles -u 1 dist/design-toolkit.esm.bundled.js docs/"
+    "deploy": "copyfiles -u 1 dist/design-toolkit.esm.bundled.js docs/"
   },
   "keywords": [
     "web-components",

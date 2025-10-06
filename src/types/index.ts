@@ -22,12 +22,7 @@ export const echoButtonVariantNames: EchoButtonVariant[] = [
   'soft',
 ];
 
-export const echoSizeNames: EchoSize[] = [
-  'xs',
-  'small',
-  'medium',
-  'large',
-];
+export const echoSizeNames: EchoSize[] = ['xs', 'small', 'medium', 'large'];
 
 export const echoContextNames: EchoContext[] = [
   'primary',
@@ -94,7 +89,7 @@ export type EchoLayoutRows = number | 'auto';
 // Echo Input types
 export type EchoInputVariant = 'default' | 'outlined' | 'filled' | 'underlined';
 export type EchoInputSize = 'small' | 'medium' | 'large';
-export type EchoInputType = 
+export type EchoInputType =
   | 'text'
   | 'email'
   | 'password'
@@ -109,7 +104,11 @@ export type EchoInputType =
   | 'week';
 
 // Echo Select types
-export type EchoSelectVariant = 'default' | 'outlined' | 'filled' | 'underlined';
+export type EchoSelectVariant =
+  | 'default'
+  | 'outlined'
+  | 'filled'
+  | 'underlined';
 export type EchoSelectSize = 'small' | 'medium' | 'large';
 export type EchoSelectOption = {
   value: string;
@@ -122,6 +121,32 @@ export type EchoSelectOption = {
 export type EchoCheckboxType = 'checkbox' | 'radio' | 'toggle';
 export type EchoCheckboxVariant = 'default' | 'outlined' | 'filled';
 export type EchoCheckboxSize = 'small' | 'medium' | 'large';
+
+// Echo Pop types
+export type EchoPopVariant =
+  | 'default'
+  | 'overlay'
+  | 'tooltip'
+  | 'dropdown'
+  | 'modal';
+export type EchoPopSize = 'small' | 'medium' | 'large' | 'auto';
+export type EchoPopPlacement =
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'center'
+  | 'auto'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-end'
+  | 'right-start'
+  | 'right-end';
+export type EchoPopAnimation = 'fade' | 'slide' | 'scale' | 'none';
+export type EchoPopTrigger = 'click' | 'hover' | 'focus' | 'manual';
 
 // Re-export icon types
 export type {

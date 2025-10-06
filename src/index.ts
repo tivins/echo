@@ -7,6 +7,7 @@ import './components/echo-layout.js';
 import './components/echo-input.js';
 import './components/echo-select.js';
 import './components/echo-checkbox.js';
+import './components/echo-pop.js';
 
 // Export all components
 export { EchoButton } from './components/echo-button.js';
@@ -17,6 +18,7 @@ export { EchoLayout } from './components/echo-layout.js';
 export { EchoInput } from './components/echo-input.js';
 export { EchoSelect } from './components/echo-select.js';
 export { EchoCheckbox } from './components/echo-checkbox.js';
+export { EchoPop } from './components/echo-pop.js';
 
 // Export types
 export type {
@@ -53,6 +55,11 @@ export type {
   EchoCheckboxType,
   EchoCheckboxVariant,
   EchoCheckboxSize,
+  EchoPopVariant,
+  EchoPopSize,
+  EchoPopPlacement,
+  EchoPopAnimation,
+  EchoPopTrigger,
 } from './types/index.js';
 
 // Export type value arrays
