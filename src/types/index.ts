@@ -118,6 +118,11 @@ export type EchoSelectOption = {
   selected?: boolean;
 };
 
+// Echo Checkbox types
+export type EchoCheckboxType = 'checkbox' | 'radio' | 'toggle';
+export type EchoCheckboxVariant = 'default' | 'outlined' | 'filled';
+export type EchoCheckboxSize = 'small' | 'medium' | 'large';
+
 // Re-export icon types
 export type {
   EchoIconSize,

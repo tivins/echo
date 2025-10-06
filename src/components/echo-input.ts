@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import type {
   EchoInputVariant,
   EchoInputSize,
@@ -408,7 +409,7 @@ export class EchoInput extends LitElement {
         </div>
         
         ${this.description
-          ? html`<div class="${descriptionClasses}">${this.description}</div>`
+          ? html`<div class="${descriptionClasses}">${unsafeHTML(this.description)}</div>`
           : ''}
       </div>
     `;

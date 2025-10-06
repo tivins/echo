@@ -6,6 +6,7 @@ import './components/echo-card.js';
 import './components/echo-layout.js';
 import './components/echo-input.js';
 import './components/echo-select.js';
+import './components/echo-checkbox.js';
 
 // Export all components
 export { EchoButton } from './components/echo-button.js';
@@ -15,6 +16,7 @@ export { EchoCard } from './components/echo-card.js';
 export { EchoLayout } from './components/echo-layout.js';
 export { EchoInput } from './components/echo-input.js';
 export { EchoSelect } from './components/echo-select.js';
+export { EchoCheckbox } from './components/echo-checkbox.js';
 
 // Export types
 export type {
@@ -48,6 +50,9 @@ export type {
   EchoSelectVariant,
   EchoSelectSize,
   EchoSelectOption,
+  EchoCheckboxType,
+  EchoCheckboxVariant,
+  EchoCheckboxSize,
 } from './types/index.js';
 
 // Export type value arrays

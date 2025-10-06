@@ -54,29 +54,36 @@
             <div style="text-align: center;"><echo-button id="preview-button">Button</echo-button></div>
             <echo-separator margin="large"><echo-icon name="wrench" size="small"></echo-icon> Options</echo-separator>
             
-            <echo-layout gap="medium" justify="center" wrap="wrap">
+            <echo-layout gap="medium" justify="center" align="center" wrap="wrap">
             
                 <echo-input type="text" name="text" id="text" 
                     icon="text"
                     value="Button" label="Text" size="small"
-                    description="The text to display on the button"></echo-input>
+                    description="innerHTML of the button"></echo-input>
             
                 <echo-select name="variant" 
-                    id="variant" label="Variant" size="small"></echo-select>
+                    id="variant" label="Visual variant" size="small"
+                    description="property <code>variant</code>"></echo-select>
             
                 <echo-select name="context" 
-                    id="context" label="Context" size="small"></echo-select>
+                    id="context" label="Semantic context" size="small"
+                    description="property <code>context</code>"></echo-select>
             
                 <echo-select name="size" 
-                    id="size" label="Size" size="small"></echo-select>
+                    id="size" label="Size" size="small"
+                    description="property <code>size</code>"></echo-select>
 
-                <label>
-                    <div>Disabled</div>
-                    <input type="checkbox" name="disabled" id="disabled">
-                </label>
-                </echo-layout>
                 
-                <echo-separator margin="large" variant="dotted"><echo-icon name="wrench" size="small"></echo-icon> Icon</echo-separator>
+                <echo-checkbox 
+                    type="checkbox" 
+                    label="Disabled"
+                    name="disabled" id="disabled"
+                    >
+                    </echo-checkbox>
+
+            </echo-layout>
+                
+            <echo-separator margin="large" variant="dotted"><echo-icon name="wrench" size="small"></echo-icon> Icon</echo-separator>
             <echo-layout gap="medium" justify="center" wrap="wrap">
 
                 <echo-select name="icon" 

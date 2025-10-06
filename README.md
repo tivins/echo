@@ -83,6 +83,70 @@ The demo showcases all available components with interactive controls to test di
 
 ## Components
 
+### EchoCheckbox
+
+A versatile checkbox component supporting checkbox, radio, and toggle variants.
+
+#### Basic Usage
+
+```html
+<!-- Checkbox -->
+<echo-checkbox 
+  type="checkbox" 
+  label="Accept terms"
+  checked>
+</echo-checkbox>
+
+<!-- Radio Button -->
+<echo-checkbox 
+  type="radio" 
+  name="payment"
+  label="Credit Card"
+  value="credit-card"
+  checked>
+</echo-checkbox>
+
+<!-- Toggle Switch -->
+<echo-checkbox 
+  type="toggle" 
+  label="Dark Mode"
+  description="Switch to dark theme"
+  checked>
+</echo-checkbox>
+```
+
+#### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `type` | `'checkbox' \| 'radio' \| 'toggle'` | `'checkbox'` | The type of checkbox component |
+| `variant` | `'default' \| 'outlined' \| 'filled'` | `'default'` | Visual variant |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of the component |
+| `context` | `EchoContext` | `'primary'` | Color context |
+| `label` | `string` | `''` | Label text |
+| `description` | `string` | `''` | Description text |
+| `checked` | `boolean` | `false` | Whether the checkbox is checked |
+| `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
+| `required` | `boolean` | `false` | Whether the checkbox is required |
+| `name` | `string` | `''` | Name attribute for form submission |
+| `value` | `string` | `''` | Value attribute for form submission |
+
+#### Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `echo-checkbox-change` | `{ checked: boolean, value: string, type: string }` | Fired when checkbox state changes |
+| `echo-checkbox-focus` | `{ checked: boolean, originalEvent: Event }` | Fired when checkbox receives focus |
+| `echo-checkbox-blur` | `{ checked: boolean, originalEvent: Event }` | Fired when checkbox loses focus |
+
+#### Methods
+
+| Method | Description |
+|--------|-------------|
+| `focus()` | Focus the checkbox |
+| `blur()` | Blur the checkbox |
+| `click()` | Programmatically click the checkbox |
+
 ### EchoLayout
 
 An abstract layout component for managing flex/grid layouts, alignment, gaps, and direction. Provides a clean, declarative API for common layout patterns.

@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2025-01-05
+
+### Added
+- **Echo Checkbox Component**: Added new `echo-checkbox` web component with three distinct variants
+  - **Checkbox**: Traditional checkbox with checkmark for multiple selections
+  - **Radio**: Radio button with dot indicator for single selection within groups
+  - **Toggle**: Modern toggle switch with sliding animation for on/off states
+  - **Variants**: Support for default, outlined, and filled visual variants
+  - **Sizes**: Small, medium, and large size options with proportional scaling
+  - **Contexts**: Primary, secondary, success, danger, warning, and info color contexts
+  - **States**: Support for disabled, required, and checked states
+  - **Accessibility**: Proper ARIA attributes, keyboard navigation, and screen reader support
+  - **Events**: Custom events for change, focus, and blur interactions
+  - **API**: Methods for focus, blur, and programmatic clicking
+  - **Styling**: Smooth animations and transitions for all interactions
+  - **Form Integration**: Proper name/value attributes for form submission
+
+### Technical Details
+- **Types**: Added `EchoCheckboxType`, `EchoCheckboxVariant`, and `EchoCheckboxSize` type definitions
+- **Testing**: Comprehensive Playwright test suite covering all variants and interactions
+- **Documentation**: Complete API documentation with examples and usage patterns
+- **Demo**: Interactive demo showcasing all checkbox variants and features
+
 ## [1.11.0] - 2025-01-05
 
 ### Added

@@ -21,7 +21,7 @@ class ButtonDemo {
       variant: document.querySelector('echo-select[name="variant"]'),
       context: document.querySelector('echo-select[name="context"]'),
       size: document.querySelector('echo-select[name="size"]'),
-      disabled: document.querySelector('input[name="disabled"]'),
+      disabled: document.querySelector('echo-checkbox[name="disabled"]'),
       icon: document.querySelector('echo-select[name="icon"]'),
       iconPosition: document.querySelector('echo-select[name="icon-position"]'),
       iconSize: document.querySelector('echo-select[name="icon-size"]'),
@@ -130,7 +130,7 @@ class ButtonDemo {
     this.controls.variant.addEventListener('echo-select-change', () => this.handleVariantChange());
     this.controls.context.addEventListener('echo-select-change', () => this.handleContextChange());
     this.controls.size.addEventListener('echo-select-change', () => this.handleSizeChange());
-    this.controls.disabled.addEventListener('change', () => this.handleDisabledChange());
+    this.controls.disabled.addEventListener('echo-checkbox-change', () => this.handleDisabledChange());
     this.controls.icon.addEventListener('echo-select-change', () => this.handleIconChange());
     this.controls.iconPosition.addEventListener('echo-select-change', () => this.handleIconPositionChange());
     this.controls.iconSize.addEventListener('echo-select-change', () => this.handleIconSizeChange());

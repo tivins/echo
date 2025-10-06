@@ -11,6 +11,7 @@ import type {
 } from '../types/index.js';
 import { contextColors } from '../styles/context-colors.js';
 import { componentSizes } from '../styles/component-sizes.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 @customElement('echo-select')
 export class EchoSelect extends LitElement {
@@ -408,7 +409,7 @@ export class EchoSelect extends LitElement {
         </div>
         
         ${this.description
-          ? html`<div class="${descriptionClasses}">${this.description}</div>`
+          ? html`<div class="${descriptionClasses}">${unsafeHTML(this.description)}</div>`
           : ''}
       </div>
     `;

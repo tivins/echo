@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Checkbox Demo - Design Toolkit</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #374151;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .demo-item {
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .demo-item h3 {
+            margin: 0 0 16px 0;
+            color: #374151;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .toggle-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .code-block {
+            background-color: #1f2937;
+            color: #f9fafb;
+            padding: 16px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            background-color: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 6px;
+            color: #0c4a6e;
+        }
+        
+        .status h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status p {
+            margin: 0;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Echo Checkbox Component</h1>
+        <p class="subtitle">Demonstration of checkbox, radio, and toggle variants</p>
+        
+        <div class="section">
+            <h2>Checkbox Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Default Checkboxes</h3>
+                    <div class="checkbox-group">
+                        <echo-checkbox 
+                            type="checkbox" 
+                            label="Accept terms and conditions"
+                            description="Please read our terms before proceeding"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="checkbox" 
+                            label="Subscribe to newsletter"
+                            description="Get updates about new features">
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="checkbox" 
+                            label="Enable notifications"
+                            disabled>
+                        </echo-checkbox>
+                    </div>
+                </div>
+                
+                <div class="demo-item">
+                    <h3>Different Sizes</h3>
+                    <div class="checkbox-group">
+                        <echo-checkbox 
+                            type="checkbox" 
+                            size="small"
+                            label="Small checkbox"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="checkbox" 
+                            size="medium"
+                            label="Medium checkbox (default)"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="checkbox" 
+                            size="large"
+                            label="Large checkbox"
+                            checked>
+                        </echo-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Radio Buttons</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Payment Method</h3>
+                    <div class="radio-group">
+                        <echo-checkbox 
+                            type="radio" 
+                            name="payment"
+                            label="Credit Card"
+                            description="Visa, Mastercard, American Express"
+                            value="credit-card"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="radio" 
+                            name="payment"
+                            label="PayPal"
+                            description="Pay with your PayPal account"
+                            value="paypal">
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="radio" 
+                            name="payment"
+                            label="Bank Transfer"
+                            description="Direct bank transfer"
+                            value="bank-transfer">
+                        </echo-checkbox>
+                    </div>
+                </div>
+                
+                <div class="demo-item">
+                    <h3>Size Options</h3>
+                    <div class="radio-group">
+                        <echo-checkbox 
+                            type="radio" 
+                            name="size"
+                            size="small"
+                            label="Small"
+                            value="small">
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="radio" 
+                            name="size"
+                            size="medium"
+                            label="Medium"
+                            value="medium"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="radio" 
+                            name="size"
+                            size="large"
+                            label="Large"
+                            value="large">
+                        </echo-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Toggle Switches</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Settings</h3>
+                    <div class="toggle-group">
+                        <echo-checkbox 
+                            type="toggle" 
+                            label="Dark Mode"
+                            description="Switch to dark theme"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            label="Push Notifications"
+                            description="Receive notifications on your device">
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            label="Auto-save"
+                            description="Automatically save your work"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            label="Two-factor authentication"
+                            description="Add extra security to your account"
+                            disabled>
+                        </echo-checkbox>
+                    </div>
+                </div>
+                
+                <div class="demo-item">
+                    <h3>Different Sizes</h3>
+                    <div class="toggle-group">
+                        <echo-checkbox 
+                            type="toggle" 
+                            size="small"
+                            label="Small toggle"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            size="medium"
+                            label="Medium toggle (default)"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            size="large"
+                            label="Large toggle"
+                            checked>
+                        </echo-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Context Colors</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h3>Primary Context</h3>
+                    <div class="checkbox-group">
+                        <echo-checkbox 
+                            type="checkbox" 
+                            context="primary"
+                            label="Primary checkbox"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            context="primary"
+                            label="Primary toggle"
+                            checked>
+                        </echo-checkbox>
+                    </div>
+                </div>
+                
+                <div class="demo-item">
+                    <h3>Success Context</h3>
+                    <div class="checkbox-group">
+                        <echo-checkbox 
+                            type="checkbox" 
+                            context="success"
+                            label="Success checkbox"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            context="success"
+                            label="Success toggle"
+                            checked>
+                        </echo-checkbox>
+                    </div>
+                </div>
+                
+                <div class="demo-item">
+                    <h3>Danger Context</h3>
+                    <div class="checkbox-group">
+                        <echo-checkbox 
+                            type="checkbox" 
+                            context="danger"
+                            label="Danger checkbox"
+                            checked>
+                        </echo-checkbox>
+                        
+                        <echo-checkbox 
+                            type="toggle" 
+                            context="danger"
+                            label="Danger toggle"
+                            checked>
+                        </echo-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Interactive Demo</h2>
+            <div class="demo-item">
+                <h3>Event Handling</h3>
+                <div class="checkbox-group">
+                    <echo-checkbox 
+                        id="demo-checkbox"
+                        type="checkbox" 
+                        label="Click me to see events"
+                        description="Check the status below">
+                    </echo-checkbox>
+                    
+                    <echo-checkbox 
+                        id="demo-toggle"
+                        type="toggle" 
+                        label="Toggle me"
+                        description="Watch the status change">
+                    </echo-checkbox>
+                </div>
+                
+                <div class="status" id="status">
+                    <h4>Status</h4>
+                    <p>No events yet. Click on the checkboxes above to see events.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Usage Examples</h2>
+            <div class="code-block">
+&lt;!-- Basic Checkbox --&gt;
+&lt;echo-checkbox 
+    type="checkbox" 
+    label="Accept terms"
+    checked&gt;
+&lt;/echo-checkbox&gt;
+
+&lt;!-- Radio Button Group --&gt;
+&lt;echo-checkbox 
+    type="radio" 
+    name="payment"
+    label="Credit Card"
+    value="credit-card"
+    checked&gt;
+&lt;/echo-checkbox&gt;
+
+&lt;!-- Toggle Switch --&gt;
+&lt;echo-checkbox 
+    type="toggle" 
+    label="Dark Mode"
+    description="Switch to dark theme"
+    checked&gt;
+&lt;/echo-checkbox&gt;
+
+&lt;!-- With Context Color --&gt;
+&lt;echo-checkbox 
+    type="checkbox" 
+    context="success"
+    size="large"
+    label="Success checkbox"
+    checked&gt;
+&lt;/echo-checkbox&gt;
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import './dist/design-toolkit.esm.bundled.js';
+        
+        // Event handling demo
+        const statusDiv = document.getElementById('status');
+        const demoCheckbox = document.getElementById('demo-checkbox');
+        const demoToggle = document.getElementById('demo-toggle');
+        
+        function updateStatus(type, checked) {
+            const timestamp = new Date().toLocaleTimeString();
+            statusDiv.innerHTML = `
+                <h4>Status</h4>
+                <p><strong>${type}</strong> changed to <strong>${checked ? 'checked' : 'unchecked'}</strong> at ${timestamp}</p>
+            `;
+        }
+        
+        demoCheckbox.addEventListener('echo-checkbox-change', (e) => {
+            updateStatus('Checkbox', e.detail.checked);
+        });
+        
+        demoToggle.addEventListener('echo-checkbox-change', (e) => {
+            updateStatus('Toggle', e.detail.checked);
+        });
+    </script>
+</body>
+</html>
