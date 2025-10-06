@@ -77,6 +77,9 @@ export class EchoPop extends LitElement {
   private _isAnimating = false;
 
   @state()
+  private _isClosing = false;
+
+  @state()
   private _position: PopPosition = { x: 0, y: 0, placement: 'bottom' };
 
   private _anchorElement: HTMLElement | null = null;
@@ -500,7 +503,7 @@ export class EchoPop extends LitElement {
       `context--${this.context}`,
     ];
 
-    if (this._isVisible) {
+    if (this._isVisible && !this._isClosing) {
       classes.push('pop-content--visible');
     }
 
@@ -533,7 +536,7 @@ export class EchoPop extends LitElement {
       `pop-content--${this.animation}`,
     ];
 
-    if (this._isVisible) {
+    if (this._isVisible && !this._isClosing) {
       classes.push('pop-content--visible');
     }
 
@@ -664,10 +667,12 @@ export class EchoPop extends LitElement {
   }
 
   private _hide(): void {
+    this._isClosing = true;
     this._isAnimating = true;
 
     setTimeout(() => {
       this._isVisible = false;
+      this._isClosing = false;
       this._isAnimating = false;
     }, this.animationDuration);
 

@@ -3931,6 +3931,7 @@ let EchoPop = class EchoPop extends i$1 {
         this.anchorSelector = '';
         this._isVisible = false;
         this._isAnimating = false;
+        this._isClosing = false;
         this._position = { x: 0, y: 0, placement: 'bottom' };
         this._anchorElement = null;
         this._portalElement = null;
@@ -4013,7 +4014,7 @@ let EchoPop = class EchoPop extends i$1 {
             `pop-content--${this.size}`,
             `context--${this.context}`,
         ];
-        if (this._isVisible) {
+        if (this._isVisible && !this._isClosing) {
             classes.push('pop-content--visible');
         }
         if (this._isAnimating) {
@@ -4042,7 +4043,7 @@ let EchoPop = class EchoPop extends i$1 {
             `context--${this.context}`,
             `pop-content--${this.animation}`,
         ];
-        if (this._isVisible) {
+        if (this._isVisible && !this._isClosing) {
             classes.push('pop-content--visible');
         }
         if (this._isAnimating) {
@@ -4150,9 +4151,11 @@ let EchoPop = class EchoPop extends i$1 {
         this._trapFocus();
     }
     _hide() {
+        this._isClosing = true;
         this._isAnimating = true;
         setTimeout(() => {
             this._isVisible = false;
+            this._isClosing = false;
             this._isAnimating = false;
         }, this.animationDuration);
         this.dispatchEvent(new CustomEvent('echo-pop-close', {
@@ -4784,6 +4787,9 @@ __decorate([
 __decorate([
     r()
 ], EchoPop.prototype, "_isAnimating", void 0);
+__decorate([
+    r()
+], EchoPop.prototype, "_isClosing", void 0);
 __decorate([
     r()
 ], EchoPop.prototype, "_position", void 0);
