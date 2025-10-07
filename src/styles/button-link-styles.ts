@@ -42,7 +42,8 @@ export const buttonLinkStyles = [
       box-shadow: 0 0 0 2px currentColor;
     }
 
-    .button-link:disabled {
+    .button-link:disabled,
+    .button-link[aria-disabled="true"] {
       opacity: 0.5;
       cursor: not-allowed;
     }
@@ -53,7 +54,7 @@ export const buttonLinkStyles = [
       color: white;
     }
 
-    .button-link--default:hover:not(:disabled) {
+    .button-link--default:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color-hover);
     }
 
@@ -62,7 +63,7 @@ export const buttonLinkStyles = [
       color: var(--context-color);
     }
 
-    .button-link--link:hover:not(:disabled) {
+    .button-link--link:hover:not(:disabled):not([aria-disabled="true"]) {
       color: var(--context-color-hover);
       text-decoration: underline;
     }
@@ -73,7 +74,7 @@ export const buttonLinkStyles = [
       border: 1px solid var(--context-color);
     }
 
-    .button-link--outline:hover:not(:disabled) {
+    .button-link--outline:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color);
       color: white;
     }
@@ -84,7 +85,7 @@ export const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--ghost:hover:not(:disabled) {
+    .button-link--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color-alpha);
     }
 
@@ -94,7 +95,7 @@ export const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--soft:hover:not(:disabled) {
+    .button-link--soft:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color);
       color: white;
     }

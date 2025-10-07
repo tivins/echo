@@ -200,25 +200,21 @@ export class EchoPop extends LitElement {
 
       /* Sizes */
       .pop-content--small {
-        padding: 8px 12px;
         font-size: 13px;
         min-width: 80px;
       }
 
       .pop-content--medium {
-        padding: 12px 16px;
         font-size: 14px;
         min-width: 120px;
       }
 
       .pop-content--large {
-        padding: 16px 20px;
         font-size: 16px;
         min-width: 200px;
       }
 
       .pop-content--auto {
-        padding: 12px 16px;
         font-size: 14px;
         width: max-content;
         max-width: 300px;

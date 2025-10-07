@@ -392,8 +392,4 @@ class ButtonDemo {
 // Initialize the demo when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new ButtonDemo();
-  document.getElementById('back-to-homepage').addEventListener('click', () => {
-      console.log('back to homepage');
-      window.location.href = 'index.html';
-  });
 });

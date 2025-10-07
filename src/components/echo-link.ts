@@ -79,7 +79,8 @@ export class EchoLink extends LitElement {
           class="button-link button-link--${this.variant} context--${this
             .context} size--${this.size}"
           role="button"
-          tabindex="0"
+          tabindex=${this.disabled ? '-1' : '0'}
+          aria-disabled=${this.disabled}
           @click=${this._handleClick}
           @keydown=${this._handleKeydown}
         >

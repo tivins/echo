@@ -297,7 +297,8 @@ const buttonLinkStyles = [
       box-shadow: 0 0 0 2px currentColor;
     }
 
-    .button-link:disabled {
+    .button-link:disabled,
+    .button-link[aria-disabled="true"] {
       opacity: 0.5;
       cursor: not-allowed;
     }
@@ -308,7 +309,7 @@ const buttonLinkStyles = [
       color: white;
     }
 
-    .button-link--default:hover:not(:disabled) {
+    .button-link--default:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color-hover);
     }
 
@@ -317,7 +318,7 @@ const buttonLinkStyles = [
       color: var(--context-color);
     }
 
-    .button-link--link:hover:not(:disabled) {
+    .button-link--link:hover:not(:disabled):not([aria-disabled="true"]) {
       color: var(--context-color-hover);
       text-decoration: underline;
     }
@@ -328,7 +329,7 @@ const buttonLinkStyles = [
       border: 1px solid var(--context-color);
     }
 
-    .button-link--outline:hover:not(:disabled) {
+    .button-link--outline:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color);
       color: white;
     }
@@ -339,7 +340,7 @@ const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--ghost:hover:not(:disabled) {
+    .button-link--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color-alpha);
     }
 
@@ -349,7 +350,7 @@ const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--soft:hover:not(:disabled) {
+    .button-link--soft:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: var(--context-color);
       color: white;
     }
@@ -567,7 +568,8 @@ let EchoLink = class EchoLink extends i$1 {
           class="button-link button-link--${this.variant} context--${this
                 .context} size--${this.size}"
           role="button"
-          tabindex="0"
+          tabindex=${this.disabled ? '-1' : '0'}
+          aria-disabled=${this.disabled}
           @click=${this._handleClick}
           @keydown=${this._handleKeydown}
         >
@@ -4683,25 +4685,21 @@ EchoPop.styles = [
 
       /* Sizes */
       .pop-content--small {
-        padding: 8px 12px;
         font-size: 13px;
         min-width: 80px;
       }
 
       .pop-content--medium {
-        padding: 12px 16px;
         font-size: 14px;
         min-width: 120px;
       }
 
       .pop-content--large {
-        padding: 16px 20px;
         font-size: 16px;
         min-width: 200px;
       }
 
       .pop-content--auto {
-        padding: 12px 16px;
         font-size: 14px;
         width: max-content;
         max-width: 300px;

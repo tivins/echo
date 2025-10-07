@@ -9,9 +9,18 @@
     <h1>Echo Design Demos</h1>
     <echo-link href="../index.html" icon="home">Home</echo-link>
     <echo-separator></echo-separator>
-    <echo-card card-title="Card">
-        <echo-link href="echo-link-demo.html">echo-link</echo-link>
+    <echo-card card-title="echo-link">
+        <echo-link href="echo-link-demo.html" variant="outline">echo-link</echo-link>
+        <echo-link href="disabled-state-test.html" variant="ghost">disabled-state</echo-link>
+
+        <echo-link href="size-consistency-test.html" variant="ghost">size-consistency</echo-link>
+        
     </echo-card>
+    
+    <echo-pop placement="top" animation="fade" title="Top Popup" content="This popup should appear above the button and be centered horizontally.">
+        <echo-button slot="trigger" variant="primary">Pop pop pop !</echo-button>
+    </echo-pop>
+
     <script type="module" src="../src/index.ts"></script>
 </body>
 </html>

@@ -11,6 +11,3 @@ iconLibrary.innerHTML = `<div>${safeNames.length} icons</div><div style="display
         `).join('') + '</div>';
 
 
-document.getElementById('demo-button').addEventListener('click', () => {
-    window.location.href = 'demo-button.html';
-});
