@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="../docs/design-toolkit.esm.bundled.js"></script>
+  <title>Echo Link Component Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .demo-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .demo-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .demo-item {
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+    
+    .demo-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .comparison {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .comparison-label {
+      font-weight: 500;
+      min-width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <div class="demo-section">
+      <h1 class="demo-title">Echo Link Component Demo</h1>
+      <p>This demonstrates the new <code>echo-link</code> component that provides link functionality with button-like styling.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Basic Links</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Default Link</div>
+          <echo-link href="https://example.com">Visit Example</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">External Link</div>
+          <echo-link href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Disabled Link</div>
+          <echo-link href="https://example.com" disabled>Disabled Link</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">No Href (Button-like)</div>
+          <echo-link>No Href Link</echo-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Variants</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Default</div>
+          <echo-link href="https://example.com" variant="default">Default</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Link</div>
+          <echo-link href="https://example.com" variant="link">Link Style</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Outline</div>
+          <echo-link href="https://example.com" variant="outline">Outline</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Ghost</div>
+          <echo-link href="https://example.com" variant="ghost">Ghost</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Soft</div>
+          <echo-link href="https://example.com" variant="soft">Soft</echo-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Contexts</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Primary</div>
+          <echo-link href="https://example.com" context="primary">Primary</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Success</div>
+          <echo-link href="https://example.com" context="success">Success</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Warning</div>
+          <echo-link href="https://example.com" context="warning">Warning</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Danger</div>
+          <echo-link href="https://example.com" context="danger">Danger</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Info</div>
+          <echo-link href="https://example.com" context="info">Info</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Secondary</div>
+          <echo-link href="https://example.com" context="secondary">Secondary</echo-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Sizes</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Extra Small</div>
+          <echo-link href="https://example.com" size="xs">XS Link</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Small</div>
+          <echo-link href="https://example.com" size="small">Small Link</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Medium</div>
+          <echo-link href="https://example.com" size="medium">Medium Link</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Large</div>
+          <echo-link href="https://example.com" size="large">Large Link</echo-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">With Icons</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Left Icon</div>
+          <echo-link href="https://example.com" icon="external-link" icon-position="left">External Link</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Right Icon</div>
+          <echo-link href="https://example.com" icon="arrow-right" icon-position="right">Next Page</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Download Icon</div>
+          <echo-link href="https://example.com/file.pdf" icon="download" icon-position="left">Download PDF</echo-link>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Mail Icon</div>
+          <echo-link href="mailto:test@example.com" icon="mail" icon-position="left">Send Email</echo-link>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Comparison: Button vs Link</h2>
+      <div class="comparison">
+        <div class="comparison-label">Button:</div>
+        <echo-button>Click Me</echo-button>
+      </div>
+      <div class="comparison">
+        <div class="comparison-label">Link:</div>
+        <echo-link href="https://example.com">Visit Site</echo-link>
+      </div>
+      <div class="comparison">
+        <div class="comparison-label">Disabled Button:</div>
+        <echo-button disabled>Disabled Button</echo-button>
+      </div>
+      <div class="comparison">
+        <div class="comparison-label">Disabled Link:</div>
+        <echo-link href="https://example.com" disabled>Disabled Link</echo-link>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Interactive Test</h2>
+      <p>Click the links below to test functionality:</p>
+      <div style="margin: 15px 0;">
+        <echo-link href="https://example.com" variant="default" context="primary" style="margin-right: 10px;">
+          External Link
+        </echo-link>
+        <echo-link href="mailto:test@example.com" variant="outline" context="info" style="margin-right: 10px;">
+          Email Link
+        </echo-link>
+        <echo-link href="tel:+1234567890" variant="ghost" context="success" style="margin-right: 10px;">
+          Phone Link
+        </echo-link>
+        <echo-link disabled variant="soft" context="secondary">
+          Disabled Link
+        </echo-link>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Add click event listeners to demonstrate event handling
+    document.addEventListener('echo-link-click', (event) => {
+      console.log('Echo link clicked:', event.detail);
+      alert(`Link clicked! Href: ${event.detail.href || 'No href'}`);
+    });
+  </script>
+</body>
+</html>

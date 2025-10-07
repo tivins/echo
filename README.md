@@ -18,6 +18,7 @@ A modern web component library built with Lit, providing a comprehensive set of 
 ### Core Components
 
 - **echo-button**: Versatile button component with multiple variants and sizes
+- **echo-link**: Link component with button-like styling and href support
 - **echo-input**: Form input component with validation states
 - **echo-checkbox**: Checkbox component with custom styling
 - **echo-select**: Dropdown select component
@@ -72,6 +73,24 @@ document.body.appendChild(button);
 <echo-button variant="primary" size="medium">
   Click me
 </echo-button>
+```
+
+### Link Component
+
+```html
+<echo-link href="https://example.com" variant="default" context="primary">
+  Visit Example
+</echo-link>
+
+<!-- External link with security attributes -->
+<echo-link href="https://github.com" target="_blank" rel="noopener noreferrer">
+  GitHub
+</echo-link>
+
+<!-- Link with icon -->
+<echo-link href="/download" icon="download" icon-position="left">
+  Download PDF
+</echo-link>
 ```
 
 ### Pop Component
@@ -151,5 +170,6 @@ npm run lint:fix
 ## License
 
 MIT License - see LICENSE file for details.
+
 
 

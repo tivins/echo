@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import type {
   EchoButtonVariant,
@@ -8,8 +8,7 @@ import type {
   EchoIconSize,
   EchoIconVariant,
 } from '../types/index.js';
-import { contextColors } from '../styles/context-colors.js';
-import { componentSizes } from '../styles/component-sizes.js';
+import { buttonLinkStyles } from '../styles/button-link-styles.js';
 
 @customElement('echo-button')
 export class EchoButton extends LitElement {
@@ -40,119 +39,7 @@ export class EchoButton extends LitElement {
   @property({ type: Number, attribute: 'icon-stroke-width' })
   iconStrokeWidth: number | null = null;
 
-  static styles = [
-    contextColors,
-    componentSizes,
-    css`
-      :host {
-        display: inline-block;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--button-gap, 8px);
-        border: none;
-        border-radius: 4px;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.124s ease-in-out;
-        text-decoration: none;
-        outline: none;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      .button:focus-visible {
-        box-shadow: 0 0 0 2px currentColor;
-      }
-
-      .button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      /* Variants */
-      .button--default {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      .button--default:hover:not(:disabled) {
-        background-color: var(--context-color-hover);
-      }
-
-      .button--link {
-        background-color: transparent;
-        color: var(--context-color);
-      }
-
-      .button--link:hover:not(:disabled) {
-        color: var(--context-color-hover);
-        text-decoration: underline;
-      }
-
-      .button--outline {
-        background-color: transparent;
-        color: var(--context-color);
-        border: 1px solid var(--context-color);
-      }
-
-      .button--outline:hover:not(:disabled) {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      .button--ghost {
-        background-color: transparent;
-        color: var(--context-color);
-        border: none;
-      }
-
-      .button--ghost:hover:not(:disabled) {
-        background-color: var(--context-color-alpha);
-      }
-
-      .button--soft {
-        background-color: var(--context-color-alpha);
-        color: var(--context-color);
-        border: none;
-      }
-
-      .button--soft:hover:not(:disabled) {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      /* Icon styling */
-      .button__icon {
-        display: inline-flex;
-        align-items: center;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      /* Gap spacing for different sizes */
-      .size--xs {
-        --button-gap: 4px;
-      }
-
-      .size--small {
-        --button-gap: 6px;
-      }
-
-      .size--medium {
-        --button-gap: 8px;
-      }
-
-      .size--large {
-        --button-gap: 10px;
-      }
-    `,
-  ];
+  static styles = buttonLinkStyles;
 
   render() {
     const iconElement = this.icon
@@ -162,7 +49,7 @@ export class EchoButton extends LitElement {
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
             stroke-width=${this.iconStrokeWidth || 1.5}
-            class="button__icon button__icon--${this.iconPosition}"
+            class="button-link__icon button-link__icon--${this.iconPosition}"
             style="--icon-color: currentColor;"
           ></echo-icon>
         `
@@ -176,7 +63,7 @@ export class EchoButton extends LitElement {
 
     return html`
       <button
-        class="button button--${this.variant} context--${this
+        class="button-link button-link--${this.variant} context--${this
           .context} size--${this.size}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}

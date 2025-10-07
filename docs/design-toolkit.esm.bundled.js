@@ -257,6 +257,142 @@ const componentSizesCSS = `
  */
 const componentSizeNames = ['xs', 'small', 'medium', 'large'];
 
+/**
+ * Shared styles for button and link components
+ * This allows both components to have consistent styling while maintaining semantic HTML
+ */
+const buttonLinkStyles = [
+    contextColors,
+    componentSizes,
+    i$4 `
+    :host {
+      display: inline-block;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--button-gap, 8px);
+      border: none;
+      border-radius: 4px;
+      font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.124s ease-in-out;
+      text-decoration: none;
+      outline: none;
+      vertical-align: middle;
+      line-height: 1;
+      /* Force consistent sizing - override browser defaults */
+      box-sizing: border-box;
+      margin: 0;
+      padding: 8px 16px;
+      font-size: 16px;
+      height: 40px;
+    }
+
+    .button-link:focus-visible {
+      box-shadow: 0 0 0 2px currentColor;
+    }
+
+    .button-link:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Variants */
+    .button-link--default {
+      background-color: var(--context-color);
+      color: white;
+    }
+
+    .button-link--default:hover:not(:disabled) {
+      background-color: var(--context-color-hover);
+    }
+
+    .button-link--link {
+      background-color: transparent;
+      color: var(--context-color);
+    }
+
+    .button-link--link:hover:not(:disabled) {
+      color: var(--context-color-hover);
+      text-decoration: underline;
+    }
+
+    .button-link--outline {
+      background-color: transparent;
+      color: var(--context-color);
+      border: 1px solid var(--context-color);
+    }
+
+    .button-link--outline:hover:not(:disabled) {
+      background-color: var(--context-color);
+      color: white;
+    }
+
+    .button-link--ghost {
+      background-color: transparent;
+      color: var(--context-color);
+      border: none;
+    }
+
+    .button-link--ghost:hover:not(:disabled) {
+      background-color: var(--context-color-alpha);
+    }
+
+    .button-link--soft {
+      background-color: var(--context-color-alpha);
+      color: var(--context-color);
+      border: none;
+    }
+
+    .button-link--soft:hover:not(:disabled) {
+      background-color: var(--context-color);
+      color: white;
+    }
+
+    /* Icon styling */
+    .button-link__icon {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Size overrides - ensure consistent sizing across button and link */
+    .button-link.size--xs {
+      padding: 4px 8px !important;
+      font-size: 12px !important;
+      height: 24px !important;
+      --button-gap: 4px;
+    }
+
+    .button-link.size--small {
+      padding: 6px 12px !important;
+      font-size: 14px !important;
+      height: 32px !important;
+      --button-gap: 6px;
+    }
+
+    .button-link.size--medium {
+      padding: 8px 16px !important;
+      font-size: 16px !important;
+      height: 40px !important;
+      --button-gap: 8px;
+    }
+
+    .button-link.size--large {
+      padding: 12px 24px !important;
+      font-size: 18px !important;
+      height: 48px !important;
+      --button-gap: 10px;
+    }
+  `,
+];
+
 let EchoButton = class EchoButton extends i$1 {
     constructor() {
         super(...arguments);
@@ -278,7 +414,7 @@ let EchoButton = class EchoButton extends i$1 {
             size=${this.iconSize || this._getIconSizeFromButtonSize()}
             variant=${this.iconVariant || 'default'}
             stroke-width=${this.iconStrokeWidth || 1.5}
-            class="button__icon button__icon--${this.iconPosition}"
+            class="button-link__icon button-link__icon--${this.iconPosition}"
             style="--icon-color: currentColor;"
           ></echo-icon>
         `
@@ -290,7 +426,7 @@ let EchoButton = class EchoButton extends i$1 {
             : x `<slot></slot>`;
         return x `
       <button
-        class="button button--${this.variant} context--${this
+        class="button-link button-link--${this.variant} context--${this
             .context} size--${this.size}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}
@@ -358,119 +494,7 @@ let EchoButton = class EchoButton extends i$1 {
         }
     }
 };
-EchoButton.styles = [
-    contextColors,
-    componentSizes,
-    i$4 `
-      :host {
-        display: inline-block;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--button-gap, 8px);
-        border: none;
-        border-radius: 4px;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.124s ease-in-out;
-        text-decoration: none;
-        outline: none;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      .button:focus-visible {
-        box-shadow: 0 0 0 2px currentColor;
-      }
-
-      .button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      /* Variants */
-      .button--default {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      .button--default:hover:not(:disabled) {
-        background-color: var(--context-color-hover);
-      }
-
-      .button--link {
-        background-color: transparent;
-        color: var(--context-color);
-      }
-
-      .button--link:hover:not(:disabled) {
-        color: var(--context-color-hover);
-        text-decoration: underline;
-      }
-
-      .button--outline {
-        background-color: transparent;
-        color: var(--context-color);
-        border: 1px solid var(--context-color);
-      }
-
-      .button--outline:hover:not(:disabled) {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      .button--ghost {
-        background-color: transparent;
-        color: var(--context-color);
-        border: none;
-      }
-
-      .button--ghost:hover:not(:disabled) {
-        background-color: var(--context-color-alpha);
-      }
-
-      .button--soft {
-        background-color: var(--context-color-alpha);
-        color: var(--context-color);
-        border: none;
-      }
-
-      .button--soft:hover:not(:disabled) {
-        background-color: var(--context-color);
-        color: white;
-      }
-
-      /* Icon styling */
-      .button__icon {
-        display: inline-flex;
-        align-items: center;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      /* Gap spacing for different sizes */
-      .size--xs {
-        --button-gap: 4px;
-      }
-
-      .size--small {
-        --button-gap: 6px;
-      }
-
-      .size--medium {
-        --button-gap: 8px;
-      }
-
-      .size--large {
-        --button-gap: 10px;
-      }
-    `,
-];
+EchoButton.styles = buttonLinkStyles;
 __decorate([
     n({ type: String })
 ], EchoButton.prototype, "variant", void 0);
@@ -501,6 +525,187 @@ __decorate([
 EchoButton = __decorate([
     t$1('echo-button')
 ], EchoButton);
+
+let EchoLink = class EchoLink extends i$1 {
+    constructor() {
+        super(...arguments);
+        this.variant = 'default';
+        this.size = 'medium';
+        this.context = 'primary';
+        this.disabled = false;
+        this.href = null;
+        this.target = null;
+        this.rel = null;
+        this.icon = null;
+        this.iconPosition = 'left';
+        this.iconSize = null;
+        this.iconVariant = null;
+        this.iconStrokeWidth = null;
+    }
+    render() {
+        const iconElement = this.icon
+            ? x `
+          <echo-icon
+            name=${this.icon}
+            size=${this.iconSize || this._getIconSizeFromLinkSize()}
+            variant=${this.iconVariant || 'default'}
+            stroke-width=${this.iconStrokeWidth || 1.5}
+            class="button-link__icon button-link__icon--${this.iconPosition}"
+            style="--icon-color: currentColor;"
+          ></echo-icon>
+        `
+            : null;
+        const content = this.icon
+            ? this.iconPosition === 'left'
+                ? x `${iconElement}<slot></slot>`
+                : x `<slot></slot>${iconElement}`
+            : x `<slot></slot>`;
+        // If disabled or no href, render as span
+        if (this.disabled || !this.href) {
+            return x `
+        <span
+          class="button-link button-link--${this.variant} context--${this
+                .context} size--${this.size}"
+          role="button"
+          tabindex="0"
+          @click=${this._handleClick}
+          @keydown=${this._handleKeydown}
+        >
+          ${content}
+        </span>
+      `;
+        }
+        // Render as proper link
+        return x `
+      <a
+        class="button-link button-link--${this.variant} context--${this
+            .context} size--${this.size}"
+        href=${this.href}
+        target=${this.target || ''}
+        rel=${this.rel || ''}
+        @click=${this._handleClick}
+      >
+        ${content}
+      </a>
+    `;
+    }
+    _getIconSizeFromLinkSize() {
+        const sizeMap = {
+            xs: 'small',
+            small: 'small',
+            medium: 'medium',
+            large: 'large',
+        };
+        return sizeMap[this.size];
+    }
+    _handleClick(event) {
+        if (this.disabled) {
+            event.preventDefault();
+            return;
+        }
+        this.dispatchEvent(new CustomEvent('echo-link-click', {
+            detail: { originalEvent: event, href: this.href },
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    _handleKeydown(event) {
+        // Handle Enter and Space keys for disabled links rendered as spans
+        if (this.disabled || !this.href) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                this._handleClick(event);
+            }
+        }
+    }
+    /**
+     * Handle attribute changes to reset properties to default values when attributes are removed
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        // If attribute is removed (newValue is null), reset property to default value
+        if (newValue === null) {
+            switch (name) {
+                case 'variant':
+                    this.variant = 'default';
+                    break;
+                case 'size':
+                    this.size = 'medium';
+                    break;
+                case 'context':
+                    this.context = 'primary';
+                    break;
+                case 'disabled':
+                    this.disabled = false;
+                    break;
+                case 'href':
+                    this.href = null;
+                    break;
+                case 'target':
+                    this.target = null;
+                    break;
+                case 'rel':
+                    this.rel = null;
+                    break;
+                case 'icon':
+                    this.icon = null;
+                    break;
+                case 'icon-position':
+                    this.iconPosition = 'left';
+                    break;
+                case 'icon-size':
+                    this.iconSize = null;
+                    break;
+                case 'icon-variant':
+                    this.iconVariant = null;
+                    break;
+                case 'icon-stroke-width':
+                    this.iconStrokeWidth = null;
+                    break;
+            }
+        }
+    }
+};
+EchoLink.styles = buttonLinkStyles;
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "variant", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "size", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "context", void 0);
+__decorate([
+    n({ type: Boolean })
+], EchoLink.prototype, "disabled", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "href", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "target", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "rel", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "icon", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-position' })
+], EchoLink.prototype, "iconPosition", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-size' })
+], EchoLink.prototype, "iconSize", void 0);
+__decorate([
+    n({ type: String, attribute: 'icon-variant' })
+], EchoLink.prototype, "iconVariant", void 0);
+__decorate([
+    n({ type: Number, attribute: 'icon-stroke-width' })
+], EchoLink.prototype, "iconStrokeWidth", void 0);
+EchoLink = __decorate([
+    t$1('echo-link')
+], EchoLink);
 
 /**
  * @license
@@ -4961,6 +5166,9 @@ const echoButtonVariantNames = [
     'ghost',
     'soft',
 ];
+const echoLinkVariantNames = echoButtonVariantNames;
+const echoLinkTargetNames = ['_blank', '_self', '_parent', '_top'];
+const echoLinkRelNames = ['noopener', 'noreferrer', 'noopener noreferrer'];
 const echoSizeNames = ['xs', 'small', 'medium', 'large'];
 const echoContextNames = [
     'primary',
@@ -4971,5 +5179,5 @@ const echoContextNames = [
     'info',
 ];
 
-export { EchoButton, EchoCard, EchoCheckbox, EchoIcon, EchoInput, EchoLayout, EchoPop, EchoSelect, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
+export { EchoButton, EchoCard, EchoCheckbox, EchoIcon, EchoInput, EchoLayout, EchoLink, EchoPop, EchoSelect, EchoSeparator, clearIconRegistry, componentSizeNames, componentSizes, componentSizesCSS, contextColorNames, contextColors, contextColorsCSS, echoButtonVariantNames, echoContextNames, echoIconSizeNames, echoIconVariantNames, echoLinkRelNames, echoLinkTargetNames, echoLinkVariantNames, echoSizeNames, getAvailableIconNames, getLoadedIcons, iconNames, layoutStyles, layoutStylesCSS, loadIcon, preloadIcons };
 //# sourceMappingURL=design-toolkit.esm.bundled.js.map

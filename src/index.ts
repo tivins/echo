@@ -1,5 +1,6 @@
 // Import and register components
 import './components/echo-button.js';
+import './components/echo-link.js';
 import './components/echo-icon.js';
 import './components/echo-separator.js';
 import './components/echo-card.js';
@@ -11,6 +12,7 @@ import './components/echo-pop.js';
 
 // Export all components
 export { EchoButton } from './components/echo-button.js';
+export { EchoLink } from './components/echo-link.js';
 export { EchoIcon } from './components/echo-icon.js';
 export { EchoSeparator } from './components/echo-separator.js';
 export { EchoCard } from './components/echo-card.js';
@@ -23,6 +25,9 @@ export { EchoPop } from './components/echo-pop.js';
 // Export types
 export type {
   EchoButtonVariant,
+  EchoLinkVariant,
+  EchoLinkTarget,
+  EchoLinkRel,
   EchoSize,
   EchoContext,
   ContextColorName,
@@ -70,6 +75,9 @@ export {
   echoIconVariantNames,
   iconNames,
   echoButtonVariantNames,
+  echoLinkVariantNames,
+  echoLinkTargetNames,
+  echoLinkRelNames,
   echoSizeNames,
   echoContextNames,
 } from './types/index.js';

@@ -5,6 +5,80 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.0] - 2025-01-06
+
+### Added
+- **EchoLink Component**: New link component with button-like styling and href support
+  - **Semantic HTML**: Uses proper `<a>` elements for links and `<span>` for disabled/no-href states
+  - **Button-like Styling**: Shares visual styling with echo-button through shared CSS classes
+  - **Href Support**: Full href attribute support with target and rel attributes
+  - **Security Attributes**: Built-in support for `target="_blank"` and `rel="noopener noreferrer"`
+  - **Icon Integration**: Full icon support with positioning and customization options
+  - **Accessibility**: Proper ARIA attributes, keyboard navigation, and screen reader support
+  - **Event System**: Custom `echo-link-click` event with href information
+  - **Disabled State**: Proper disabled styling and interaction prevention
+  - **All Variants**: Support for all button variants (default, link, outline, ghost, soft)
+  - **All Contexts**: Full integration with context color system
+  - **All Sizes**: Support for all component sizes (xs, small, medium, large)
+
+### Technical
+- **Shared Styles**: Created `button-link-styles.ts` to eliminate code duplication between button and link components
+- **Type Definitions**: Added `EchoLinkVariant`, `EchoLinkTarget`, and `EchoLinkRel` types
+- **Component Architecture**: Built with Lit framework following Design Toolkit patterns
+- **Semantic Rendering**: Intelligently renders as `<a>` or `<span>` based on href and disabled state
+- **Event Handling**: Comprehensive event system with proper bubbling and composition
+- **Attribute Management**: Proper handling of attribute changes and property resets
+
+### Examples
+```html
+<!-- Basic link -->
+<echo-link href="https://example.com" variant="default" context="primary">
+  Visit Example
+</echo-link>
+
+<!-- External link with security attributes -->
+<echo-link href="https://github.com" target="_blank" rel="noopener noreferrer">
+  GitHub
+</echo-link>
+
+<!-- Link with icon -->
+<echo-link href="/download" icon="download" icon-position="left">
+  Download PDF
+</echo-link>
+
+<!-- Disabled link -->
+<echo-link href="https://example.com" disabled>
+  Disabled Link
+</echo-link>
+
+<!-- Button-like link without href -->
+<echo-link variant="outline" context="success">
+  No Href Link
+</echo-link>
+```
+
+### JavaScript API
+```javascript
+const link = document.querySelector('echo-link');
+
+// Event handling
+link.addEventListener('echo-link-click', (event) => {
+  console.log('Link clicked:', event.detail.href);
+});
+
+// Property access
+console.log(link.href);
+console.log(link.target);
+console.log(link.rel);
+```
+
+### Documentation
+- **Comprehensive Examples**: Added detailed usage examples in README.md
+- **API Documentation**: Complete property, event, and method documentation
+- **Demo Page**: Created extensive demo page (demos/echo-link-demo.html) showcasing all features
+- **Test Coverage**: Full Playwright test suite covering all link variants and interactions
+- **Comparison Examples**: Side-by-side examples showing button vs link usage patterns
+
 ## [1.13.2] - 2025-01-05
 
 ### Fixed

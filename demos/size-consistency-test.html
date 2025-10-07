@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="../docs/design-toolkit.esm.bundled.js"></script>
+  <title>Size Consistency Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .test-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .comparison {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+    
+    .comparison-label {
+      font-weight: 500;
+      min-width: 100px;
+      color: #666;
+    }
+    
+    .size-test {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .size-item {
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #fafafa;
+      text-align: center;
+    }
+    
+    .size-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <div class="test-section">
+      <h1 class="test-title">Size Consistency Test</h1>
+      <p>This page tests that <code>echo-button</code> and <code>echo-link</code> components have identical sizes.</p>
+    </div>
+
+    <div class="test-section">
+      <h2 class="test-title">Default Size Comparison</h2>
+      <div class="comparison">
+        <div class="comparison-label">Button:</div>
+        <echo-button>Button</echo-button>
+      </div>
+      <div class="comparison">
+        <div class="comparison-label">Link:</div>
+        <echo-link href="https://example.com">Link</echo-link>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2 class="test-title">All Sizes Comparison</h2>
+      <div class="size-test">
+        <div class="size-item">
+          <div class="size-label">Extra Small (xs)</div>
+          <div class="comparison">
+            <echo-button size="xs">Button</echo-button>
+            <echo-link href="#" size="xs">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Small</div>
+          <div class="comparison">
+            <echo-button size="small">Button</echo-button>
+            <echo-link href="#" size="small">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Medium (default)</div>
+          <div class="comparison">
+            <echo-button>Button</echo-button>
+            <echo-link href="#">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Large</div>
+          <div class="comparison">
+            <echo-button size="large">Button</echo-button>
+            <echo-link href="#" size="large">Link</echo-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2 class="test-title">Different Variants</h2>
+      <div class="size-test">
+        <div class="size-item">
+          <div class="size-label">Default Variant</div>
+          <div class="comparison">
+            <echo-button variant="default">Button</echo-button>
+            <echo-link href="#" variant="default">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Outline Variant</div>
+          <div class="comparison">
+            <echo-button variant="outline">Button</echo-button>
+            <echo-link href="#" variant="outline">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Ghost Variant</div>
+          <div class="comparison">
+            <echo-button variant="ghost">Button</echo-button>
+            <echo-link href="#" variant="ghost">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Soft Variant</div>
+          <div class="comparison">
+            <echo-button variant="soft">Button</echo-button>
+            <echo-link href="#" variant="soft">Link</echo-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2 class="test-title">With Icons</h2>
+      <div class="size-test">
+        <div class="size-item">
+          <div class="size-label">Left Icon</div>
+          <div class="comparison">
+            <echo-button icon="plus" icon-position="left">Button</echo-button>
+            <echo-link href="#" icon="plus" icon-position="left">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Right Icon</div>
+          <div class="comparison">
+            <echo-button icon="arrow-right" icon-position="right">Button</echo-button>
+            <echo-link href="#" icon="arrow-right" icon-position="right">Link</echo-link>
+          </div>
+        </div>
+        <div class="size-item">
+          <div class="size-label">Icon Only</div>
+          <div class="comparison">
+            <echo-button icon="settings"></echo-button>
+            <echo-link href="#" icon="settings"></echo-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2 class="test-title">Disabled State</h2>
+      <div class="comparison">
+        <div class="comparison-label">Disabled Button:</div>
+        <echo-button disabled>Disabled Button</echo-button>
+      </div>
+      <div class="comparison">
+        <div class="comparison-label">Disabled Link:</div>
+        <echo-link href="https://example.com" disabled>Disabled Link</echo-link>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

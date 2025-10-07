@@ -4,6 +4,10 @@ export type EchoButtonVariant =
   | 'outline'
   | 'ghost'
   | 'soft';
+
+export type EchoLinkVariant = EchoButtonVariant;
+export type EchoLinkTarget = '_blank' | '_self' | '_parent' | '_top';
+export type EchoLinkRel = 'noopener' | 'noreferrer' | 'noopener noreferrer';
 export type EchoSize = 'xs' | 'small' | 'medium' | 'large';
 export type EchoContext =
   | 'danger'
@@ -21,6 +25,10 @@ export const echoButtonVariantNames: EchoButtonVariant[] = [
   'ghost',
   'soft',
 ];
+
+export const echoLinkVariantNames: EchoLinkVariant[] = echoButtonVariantNames;
+export const echoLinkTargetNames: EchoLinkTarget[] = ['_blank', '_self', '_parent', '_top'];
+export const echoLinkRelNames: EchoLinkRel[] = ['noopener', 'noreferrer', 'noopener noreferrer'];
 
 export const echoSizeNames: EchoSize[] = ['xs', 'small', 'medium', 'large'];
 
