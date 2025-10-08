@@ -60,7 +60,6 @@ export class EchoPop extends LitElement {
   @property({ type: String, attribute: 'icon-variant' })
   iconVariant: EchoIconVariant | null = null;
 
-
   @property({ type: String, attribute: 'anchor-selector' })
   anchorSelector = '';
 
@@ -416,8 +415,8 @@ export class EchoPop extends LitElement {
 
   render() {
     return html`
-      <slot 
-        name="trigger" 
+      <slot
+        name="trigger"
         @click="${this._handleTriggerClick}"
         @mouseenter="${this._handleTriggerMouseEnter}"
         @mouseleave="${this._handleTriggerMouseLeave}"
@@ -606,12 +605,12 @@ export class EchoPop extends LitElement {
 
     // Step 1: Make popup visible in DOM but not animated (opacity: 0)
     this._isVisible = true;
-    
+
     // Step 2: Force a reflow to ensure popup is rendered
     requestAnimationFrame(() => {
       // Step 3: Calculate position with real dimensions
       this._updatePosition();
-      
+
       // Step 4: Start fade in animation
       requestAnimationFrame(() => {
         // The CSS transition will handle the fade in
@@ -674,11 +673,15 @@ export class EchoPop extends LitElement {
     const viewportHeight = window.innerHeight;
 
     // Get popup size - now the popup is in DOM so we can get real dimensions
-    const popupElement = this.shadowRoot?.querySelector('.pop-content') as HTMLElement;
-    const popupSize = popupElement ? {
-      width: popupElement.offsetWidth,
-      height: popupElement.offsetHeight
-    } : { width: 200, height: 100 };
+    const popupElement = this.shadowRoot?.querySelector(
+      '.pop-content'
+    ) as HTMLElement;
+    const popupSize = popupElement
+      ? {
+          width: popupElement.offsetWidth,
+          height: popupElement.offsetHeight,
+        }
+      : { width: 200, height: 100 };
 
     // Calculate optimal placement with collision detection
     const computedPlacement = this._calculateOptimalPlacement(
@@ -753,10 +756,10 @@ export class EchoPop extends LitElement {
     // Smart placement logic
     // 1. If both vertical directions fit, prefer bottom
     if (fitsAbove && fitsBelow) return 'bottom';
-    
+
     // 2. If both horizontal directions fit, prefer right
     if (fitsLeft && fitsRight) return 'right';
-    
+
     // 3. Choose the direction that fits
     if (fitsBelow) return 'bottom';
     if (fitsAbove) return 'top';

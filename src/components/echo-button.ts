@@ -7,8 +7,10 @@ import type {
   IconName,
   EchoIconSize,
   EchoIconVariant,
+  EchoLinkDisplay,
 } from '../types/index.js';
 import { buttonLinkStyles } from '../styles/button-link-styles.js';
+import { utilityStyles } from '../styles/utility-styles.js';
 
 @customElement('echo-button')
 export class EchoButton extends LitElement {
@@ -39,7 +41,13 @@ export class EchoButton extends LitElement {
   @property({ type: Number, attribute: 'icon-stroke-width' })
   iconStrokeWidth: number | null = null;
 
-  static styles = buttonLinkStyles;
+  @property({ type: String })
+  display: EchoLinkDisplay = 'inline';
+
+  @property({ type: String })
+  class = '';
+
+  static styles = [buttonLinkStyles, utilityStyles];
 
   render() {
     const iconElement = this.icon
@@ -61,10 +69,21 @@ export class EchoButton extends LitElement {
         : html`<slot></slot>${iconElement}`
       : html`<slot></slot>`;
 
+    const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+    const classes = [
+      'button-link',
+      `button-link--${this.variant}`,
+      `context--${this.context}`,
+      `size--${this.size}`,
+      displayClass,
+      this.class,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     return html`
       <button
-        class="button-link button-link--${this.variant} context--${this
-          .context} size--${this.size}"
+        class="${classes}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >
@@ -137,6 +156,12 @@ export class EchoButton extends LitElement {
           break;
         case 'icon-stroke-width':
           this.iconStrokeWidth = null;
+          break;
+        case 'display':
+          this.display = 'inline';
+          break;
+        case 'class':
+          this.class = '';
           break;
       }
     }

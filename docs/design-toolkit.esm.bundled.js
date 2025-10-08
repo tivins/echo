@@ -282,6 +282,34 @@ const buttonLinkStyles = [
       display: inline-block;
     }
 
+    :host(.u-block) {
+      display: block !important;
+    }
+
+    :host(.u-inline-block) {
+      display: inline-block !important;
+    }
+
+    :host(.u-inline) {
+      display: inline !important;
+    }
+
+    :host(.u-flex) {
+      display: flex !important;
+    }
+
+    :host(.u-inline-flex) {
+      display: inline-flex !important;
+    }
+
+    :host(.u-grid) {
+      display: grid !important;
+    }
+
+    :host(.u-hidden) {
+      display: none !important;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -311,7 +339,7 @@ const buttonLinkStyles = [
     }
 
     .button-link:disabled,
-    .button-link[aria-disabled="true"] {
+    .button-link[aria-disabled='true'] {
       opacity: 0.5;
       cursor: not-allowed;
     }
@@ -322,7 +350,7 @@ const buttonLinkStyles = [
       color: white;
     }
 
-    .button-link--default:hover:not(:disabled):not([aria-disabled="true"]) {
+    .button-link--default:hover:not(:disabled):not([aria-disabled='true']) {
       background-color: var(--context-color-hover);
     }
 
@@ -331,7 +359,7 @@ const buttonLinkStyles = [
       color: var(--context-color);
     }
 
-    .button-link--link:hover:not(:disabled):not([aria-disabled="true"]) {
+    .button-link--link:hover:not(:disabled):not([aria-disabled='true']) {
       color: var(--context-color-hover);
       text-decoration: underline;
     }
@@ -342,7 +370,7 @@ const buttonLinkStyles = [
       border: 1px solid var(--context-color);
     }
 
-    .button-link--outline:hover:not(:disabled):not([aria-disabled="true"]) {
+    .button-link--outline:hover:not(:disabled):not([aria-disabled='true']) {
       background-color: var(--context-color);
       color: white;
     }
@@ -353,7 +381,7 @@ const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--ghost:hover:not(:disabled):not([aria-disabled="true"]) {
+    .button-link--ghost:hover:not(:disabled):not([aria-disabled='true']) {
       background-color: var(--context-color-alpha);
     }
 
@@ -363,7 +391,7 @@ const buttonLinkStyles = [
       border: none;
     }
 
-    .button-link--soft:hover:not(:disabled):not([aria-disabled="true"]) {
+    .button-link--soft:hover:not(:disabled):not([aria-disabled='true']) {
       background-color: var(--context-color);
       color: white;
     }
@@ -407,6 +435,448 @@ const buttonLinkStyles = [
   `,
 ];
 
+/**
+ * Utility styles for Design Toolkit components
+ *
+ * This module provides utility CSS classes for common styling needs
+ * like margins, paddings, display properties, and widths.
+ *
+ * Usage:
+ * ```typescript
+ * import { utilityStyles } from '../styles/utility-styles.js';
+ *
+ * static styles = css`
+ *   ${utilityStyles}
+ *   // ... other styles
+ * `;
+ * ```
+ */
+const utilityStyles = i$4 `
+  /* Display utilities */
+  .u-block {
+    display: block !important;
+  }
+
+  .u-inline-block {
+    display: inline-block !important;
+  }
+
+  .u-inline {
+    display: inline !important;
+  }
+
+  .u-flex {
+    display: flex !important;
+  }
+
+  .u-inline-flex {
+    display: inline-flex !important;
+  }
+
+  .u-grid {
+    display: grid !important;
+  }
+
+  .u-hidden {
+    display: none !important;
+  }
+
+  /* Width utilities */
+  .u-w-100 {
+    width: 100% !important;
+  }
+
+  .u-w-auto {
+    width: auto !important;
+  }
+
+  .u-w-fit {
+    width: fit-content !important;
+  }
+
+  .u-w-max {
+    width: max-content !important;
+  }
+
+  .u-w-min {
+    width: min-content !important;
+  }
+
+  /* Margin utilities */
+  .u-m-none {
+    margin: 0 !important;
+  }
+
+  .u-m-xs {
+    margin: 4px !important;
+  }
+
+  .u-m-sm {
+    margin: 8px !important;
+  }
+
+  .u-m-md {
+    margin: 16px !important;
+  }
+
+  .u-m-lg {
+    margin: 24px !important;
+  }
+
+  .u-m-xl {
+    margin: 32px !important;
+  }
+
+  /* Margin top */
+  .u-mt-none {
+    margin-top: 0 !important;
+  }
+
+  .u-mt-xs {
+    margin-top: 4px !important;
+  }
+
+  .u-mt-sm {
+    margin-top: 8px !important;
+  }
+
+  .u-mt-md {
+    margin-top: 16px !important;
+  }
+
+  .u-mt-lg {
+    margin-top: 24px !important;
+  }
+
+  .u-mt-xl {
+    margin-top: 32px !important;
+  }
+
+  /* Margin bottom */
+  .u-mb-none {
+    margin-bottom: 0 !important;
+  }
+
+  .u-mb-xs {
+    margin-bottom: 4px !important;
+  }
+
+  .u-mb-sm {
+    margin-bottom: 8px !important;
+  }
+
+  .u-mb-md {
+    margin-bottom: 16px !important;
+  }
+
+  .u-mb-lg {
+    margin-bottom: 24px !important;
+  }
+
+  .u-mb-xl {
+    margin-bottom: 32px !important;
+  }
+
+  /* Margin left */
+  .u-ml-none {
+    margin-left: 0 !important;
+  }
+
+  .u-ml-xs {
+    margin-left: 4px !important;
+  }
+
+  .u-ml-sm {
+    margin-left: 8px !important;
+  }
+
+  .u-ml-md {
+    margin-left: 16px !important;
+  }
+
+  .u-ml-lg {
+    margin-left: 24px !important;
+  }
+
+  .u-ml-xl {
+    margin-left: 32px !important;
+  }
+
+  /* Margin right */
+  .u-mr-none {
+    margin-right: 0 !important;
+  }
+
+  .u-mr-xs {
+    margin-right: 4px !important;
+  }
+
+  .u-mr-sm {
+    margin-right: 8px !important;
+  }
+
+  .u-mr-md {
+    margin-right: 16px !important;
+  }
+
+  .u-mr-lg {
+    margin-right: 24px !important;
+  }
+
+  .u-mr-xl {
+    margin-right: 32px !important;
+  }
+
+  /* Margin horizontal */
+  .u-mx-none {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .u-mx-xs {
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+
+  .u-mx-sm {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+  }
+
+  .u-mx-md {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  .u-mx-lg {
+    margin-left: 24px !important;
+    margin-right: 24px !important;
+  }
+
+  .u-mx-xl {
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+  }
+
+  /* Margin vertical */
+  .u-my-none {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .u-my-xs {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .u-my-sm {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .u-my-md {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .u-my-lg {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .u-my-xl {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+  }
+
+  /* Padding utilities */
+  .u-p-none {
+    padding: 0 !important;
+  }
+
+  .u-p-xs {
+    padding: 4px !important;
+  }
+
+  .u-p-sm {
+    padding: 8px !important;
+  }
+
+  .u-p-md {
+    padding: 16px !important;
+  }
+
+  .u-p-lg {
+    padding: 24px !important;
+  }
+
+  .u-p-xl {
+    padding: 32px !important;
+  }
+
+  /* Padding top */
+  .u-pt-none {
+    padding-top: 0 !important;
+  }
+
+  .u-pt-xs {
+    padding-top: 4px !important;
+  }
+
+  .u-pt-sm {
+    padding-top: 8px !important;
+  }
+
+  .u-pt-md {
+    padding-top: 16px !important;
+  }
+
+  .u-pt-lg {
+    padding-top: 24px !important;
+  }
+
+  .u-pt-xl {
+    padding-top: 32px !important;
+  }
+
+  /* Padding bottom */
+  .u-pb-none {
+    padding-bottom: 0 !important;
+  }
+
+  .u-pb-xs {
+    padding-bottom: 4px !important;
+  }
+
+  .u-pb-sm {
+    padding-bottom: 8px !important;
+  }
+
+  .u-pb-md {
+    padding-bottom: 16px !important;
+  }
+
+  .u-pb-lg {
+    padding-bottom: 24px !important;
+  }
+
+  .u-pb-xl {
+    padding-bottom: 32px !important;
+  }
+
+  /* Padding left */
+  .u-pl-none {
+    padding-left: 0 !important;
+  }
+
+  .u-pl-xs {
+    padding-left: 4px !important;
+  }
+
+  .u-pl-sm {
+    padding-left: 8px !important;
+  }
+
+  .u-pl-md {
+    padding-left: 16px !important;
+  }
+
+  .u-pl-lg {
+    padding-left: 24px !important;
+  }
+
+  .u-pl-xl {
+    padding-left: 32px !important;
+  }
+
+  /* Padding right */
+  .u-pr-none {
+    padding-right: 0 !important;
+  }
+
+  .u-pr-xs {
+    padding-right: 4px !important;
+  }
+
+  .u-pr-sm {
+    padding-right: 8px !important;
+  }
+
+  .u-pr-md {
+    padding-right: 16px !important;
+  }
+
+  .u-pr-lg {
+    padding-right: 24px !important;
+  }
+
+  .u-pr-xl {
+    padding-right: 32px !important;
+  }
+
+  /* Padding horizontal */
+  .u-px-none {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .u-px-xs {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  .u-px-sm {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .u-px-md {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .u-px-lg {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .u-px-xl {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  /* Padding vertical */
+  .u-py-none {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .u-py-xs {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .u-py-sm {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .u-py-md {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .u-py-lg {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .u-py-xl {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+  }
+`;
+
 let EchoButton = class EchoButton extends i$1 {
     constructor() {
         super(...arguments);
@@ -419,6 +889,8 @@ let EchoButton = class EchoButton extends i$1 {
         this.iconSize = null;
         this.iconVariant = null;
         this.iconStrokeWidth = null;
+        this.display = 'inline';
+        this.class = '';
     }
     render() {
         const iconElement = this.icon
@@ -438,16 +910,40 @@ let EchoButton = class EchoButton extends i$1 {
                 ? x `${iconElement}<slot></slot>`
                 : x `<slot></slot>${iconElement}`
             : x `<slot></slot>`;
+        const buttonClasses = [
+            'button-link',
+            `button-link--${this.variant}`,
+            `context--${this.context}`,
+            `size--${this.size}`,
+        ]
+            .filter(Boolean)
+            .join(' ');
         return x `
       <button
-        class="button-link button-link--${this.variant} context--${this
-            .context} size--${this.size}"
+        class="${buttonClasses}"
         ?disabled=${this.disabled}
         @click=${this._handleClick}
       >
         ${content}
       </button>
     `;
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        // Update host classes for display and utility classes
+        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+        const hostClasses = [
+            displayClass,
+            this.class,
+        ]
+            .filter(Boolean)
+            .join(' ');
+        if (hostClasses) {
+            this.className = hostClasses;
+        }
+        else {
+            this.className = '';
+        }
     }
     _getIconSizeFromButtonSize() {
         const sizeMap = {
@@ -504,11 +1000,17 @@ let EchoButton = class EchoButton extends i$1 {
                 case 'icon-stroke-width':
                     this.iconStrokeWidth = null;
                     break;
+                case 'display':
+                    this.display = 'inline';
+                    break;
+                case 'class':
+                    this.class = '';
+                    break;
             }
         }
     }
 };
-EchoButton.styles = buttonLinkStyles;
+EchoButton.styles = [buttonLinkStyles, utilityStyles];
 __decorate([
     n({ type: String })
 ], EchoButton.prototype, "variant", void 0);
@@ -536,6 +1038,12 @@ __decorate([
 __decorate([
     n({ type: Number, attribute: 'icon-stroke-width' })
 ], EchoButton.prototype, "iconStrokeWidth", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "display", void 0);
+__decorate([
+    n({ type: String })
+], EchoButton.prototype, "class", void 0);
 EchoButton = __decorate([
     t$1('echo-button')
 ], EchoButton);
@@ -555,6 +1063,8 @@ let EchoLink = class EchoLink extends i$1 {
         this.iconSize = null;
         this.iconVariant = null;
         this.iconStrokeWidth = null;
+        this.display = 'inline';
+        this.class = '';
     }
     render() {
         const iconElement = this.icon
@@ -574,12 +1084,19 @@ let EchoLink = class EchoLink extends i$1 {
                 ? x `${iconElement}<slot></slot>`
                 : x `<slot></slot>${iconElement}`
             : x `<slot></slot>`;
+        const linkClasses = [
+            'button-link',
+            `button-link--${this.variant}`,
+            `context--${this.context}`,
+            `size--${this.size}`,
+        ]
+            .filter(Boolean)
+            .join(' ');
         // If disabled or no href, render as span
         if (this.disabled || !this.href) {
             return x `
         <span
-          class="button-link button-link--${this.variant} context--${this
-                .context} size--${this.size}"
+          class="${linkClasses}"
           role="button"
           tabindex=${this.disabled ? '-1' : '0'}
           aria-disabled=${this.disabled}
@@ -593,8 +1110,7 @@ let EchoLink = class EchoLink extends i$1 {
         // Render as proper link
         return x `
       <a
-        class="button-link button-link--${this.variant} context--${this
-            .context} size--${this.size}"
+        class="${linkClasses}"
         href=${this.href}
         target=${this.target || ''}
         rel=${this.rel || ''}
@@ -603,6 +1119,23 @@ let EchoLink = class EchoLink extends i$1 {
         ${content}
       </a>
     `;
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        // Update host classes for display and utility classes
+        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+        const hostClasses = [
+            displayClass,
+            this.class,
+        ]
+            .filter(Boolean)
+            .join(' ');
+        if (hostClasses) {
+            this.className = hostClasses;
+        }
+        else {
+            this.className = '';
+        }
     }
     _getIconSizeFromLinkSize() {
         const sizeMap = {
@@ -677,11 +1210,17 @@ let EchoLink = class EchoLink extends i$1 {
                 case 'icon-stroke-width':
                     this.iconStrokeWidth = null;
                     break;
+                case 'display':
+                    this.display = 'inline';
+                    break;
+                case 'class':
+                    this.class = '';
+                    break;
             }
         }
     }
 };
-EchoLink.styles = buttonLinkStyles;
+EchoLink.styles = [buttonLinkStyles, utilityStyles];
 __decorate([
     n({ type: String })
 ], EchoLink.prototype, "variant", void 0);
@@ -718,6 +1257,12 @@ __decorate([
 __decorate([
     n({ type: Number, attribute: 'icon-stroke-width' })
 ], EchoLink.prototype, "iconStrokeWidth", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "display", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "class", void 0);
 EchoLink = __decorate([
     t$1('echo-link')
 ], EchoLink);
@@ -1912,7 +2457,7 @@ EchoCard.styles = [
       }
 
       /* Context colors - inspired by echo-pop implementation */
-      
+
       /* Default context - no special styling */
       .card.context--default {
         /* No additional styling for default context */
@@ -4325,8 +4870,8 @@ let EchoPop = class EchoPop extends i$1 {
     }
     render() {
         return x `
-      <slot 
-        name="trigger" 
+      <slot
+        name="trigger"
         @click="${this._handleTriggerClick}"
         @mouseenter="${this._handleTriggerMouseEnter}"
         @mouseleave="${this._handleTriggerMouseLeave}"
@@ -4514,10 +5059,12 @@ let EchoPop = class EchoPop extends i$1 {
         const viewportHeight = window.innerHeight;
         // Get popup size - now the popup is in DOM so we can get real dimensions
         const popupElement = this.shadowRoot?.querySelector('.pop-content');
-        const popupSize = popupElement ? {
-            width: popupElement.offsetWidth,
-            height: popupElement.offsetHeight
-        } : { width: 200, height: 100 };
+        const popupSize = popupElement
+            ? {
+                width: popupElement.offsetWidth,
+                height: popupElement.offsetHeight,
+            }
+            : { width: 200, height: 100 };
         // Calculate optimal placement with collision detection
         const computedPlacement = this._calculateOptimalPlacement(anchorRect, viewportWidth, viewportHeight, popupSize);
         // Calculate position based on computed placement
@@ -5220,8 +5767,17 @@ const echoButtonVariantNames = [
     'soft',
 ];
 const echoLinkVariantNames = echoButtonVariantNames;
-const echoLinkTargetNames = ['_blank', '_self', '_parent', '_top'];
-const echoLinkRelNames = ['noopener', 'noreferrer', 'noopener noreferrer'];
+const echoLinkTargetNames = [
+    '_blank',
+    '_self',
+    '_parent',
+    '_top',
+];
+const echoLinkRelNames = [
+    'noopener',
+    'noreferrer',
+    'noopener noreferrer',
+];
 const echoSizeNames = ['xs', 'small', 'medium', 'large'];
 const echoContextNames = [
     'default',

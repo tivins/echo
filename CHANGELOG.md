@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.18.0] - 2025-01-06
+
+### Added
+- **Utility Styles System**: New comprehensive utility classes for common styling needs
+  - **Display Utilities**: `.u-block`, `.u-inline-block`, `.u-flex`, `.u-grid`, `.u-hidden`, etc.
+  - **Width Utilities**: `.u-w-100`, `.u-w-auto`, `.u-w-fit`, `.u-w-max`, `.u-w-min`
+  - **Margin Utilities**: `.u-m-xs`, `.u-m-sm`, `.u-m-md`, `.u-m-lg`, `.u-m-xl` with directional variants (`.u-mt-*`, `.u-mb-*`, `.u-ml-*`, `.u-mr-*`, `.u-mx-*`, `.u-my-*`)
+  - **Padding Utilities**: `.u-p-xs`, `.u-p-sm`, `.u-p-md`, `.u-p-lg`, `.u-p-xl` with directional variants (`.u-pt-*`, `.u-pb-*`, `.u-pl-*`, `.u-pr-*`, `.u-px-*`, `.u-py-*`)
+  - **Consistent Spacing Scale**: Uses the same spacing scale as existing components (4px, 8px, 16px, 24px, 32px)
+  - **TypeScript Support**: Full type definitions for all utility classes
+
+- **Echo Link Component**: Enhanced with display property
+  - **New Display Property**: Added `display` attribute to control link display behavior
+  - **Supported Values**: `inline`, `block`, `inline-block`, `flex`, `inline-flex`, `grid`, `hidden`
+  - **Backward Compatible**: Defaults to `inline` to maintain existing behavior
+  - **Utility Integration**: Automatically applies utility classes based on display value
+  - **Class Support**: Added `class` attribute support for external utility classes
+
+- **Echo Button Component**: Enhanced with display and class properties
+  - **New Display Property**: Added `display` attribute to control button display behavior
+  - **Class Support**: Added `class` attribute support for external utility classes
+  - **Consistency**: Now matches echo-link component API for better developer experience
+
+### Changed
+- **Echo Link Component**: Updated to use utility styles system
+  - **Style Architecture**: Now includes utility styles alongside existing button-link styles
+  - **Class Management**: Improved class handling with proper utility class application
+  - **Type Safety**: Enhanced TypeScript support with proper type definitions
+
+- **Echo Button Component**: Updated to use utility styles system
+  - **Style Architecture**: Now includes utility styles alongside existing button-link styles
+  - **Class Management**: Improved class handling with proper utility class application
+  - **API Consistency**: Now matches echo-link component behavior for better developer experience
+
 ## [1.17.0] - 2025-01-06
 
 ### Changed

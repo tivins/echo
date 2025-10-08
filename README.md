@@ -17,8 +17,8 @@ A modern web component library built with Lit, providing a comprehensive set of 
 
 ### Core Components
 
-- **echo-button**: Versatile button component with multiple variants and sizes
-- **echo-link**: Link component with button-like styling and href support
+- **echo-button**: Versatile button component with multiple variants, sizes, and display control
+- **echo-link**: Link component with button-like styling, href support, and display control
 - **echo-input**: Form input component with validation states
 - **echo-checkbox**: Checkbox component with custom styling
 - **echo-select**: Dropdown select component
@@ -26,6 +26,29 @@ A modern web component library built with Lit, providing a comprehensive set of 
 - **echo-layout**: Layout component for responsive design
 - **echo-separator**: Visual separator component
 - **echo-icon**: Icon component with built-in icon library
+
+### Utility System
+
+Echo Design System includes a comprehensive utility class system for common styling needs:
+
+#### Display Utilities
+- `.u-block`, `.u-inline-block`, `.u-inline`, `.u-flex`, `.u-inline-flex`, `.u-grid`, `.u-hidden`
+
+#### Width Utilities
+- `.u-w-100`, `.u-w-auto`, `.u-w-fit`, `.u-w-max`, `.u-w-min`
+
+#### Spacing Utilities
+- **Margins**: `.u-m-xs`, `.u-m-sm`, `.u-m-md`, `.u-m-lg`, `.u-m-xl`
+- **Directional Margins**: `.u-mt-*`, `.u-mb-*`, `.u-ml-*`, `.u-mr-*`, `.u-mx-*`, `.u-my-*`
+- **Padding**: `.u-p-xs`, `.u-p-sm`, `.u-p-md`, `.u-p-lg`, `.u-p-xl`
+- **Directional Padding**: `.u-pt-*`, `.u-pb-*`, `.u-pl-*`, `.u-pr-*`, `.u-px-*`, `.u-py-*`
+
+#### Spacing Scale
+- `xs`: 4px
+- `sm`: 8px
+- `md`: 16px
+- `lg`: 24px
+- `xl`: 32px
 
 ### Overlay Components
 
@@ -78,6 +101,21 @@ document.body.appendChild(button);
 </echo-button>
 ```
 
+### Button with Display Control
+
+```html
+<!-- Block display for full-width buttons -->
+<echo-button variant="default" display="block" class="u-w-100 u-mb-sm">
+  Full-width button
+</echo-button>
+
+<!-- Flex display for custom layouts -->
+<echo-button variant="outline" display="flex" class="u-gap-sm">
+  <echo-icon name="arrow-right"></echo-icon>
+  <span>Flex button</span>
+</echo-button>
+```
+
 ### Link Component
 
 ```html
@@ -93,6 +131,37 @@ document.body.appendChild(button);
 <!-- Link with icon -->
 <echo-link href="/download" icon="download" icon-position="left">
   Download PDF
+</echo-link>
+```
+
+### Link with Display Control
+
+```html
+<!-- Block display for full-width links -->
+<echo-link href="#" variant="ghost" display="block">
+  Full-width link
+</echo-link>
+
+<!-- Flex display for custom layouts -->
+<echo-link href="#" variant="outline" display="flex">
+  <echo-icon name="arrow-right"></echo-icon>
+  <span>Flex link</span>
+</echo-link>
+```
+
+### Utility Classes
+
+```html
+<!-- Using utility classes for spacing and display -->
+<div class="u-flex u-gap-md u-p-lg">
+  <echo-button class="u-mr-sm">Button 1</echo-button>
+  <echo-button class="u-mr-sm">Button 2</echo-button>
+  <echo-link href="#" class="u-ml-auto">Link</echo-link>
+</div>
+
+<!-- Block-level links with utility classes -->
+<echo-link href="#" class="u-block u-w-100 u-p-md u-mb-sm">
+  Full-width block link
 </echo-link>
 ```
 

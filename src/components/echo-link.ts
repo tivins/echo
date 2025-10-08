@@ -9,8 +9,10 @@ import type {
   EchoIconVariant,
   EchoLinkTarget,
   EchoLinkRel,
+  EchoLinkDisplay,
 } from '../types/index.js';
 import { buttonLinkStyles } from '../styles/button-link-styles.js';
+import { utilityStyles } from '../styles/utility-styles.js';
 
 @customElement('echo-link')
 export class EchoLink extends LitElement {
@@ -50,7 +52,13 @@ export class EchoLink extends LitElement {
   @property({ type: Number, attribute: 'icon-stroke-width' })
   iconStrokeWidth: number | null = null;
 
-  static styles = buttonLinkStyles;
+  @property({ type: String })
+  display: EchoLinkDisplay = 'inline';
+
+  @property({ type: String })
+  class = '';
+
+  static styles = [buttonLinkStyles, utilityStyles];
 
   render() {
     const iconElement = this.icon
@@ -72,12 +80,23 @@ export class EchoLink extends LitElement {
         : html`<slot></slot>${iconElement}`
       : html`<slot></slot>`;
 
+    const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+    const classes = [
+      'button-link',
+      `button-link--${this.variant}`,
+      `context--${this.context}`,
+      `size--${this.size}`,
+      displayClass,
+      this.class,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     // If disabled or no href, render as span
     if (this.disabled || !this.href) {
       return html`
         <span
-          class="button-link button-link--${this.variant} context--${this
-            .context} size--${this.size}"
+          class="${classes}"
           role="button"
           tabindex=${this.disabled ? '-1' : '0'}
           aria-disabled=${this.disabled}
@@ -92,8 +111,7 @@ export class EchoLink extends LitElement {
     // Render as proper link
     return html`
       <a
-        class="button-link button-link--${this.variant} context--${this
-          .context} size--${this.size}"
+        class="${classes}"
         href=${this.href}
         target=${this.target || ''}
         rel=${this.rel || ''}
@@ -187,6 +205,12 @@ export class EchoLink extends LitElement {
           break;
         case 'icon-stroke-width':
           this.iconStrokeWidth = null;
+          break;
+        case 'display':
+          this.display = 'inline';
+          break;
+        case 'class':
+          this.class = '';
           break;
       }
     }

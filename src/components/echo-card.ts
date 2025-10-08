@@ -260,7 +260,7 @@ export class EchoCard extends LitElement {
       }
 
       /* Context colors - inspired by echo-pop implementation */
-      
+
       /* Default context - no special styling */
       .card.context--default {
         /* No additional styling for default context */

@@ -8,6 +8,14 @@ export type EchoButtonVariant =
 export type EchoLinkVariant = EchoButtonVariant;
 export type EchoLinkTarget = '_blank' | '_self' | '_parent' | '_top';
 export type EchoLinkRel = 'noopener' | 'noreferrer' | 'noopener noreferrer';
+export type EchoLinkDisplay =
+  | 'inline'
+  | 'block'
+  | 'inline-block'
+  | 'flex'
+  | 'inline-flex'
+  | 'grid'
+  | 'hidden';
 export type EchoSize = 'xs' | 'small' | 'medium' | 'large';
 export type EchoContext =
   | 'default'
@@ -28,8 +36,26 @@ export const echoButtonVariantNames: EchoButtonVariant[] = [
 ];
 
 export const echoLinkVariantNames: EchoLinkVariant[] = echoButtonVariantNames;
-export const echoLinkTargetNames: EchoLinkTarget[] = ['_blank', '_self', '_parent', '_top'];
-export const echoLinkRelNames: EchoLinkRel[] = ['noopener', 'noreferrer', 'noopener noreferrer'];
+export const echoLinkTargetNames: EchoLinkTarget[] = [
+  '_blank',
+  '_self',
+  '_parent',
+  '_top',
+];
+export const echoLinkRelNames: EchoLinkRel[] = [
+  'noopener',
+  'noreferrer',
+  'noopener noreferrer',
+];
+export const echoLinkDisplayNames: EchoLinkDisplay[] = [
+  'inline',
+  'block',
+  'inline-block',
+  'flex',
+  'inline-flex',
+  'grid',
+  'hidden',
+];
 
 export const echoSizeNames: EchoSize[] = ['xs', 'small', 'medium', 'large'];
 
