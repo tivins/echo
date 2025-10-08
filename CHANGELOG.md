@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.17.0] - 2025-01-06
+
+### Changed
+- **Echo Pop Component**: Simplified animation system
+  - **Removed Complex Animations**: Eliminated multiple animation types (fade, slide-top, slide-bottom, scale) in favor of a single, lightweight fade animation
+  - **Simplified CSS**: Replaced complex animation CSS with a simple opacity transition (0.15s ease-in-out)
+  - **Removed Properties**: Eliminated `animation` and `animationDuration` properties to reduce API complexity
+  - **Improved Performance**: Faster rendering with simplified animation logic and reduced CSS complexity
+  - **Better Reliability**: More consistent behavior across different browsers and devices
+
+### Fixed
+- **Echo Pop Component**: Fixed positioning issues for specific placements
+  - **Top Placement**: Fixed popup covering the trigger button by correcting vertical positioning calculations
+  - **Left Placement**: Fixed popup not being properly aligned with trigger button by correcting horizontal positioning calculations
+  - **CSS Transforms**: Ensured CSS transforms properly center popups relative to their calculated positions
+
+### Removed
+- `animation` property (no longer needed)
+- `animationDuration` property (no longer needed)
+- Complex animation CSS classes and transforms
+- Animation state management (`_isAnimating`, `_isClosing`)
+
 ## [1.16.0] - 2025-01-06
 
 ### Fixed

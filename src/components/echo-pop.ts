@@ -4,7 +4,6 @@ import type {
   EchoPopVariant,
   EchoPopSize,
   EchoPopPlacement,
-  EchoPopAnimation,
   EchoPopTrigger,
   EchoContext,
   IconName,
@@ -35,9 +34,6 @@ export class EchoPop extends LitElement {
   placement: EchoPopPlacement = 'auto';
 
   @property({ type: String })
-  animation: EchoPopAnimation = 'fade';
-
-  @property({ type: String })
   trigger: EchoPopTrigger = 'click';
 
   @property({ type: Boolean })
@@ -64,20 +60,12 @@ export class EchoPop extends LitElement {
   @property({ type: String, attribute: 'icon-variant' })
   iconVariant: EchoIconVariant | null = null;
 
-  @property({ type: Number, attribute: 'animation-duration' })
-  animationDuration = 200;
 
   @property({ type: String, attribute: 'anchor-selector' })
   anchorSelector = '';
 
   @state()
   private _isVisible = false;
-
-  @state()
-  private _isAnimating = false;
-
-  @state()
-  private _isClosing = false;
 
   @state()
   private _position: PopPosition = { x: 0, y: 0, placement: 'bottom' };
@@ -304,111 +292,14 @@ export class EchoPop extends LitElement {
         transform: translateY(-50%) scale(0.95);
       }
 
-      /* Animations - Initial state (hidden) */
-      .pop-content--fade {
+      /* Simple fade animation */
+      .pop-content {
         opacity: 0;
-        transform: scale(0.95);
+        transition: opacity 0.15s ease-in-out;
       }
 
-      .pop-content--slide-top {
-        opacity: 0;
-        transform: translateY(10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.95);
-      }
-
-      .pop-content--scale {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      /* Animations - Visible state */
-      .pop-content--fade.pop-content--visible {
+      .pop-content--visible {
         opacity: 1;
-        transform: scale(1);
-      }
-
-      .pop-content--slide-top.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .pop-content--slide-bottom.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .pop-content--scale.pop-content--visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* Animation transforms - combine with placement transforms */
-      .pop-content--slide-top[data-placement='top'] {
-        transform: translateX(-50%) translateY(10px) scale(0.95);
-      }
-
-      .pop-content--slide-top[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) translateY(0) scale(1);
-      }
-
-      .pop-content--slide-bottom[data-placement='bottom'] {
-        transform: translateX(-50%) translateY(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) translateY(0) scale(1);
-      }
-
-      .pop-content--slide-top[data-placement='left'] {
-        transform: translateY(-50%) translateX(10px) scale(0.95);
-      }
-
-      .pop-content--slide-top[data-placement='left'].pop-content--visible {
-        transform: translateY(-50%) translateX(0) scale(1);
-      }
-
-      .pop-content--slide-bottom[data-placement='right'] {
-        transform: translateY(-50%) translateX(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) translateX(0) scale(1);
-      }
-
-      .pop-content--scale[data-placement='top'] {
-        transform: translateX(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='bottom'] {
-        transform: translateX(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='left'] {
-        transform: translateY(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='left'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='right'] {
-        transform: translateY(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
       }
 
       /* Context colors */
@@ -550,12 +441,8 @@ export class EchoPop extends LitElement {
       `context--${this.context}`,
     ];
 
-    if (this._isVisible && !this._isClosing) {
+    if (this._isVisible) {
       classes.push('pop-content--visible');
-    }
-
-    if (this._isAnimating) {
-      classes.push('pop-content--animating');
     }
 
     return html`
@@ -565,7 +452,6 @@ export class EchoPop extends LitElement {
       >
         <div
           class="${classes.join(' ')}"
-          style="--animation-duration: ${this.animationDuration}ms;"
           @click="${this._handleContentClick}"
           @mouseenter="${this._handlePopupMouseEnter}"
           @mouseleave="${this._handlePopupMouseLeave}"
@@ -582,15 +468,10 @@ export class EchoPop extends LitElement {
       `pop-content--${this.variant}`,
       `pop-content--${this.size}`,
       `context--${this.context}`,
-      `pop-content--${this.animation}`,
     ];
 
-    if (this._isVisible && !this._isClosing) {
+    if (this._isVisible) {
       classes.push('pop-content--visible');
-    }
-
-    if (this._isAnimating) {
-      classes.push('pop-content--animating');
     }
 
     return html`
@@ -598,8 +479,7 @@ export class EchoPop extends LitElement {
         <div
           class="${classes.join(' ')}"
           data-placement="${this._position.placement}"
-          style="--animation-duration: ${this.animationDuration}ms; left: ${this
-            ._position.x}px; top: ${this._position.y}px;"
+          style="left: ${this._position.x}px; top: ${this._position.y}px;"
           @click="${this._handleContentClick}"
           @mouseenter="${this._handlePopupMouseEnter}"
           @mouseleave="${this._handlePopupMouseLeave}"
@@ -721,23 +601,20 @@ export class EchoPop extends LitElement {
   }
 
   private _show(): void {
-    this._isVisible = true;
-    this._isAnimating = true;
-
     // Store current focus
     this._previousFocus = document.activeElement as HTMLElement;
 
-    // Update position immediately
-    this._updatePosition();
-
-    // Force a reflow to ensure the element is rendered before animation
+    // Step 1: Make popup visible in DOM but not animated (opacity: 0)
+    this._isVisible = true;
+    
+    // Step 2: Force a reflow to ensure popup is rendered
     requestAnimationFrame(() => {
+      // Step 3: Calculate position with real dimensions
       this._updatePosition();
       
-      // Force another reflow to ensure transforms are applied
+      // Step 4: Start fade in animation
       requestAnimationFrame(() => {
-        // Start the entrance animation by removing the animating class
-        this._isAnimating = false;
+        // The CSS transition will handle the fade in
       });
     });
 
@@ -754,14 +631,7 @@ export class EchoPop extends LitElement {
   }
 
   private _hide(): void {
-    this._isClosing = true;
-    this._isAnimating = true;
-
-    setTimeout(() => {
-      this._isVisible = false;
-      this._isClosing = false;
-      this._isAnimating = false;
-    }, this.animationDuration);
+    this._isVisible = false;
 
     this.dispatchEvent(
       new CustomEvent('echo-pop-close', {
@@ -803,11 +673,11 @@ export class EchoPop extends LitElement {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Get popup size if available
+    // Get popup size - now the popup is in DOM so we can get real dimensions
     const popupElement = this.shadowRoot?.querySelector('.pop-content') as HTMLElement;
     const popupSize = popupElement ? {
-      width: popupElement.offsetWidth || 200,
-      height: popupElement.offsetHeight || 100
+      width: popupElement.offsetWidth,
+      height: popupElement.offsetHeight
     } : { width: 200, height: 100 };
 
     // Calculate optimal placement with collision detection
@@ -825,18 +695,18 @@ export class EchoPop extends LitElement {
     switch (computedPlacement) {
       case 'top':
         x = anchorRect.left + anchorRect.width / 2;
-        y = anchorRect.top - popupSize.height - 8; // Position du TOP du popup
+        y = anchorRect.top - popupSize.height - 8;
         break;
       case 'bottom':
         x = anchorRect.left + anchorRect.width / 2;
-        y = anchorRect.bottom + 8; // Position du TOP du popup
+        y = anchorRect.bottom + 8;
         break;
       case 'left':
-        x = anchorRect.left - popupSize.width - 8; // Position du LEFT du popup
+        x = anchorRect.left - popupSize.width - 8;
         y = anchorRect.top + anchorRect.height / 2;
         break;
       case 'right':
-        x = anchorRect.right + 8; // Position du LEFT du popup
+        x = anchorRect.right + 8;
         y = anchorRect.top + anchorRect.height / 2;
         break;
       default:

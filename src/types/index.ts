@@ -155,7 +155,6 @@ export type EchoPopPlacement =
   | 'left-end'
   | 'right-start'
   | 'right-end';
-export type EchoPopAnimation = 'fade' | 'slide' | 'scale' | 'none';
 export type EchoPopTrigger = 'click' | 'hover' | 'focus' | 'manual';
 
 // Re-export icon types

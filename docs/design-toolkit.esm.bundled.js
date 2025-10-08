@@ -4222,7 +4222,6 @@ let EchoPop = class EchoPop extends i$1 {
         this.size = 'medium';
         this.context = 'primary';
         this.placement = 'auto';
-        this.animation = 'fade';
         this.trigger = 'click';
         this.open = false;
         this.dismissible = true;
@@ -4232,11 +4231,8 @@ let EchoPop = class EchoPop extends i$1 {
         this.icon = null;
         this.iconSize = null;
         this.iconVariant = null;
-        this.animationDuration = 200;
         this.anchorSelector = '';
         this._isVisible = false;
-        this._isAnimating = false;
-        this._isClosing = false;
         this._position = { x: 0, y: 0, placement: 'bottom' };
         this._isMouseOverPopup = false;
         this._anchorElement = null;
@@ -4318,8 +4314,8 @@ let EchoPop = class EchoPop extends i$1 {
         this._cleanupResizeObserver();
         this._removePortal();
     }
-    updated(changedProperties) {
-        super.updated(changedProperties);
+    willUpdate(changedProperties) {
+        super.willUpdate(changedProperties);
         if (changedProperties.has('open')) {
             this._handleOpenChange();
         }
@@ -4351,11 +4347,8 @@ let EchoPop = class EchoPop extends i$1 {
             `pop-content--${this.size}`,
             `context--${this.context}`,
         ];
-        if (this._isVisible && !this._isClosing) {
+        if (this._isVisible) {
             classes.push('pop-content--visible');
-        }
-        if (this._isAnimating) {
-            classes.push('pop-content--animating');
         }
         return x `
       <div
@@ -4364,7 +4357,6 @@ let EchoPop = class EchoPop extends i$1 {
       >
         <div
           class="${classes.join(' ')}"
-          style="--animation-duration: ${this.animationDuration}ms;"
           @click="${this._handleContentClick}"
           @mouseenter="${this._handlePopupMouseEnter}"
           @mouseleave="${this._handlePopupMouseLeave}"
@@ -4380,21 +4372,16 @@ let EchoPop = class EchoPop extends i$1 {
             `pop-content--${this.variant}`,
             `pop-content--${this.size}`,
             `context--${this.context}`,
-            `pop-content--${this.animation}`,
         ];
-        if (this._isVisible && !this._isClosing) {
+        if (this._isVisible) {
             classes.push('pop-content--visible');
-        }
-        if (this._isAnimating) {
-            classes.push('pop-content--animating');
         }
         return x `
       <div class="pop-portal">
         <div
           class="${classes.join(' ')}"
           data-placement="${this._position.placement}"
-          style="--animation-duration: ${this.animationDuration}ms; left: ${this
-            ._position.x}px; top: ${this._position.y}px;"
+          style="left: ${this._position.x}px; top: ${this._position.y}px;"
           @click="${this._handleContentClick}"
           @mouseenter="${this._handlePopupMouseEnter}"
           @mouseleave="${this._handlePopupMouseLeave}"
@@ -4473,19 +4460,18 @@ let EchoPop = class EchoPop extends i$1 {
         }
     }
     _show() {
-        this._isVisible = true;
-        this._isAnimating = true;
         // Store current focus
         this._previousFocus = document.activeElement;
-        // Update position immediately
-        this._updatePosition();
-        // Force a reflow to ensure the element is rendered before animation
+        // Step 1: Make popup visible in DOM but not animated (opacity: 0)
+        this._isVisible = true;
+        // Step 2: Force a reflow to ensure popup is rendered
         requestAnimationFrame(() => {
+            // Step 3: Calculate position with real dimensions
             this._updatePosition();
-            // Start the entrance animation after a brief delay
-            setTimeout(() => {
-                this._isAnimating = false;
-            }, 10);
+            // Step 4: Start fade in animation
+            requestAnimationFrame(() => {
+                // The CSS transition will handle the fade in
+            });
         });
         this.dispatchEvent(new CustomEvent('echo-pop-open', {
             detail: { placement: this._position.placement },
@@ -4496,13 +4482,7 @@ let EchoPop = class EchoPop extends i$1 {
         this._trapFocus();
     }
     _hide() {
-        this._isClosing = true;
-        this._isAnimating = true;
-        setTimeout(() => {
-            this._isVisible = false;
-            this._isClosing = false;
-            this._isAnimating = false;
-        }, this.animationDuration);
+        this._isVisible = false;
         this.dispatchEvent(new CustomEvent('echo-pop-close', {
             bubbles: true,
             composed: true,
@@ -4532,11 +4512,11 @@ let EchoPop = class EchoPop extends i$1 {
         const anchorRect = this._anchorElement.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        // Get popup size if available
+        // Get popup size - now the popup is in DOM so we can get real dimensions
         const popupElement = this.shadowRoot?.querySelector('.pop-content');
         const popupSize = popupElement ? {
-            width: popupElement.offsetWidth || 200,
-            height: popupElement.offsetHeight || 100
+            width: popupElement.offsetWidth,
+            height: popupElement.offsetHeight
         } : { width: 200, height: 100 };
         // Calculate optimal placement with collision detection
         const computedPlacement = this._calculateOptimalPlacement(anchorRect, viewportWidth, viewportHeight, popupSize);
@@ -4546,18 +4526,18 @@ let EchoPop = class EchoPop extends i$1 {
         switch (computedPlacement) {
             case 'top':
                 x = anchorRect.left + anchorRect.width / 2;
-                y = anchorRect.top - popupSize.height - 8; // Position du TOP du popup
+                y = anchorRect.top - popupSize.height - 8;
                 break;
             case 'bottom':
                 x = anchorRect.left + anchorRect.width / 2;
-                y = anchorRect.bottom + 8; // Position du TOP du popup
+                y = anchorRect.bottom + 8;
                 break;
             case 'left':
-                x = anchorRect.left - popupSize.width - 8; // Position du LEFT du popup
+                x = anchorRect.left - popupSize.width - 8;
                 y = anchorRect.top + anchorRect.height / 2;
                 break;
             case 'right':
-                x = anchorRect.right + 8; // Position du LEFT du popup
+                x = anchorRect.right + 8;
                 y = anchorRect.top + anchorRect.height / 2;
                 break;
             default:
@@ -4924,110 +4904,14 @@ EchoPop.styles = [
         transform: translateY(-50%) scale(0.95);
       }
 
-      /* Animations */
-      .pop-content--fade {
+      /* Simple fade animation */
+      .pop-content {
         opacity: 0;
-        transform: scale(0.95);
+        transition: opacity 0.15s ease-in-out;
       }
 
-      .pop-content--fade.pop-content--visible {
+      .pop-content--visible {
         opacity: 1;
-        transform: scale(1);
-      }
-
-      .pop-content--slide-top {
-        opacity: 0;
-        transform: translateY(10px) scale(0.95);
-      }
-
-      .pop-content--slide-top.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .pop-content--slide-bottom {
-        opacity: 0;
-        transform: translateY(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .pop-content--scale {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      .pop-content--scale.pop-content--visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* Animation transforms - combine with placement transforms */
-      .pop-content--slide-top[data-placement='top'] {
-        transform: translateX(-50%) translateY(10px) scale(0.95);
-      }
-
-      .pop-content--slide-top[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--slide-bottom[data-placement='bottom'] {
-        transform: translateX(-50%) translateY(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--slide-top[data-placement='left'] {
-        transform: translateY(-50%) translateX(10px) scale(0.95);
-      }
-
-      .pop-content--slide-top[data-placement='left'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
-      }
-
-      .pop-content--slide-bottom[data-placement='right'] {
-        transform: translateY(-50%) translateX(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='top'] {
-        transform: translateX(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='bottom'] {
-        transform: translateX(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='left'] {
-        transform: translateY(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='left'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
-      }
-
-      .pop-content--scale[data-placement='right'] {
-        transform: translateY(-50%) scale(0.8);
-      }
-
-      .pop-content--scale[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) scale(1);
       }
 
       /* Context colors */
@@ -5130,9 +5014,6 @@ __decorate([
 ], EchoPop.prototype, "placement", void 0);
 __decorate([
     n({ type: String })
-], EchoPop.prototype, "animation", void 0);
-__decorate([
-    n({ type: String })
 ], EchoPop.prototype, "trigger", void 0);
 __decorate([
     n({ type: Boolean })
@@ -5159,20 +5040,11 @@ __decorate([
     n({ type: String, attribute: 'icon-variant' })
 ], EchoPop.prototype, "iconVariant", void 0);
 __decorate([
-    n({ type: Number, attribute: 'animation-duration' })
-], EchoPop.prototype, "animationDuration", void 0);
-__decorate([
     n({ type: String, attribute: 'anchor-selector' })
 ], EchoPop.prototype, "anchorSelector", void 0);
 __decorate([
     r()
 ], EchoPop.prototype, "_isVisible", void 0);
-__decorate([
-    r()
-], EchoPop.prototype, "_isAnimating", void 0);
-__decorate([
-    r()
-], EchoPop.prototype, "_isClosing", void 0);
 __decorate([
     r()
 ], EchoPop.prototype, "_position", void 0);

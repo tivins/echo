@@ -63,7 +63,6 @@ export type {
   EchoPopVariant,
   EchoPopSize,
   EchoPopPlacement,
-  EchoPopAnimation,
   EchoPopTrigger,
 } from './types/index.js';
 
