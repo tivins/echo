@@ -10,6 +10,7 @@ export type EchoLinkTarget = '_blank' | '_self' | '_parent' | '_top';
 export type EchoLinkRel = 'noopener' | 'noreferrer' | 'noopener noreferrer';
 export type EchoSize = 'xs' | 'small' | 'medium' | 'large';
 export type EchoContext =
+  | 'default'
   | 'danger'
   | 'success'
   | 'warning'
@@ -33,6 +34,7 @@ export const echoLinkRelNames: EchoLinkRel[] = ['noopener', 'noreferrer', 'noope
 export const echoSizeNames: EchoSize[] = ['xs', 'small', 'medium', 'large'];
 
 export const echoContextNames: EchoContext[] = [
+  'default',
   'primary',
   'secondary',
   'success',

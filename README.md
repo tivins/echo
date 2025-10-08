@@ -96,6 +96,39 @@ document.body.appendChild(button);
 </echo-link>
 ```
 
+### Card Component
+
+```html
+<!-- Basic card with context styling -->
+<echo-card context="primary" card-title="Primary Card">
+  <p>This card has a blue left border and colored title.</p>
+</echo-card>
+
+<!-- Success context card -->
+<echo-card context="success" card-title="Success Card">
+  <p>This card has a green left border and colored title.</p>
+</echo-card>
+
+<!-- Card with icon and context -->
+<echo-card context="warning" card-title="Warning Card" icon="alert-triangle">
+  <p>This card has a warning icon and orange styling.</p>
+</echo-card>
+
+<!-- Flat variant with context background -->
+<echo-card context="info" variant="flat" card-title="Info Card">
+  <p>This card has a background tint and colored accents.</p>
+</echo-card>
+
+<!-- Card with footer actions -->
+<echo-card context="danger" card-title="Danger Card">
+  <p>This card has danger styling and footer actions.</p>
+  <div slot="footer">
+    <echo-button variant="ghost" size="small">Cancel</echo-button>
+    <echo-button variant="default" size="small" context="danger">Delete</echo-button>
+  </div>
+</echo-card>
+```
+
 ### Pop Component
 
 ```html

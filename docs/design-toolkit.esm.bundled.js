@@ -90,6 +90,12 @@ const t$1=t=>(e,o)=>{ void 0!==o?o.addInitializer((()=>{customElements.define(t,
  */
 const contextColors = i$4 `
   /* Context Colors */
+  .context--default {
+    --context-color: #6b7280;
+    --context-color-hover: #4b5563;
+    --context-color-alpha: rgba(107, 114, 128, 0.05);
+  }
+
   .context--primary {
     --context-color: #3b82f6;
     --context-color-hover: #2563eb;
@@ -132,6 +138,12 @@ const contextColors = i$4 `
  */
 const contextColorsCSS = `
   /* Context Colors */
+  .context--default {
+    --context-color: #6b7280;
+    --context-color-hover: #4b5563;
+    --context-color-alpha: rgba(107, 114, 128, 0.05);
+  }
+
   .context--primary {
     --context-color: #3b82f6;
     --context-color-hover: #2563eb;
@@ -172,6 +184,7 @@ const contextColorsCSS = `
  * Available context color names
  */
 const contextColorNames = [
+    'default',
     'primary',
     'secondary',
     'success',
@@ -1519,7 +1532,7 @@ let EchoCard = class EchoCard extends i$1 {
         super(...arguments);
         this.variant = 'default';
         this.size = 'medium';
-        this.context = 'primary';
+        this.context = 'default';
         this.cardTitle = '';
         this.icon = null;
         this.iconSize = null;
@@ -1898,29 +1911,114 @@ EchoCard.styles = [
         display: none;
       }
 
-      /* Context colors for flat variant */
+      /* Context colors - inspired by echo-pop implementation */
+      
+      /* Default context - no special styling */
+      .card.context--default {
+        /* No additional styling for default context */
+      }
+
+      /* Primary context */
+      .card.context--primary {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--primary .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--primary .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Secondary context */
+      .card.context--secondary {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--secondary .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--secondary .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Success context */
+      .card.context--success {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--success .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--success .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Warning context */
+      .card.context--warning {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--warning .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--warning .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Danger context */
+      .card.context--danger {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--danger .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--danger .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Info context */
+      .card.context--info {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--info .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--info .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Flat variant with context colors */
       .card--flat.context--primary {
-        background-color: rgba(59, 130, 246, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--secondary {
-        background-color: rgba(107, 114, 128, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--success {
-        background-color: rgba(34, 197, 94, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--warning {
-        background-color: rgba(245, 158, 11, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--danger {
-        background-color: rgba(239, 68, 68, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--info {
-        background-color: rgba(59, 130, 246, 0.1);
+        background-color: var(--context-color-alpha);
       }
     `,
 ];
@@ -4140,6 +4238,7 @@ let EchoPop = class EchoPop extends i$1 {
         this._isAnimating = false;
         this._isClosing = false;
         this._position = { x: 0, y: 0, placement: 'bottom' };
+        this._isMouseOverPopup = false;
         this._anchorElement = null;
         this._portalElement = null;
         this._resizeObserver = null;
@@ -4148,6 +4247,32 @@ let EchoPop = class EchoPop extends i$1 {
         this._handleTriggerClick = () => {
             if (this.trigger === 'click' || this.trigger === 'manual') {
                 this.toggle();
+            }
+        };
+        this._handleTriggerMouseEnter = () => {
+            if (this.trigger === 'hover') {
+                this.show();
+            }
+        };
+        this._handleTriggerMouseLeave = () => {
+            if (this.trigger === 'hover') {
+                // Add a small delay to prevent flickering when moving to popup content
+                setTimeout(() => {
+                    if (!this._isMouseOverPopup) {
+                        this.hide();
+                    }
+                }, 100);
+            }
+        };
+        this._handlePopupMouseEnter = () => {
+            if (this.trigger === 'hover') {
+                this._isMouseOverPopup = true;
+            }
+        };
+        this._handlePopupMouseLeave = () => {
+            if (this.trigger === 'hover') {
+                this._isMouseOverPopup = false;
+                this.hide();
             }
         };
         this._handleKeydown = (event) => {
@@ -4204,7 +4329,12 @@ let EchoPop = class EchoPop extends i$1 {
     }
     render() {
         return x `
-      <slot name="trigger" @click="${this._handleTriggerClick}"></slot>
+      <slot 
+        name="trigger" 
+        @click="${this._handleTriggerClick}"
+        @mouseenter="${this._handleTriggerMouseEnter}"
+        @mouseleave="${this._handleTriggerMouseLeave}"
+      ></slot>
       ${this._isVisible ? this._renderPortal() : ''}
     `;
     }
@@ -4236,6 +4366,8 @@ let EchoPop = class EchoPop extends i$1 {
           class="${classes.join(' ')}"
           style="--animation-duration: ${this.animationDuration}ms;"
           @click="${this._handleContentClick}"
+          @mouseenter="${this._handlePopupMouseEnter}"
+          @mouseleave="${this._handlePopupMouseLeave}"
         >
           ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
         </div>
@@ -4264,6 +4396,8 @@ let EchoPop = class EchoPop extends i$1 {
           style="--animation-duration: ${this.animationDuration}ms; left: ${this
             ._position.x}px; top: ${this._position.y}px;"
           @click="${this._handleContentClick}"
+          @mouseenter="${this._handlePopupMouseEnter}"
+          @mouseleave="${this._handlePopupMouseLeave}"
         >
           ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
         </div>
@@ -4289,13 +4423,14 @@ let EchoPop = class EchoPop extends i$1 {
         </div>
         ${this.dismissible
             ? x `
-              <button
+              <echo-button
                 class="pop-close-button"
                 @click="${this._handleClose}"
                 aria-label="Close"
-              >
-                <echo-icon name="x" size="small"></echo-icon>
-              </button>
+                variant="ghost"
+                size="small"
+                icon="x"
+              ></echo-button>
             `
             : ''}
       </div>
@@ -4722,6 +4857,11 @@ EchoPop.styles = [
         flex: 1;
       }
 
+      .pop-header-content echo-icon {
+        flex-shrink: 0;
+        margin-top: 1px; /* Fine adjustment for visual alignment */
+      }
+
       .pop-title {
         font-size: 16px;
         font-weight: 500;
@@ -4729,7 +4869,7 @@ EchoPop.styles = [
         margin: 0;
         line-height: 1.3;
       }
-
+      /*
       .pop-close-button {
         background: none;
         border: none;
@@ -4754,6 +4894,7 @@ EchoPop.styles = [
         outline: 2px solid var(--context-color);
         outline-offset: 2px;
       }
+      */
 
       /* Content */
       .pop-body {
@@ -4809,34 +4950,42 @@ EchoPop.styles = [
       /* Animations */
       .pop-content--fade {
         opacity: 0;
+        transform: scale(0.95);
       }
 
       .pop-content--fade.pop-content--visible {
         opacity: 1;
+        transform: scale(1);
       }
 
       .pop-content--slide-top {
         opacity: 0;
+        transform: translateY(10px) scale(0.95);
       }
 
       .pop-content--slide-top.pop-content--visible {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       .pop-content--slide-bottom {
         opacity: 0;
+        transform: translateY(-10px) scale(0.95);
       }
 
       .pop-content--slide-bottom.pop-content--visible {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       .pop-content--scale {
         opacity: 0;
+        transform: scale(0.8);
       }
 
       .pop-content--scale.pop-content--visible {
         opacity: 1;
+        transform: scale(1);
       }
 
       /* Animation transforms - override placement transforms when animating */
@@ -4908,31 +5057,85 @@ EchoPop.styles = [
       .pop-content.context--primary {
         --context-color: #3b82f6;
         --context-color-alpha: rgba(59, 130, 246, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--primary .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--primary .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--secondary {
         --context-color: #6b7280;
         --context-color-alpha: rgba(107, 114, 128, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--secondary .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--secondary .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--success {
         --context-color: #10b981;
         --context-color-alpha: rgba(16, 185, 129, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--success .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--success .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--warning {
         --context-color: #f59e0b;
         --context-color-alpha: rgba(245, 158, 11, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--warning .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--warning .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--danger {
         --context-color: #ef4444;
         --context-color-alpha: rgba(239, 68, 68, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--danger .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--danger .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--info {
         --context-color: #3b82f6;
         --context-color-alpha: rgba(59, 130, 246, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--info .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--info .pop-header {
+        background-color: var(--context-color-alpha);
       }
     `,
 ];
@@ -4996,6 +5199,9 @@ __decorate([
 __decorate([
     r()
 ], EchoPop.prototype, "_position", void 0);
+__decorate([
+    r()
+], EchoPop.prototype, "_isMouseOverPopup", void 0);
 EchoPop = __decorate([
     t$1('echo-pop')
 ], EchoPop);
@@ -5169,6 +5375,7 @@ const echoLinkTargetNames = ['_blank', '_self', '_parent', '_top'];
 const echoLinkRelNames = ['noopener', 'noreferrer', 'noopener noreferrer'];
 const echoSizeNames = ['xs', 'small', 'medium', 'large'];
 const echoContextNames = [
+    'default',
     'primary',
     'secondary',
     'success',

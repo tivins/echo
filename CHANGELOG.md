@@ -5,6 +5,52 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.15.0] - 2025-01-06
+
+### Enhanced
+- **Echo Card Context Styling**: Significantly improved context appearance in echo-card component, inspired by echo-pop implementation
+  - **Visual Indicators**: Added colored left border (4px) for all context colors (primary, secondary, success, warning, danger, info)
+  - **Title Coloring**: Context colors now properly color the card title for better visual hierarchy
+  - **Header Background**: Added subtle background tint to card headers using context color alpha values
+  - **Default Context**: Added new 'default' context with minimal styling for neutral content
+  - **Consistent Design**: Context styling now matches the sophisticated approach used in echo-pop component
+  - **Flat Variant Enhancement**: Flat variant cards now use context color alpha backgrounds for better visual distinction
+
+### Technical
+- **Type System Updates**: Added 'default' to EchoContext type definition and related arrays
+- **CSS Architecture**: Implemented comprehensive context-specific styling with border accents, colored titles, and background tints
+- **Context Colors Module**: Enhanced context-colors.ts to include default context with subtle gray styling
+- **Component Integration**: EchoCard now uses the same context styling patterns as EchoPop for consistency
+- **Demo Documentation**: Created comprehensive demo page (demos/echo-card-context-demo.html) showcasing all context improvements
+
+### Examples
+```html
+<!-- Default context - minimal styling -->
+<echo-card context="default" card-title="Default Context">
+  <p>Neutral content with minimal visual styling.</p>
+</echo-card>
+
+<!-- Primary context - blue accent -->
+<echo-card context="primary" card-title="Primary Context">
+  <p>Important content with blue border and colored title.</p>
+</echo-card>
+
+<!-- Success context - green accent -->
+<echo-card context="success" card-title="Success Context">
+  <p>Success content with green border and colored title.</p>
+</echo-card>
+
+<!-- Flat variant with context background -->
+<echo-card context="warning" variant="flat" card-title="Warning Card">
+  <p>Warning content with background tint and colored accents.</p>
+</echo-card>
+```
+
+### Migration
+- **Breaking Change**: Default context changed from 'primary' to 'default'
+- **Update Required**: Existing cards using default context will need to explicitly set `context="primary"` if blue styling is desired
+- **Backward Compatibility**: All existing context values (primary, secondary, success, warning, danger, info) remain unchanged
+
 ## [1.14.1] - 2025-01-06
 
 ### Fixed

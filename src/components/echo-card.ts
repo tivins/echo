@@ -20,7 +20,7 @@ export class EchoCard extends LitElement {
   size: EchoCardSize = 'medium';
 
   @property({ type: String })
-  context: EchoContext = 'primary';
+  context: EchoContext = 'default';
 
   @property({ type: String, attribute: 'card-title' })
   cardTitle = '';
@@ -259,29 +259,114 @@ export class EchoCard extends LitElement {
         display: none;
       }
 
-      /* Context colors for flat variant */
+      /* Context colors - inspired by echo-pop implementation */
+      
+      /* Default context - no special styling */
+      .card.context--default {
+        /* No additional styling for default context */
+      }
+
+      /* Primary context */
+      .card.context--primary {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--primary .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--primary .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Secondary context */
+      .card.context--secondary {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--secondary .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--secondary .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Success context */
+      .card.context--success {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--success .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--success .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Warning context */
+      .card.context--warning {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--warning .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--warning .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Danger context */
+      .card.context--danger {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--danger .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--danger .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Info context */
+      .card.context--info {
+        border-left: 4px solid var(--context-color);
+      }
+
+      .card.context--info .card__title {
+        color: var(--context-color);
+      }
+
+      .card.context--info .card__header {
+        background-color: var(--context-color-alpha);
+      }
+
+      /* Flat variant with context colors */
       .card--flat.context--primary {
-        background-color: rgba(59, 130, 246, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--secondary {
-        background-color: rgba(107, 114, 128, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--success {
-        background-color: rgba(34, 197, 94, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--warning {
-        background-color: rgba(245, 158, 11, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--danger {
-        background-color: rgba(239, 68, 68, 0.1);
+        background-color: var(--context-color-alpha);
       }
 
       .card--flat.context--info {
-        background-color: rgba(59, 130, 246, 0.1);
+        background-color: var(--context-color-alpha);
       }
     `,
   ];

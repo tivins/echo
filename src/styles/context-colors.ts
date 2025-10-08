@@ -18,6 +18,12 @@ import { css } from 'lit';
  */
 export const contextColors = css`
   /* Context Colors */
+  .context--default {
+    --context-color: #6b7280;
+    --context-color-hover: #4b5563;
+    --context-color-alpha: rgba(107, 114, 128, 0.05);
+  }
+
   .context--primary {
     --context-color: #3b82f6;
     --context-color-hover: #2563eb;
@@ -61,6 +67,12 @@ export const contextColors = css`
  */
 export const contextColorsCSS = `
   /* Context Colors */
+  .context--default {
+    --context-color: #6b7280;
+    --context-color-hover: #4b5563;
+    --context-color-alpha: rgba(107, 114, 128, 0.05);
+  }
+
   .context--primary {
     --context-color: #3b82f6;
     --context-color-hover: #2563eb;
@@ -102,6 +114,7 @@ export const contextColorsCSS = `
  * Available context color names
  */
 export const contextColorNames = [
+  'default',
   'primary',
   'secondary',
   'success',

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Card Context Demo</title>
+    <script type="module" src="../dist/design-toolkit.esm.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+
+        .demo-description {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .context-section {
+            margin-bottom: 32px;
+        }
+
+        .context-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 16px;
+        }
+
+        .variant-section {
+            margin-bottom: 24px;
+        }
+
+        .variant-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 12px;
+        }
+
+        .cards-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .card-demo {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .demo-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        .control-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Echo Card Context Demo</h1>
+        <p class="demo-description">
+            This demo showcases the improved context styling in echo-card components, 
+            inspired by the echo-pop implementation. Each context provides visual 
+            indicators through colored borders, titles, and header backgrounds.
+        </p>
+
+        <div class="demo-controls">
+            <div class="control-group">
+                <label class="control-label" for="variant-select">Card Variant:</label>
+                <select id="variant-select" class="control-select">
+                    <option value="default">Default</option>
+                    <option value="outlined">Outlined</option>
+                    <option value="elevated">Elevated</option>
+                    <option value="flat">Flat</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="size-select">Card Size:</label>
+                <select id="size-select" class="control-select">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="context-title">Context Colors</h2>
+            
+            <div class="variant-section">
+                <h3 class="variant-title">Default Variant</h3>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="default" card-title="Default Context" variant="default" size="medium">
+                            <p>This card uses the default context with minimal styling. Perfect for neutral content.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="primary" card-title="Primary Context" variant="default" size="medium">
+                            <p>Primary context with blue accent color. Ideal for main actions and important information.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="secondary" card-title="Secondary Context" variant="default" size="medium">
+                            <p>Secondary context with gray accent color. Good for supporting information.</p>
+                        </echo-card>
+                    </div>
+                </div>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="success" card-title="Success Context" variant="default" size="medium">
+                            <p>Success context with green accent color. Perfect for positive feedback and confirmations.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="warning" card-title="Warning Context" variant="default" size="medium">
+                            <p>Warning context with orange accent color. Use for alerts and cautions.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="danger" card-title="Danger Context" variant="default" size="medium">
+                            <p>Danger context with red accent color. Reserved for errors and critical alerts.</p>
+                        </echo-card>
+                    </div>
+                </div>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="info" card-title="Info Context" variant="default" size="medium">
+                            <p>Info context with cyan accent color. Great for informational content and tips.</p>
+                        </echo-card>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-section">
+                <h3 class="variant-title">Outlined Variant</h3>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="primary" card-title="Outlined Primary" variant="outlined" size="medium">
+                            <p>Outlined variant with primary context. Clean border styling with colored accents.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="success" card-title="Outlined Success" variant="outlined" size="medium">
+                            <p>Outlined variant with success context. Subtle but effective visual hierarchy.</p>
+                        </echo-card>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-section">
+                <h3 class="variant-title">Elevated Variant</h3>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="warning" card-title="Elevated Warning" variant="elevated" size="medium">
+                            <p>Elevated variant with warning context. Enhanced shadow with colored accents.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="danger" card-title="Elevated Danger" variant="elevated" size="medium">
+                            <p>Elevated variant with danger context. Strong visual emphasis for critical content.</p>
+                        </echo-card>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-section">
+                <h3 class="variant-title">Flat Variant</h3>
+                <div class="cards-row">
+                    <div class="card-demo">
+                        <echo-card context="info" card-title="Flat Info" variant="flat" size="medium">
+                            <p>Flat variant with info context. Background color with subtle context styling.</p>
+                        </echo-card>
+                    </div>
+                    <div class="card-demo">
+                        <echo-card context="secondary" card-title="Flat Secondary" variant="flat" size="medium">
+                            <p>Flat variant with secondary context. Minimal design with context awareness.</p>
+                        </echo-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="context-title">Cards with Icons</h2>
+            <div class="cards-row">
+                <div class="card-demo">
+                    <echo-card context="success" card-title="Success with Icon" variant="default" size="medium" icon="check-circle">
+                        <p>This card demonstrates context styling with an icon. The icon inherits the context color.</p>
+                    </echo-card>
+                </div>
+                <div class="card-demo">
+                    <echo-card context="warning" card-title="Warning with Icon" variant="outlined" size="medium" icon="alert-triangle">
+                        <p>Warning context with alert icon. Visual consistency across all elements.</p>
+                    </echo-card>
+                </div>
+                <div class="card-demo">
+                    <echo-card context="danger" card-title="Danger with Icon" variant="elevated" size="medium" icon="x-circle">
+                        <p>Danger context with error icon. Strong visual hierarchy for critical information.</p>
+                    </echo-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2 class="context-title">Cards with Footer Actions</h2>
+            <div class="cards-row">
+                <div class="card-demo">
+                    <echo-card context="primary" card-title="Card with Actions" variant="default" size="medium">
+                        <p>This card includes footer actions. The context styling extends to all card elements.</p>
+                        <div slot="footer">
+                            <echo-button variant="ghost" size="small">Cancel</echo-button>
+                            <echo-button variant="default" size="small" context="primary">Save</echo-button>
+                        </div>
+                    </echo-card>
+                </div>
+                <div class="card-demo">
+                    <echo-card context="success" card-title="Confirmation Card" variant="outlined" size="medium">
+                        <p>Success context with confirmation actions. Clear visual feedback for user actions.</p>
+                        <div slot="footer">
+                            <echo-button variant="outline" size="small">No</echo-button>
+                            <echo-button variant="default" size="small" context="success">Yes</echo-button>
+                        </div>
+                    </echo-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive controls
+        const variantSelect = document.getElementById('variant-select');
+        const sizeSelect = document.getElementById('size-select');
+        const cards = document.querySelectorAll('echo-card');
+
+        function updateCards() {
+            const variant = variantSelect.value;
+            const size = sizeSelect.value;
+            
+            cards.forEach(card => {
+                card.setAttribute('variant', variant);
+                card.setAttribute('size', size);
+            });
+        }
+
+        variantSelect.addEventListener('change', updateCards);
+        sizeSelect.addEventListener('change', updateCards);
+    </script>
+</body>
+</html>

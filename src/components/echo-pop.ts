@@ -252,7 +252,7 @@ export class EchoPop extends LitElement {
         margin: 0;
         line-height: 1.3;
       }
-
+      /*
       .pop-close-button {
         background: none;
         border: none;
@@ -277,6 +277,7 @@ export class EchoPop extends LitElement {
         outline: 2px solid var(--context-color);
         outline-offset: 2px;
       }
+      */
 
       /* Content */
       .pop-body {
@@ -653,13 +654,14 @@ export class EchoPop extends LitElement {
         </div>
         ${this.dismissible
           ? html`
-              <button
+              <echo-button
                 class="pop-close-button"
                 @click="${this._handleClose}"
                 aria-label="Close"
-              >
-                <echo-icon name="x" size="small"></echo-icon>
-              </button>
+                variant="ghost"
+                size="small"
+                icon="x"
+              ></echo-button>
             `
           : ''}
       </div>
