@@ -252,32 +252,6 @@ export class EchoPop extends LitElement {
         margin: 0;
         line-height: 1.3;
       }
-      /*
-      .pop-close-button {
-        background: none;
-        border: none;
-        padding: 4px;
-        cursor: pointer;
-        border-radius: 4px;
-        color: #666;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.7;
-      }
-
-      .pop-close-button:hover:not(:disabled) {
-        background-color: rgba(0, 0, 0, 0.05);
-        opacity: 1;
-        color: #333;
-      }
-
-      .pop-close-button:focus-visible {
-        outline: 2px solid var(--context-color);
-        outline-offset: 2px;
-      }
-      */
 
       /* Content */
       .pop-body {
@@ -312,7 +286,7 @@ export class EchoPop extends LitElement {
       /* Placement-specific transform origins and centering */
       .pop-content[data-placement='top'] {
         transform-origin: center bottom;
-        transform: translateX(-50%) translateY(-100%) scale(0.95);
+        transform: translateX(-50%) scale(0.95);
       }
 
       .pop-content[data-placement='bottom'] {
@@ -322,7 +296,7 @@ export class EchoPop extends LitElement {
 
       .pop-content[data-placement='left'] {
         transform-origin: right center;
-        transform: translateX(-100%) translateY(-50%) scale(0.95);
+        transform: translateY(-50%) scale(0.95);
       }
 
       .pop-content[data-placement='right'] {
@@ -330,15 +304,10 @@ export class EchoPop extends LitElement {
         transform: translateY(-50%) scale(0.95);
       }
 
-      /* Animations */
+      /* Animations - Initial state (hidden) */
       .pop-content--fade {
         opacity: 0;
         transform: scale(0.95);
-      }
-
-      .pop-content--fade.pop-content--visible {
-        opacity: 1;
-        transform: scale(1);
       }
 
       .pop-content--slide-top {
@@ -346,19 +315,9 @@ export class EchoPop extends LitElement {
         transform: translateY(10px) scale(0.95);
       }
 
-      .pop-content--slide-top.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
       .pop-content--slide-bottom {
         opacity: 0;
         transform: translateY(-10px) scale(0.95);
-      }
-
-      .pop-content--slide-bottom.pop-content--visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
       }
 
       .pop-content--scale {
@@ -366,74 +325,90 @@ export class EchoPop extends LitElement {
         transform: scale(0.8);
       }
 
+      /* Animations - Visible state */
+      .pop-content--fade.pop-content--visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .pop-content--slide-top.pop-content--visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .pop-content--slide-bottom.pop-content--visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
       .pop-content--scale.pop-content--visible {
         opacity: 1;
         transform: scale(1);
       }
 
-      /* Animation transforms - override placement transforms when animating */
+      /* Animation transforms - combine with placement transforms */
       .pop-content--slide-top[data-placement='top'] {
-        transform: translateX(-50%) translateY(-100%) translateY(10px) scale(0.95) !important;
+        transform: translateX(-50%) translateY(10px) scale(0.95);
       }
 
       .pop-content--slide-top[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) translateY(-100%) scale(0.95) !important;
+        transform: translateX(-50%) translateY(0) scale(1);
       }
 
       .pop-content--slide-bottom[data-placement='bottom'] {
-        transform: translateX(-50%) translateY(-10px) scale(0.95) !important;
+        transform: translateX(-50%) translateY(-10px) scale(0.95);
       }
 
       .pop-content--slide-bottom[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) scale(0.95) !important;
+        transform: translateX(-50%) translateY(0) scale(1);
       }
 
       .pop-content--slide-top[data-placement='left'] {
-        transform: translateX(-100%) translateY(-50%) translateX(10px) scale(0.95) !important;
+        transform: translateY(-50%) translateX(10px) scale(0.95);
       }
 
       .pop-content--slide-top[data-placement='left'].pop-content--visible {
-        transform: translateX(-100%) translateY(-50%) scale(0.95) !important;
+        transform: translateY(-50%) translateX(0) scale(1);
       }
 
       .pop-content--slide-bottom[data-placement='right'] {
-        transform: translateY(-50%) translateX(-10px) scale(0.95) !important;
+        transform: translateY(-50%) translateX(-10px) scale(0.95);
       }
 
       .pop-content--slide-bottom[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) scale(0.95) !important;
+        transform: translateY(-50%) translateX(0) scale(1);
       }
 
       .pop-content--scale[data-placement='top'] {
-        transform: translateX(-50%) translateY(-100%) scale(0.8) !important;
+        transform: translateX(-50%) scale(0.8);
       }
 
       .pop-content--scale[data-placement='top'].pop-content--visible {
-        transform: translateX(-50%) translateY(-100%) scale(0.95) !important;
+        transform: translateX(-50%) scale(1);
       }
 
       .pop-content--scale[data-placement='bottom'] {
-        transform: translateX(-50%) scale(0.8) !important;
+        transform: translateX(-50%) scale(0.8);
       }
 
       .pop-content--scale[data-placement='bottom'].pop-content--visible {
-        transform: translateX(-50%) scale(0.95) !important;
+        transform: translateX(-50%) scale(1);
       }
 
       .pop-content--scale[data-placement='left'] {
-        transform: translateX(-100%) translateY(-50%) scale(0.8) !important;
+        transform: translateY(-50%) scale(0.8);
       }
 
       .pop-content--scale[data-placement='left'].pop-content--visible {
-        transform: translateX(-100%) translateY(-50%) scale(0.95) !important;
+        transform: translateY(-50%) scale(1);
       }
 
       .pop-content--scale[data-placement='right'] {
-        transform: translateY(-50%) scale(0.8) !important;
+        transform: translateY(-50%) scale(0.8);
       }
 
       .pop-content--scale[data-placement='right'].pop-content--visible {
-        transform: translateY(-50%) scale(0.95) !important;
+        transform: translateY(-50%) scale(1);
       }
 
       /* Context colors */
@@ -536,8 +511,8 @@ export class EchoPop extends LitElement {
     this._removePortal();
   }
 
-  updated(changedProperties: Map<string | number | symbol, unknown>): void {
-    super.updated(changedProperties);
+  willUpdate(changedProperties: Map<string | number | symbol, unknown>): void {
+    super.willUpdate(changedProperties);
 
     if (changedProperties.has('open')) {
       this._handleOpenChange();
@@ -655,7 +630,6 @@ export class EchoPop extends LitElement {
         ${this.dismissible
           ? html`
               <echo-button
-                class="pop-close-button"
                 @click="${this._handleClose}"
                 aria-label="Close"
                 variant="ghost"
@@ -753,12 +727,18 @@ export class EchoPop extends LitElement {
     // Store current focus
     this._previousFocus = document.activeElement as HTMLElement;
 
-    // Update position immediately and after rendering
+    // Update position immediately
     this._updatePosition();
 
+    // Force a reflow to ensure the element is rendered before animation
     requestAnimationFrame(() => {
       this._updatePosition();
-      this._isAnimating = false;
+      
+      // Force another reflow to ensure transforms are applied
+      requestAnimationFrame(() => {
+        // Start the entrance animation by removing the animating class
+        this._isAnimating = false;
+      });
     });
 
     this.dispatchEvent(
@@ -828,7 +808,7 @@ export class EchoPop extends LitElement {
     const popupSize = popupElement ? {
       width: popupElement.offsetWidth || 200,
       height: popupElement.offsetHeight || 100
-    } : undefined;
+    } : { width: 200, height: 100 };
 
     // Calculate optimal placement with collision detection
     const computedPlacement = this._calculateOptimalPlacement(
@@ -845,14 +825,14 @@ export class EchoPop extends LitElement {
     switch (computedPlacement) {
       case 'top':
         x = anchorRect.left + anchorRect.width / 2;
-        y = anchorRect.top - 8; // Position du TOP du popup
+        y = anchorRect.top - popupSize.height - 8; // Position du TOP du popup
         break;
       case 'bottom':
         x = anchorRect.left + anchorRect.width / 2;
         y = anchorRect.bottom + 8; // Position du TOP du popup
         break;
       case 'left':
-        x = anchorRect.left - 8; // Position du RIGHT du popup
+        x = anchorRect.left - popupSize.width - 8; // Position du LEFT du popup
         y = anchorRect.top + anchorRect.height / 2;
         break;
       case 'right':

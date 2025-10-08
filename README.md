@@ -31,8 +31,8 @@ A modern web component library built with Lit, providing a comprehensive set of 
 
 - **echo-pop**: Versatile pop-in/modal component
   - Multiple variants: default, overlay, tooltip, dropdown, modal
-  - Smart positioning with collision detection
-  - Animation system with customizable effects (fade, slide-top, slide-bottom, scale)
+  - Smart positioning with collision detection and proper viewport boundaries
+  - Animation system with smooth entrance/exit effects (fade, slide-top, slide-bottom, scale)
   - Context colors with visual styling (border accents, colored titles, background tints)
   - Trigger options: click, hover, manual
   - Icon alignment with titles

@@ -5,6 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.16.0] - 2025-01-06
+
+### Fixed
+- **Echo Pop Component**: Fixed critical positioning and animation issues
+  - **Positioning System**: Completely overhauled positioning calculations to properly account for popup dimensions and viewport boundaries
+    - Fixed incorrect transform calculations that caused popups to appear in wrong positions
+    - Improved placement logic for top, bottom, left, and right positions with proper offset calculations
+    - Enhanced collision detection and automatic placement selection
+    - Fixed modal centering to properly center in viewport
+  - **Animation System**: Fixed entrance animations that were not playing correctly
+    - Corrected animation timing and synchronization with popup display
+    - Fixed CSS transform conflicts between placement and animation transforms
+    - Improved animation state management with proper reflow handling
+    - Enhanced exit animations for smoother closing transitions
+  - **Transform Logic**: Simplified and corrected CSS transforms for better positioning accuracy
+    - Removed complex transform overrides that caused positioning conflicts
+    - Streamlined animation transforms to work harmoniously with placement transforms
+    - Fixed transform-origin settings for proper animation scaling and sliding
+
+### Technical
+- **Positioning Algorithm**: Enhanced `_updatePosition()` method with proper popup size calculations and viewport adjustments
+- **Animation Timing**: Improved `_show()` method with better animation state management and reflow handling
+- **CSS Architecture**: Simplified animation CSS rules to eliminate conflicts with positioning transforms
+- **Transform System**: Unified transform calculations to ensure consistent positioning across all placements and animations
+
+### Examples
+```html
+<!-- Positioning now works correctly for all placements -->
+<echo-pop placement="top" title="Top Pop" content="Positioned above trigger">
+  <echo-button slot="trigger">Top</echo-button>
+</echo-pop>
+
+<echo-pop placement="left" title="Left Pop" content="Positioned to the left">
+  <echo-button slot="trigger">Left</echo-button>
+</echo-pop>
+
+<!-- Animations now play correctly on entrance -->
+<echo-pop animation="scale" title="Scale Animation" content="Scales in smoothly">
+  <echo-button slot="trigger">Scale</echo-button>
+</echo-pop>
+
+<echo-pop animation="slide-top" title="Slide Animation" content="Slides from top">
+  <echo-button slot="trigger">Slide</echo-button>
+</echo-pop>
+```
+
+### Migration
+- **No Breaking Changes**: All existing API remains unchanged
+- **Improved Behavior**: Existing popups will now position and animate correctly without code changes
+- **Better Performance**: Reduced CSS complexity and improved animation performance
+
 ## [1.15.0] - 2025-01-06
 
 ### Enhanced
