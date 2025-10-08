@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.20.0] - 2025-01-06
+
+### Fixed
+- **Echo Link Component**: Uniformized display behavior with Echo Button
+  - Links with `display="block"` now apply utility classes on the host element (like buttons)
+  - Fixed alignment inconsistency between `echo-button` and `echo-link` in block mode
+  - Both components now consistently take full container width when `display="block"`
+  - Improved visual consistency in navigation menus and layouts
+
 ## [1.19.0] - 2025-01-06
 
 ### Fixed

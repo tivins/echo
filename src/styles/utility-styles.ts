@@ -870,6 +870,19 @@ export const utilityStylesCSS = `
     padding-top: 32px !important;
     padding-bottom: 32px !important;
   }
+
+  /* Text alignment utilities */
+  .u-text-left {
+    text-align: left !important;
+  }
+
+  .u-text-center {
+    text-align: center !important;
+  }
+
+  .u-text-right {
+    text-align: right !important;
+  }
 `;
 
 /**
@@ -903,6 +916,11 @@ export const utilitySpacingNames = [
 ] as const;
 
 /**
+ * Available utility text alignment names
+ */
+export const utilityTextAlignNames = ['left', 'center', 'right'] as const;
+
+/**
  * Type for utility display names
  */
 export type UtilityDisplayName = (typeof utilityDisplayNames)[number];
@@ -916,4 +934,9 @@ export type UtilityWidthName = (typeof utilityWidthNames)[number];
  * Type for utility spacing names
  */
 export type UtilitySpacingName = (typeof utilitySpacingNames)[number];
+
+/**
+ * Type for utility text alignment names
+ */
+export type UtilityTextAlignName = (typeof utilityTextAlignNames)[number];
 

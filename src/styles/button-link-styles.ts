@@ -46,6 +46,21 @@ export const buttonLinkStyles = [
       width: 100% !important;
     }
 
+    :host(.u-text-left) .button-link {
+      justify-content: flex-start !important;
+      text-align: left !important;
+    }
+
+    :host(.u-text-center) .button-link {
+      justify-content: center !important;
+      text-align: center !important;
+    }
+
+    :host(.u-text-right) .button-link {
+      justify-content: flex-end !important;
+      text-align: right !important;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -62,6 +77,7 @@ export const buttonLinkStyles = [
       outline: none;
       vertical-align: middle;
       line-height: 1;
+      text-align: center;
       /* Force consistent sizing - override browser defaults */
       box-sizing: border-box;
       margin: 0;

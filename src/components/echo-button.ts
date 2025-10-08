@@ -8,6 +8,7 @@ import type {
   EchoIconSize,
   EchoIconVariant,
   EchoLinkDisplay,
+  EchoAlign,
 } from '../types/index.js';
 import { buttonLinkStyles } from '../styles/button-link-styles.js';
 import { utilityStyles } from '../styles/utility-styles.js';
@@ -45,6 +46,9 @@ export class EchoButton extends LitElement {
   display: EchoLinkDisplay = 'inline';
 
   @property({ type: String })
+  align: EchoAlign = 'center';
+
+  @property({ type: String })
   class = '';
 
   static styles = [buttonLinkStyles, utilityStyles];
@@ -56,21 +60,23 @@ export class EchoButton extends LitElement {
   updated(changedProperties: Map<string | number | symbol, unknown>): void {
     super.updated(changedProperties);
     
-    if (changedProperties.has('display')) {
+    if (changedProperties.has('display') || changedProperties.has('align')) {
       this._applyUtilityClasses();
     }
   }
 
   private _applyUtilityClasses(): void {
     // Remove old utility classes
-    this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100');
+    this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100', 'u-text-left', 'u-text-center', 'u-text-right');
     
     // Apply utility classes to the host element
     const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
     const widthClass = this.display === 'block' ? 'u-w-100' : '';
+    const alignClass = this.align !== 'center' ? `u-text-${this.align}` : '';
     const hostClasses = [
       displayClass,
       widthClass,
+      alignClass,
     ]
       .filter(Boolean);
     
@@ -193,6 +199,9 @@ export class EchoButton extends LitElement {
           break;
         case 'display':
           this.display = 'inline';
+          break;
+        case 'align':
+          this.align = 'center';
           break;
         case 'class':
           this.class = '';

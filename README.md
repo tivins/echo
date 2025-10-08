@@ -18,7 +18,7 @@ A modern web component library built with Lit, providing a comprehensive set of 
 ### Core Components
 
 - **echo-button**: Versatile button component with multiple variants, sizes, and display control
-- **echo-link**: Link component with button-like styling, href support, and display control
+- **echo-link**: Link component with button-like styling, href support, and consistent display behavior
 - **echo-input**: Form input component with validation states
 - **echo-checkbox**: Checkbox component with custom styling
 - **echo-select**: Dropdown select component

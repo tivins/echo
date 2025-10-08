@@ -26,6 +26,8 @@ export type EchoContext =
   | 'primary'
   | 'secondary';
 
+export type EchoAlign = 'left' | 'center' | 'right';
+
 // Export arrays of values for runtime use
 export const echoButtonVariantNames: EchoButtonVariant[] = [
   'default',
@@ -68,6 +70,8 @@ export const echoContextNames: EchoContext[] = [
   'warning',
   'info',
 ];
+
+export const echoAlignNames: EchoAlign[] = ['left', 'center', 'right'];
 
 // Echo Separator types
 export type EchoSeparatorVariant =

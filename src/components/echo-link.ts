@@ -10,6 +10,7 @@ import type {
   EchoLinkTarget,
   EchoLinkRel,
   EchoLinkDisplay,
+  EchoAlign,
 } from '../types/index.js';
 import { buttonLinkStyles } from '../styles/button-link-styles.js';
 import { utilityStyles } from '../styles/utility-styles.js';
@@ -56,9 +57,50 @@ export class EchoLink extends LitElement {
   display: EchoLinkDisplay = 'inline';
 
   @property({ type: String })
+  align: EchoAlign = 'center';
+
+  @property({ type: String })
   class = '';
 
   static styles = [buttonLinkStyles, utilityStyles];
+
+  firstUpdated(): void {
+    this._applyUtilityClasses();
+  }
+
+  updated(changedProperties: Map<string | number | symbol, unknown>): void {
+    super.updated(changedProperties);
+    
+    if (changedProperties.has('display') || changedProperties.has('align')) {
+      this._applyUtilityClasses();
+    }
+  }
+
+  private _applyUtilityClasses(): void {
+    // Remove old utility classes
+    this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100', 'u-text-left', 'u-text-center', 'u-text-right');
+    
+    // Apply utility classes to the host element
+    const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+    const widthClass = this.display === 'block' ? 'u-w-100' : '';
+    const alignClass = this.align !== 'center' ? `u-text-${this.align}` : '';
+    const hostClasses = [
+      displayClass,
+      widthClass,
+      alignClass,
+    ]
+      .filter(Boolean);
+    
+    if (hostClasses.length > 0) {
+      this.classList.add(...hostClasses);
+    }
+    
+    // Apply styles directly to ensure width: 100% works
+    if (this.display === 'block') {
+      this.style.display = 'block';
+      this.style.width = '100%';
+    }
+  }
 
   render() {
     const iconElement = this.icon
@@ -80,13 +122,11 @@ export class EchoLink extends LitElement {
         : html`<slot></slot>${iconElement}`
       : html`<slot></slot>`;
 
-    const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
     const classes = [
       'button-link',
       `button-link--${this.variant}`,
       `context--${this.context}`,
       `size--${this.size}`,
-      displayClass,
       this.class,
     ]
       .filter(Boolean)
@@ -208,6 +248,9 @@ export class EchoLink extends LitElement {
           break;
         case 'display':
           this.display = 'inline';
+          break;
+        case 'align':
+          this.align = 'center';
           break;
         case 'class':
           this.class = '';
