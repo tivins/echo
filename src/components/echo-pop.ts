@@ -82,6 +82,9 @@ export class EchoPop extends LitElement {
   @state()
   private _position: PopPosition = { x: 0, y: 0, placement: 'bottom' };
 
+  @state()
+  private _isMouseOverPopup = false;
+
   private _anchorElement: HTMLElement | null = null;
   private _portalElement: HTMLElement | null = null;
   private _resizeObserver: ResizeObserver | null = null;
@@ -237,6 +240,11 @@ export class EchoPop extends LitElement {
         flex: 1;
       }
 
+      .pop-header-content echo-icon {
+        flex-shrink: 0;
+        margin-top: 1px; /* Fine adjustment for visual alignment */
+      }
+
       .pop-title {
         font-size: 16px;
         font-weight: 500;
@@ -324,34 +332,42 @@ export class EchoPop extends LitElement {
       /* Animations */
       .pop-content--fade {
         opacity: 0;
+        transform: scale(0.95);
       }
 
       .pop-content--fade.pop-content--visible {
         opacity: 1;
+        transform: scale(1);
       }
 
       .pop-content--slide-top {
         opacity: 0;
+        transform: translateY(10px) scale(0.95);
       }
 
       .pop-content--slide-top.pop-content--visible {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       .pop-content--slide-bottom {
         opacity: 0;
+        transform: translateY(-10px) scale(0.95);
       }
 
       .pop-content--slide-bottom.pop-content--visible {
         opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
       .pop-content--scale {
         opacity: 0;
+        transform: scale(0.8);
       }
 
       .pop-content--scale.pop-content--visible {
         opacity: 1;
+        transform: scale(1);
       }
 
       /* Animation transforms - override placement transforms when animating */
@@ -423,31 +439,85 @@ export class EchoPop extends LitElement {
       .pop-content.context--primary {
         --context-color: #3b82f6;
         --context-color-alpha: rgba(59, 130, 246, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--primary .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--primary .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--secondary {
         --context-color: #6b7280;
         --context-color-alpha: rgba(107, 114, 128, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--secondary .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--secondary .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--success {
         --context-color: #10b981;
         --context-color-alpha: rgba(16, 185, 129, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--success .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--success .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--warning {
         --context-color: #f59e0b;
         --context-color-alpha: rgba(245, 158, 11, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--warning .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--warning .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--danger {
         --context-color: #ef4444;
         --context-color-alpha: rgba(239, 68, 68, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--danger .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--danger .pop-header {
+        background-color: var(--context-color-alpha);
       }
 
       .pop-content.context--info {
         --context-color: #3b82f6;
         --context-color-alpha: rgba(59, 130, 246, 0.1);
+        border-left: 4px solid var(--context-color);
+      }
+
+      .pop-content.context--info .pop-title {
+        color: var(--context-color);
+      }
+
+      .pop-content.context--info .pop-header {
+        background-color: var(--context-color-alpha);
       }
     `,
   ];
@@ -479,7 +549,12 @@ export class EchoPop extends LitElement {
 
   render() {
     return html`
-      <slot name="trigger" @click="${this._handleTriggerClick}"></slot>
+      <slot 
+        name="trigger" 
+        @click="${this._handleTriggerClick}"
+        @mouseenter="${this._handleTriggerMouseEnter}"
+        @mouseleave="${this._handleTriggerMouseLeave}"
+      ></slot>
       ${this._isVisible ? this._renderPortal() : ''}
     `;
   }
@@ -516,6 +591,8 @@ export class EchoPop extends LitElement {
           class="${classes.join(' ')}"
           style="--animation-duration: ${this.animationDuration}ms;"
           @click="${this._handleContentClick}"
+          @mouseenter="${this._handlePopupMouseEnter}"
+          @mouseleave="${this._handlePopupMouseLeave}"
         >
           ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
         </div>
@@ -548,6 +625,8 @@ export class EchoPop extends LitElement {
           style="--animation-duration: ${this.animationDuration}ms; left: ${this
             ._position.x}px; top: ${this._position.y}px;"
           @click="${this._handleContentClick}"
+          @mouseenter="${this._handlePopupMouseEnter}"
+          @mouseleave="${this._handlePopupMouseLeave}"
         >
           ${this._renderHeader()} ${this._renderBody()} ${this._renderFooter()}
         </div>
@@ -624,6 +703,36 @@ export class EchoPop extends LitElement {
   private _handleTriggerClick = (): void => {
     if (this.trigger === 'click' || this.trigger === 'manual') {
       this.toggle();
+    }
+  };
+
+  private _handleTriggerMouseEnter = (): void => {
+    if (this.trigger === 'hover') {
+      this.show();
+    }
+  };
+
+  private _handleTriggerMouseLeave = (): void => {
+    if (this.trigger === 'hover') {
+      // Add a small delay to prevent flickering when moving to popup content
+      setTimeout(() => {
+        if (!this._isMouseOverPopup) {
+          this.hide();
+        }
+      }, 100);
+    }
+  };
+
+  private _handlePopupMouseEnter = (): void => {
+    if (this.trigger === 'hover') {
+      this._isMouseOverPopup = true;
+    }
+  };
+
+  private _handlePopupMouseLeave = (): void => {
+    if (this.trigger === 'hover') {
+      this._isMouseOverPopup = false;
+      this.hide();
     }
   };
 

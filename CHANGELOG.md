@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.1] - 2025-01-06
+
+### Fixed
+- **Echo Pop Component**: Fixed multiple critical issues identified in component testing
+  - **Context Attribute**: Fixed context attribute not affecting popin design by adding proper CSS styling for all context colors (primary, secondary, success, warning, danger, info) with border-left accent, colored titles, and background tints
+  - **Animation Attribute**: Fixed animation attribute not having different effects by implementing distinct animations for fade, slide-top, slide-bottom, and scale with proper transform and opacity transitions
+  - **Icon Alignment**: Fixed icon alignment with title by adding proper flexbox alignment and fine-tuned margin adjustment for visual alignment
+  - **Trigger Hover**: Fixed trigger attribute to work with 'hover' not just 'click' by implementing proper mouseenter/mouseleave event handling with delay to prevent flickering when moving to popup content
+  - **Event Management**: Added comprehensive hover event handling for both trigger and popup content to ensure smooth hover interactions
+
+### Technical
+- **CSS Enhancements**: Added context-specific styling with border accents, colored titles, and background tints for visual context indication
+- **Animation System**: Implemented distinct animation transforms for each animation type with proper scale and translate effects
+- **Event Handling**: Added mouseenter/mouseleave event listeners for both trigger slot and popup content
+- **State Management**: Added `_isMouseOverPopup` state to track hover state and prevent premature closing
+- **Alignment Fixes**: Enhanced icon alignment with flexbox properties and fine-tuned margin adjustments
+
+### Documentation
+- **Demo Page**: Created comprehensive demo page (demos/echo-pop-demo.html) showcasing all fixes and features
+- **Test Coverage**: Added extensive test cases for context colors, animations, icon alignment, and hover triggers
+- **Interactive Examples**: Live examples demonstrating all component variants and configurations
+
+### Examples
+```html
+<!-- Context colors now properly affect design -->
+<echo-pop context="success" title="Success Pop" content="This has success styling">
+  <echo-button slot="trigger">Success Pop</echo-button>
+</echo-pop>
+
+<!-- Different animations now have distinct effects -->
+<echo-pop animation="scale" title="Scale Animation" content="This scales in/out">
+  <echo-button slot="trigger">Scale</echo-button>
+</echo-pop>
+
+<!-- Icons now properly aligned with titles -->
+<echo-pop title="Info Pop" icon="info" content="Icon aligned with title">
+  <echo-button slot="trigger">With Icon</echo-button>
+</echo-pop>
+
+<!-- Hover trigger now works properly -->
+<echo-pop trigger="hover" title="Hover Trigger" content="Opens on hover">
+  <echo-button slot="trigger">Hover Me</echo-button>
+</echo-pop>
+```
+
 ## [1.14.0] - 2025-01-06
 
 ### Added
