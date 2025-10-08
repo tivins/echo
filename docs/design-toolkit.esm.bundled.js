@@ -310,6 +310,10 @@ const buttonLinkStyles = [
       display: none !important;
     }
 
+    :host(.u-w-100) {
+      width: 100% !important;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -892,6 +896,35 @@ let EchoButton = class EchoButton extends i$1 {
         this.display = 'inline';
         this.class = '';
     }
+    firstUpdated() {
+        this._applyUtilityClasses();
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        if (changedProperties.has('display')) {
+            this._applyUtilityClasses();
+        }
+    }
+    _applyUtilityClasses() {
+        // Remove old utility classes
+        this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100');
+        // Apply utility classes to the host element
+        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+        const widthClass = this.display === 'block' ? 'u-w-100' : '';
+        const hostClasses = [
+            displayClass,
+            widthClass,
+        ]
+            .filter(Boolean);
+        if (hostClasses.length > 0) {
+            this.classList.add(...hostClasses);
+        }
+        // Apply styles directly to ensure width: 100% works
+        if (this.display === 'block') {
+            this.style.display = 'block';
+            this.style.width = '100%';
+        }
+    }
     render() {
         const iconElement = this.icon
             ? x `
@@ -915,6 +948,7 @@ let EchoButton = class EchoButton extends i$1 {
             `button-link--${this.variant}`,
             `context--${this.context}`,
             `size--${this.size}`,
+            this.class,
         ]
             .filter(Boolean)
             .join(' ');
@@ -927,23 +961,6 @@ let EchoButton = class EchoButton extends i$1 {
         ${content}
       </button>
     `;
-    }
-    updated(changedProperties) {
-        super.updated(changedProperties);
-        // Update host classes for display and utility classes
-        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
-        const hostClasses = [
-            displayClass,
-            this.class,
-        ]
-            .filter(Boolean)
-            .join(' ');
-        if (hostClasses) {
-            this.className = hostClasses;
-        }
-        else {
-            this.className = '';
-        }
     }
     _getIconSizeFromButtonSize() {
         const sizeMap = {
@@ -1084,11 +1101,14 @@ let EchoLink = class EchoLink extends i$1 {
                 ? x `${iconElement}<slot></slot>`
                 : x `<slot></slot>${iconElement}`
             : x `<slot></slot>`;
-        const linkClasses = [
+        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+        const classes = [
             'button-link',
             `button-link--${this.variant}`,
             `context--${this.context}`,
             `size--${this.size}`,
+            displayClass,
+            this.class,
         ]
             .filter(Boolean)
             .join(' ');
@@ -1096,7 +1116,7 @@ let EchoLink = class EchoLink extends i$1 {
         if (this.disabled || !this.href) {
             return x `
         <span
-          class="${linkClasses}"
+          class="${classes}"
           role="button"
           tabindex=${this.disabled ? '-1' : '0'}
           aria-disabled=${this.disabled}
@@ -1110,7 +1130,7 @@ let EchoLink = class EchoLink extends i$1 {
         // Render as proper link
         return x `
       <a
-        class="${linkClasses}"
+        class="${classes}"
         href=${this.href}
         target=${this.target || ''}
         rel=${this.rel || ''}
@@ -1119,23 +1139,6 @@ let EchoLink = class EchoLink extends i$1 {
         ${content}
       </a>
     `;
-    }
-    updated(changedProperties) {
-        super.updated(changedProperties);
-        // Update host classes for display and utility classes
-        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
-        const hostClasses = [
-            displayClass,
-            this.class,
-        ]
-            .filter(Boolean)
-            .join(' ');
-        if (hostClasses) {
-            this.className = hostClasses;
-        }
-        else {
-            this.className = '';
-        }
     }
     _getIconSizeFromLinkSize() {
         const sizeMap = {

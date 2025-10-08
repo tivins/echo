@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.19.0] - 2025-01-06
+
+### Fixed
+- **Echo Button Component**: Fixed width behavior for `display="block"`
+  - Buttons with `display="block"` now automatically apply `width: 100%` to take full container width
+  - Added automatic utility class application (`u-block` and `u-w-100`) on the host element
+  - Ensures proper block-level behavior for full-width buttons
+
 ## [1.18.0] - 2025-01-06
 
 ### Added

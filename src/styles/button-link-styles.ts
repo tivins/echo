@@ -14,6 +14,38 @@ export const buttonLinkStyles = [
       display: inline-block;
     }
 
+    :host(.u-block) {
+      display: block !important;
+    }
+
+    :host(.u-inline-block) {
+      display: inline-block !important;
+    }
+
+    :host(.u-inline) {
+      display: inline !important;
+    }
+
+    :host(.u-flex) {
+      display: flex !important;
+    }
+
+    :host(.u-inline-flex) {
+      display: inline-flex !important;
+    }
+
+    :host(.u-grid) {
+      display: grid !important;
+    }
+
+    :host(.u-hidden) {
+      display: none !important;
+    }
+
+    :host(.u-w-100) {
+      width: 100% !important;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
