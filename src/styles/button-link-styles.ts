@@ -72,7 +72,7 @@ export const buttonLinkStyles = [
         -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.124s ease-in-out;
+      transition: all 0.08s ease-in-out;
       text-decoration: none;
       outline: none;
       vertical-align: middle;

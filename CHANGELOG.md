@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.21.0] - 2025-01-06
+
+### Enhanced
+- **Hover Animation Performance**: Improved responsiveness for echo-button and echo-link components
+  - **Faster Transitions**: Reduced hover animation duration from 124ms to 80ms for better user experience
+  - **Improved Reactivity**: Hover effects now feel more immediate and responsive across all variants
+  - **Better UX**: Enhanced interaction feedback makes the interface feel more snappy and modern
+  - **Consistent Performance**: Both button and link components benefit from the same optimized animation timing
+
+### Technical
+- **Animation Optimization**: Updated transition timing in `button-link-styles.ts` from `0.124s` to `0.08s`
+- **Shared Styles**: Both echo-button and echo-link components use the same optimized transition timing
+- **Test Coverage**: Created comprehensive test page (`demos/hover-animation-test.html`) to validate improved responsiveness
+
 ## [1.20.0] - 2025-01-06
 
 ### Fixed

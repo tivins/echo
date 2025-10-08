@@ -12,6 +12,7 @@ A modern web component library built with Lit, providing a comprehensive set of 
 - **Quality Tools**: ESLint + Prettier for code quality
 - **Testing**: Playwright + Vitest for comprehensive testing
 - **Accessibility**: Full ARIA support and keyboard navigation
+- **Optimized Animations**: Fast, responsive hover effects (80ms transitions) for better user experience
 
 ## Components
 
