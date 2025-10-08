@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('EchoIcon Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/tests/index.html');
   });
 
   test('renders with default properties', async ({ page }) => {

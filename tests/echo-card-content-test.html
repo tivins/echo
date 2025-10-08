@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Card Content Test</title>
+</head>
+<body>
+    <h1>Echo Card Content Test</h1>
+
+    <!-- Card without main content -->
+    <echo-card card-title="Card without content">
+        <div slot="footer">
+            <echo-button size="small">Action</echo-button>
+        </div>
+    </echo-card>
+
+    <!-- Card with main content -->
+    <echo-card card-title="Card with content">
+        <p>This is the main content of the card. There is actual content provided.</p>
+    </echo-card>
+
+    <!-- Card with whitespace-only content -->
+    <echo-card card-title="Card with whitespace content">
+        
+    </echo-card>
+
+    <!-- Card with text-only content -->
+    <echo-card card-title="Card with text content">
+        <span>Simple text content</span>
+    </echo-card>
+
+    <!-- Header only card -->
+    <echo-card card-title="Header only card">
+    </echo-card>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

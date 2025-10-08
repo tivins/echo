@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('EchoSelect Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/test.html');
+    await page.goto('/tests/echo-select-test.html');
     // Wait for the component to be defined
     await page.waitForFunction(() => customElements.get('echo-select'));
   });

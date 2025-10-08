@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Pop Positioning Test</title>
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .positioned-button {
+            margin: 20px 0;
+        }
+        
+        .top-left {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        
+        .top-right {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+        
+        .bottom-left {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+        }
+        
+        .bottom-right {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+        }
+        
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Echo Pop Positioning Test</h1>
+    <p>Test des corrections de positionnement avec centrage CSS</p>
+    
+    <div class="test-container">
+        <div class="test-section">
+            <h3>Top Placement (Fade)</h3>
+            <echo-pop placement="top" animation="fade" title="Top Popup" content="This popup should appear above the button and be centered horizontally.">
+                <echo-button slot="trigger" variant="primary">Top Popup</echo-button>
+            </echo-pop>
+        </div>
+        
+        <div class="test-section">
+            <h3>Bottom Placement (Slide)</h3>
+            <echo-pop placement="bottom" animation="slide-bottom" title="Bottom Popup" content="This popup should appear below the button and be centered horizontally.">
+                <echo-button slot="trigger" variant="secondary">Bottom Popup</echo-button>
+            </echo-pop>
+        </div>
+        
+        <div class="test-section">
+            <h3>Left Placement (Scale)</h3>
+            <echo-pop placement="left" animation="scale" title="Left Popup" content="This popup should appear to the left of the button and be centered vertically.">
+                <echo-button slot="trigger" variant="success">Left Popup</echo-button>
+            </echo-pop>
+        </div>
+        
+        <div class="test-section">
+            <h3>Right Placement</h3>
+            <echo-pop placement="right" title="Right Popup" content="This popup should appear to the right of the button and be centered vertically.">
+                <echo-button slot="trigger" variant="warning">Right Popup</echo-button>
+            </echo-pop>
+        </div>
+        
+        <div class="test-section">
+            <h3>Auto Placement</h3>
+            <echo-pop placement="auto" title="Auto Popup" content="This popup should automatically choose the best placement based on available space.">
+                <echo-button slot="trigger" variant="danger">Auto Popup</echo-button>
+            </echo-pop>
+        </div>
+        
+        <div class="test-section">
+            <h3>Edge Cases</h3>
+            <echo-pop placement="auto" title="Edge Test" content="Testing positioning near viewport edges.">
+                <echo-button slot="trigger" variant="info" class="top-right">Edge Test</echo-button>
+            </echo-pop>
+        </div>
+    </div>
+    
+    <div style="position: relative; height: 200px; margin: 40px 0; margin-left: 200px;">
+        <echo-pop placement="bottom" title="Center Test" content="This popup should be perfectly centered relative to the button.">
+            <echo-button slot="trigger" variant="primary" class="center">Center Test</echo-button>
+        </echo-pop>
+    </div>
+    
+    <!-- Edge Tests -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 10;">
+        <echo-pop placement="auto" title="Top-Left Edge" content="Testing top-left edge positioning.">
+            <echo-button slot="trigger" variant="warning">Top-Left</echo-button>
+        </echo-pop>
+    </div>
+    
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 10;">
+        <echo-pop placement="auto" title="Top-Right Edge" content="Testing top-right edge positioning.">
+            <echo-button slot="trigger" variant="danger">Top-Right</echo-button>
+        </echo-pop>
+    </div>
+    
+    <div style="position: fixed; bottom: 20px; left: 20px; z-index: 10;">
+        <echo-pop placement="auto" title="Bottom-Left Edge" content="Testing bottom-left edge positioning.">
+            <echo-button slot="trigger" variant="success">Bottom-Left</echo-button>
+        </echo-pop>
+    </div>
+    
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 10;">
+        <echo-pop placement="auto" title="Bottom-Right Edge" content="Testing bottom-right edge positioning.">
+            <echo-button slot="trigger" variant="info">Bottom-Right</echo-button>
+        </echo-pop>
+    </div>
+    
+    <!-- Center Edge Tests - Simplified -->
+    <div style="position: fixed; top: 200px; left: 20px; z-index: 100;">
+        <echo-pop placement="right" title="Center-Left" content="Forced right placement from center-left.">
+            <echo-button slot="trigger" variant="primary">Center-Left</echo-button>
+        </echo-pop>
+    </div>
+    
+    <div style="position: fixed; top: 200px; right: 20px; z-index: 100;">
+        <echo-pop placement="left" title="Center-Right" content="Forced left placement from center-right.">
+            <echo-button slot="trigger" variant="secondary">Center-Right</echo-button>
+        </echo-pop>
+    </div>
+    
+    <script>
+        // Add some debugging
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Echo Pop Positioning Test loaded');
+            
+        // Log when popups open/close
+        document.addEventListener('echo-pop-open', (e) => {
+            console.log('Popup opened:', e.detail);
+            const popup = e.target;
+            const popupElement = popup.shadowRoot?.querySelector('.pop-content');
+            if (popupElement) {
+                console.log('Popup element:', popupElement);
+                console.log('Popup position:', {
+                    x: popupElement.style.left,
+                    y: popupElement.style.top,
+                    placement: popupElement.getAttribute('data-placement')
+                });
+            }
+        });
+        
+        document.addEventListener('echo-pop-close', (e) => {
+            console.log('Popup closed');
+        });
+        });
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('EchoCard Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/test.html');
+    await page.goto('/tests/test.html');
     // Wait for the component to be defined
     await page.waitForFunction(() => customElements.get('echo-card'));
   });
@@ -190,7 +190,7 @@ test.describe('EchoCard Component', () => {
 
   test('should not show footer when footer slot is empty', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.goto('/tests/echo-card-footer-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card without footer content
@@ -204,7 +204,7 @@ test.describe('EchoCard Component', () => {
 
   test('should show footer when footer slot has content', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.goto('/tests/echo-card-footer-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with footer content
@@ -221,7 +221,7 @@ test.describe('EchoCard Component', () => {
 
   test('should not show footer when footer slot contains only whitespace', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.goto('/tests/echo-card-footer-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with whitespace-only footer
@@ -235,7 +235,7 @@ test.describe('EchoCard Component', () => {
 
   test('should show footer when footer slot has text content', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-footer-test.html');
+    await page.goto('/tests/echo-card-footer-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with text-only footer
@@ -252,7 +252,7 @@ test.describe('EchoCard Component', () => {
 
   test('should not show content when main content slot is empty', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.goto('/tests/echo-card-content-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card without main content
@@ -266,7 +266,7 @@ test.describe('EchoCard Component', () => {
 
   test('should show content when main content slot has content', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.goto('/tests/echo-card-content-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with main content
@@ -283,7 +283,7 @@ test.describe('EchoCard Component', () => {
 
   test('should not show content when main content slot contains only whitespace', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.goto('/tests/echo-card-content-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with whitespace-only content
@@ -297,7 +297,7 @@ test.describe('EchoCard Component', () => {
 
   test('should show content when main content slot has text content', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.goto('/tests/echo-card-content-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with text-only content
@@ -314,7 +314,7 @@ test.describe('EchoCard Component', () => {
 
   test('should show only header when no content and no footer', async ({ page }) => {
     // Navigate to our specific test page
-    await page.goto('http://localhost:3000/demos/echo-card-content-test.html');
+    await page.goto('/tests/echo-card-content-test.html');
     await page.waitForFunction(() => customElements.get('echo-card'));
     
     // Test card with header only

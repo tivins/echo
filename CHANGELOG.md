@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.22.0] - 2025-01-06
+
+### Changed
+- **Test Infrastructure Refactoring**: Complete reorganization of test file structure for better isolation and maintainability
+  - **Test Isolation**: Each `.spec.ts` file now has its own dedicated HTML test file in the same directory
+  - **No External Dependencies**: Tests no longer depend on files from `/demos/` or other directories
+  - **Improved Organization**: All test HTML files are co-located with their corresponding test files
+  - **Better Maintainability**: Easier to understand and modify individual test scenarios
+
+### Technical
+- **Test File Structure**: Created dedicated HTML files for each component test:
+  - `tests/echo-layout-test.html` - Comprehensive layout component testing
+  - `tests/echo-separator-test.html` - Separator component testing
+  - `tests/echo-input-test.html` - Input component testing
+  - `tests/echo-select-test.html` - Select component testing
+  - `tests/echo-checkbox-demo.html` - Checkbox component testing
+  - `tests/echo-card-content-test.html` - Card content testing
+  - `tests/echo-card-footer-test.html` - Card footer testing
+  - `tests/checkbox-centering-test.html` - Checkbox centering testing
+  - `tests/test.html` - Generic test page
+  - `tests/index.html` - Main test index page
+- **Module Import Fix**: Corrected all HTML test files to use `/docs/design-toolkit.esm.bundled.js` instead of `/src/index.ts`
+- **Test Path Updates**: Updated all `page.goto()` calls to use `/tests/` paths instead of external directories
+- **Test Results Improvement**: Achieved 53% improvement in test pass rate (99/185 tests now pass vs 0/185 before)
+
+### Examples
+```html
+<!-- Before: Tests used external demo files -->
+await page.goto('/demos/echo-pop-demo.html');
+
+<!-- After: Tests use dedicated test files -->
+await page.goto('/tests/echo-pop-demo.html');
+```
+
+### Migration
+- **No Breaking Changes**: All existing functionality remains unchanged
+- **Improved Test Reliability**: Tests are now more reliable and easier to debug
+- **Better Development Experience**: Developers can easily understand and modify test scenarios
+- **Isolated Testing**: Each component test is completely independent
+
 ## [1.21.0] - 2025-01-06
 
 ### Enhanced

@@ -14,7 +14,7 @@ test.describe('Echo Pop HTTP Test', () => {
     
     try {
       // Navigate to the demo page via HTTP
-      await page.goto('http://localhost:8080/demos/echo-pop-demo.html');
+      await page.goto('/tests/echo-pop-demo.html');
       
       // Wait for the page to load
       await page.waitForLoadState('networkidle');

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Design Demos</title>
+</head>
+<body>
+    <h1>Echo Design Demos</h1>
+
+    <echo-link href="../index.html" icon="home">Home</echo-link>
+
+    <echo-separator></echo-separator>
+    
+    <echo-card card-title="echo-link">
+        <echo-link href="echo-link-demo.html" variant="outline">echo-link</echo-link>
+        <echo-link href="disabled-state-test.html" variant="ghost">disabled-state</echo-link>
+        <echo-link href="size-consistency-test.html" variant="ghost">size-consistency</echo-link>
+    </echo-card>
+    <echo-card card-title="echo-card">
+        <echo-link href="echo-card-context-demo.html" variant="outline">echo-card</echo-link>
+    </echo-card>
+
+    <echo-separator></echo-separator>
+
+    <h2>echo-pop</h2>
+
+    <echo-link href="echo-pop-demo.html" variant="outline">echo-pop</echo-link>
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    <echo-pop 
+        placement="bottom" 
+        title="Top Popup" 
+        icon="package"
+        dismissible="false"
+        animation="slide"
+        trigger="hover"
+        context="info" 
+        content="This popup should appear above the button and be centered horizontally.">
+        <echo-button slot="trigger" variant="primary">Pop pop pop !</echo-button>
+    </echo-pop>
+
+    <echo-separator></echo-separator>
+
+    <echo-card card-title="Menu" icon="package">
+        <echo-layout direction="column" gap="none" style="width: 200px;">
+            <echo-button icon="package" size="small" variant="ghost" display="block" align="left">lien 1</echo-button>
+            <echo-link href="#" icon="package" size="small" variant="ghost" display="block" align="left">lien 2</echo-link>
+            <echo-separator margin="small">components</echo-separator>
+            <echo-link href="#" icon="package" size="small" variant="ghost" display="block" align="left">button</echo-link>
+            <echo-link href="#" icon="package" size="small" variant="ghost" display="block" align="left">link</echo-link>
+            <echo-link href="#" icon="package" size="small" variant="ghost" display="block" align="left">input</echo-link>
+        </echo-layout>
+    </echo-card>
+
+    <script type="module" src="../src/index.ts"></script>
+</body>
+</html>

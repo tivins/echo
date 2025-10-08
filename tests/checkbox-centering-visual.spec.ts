@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Checkbox Centering Visual Test', () => {
   test('should capture screenshot of checkbox centering test', async ({ page }) => {
-    await page.goto('http://localhost:3000/demos/checkbox-centering-test.html');
+    await page.goto('/tests/checkbox-centering-test.html');
     
     // Wait for the page to load completely
     await page.waitForLoadState('networkidle');

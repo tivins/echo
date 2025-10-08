@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('EchoLayout Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/test.html');
+    await page.goto('/tests/echo-layout-test.html');
     // Wait for the component to be defined
     await page.waitForFunction(() => customElements.get('echo-layout'));
   });

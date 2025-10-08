@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.describe('EchoCheckbox Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/demos/echo-checkbox-demo.html');
+    await page.goto('/tests/echo-checkbox-demo.html');
   });
 
   test('should render checkbox with default properties', async ({ page }) => {

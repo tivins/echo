@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Echo Button Width', () => {
   test('button with display="block" should have width: 100%', async ({ page }) => {
-    await page.goto('http://localhost:3000/demos/button-width-test.html');
+    await page.goto('/tests/button-width-test.html');
     
     // Wait for the component to load
     await page.waitForSelector('echo-button');
@@ -23,7 +23,7 @@ test.describe('Echo Button Width', () => {
   });
 
   test('button with display="block" should have u-w-100 class', async ({ page }) => {
-    await page.goto('http://localhost:3000/demos/button-width-test.html');
+    await page.goto('/tests/button-width-test.html');
     
     // Wait for the component to load
     await page.waitForSelector('echo-button');
@@ -38,7 +38,7 @@ test.describe('Echo Button Width', () => {
   });
 
   test('button with display="inline" should not have u-w-100 class', async ({ page }) => {
-    await page.goto('http://localhost:3000/demos/button-width-test.html');
+    await page.goto('/tests/button-width-test.html');
     
     // Wait for the component to load
     await page.waitForSelector('echo-button');

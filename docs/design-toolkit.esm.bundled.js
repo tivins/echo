@@ -314,6 +314,21 @@ const buttonLinkStyles = [
       width: 100% !important;
     }
 
+    :host(.u-text-left) .button-link {
+      justify-content: flex-start !important;
+      text-align: left !important;
+    }
+
+    :host(.u-text-center) .button-link {
+      justify-content: center !important;
+      text-align: center !important;
+    }
+
+    :host(.u-text-right) .button-link {
+      justify-content: flex-end !important;
+      text-align: right !important;
+    }
+
     .button-link {
       display: inline-flex;
       align-items: center;
@@ -325,11 +340,12 @@ const buttonLinkStyles = [
         -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.124s ease-in-out;
+      transition: all 0.08s ease-in-out;
       text-decoration: none;
       outline: none;
       vertical-align: middle;
       line-height: 1;
+      text-align: center;
       /* Force consistent sizing - override browser defaults */
       box-sizing: border-box;
       margin: 0;
@@ -894,6 +910,7 @@ let EchoButton = class EchoButton extends i$1 {
         this.iconVariant = null;
         this.iconStrokeWidth = null;
         this.display = 'inline';
+        this.align = 'center';
         this.class = '';
     }
     firstUpdated() {
@@ -901,19 +918,21 @@ let EchoButton = class EchoButton extends i$1 {
     }
     updated(changedProperties) {
         super.updated(changedProperties);
-        if (changedProperties.has('display')) {
+        if (changedProperties.has('display') || changedProperties.has('align')) {
             this._applyUtilityClasses();
         }
     }
     _applyUtilityClasses() {
         // Remove old utility classes
-        this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100');
+        this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100', 'u-text-left', 'u-text-center', 'u-text-right');
         // Apply utility classes to the host element
         const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
         const widthClass = this.display === 'block' ? 'u-w-100' : '';
+        const alignClass = this.align !== 'center' ? `u-text-${this.align}` : '';
         const hostClasses = [
             displayClass,
             widthClass,
+            alignClass,
         ]
             .filter(Boolean);
         if (hostClasses.length > 0) {
@@ -1020,6 +1039,9 @@ let EchoButton = class EchoButton extends i$1 {
                 case 'display':
                     this.display = 'inline';
                     break;
+                case 'align':
+                    this.align = 'center';
+                    break;
                 case 'class':
                     this.class = '';
                     break;
@@ -1060,6 +1082,9 @@ __decorate([
 ], EchoButton.prototype, "display", void 0);
 __decorate([
     n({ type: String })
+], EchoButton.prototype, "align", void 0);
+__decorate([
+    n({ type: String })
 ], EchoButton.prototype, "class", void 0);
 EchoButton = __decorate([
     t$1('echo-button')
@@ -1081,7 +1106,39 @@ let EchoLink = class EchoLink extends i$1 {
         this.iconVariant = null;
         this.iconStrokeWidth = null;
         this.display = 'inline';
+        this.align = 'center';
         this.class = '';
+    }
+    firstUpdated() {
+        this._applyUtilityClasses();
+    }
+    updated(changedProperties) {
+        super.updated(changedProperties);
+        if (changedProperties.has('display') || changedProperties.has('align')) {
+            this._applyUtilityClasses();
+        }
+    }
+    _applyUtilityClasses() {
+        // Remove old utility classes
+        this.classList.remove('u-block', 'u-inline-block', 'u-inline', 'u-flex', 'u-inline-flex', 'u-grid', 'u-hidden', 'u-w-100', 'u-text-left', 'u-text-center', 'u-text-right');
+        // Apply utility classes to the host element
+        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
+        const widthClass = this.display === 'block' ? 'u-w-100' : '';
+        const alignClass = this.align !== 'center' ? `u-text-${this.align}` : '';
+        const hostClasses = [
+            displayClass,
+            widthClass,
+            alignClass,
+        ]
+            .filter(Boolean);
+        if (hostClasses.length > 0) {
+            this.classList.add(...hostClasses);
+        }
+        // Apply styles directly to ensure width: 100% works
+        if (this.display === 'block') {
+            this.style.display = 'block';
+            this.style.width = '100%';
+        }
     }
     render() {
         const iconElement = this.icon
@@ -1101,13 +1158,11 @@ let EchoLink = class EchoLink extends i$1 {
                 ? x `${iconElement}<slot></slot>`
                 : x `<slot></slot>${iconElement}`
             : x `<slot></slot>`;
-        const displayClass = this.display !== 'inline' ? `u-${this.display}` : '';
         const classes = [
             'button-link',
             `button-link--${this.variant}`,
             `context--${this.context}`,
             `size--${this.size}`,
-            displayClass,
             this.class,
         ]
             .filter(Boolean)
@@ -1216,6 +1271,9 @@ let EchoLink = class EchoLink extends i$1 {
                 case 'display':
                     this.display = 'inline';
                     break;
+                case 'align':
+                    this.align = 'center';
+                    break;
                 case 'class':
                     this.class = '';
                     break;
@@ -1263,6 +1321,9 @@ __decorate([
 __decorate([
     n({ type: String })
 ], EchoLink.prototype, "display", void 0);
+__decorate([
+    n({ type: String })
+], EchoLink.prototype, "align", void 0);
 __decorate([
     n({ type: String })
 ], EchoLink.prototype, "class", void 0);

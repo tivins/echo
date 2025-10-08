@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Checkbox Centering Validation', () => {
   test('should verify checkbox icon is properly centered', async ({ page }) => {
-    await page.goto('http://localhost:3000/demos/checkbox-centering-test.html');
+    await page.goto('/tests/checkbox-centering-test.html');
     await page.waitForLoadState('networkidle');
     
     // Get the first checkbox

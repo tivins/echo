@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Checkbox Demo</title>
+</head>
+<body>
+    <h1>Echo Checkbox Demo</h1>
+
+    <!-- Basic checkboxes -->
+    <echo-checkbox type="checkbox">Basic Checkbox</echo-checkbox>
+    <echo-checkbox type="checkbox" checked>Checked Checkbox</echo-checkbox>
+    <echo-checkbox type="checkbox" disabled>Disabled Checkbox</echo-checkbox>
+
+    <!-- Radio buttons -->
+    <echo-checkbox type="radio" name="radio-group">Radio Option 1</echo-checkbox>
+    <echo-checkbox type="radio" name="radio-group" checked>Radio Option 2</echo-checkbox>
+    <echo-checkbox type="radio" name="radio-group">Radio Option 3</echo-checkbox>
+
+    <!-- Toggle switches -->
+    <echo-checkbox type="toggle">Toggle Switch</echo-checkbox>
+    <echo-checkbox type="toggle" checked>Checked Toggle</echo-checkbox>
+    <echo-checkbox type="toggle" disabled>Disabled Toggle</echo-checkbox>
+
+    <!-- Different variants -->
+    <echo-checkbox variant="default">Default Variant</echo-checkbox>
+    <echo-checkbox variant="filled">Filled Variant</echo-checkbox>
+    <echo-checkbox variant="outline">Outline Variant</echo-checkbox>
+
+    <!-- Different sizes -->
+    <echo-checkbox size="small">Small Size</echo-checkbox>
+    <echo-checkbox size="medium">Medium Size</echo-checkbox>
+    <echo-checkbox size="large">Large Size</echo-checkbox>
+
+    <!-- Different contexts -->
+    <echo-checkbox context="primary">Primary Context</echo-checkbox>
+    <echo-checkbox context="secondary">Secondary Context</echo-checkbox>
+    <echo-checkbox context="success">Success Context</echo-checkbox>
+    <echo-checkbox context="warning">Warning Context</echo-checkbox>
+    <echo-checkbox context="danger">Danger Context</echo-checkbox>
+    <echo-checkbox context="info">Info Context</echo-checkbox>
+
+    <!-- With labels -->
+    <echo-checkbox label="Custom Label">Checkbox with Label</echo-checkbox>
+
+    <!-- Required checkbox -->
+    <echo-checkbox required>Required Checkbox</echo-checkbox>
+
+    <!-- Indeterminate checkbox -->
+    <echo-checkbox indeterminate>Indeterminate Checkbox</echo-checkbox>
+
+    <!-- With descriptions -->
+    <echo-checkbox description="This is a description">Checkbox with Description</echo-checkbox>
+
+    <!-- Form example -->
+    <form>
+        <h2>Form Example</h2>
+        <echo-checkbox name="agree" required>I agree to the terms</echo-checkbox>
+        <echo-checkbox name="newsletter">Subscribe to newsletter</echo-checkbox>
+        <echo-button type="submit">Submit</echo-button>
+    </form>
+
+    <!-- Accessibility attributes -->
+    <echo-checkbox aria-label="Accessible checkbox">Accessible Checkbox</echo-checkbox>
+
+    <!-- Keyboard navigation test -->
+    <echo-checkbox tabindex="0">Keyboard Navigable</echo-checkbox>
+
+    <!-- State consistency test -->
+    <echo-checkbox id="state-test">State Test</echo-checkbox>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Input Test</title>
+</head>
+<body>
+    <h1>Echo Input Test</h1>
+
+    <!-- Basic input -->
+    <echo-input></echo-input>
+
+    <!-- Different variants -->
+    <echo-input variant="default">Default Input</echo-input>
+    <echo-input variant="filled">Filled Input</echo-input>
+    <echo-input variant="outlined">Outlined Input</echo-input>
+
+    <!-- Different contexts -->
+    <echo-input context="primary">Primary Input</echo-input>
+    <echo-input context="secondary">Secondary Input</echo-input>
+    <echo-input context="success">Success Input</echo-input>
+    <echo-input context="warning">Warning Input</echo-input>
+    <echo-input context="danger">Danger Input</echo-input>
+    <echo-input context="info">Info Input</echo-input>
+
+    <!-- Different sizes -->
+    <echo-input size="small">Small Input</echo-input>
+    <echo-input size="medium">Medium Input</echo-input>
+    <echo-input size="large">Large Input</echo-input>
+
+    <!-- Different input types -->
+    <echo-input type="text">Text Input</echo-input>
+    <echo-input type="email">Email Input</echo-input>
+    <echo-input type="password">Password Input</echo-input>
+    <echo-input type="number">Number Input</echo-input>
+    <echo-input type="tel">Tel Input</echo-input>
+    <echo-input type="url">URL Input</echo-input>
+
+    <!-- With label -->
+    <echo-input label="Test Label">Labeled Input</echo-input>
+
+    <!-- With description -->
+    <echo-input description="This is a description">Input with Description</echo-input>
+
+    <!-- With icon -->
+    <echo-input icon="mail">Input with Icon</echo-input>
+
+    <!-- With icon on right -->
+    <echo-input icon="search" icon-position="right">Input with Right Icon</echo-input>
+
+    <!-- Disabled state -->
+    <echo-input disabled>Disabled Input</echo-input>
+
+    <!-- Readonly state -->
+    <echo-input readonly>Readonly Input</echo-input>
+
+    <!-- Required state -->
+    <echo-input required>Required Input</echo-input>
+
+    <!-- With placeholder -->
+    <echo-input placeholder="Enter text here">Placeholder Input</echo-input>
+
+    <!-- With value -->
+    <echo-input value="Default Value">Input with Value</echo-input>
+
+    <!-- With name and id -->
+    <echo-input name="test-input" id="test-id">Named Input</echo-input>
+
+    <!-- Validation attributes -->
+    <echo-input minlength="3" maxlength="10">Min/Max Length Input</echo-input>
+    <echo-input pattern="[0-9]+">Pattern Input</echo-input>
+
+    <!-- Complex combinations -->
+    <echo-input variant="outlined" context="success" size="large" icon="check" label="Success Input" description="This is a success input">Complex Input</echo-input>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

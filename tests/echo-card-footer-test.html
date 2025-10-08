@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Card Footer Test</title>
+</head>
+<body>
+    <h1>Echo Card Footer Test</h1>
+
+    <!-- Card without footer -->
+    <echo-card card-title="Card without footer">
+        <p>This card has no footer content.</p>
+    </echo-card>
+
+    <!-- Card with footer -->
+    <echo-card card-title="Card with footer">
+        <p>This card has footer content.</p>
+        <div slot="footer">
+            <echo-button size="small">Cancel</echo-button>
+            <echo-button size="small" context="primary">Save</echo-button>
+        </div>
+    </echo-card>
+
+    <!-- Card with whitespace-only footer -->
+    <echo-card card-title="Card with whitespace footer">
+        <p>This card has whitespace-only footer.</p>
+        <div slot="footer">
+            
+        </div>
+    </echo-card>
+
+    <!-- Card with text-only footer -->
+    <echo-card card-title="Card with text footer">
+        <p>This card has text-only footer.</p>
+        <div slot="footer">
+            <span>Footer text content</span>
+        </div>
+    </echo-card>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

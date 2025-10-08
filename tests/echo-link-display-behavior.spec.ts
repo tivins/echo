@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Echo Link Display Behavior', () => {
   test('should have consistent block display behavior with echo-button', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Wait for components to load
     await page.waitForSelector('echo-button[display="block"]');
@@ -37,7 +37,7 @@ test.describe('Echo Link Display Behavior', () => {
   });
   
   test('should apply utility classes correctly on host element', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Check that echo-link has the correct utility classes
     const linkClasses = await page.evaluate(() => {
@@ -50,7 +50,7 @@ test.describe('Echo Link Display Behavior', () => {
   });
   
   test('should maintain visual consistency in navigation menu', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Take a screenshot to verify visual consistency
     const menuCard = page.locator('echo-card[card-title="Menu"]');

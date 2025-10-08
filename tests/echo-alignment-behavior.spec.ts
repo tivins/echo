@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Echo Button and Link Alignment', () => {
   test('should have centered content by default', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Wait for components to load
     await page.waitForSelector('echo-button');
@@ -24,7 +24,7 @@ test.describe('Echo Button and Link Alignment', () => {
   });
   
   test('should support left alignment', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Check left alignment
     const leftButtonStyles = await page.evaluate(() => {
@@ -42,7 +42,7 @@ test.describe('Echo Button and Link Alignment', () => {
   });
   
   test('should support right alignment', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Check right alignment
     const rightButtonStyles = await page.evaluate(() => {
@@ -60,7 +60,7 @@ test.describe('Echo Button and Link Alignment', () => {
   });
   
   test('should apply utility classes correctly for alignment', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Check that utility classes are applied
     const leftButtonClasses = await page.evaluate(() => {
@@ -78,7 +78,7 @@ test.describe('Echo Button and Link Alignment', () => {
   });
   
   test('should maintain consistent behavior between button and link', async ({ page }) => {
-    await page.goto('/demos/index.html');
+    await page.goto('/tests/index.html');
     
     // Compare button and link with same alignment
     const buttonStyles = await page.evaluate(() => {

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Echo Pop Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:8080/test-positioning.html');
+    await page.goto('/tests/test-positioning.html');
   });
 
   test('should display popup with correct positioning', async ({ page }) => {

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+  <title>Echo Pop Component Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .demo-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .demo-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .demo-item {
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+    
+    .demo-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .comparison {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .comparison-label {
+      font-weight: 500;
+      min-width: 100px;
+    }
+
+    .test-area {
+      padding: 40px;
+      text-align: center;
+      background: #f8f9fa;
+      border: 2px dashed #dee2e6;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .spacing {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <div class="demo-section">
+      <h1 class="demo-title">Echo Pop Component Demo</h1>
+      <p>This demonstrates the <code>echo-pop</code> component with various configurations and fixes for the identified issues.</p>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Context Colors Test</h2>
+      <p>Testing if context attribute affects popin design:</p>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Primary Context</div>
+          <echo-pop context="primary" title="Primary Pop" content="This should have primary colors">
+            <echo-button slot="trigger">Primary Pop</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Success Context</div>
+          <echo-pop context="success" title="Success Pop" content="This should have success colors">
+            <echo-button slot="trigger">Success Pop</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Warning Context</div>
+          <echo-pop context="warning" title="Warning Pop" content="This should have warning colors">
+            <echo-button slot="trigger">Warning Pop</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Danger Context</div>
+          <echo-pop context="danger" title="Danger Pop" content="This should have danger colors">
+            <echo-button slot="trigger">Danger Pop</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Animation Types Test</h2>
+      <p>Testing different animation effects:</p>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Fade Animation</div>
+          <echo-pop animation="fade" title="Fade Pop" content="This uses fade animation">
+            <echo-button slot="trigger">Fade</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Slide Top Animation</div>
+          <echo-pop animation="slide-top" title="Slide Top" content="This slides from top">
+            <echo-button slot="trigger">Slide Top</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Slide Bottom Animation</div>
+          <echo-pop animation="slide-bottom" title="Slide Bottom" content="This slides from bottom">
+            <echo-button slot="trigger">Slide Bottom</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Scale Animation</div>
+          <echo-pop animation="scale" title="Scale Pop" content="This scales in/out">
+            <echo-button slot="trigger">Scale</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Icon Alignment Test</h2>
+      <p>Testing icon alignment with title:</p>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">With Icon</div>
+          <echo-pop title="Info Pop" icon="info" content="Icon should be aligned with title">
+            <echo-button slot="trigger">With Icon</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Warning Icon</div>
+          <echo-pop title="Warning" icon="alert-triangle" content="Warning icon aligned">
+            <echo-button slot="trigger">Warning</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Success Icon</div>
+          <echo-pop title="Success" icon="check-circle" content="Success icon aligned">
+            <echo-button slot="trigger">Success</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Trigger Types Test</h2>
+      <p>Testing different trigger behaviors:</p>
+      <div class="test-area">
+        <div class="spacing">
+          <echo-pop trigger="click" title="Click Trigger" content="Opens on click">
+            <echo-button slot="trigger">Click Me</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop trigger="hover" title="Hover Trigger" content="Opens on hover">
+            <echo-button slot="trigger">Hover Me</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop trigger="manual" title="Manual Trigger" content="Opens programmatically">
+            <echo-button slot="trigger" id="manual-trigger">Manual</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Variants Test</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Default</div>
+          <echo-pop variant="default" title="Default Pop" content="Default variant popup">
+            <echo-button slot="trigger">Default</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Tooltip</div>
+          <echo-pop variant="tooltip" content="This is a tooltip">
+            <echo-button slot="trigger">Tooltip</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Dropdown</div>
+          <echo-pop variant="dropdown" content="Dropdown content">
+            <echo-button slot="trigger">Dropdown</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Modal</div>
+          <echo-pop variant="modal" title="Modal Pop" content="This is a modal popup">
+            <echo-button slot="trigger">Modal</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Sizes Test</h2>
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-label">Small</div>
+          <echo-pop size="small" title="Small" content="Small popup">
+            <echo-button slot="trigger">Small</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Medium</div>
+          <echo-pop size="medium" title="Medium" content="Medium popup">
+            <echo-button slot="trigger">Medium</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Large</div>
+          <echo-pop size="large" title="Large" content="Large popup">
+            <echo-button slot="trigger">Large</echo-button>
+          </echo-pop>
+        </div>
+        <div class="demo-item">
+          <div class="demo-label">Auto</div>
+          <echo-pop size="auto" title="Auto" content="Auto-sized popup">
+            <echo-button slot="trigger">Auto</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2 class="demo-title">Placement Test</h2>
+      <div class="test-area">
+        <div class="spacing">
+          <echo-pop placement="top" title="Top" content="Placed on top">
+            <echo-button slot="trigger">Top</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop placement="bottom" title="Bottom" content="Placed on bottom">
+            <echo-button slot="trigger">Bottom</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop placement="left" title="Left" content="Placed on left">
+            <echo-button slot="trigger">Left</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop placement="right" title="Right" content="Placed on right">
+            <echo-button slot="trigger">Right</echo-button>
+          </echo-pop>
+        </div>
+        <div class="spacing">
+          <echo-pop placement="auto" title="Auto" content="Auto placement">
+            <echo-button slot="trigger">Auto</echo-button>
+          </echo-pop>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Add event listeners for testing
+    document.addEventListener('echo-pop-open', (event) => {
+      console.log('Echo pop opened:', event.detail);
+    });
+
+    document.addEventListener('echo-pop-close', (event) => {
+      console.log('Echo pop closed:', event.detail);
+    });
+
+    // Manual trigger test
+    document.getElementById('manual-trigger')?.addEventListener('click', () => {
+      const pop = document.querySelector('echo-pop[trigger="manual"]');
+      if (pop) {
+        pop.show();
+        setTimeout(() => pop.hide(), 3000);
+      }
+    });
+  </script>
+</body>
+</html>

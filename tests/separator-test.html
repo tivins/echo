@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Separator Test</title>
+</head>
+<body>
+    <h1>Echo Separator Test</h1>
+
+    <!-- Basic separator -->
+    <echo-separator></echo-separator>
+
+    <!-- Different variants -->
+    <echo-separator variant="solid">Solid</echo-separator>
+    <echo-separator variant="dotted">Dotted</echo-separator>
+    <echo-separator variant="dashed">Dashed</echo-separator>
+    <echo-separator variant="double">Double</echo-separator>
+    <echo-separator variant="gradient">Gradient</echo-separator>
+
+    <!-- Different margins -->
+    <echo-separator margin="none">No Margin</echo-separator>
+    <echo-separator margin="small">Small Margin</echo-separator>
+    <echo-separator margin="medium">Medium Margin</echo-separator>
+    <echo-separator margin="large">Large Margin</echo-separator>
+
+    <!-- Different orientations -->
+    <echo-separator orientation="horizontal">Horizontal</echo-separator>
+    <echo-separator orientation="vertical" style="height: 100px;">Vertical</echo-separator>
+
+    <!-- Different thickness -->
+    <echo-separator thickness="thin">Thin</echo-separator>
+    <echo-separator thickness="medium">Medium</echo-separator>
+    <echo-separator thickness="thick">Thick</echo-separator>
+
+    <!-- Different contexts -->
+    <echo-separator context="primary">Primary</echo-separator>
+    <echo-separator context="secondary">Secondary</echo-separator>
+    <echo-separator context="success">Success</echo-separator>
+    <echo-separator context="warning">Warning</echo-separator>
+    <echo-separator context="danger">Danger</echo-separator>
+    <echo-separator context="info">Info</echo-separator>
+
+    <!-- Custom color -->
+    <echo-separator color="#ff6b6b">Custom Color</echo-separator>
+
+    <!-- Separator with content -->
+    <echo-separator>OR</echo-separator>
+
+    <!-- Complex combinations -->
+    <echo-separator variant="dashed" context="primary">Dashed Primary</echo-separator>
+    <echo-separator variant="dotted" context="danger">Dotted Danger</echo-separator>
+    <echo-separator thickness="thick" context="success">Thick Success</echo-separator>
+
+    <!-- Vertical separator for ARIA test -->
+    <echo-separator orientation="vertical" style="height: 100px;">Vertical</echo-separator>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

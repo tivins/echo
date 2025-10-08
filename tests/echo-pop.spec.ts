@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Echo Pop Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/demos/echo-pop-demo.html');
+    await page.goto('/tests/echo-pop-demo.html');
   });
 
   test('should render basic pop-in', async ({ page }) => {

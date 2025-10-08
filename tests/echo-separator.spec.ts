@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('EchoSeparator Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/separator-test.html');
+    await page.goto('/tests/separator-test.html');
     // Wait for the component to be defined
     await page.waitForFunction(() => customElements.get('echo-separator'));
   });

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Echo Pop Visual Test', () => {
   test('should display pop-in demo page', async ({ page }) => {
     // Navigate to the demo page directly
-    await page.goto('file:///C:/docs/projects/apps/echo/demos/echo-pop-demo.html');
+    await page.goto('/tests/echo-pop-demo.html');
     
     // Wait for the page to load
     await page.waitForLoadState('networkidle');

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Select Test</title>
+</head>
+<body>
+    <h1>Echo Select Test</h1>
+
+    <!-- Basic select -->
+    <echo-select>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </echo-select>
+
+    <!-- Different variants -->
+    <echo-select variant="default">
+        <option value="default1">Default Option 1</option>
+        <option value="default2">Default Option 2</option>
+    </echo-select>
+    
+    <echo-select variant="filled">
+        <option value="filled1">Filled Option 1</option>
+        <option value="filled2">Filled Option 2</option>
+    </echo-select>
+    
+    <echo-select variant="outlined">
+        <option value="outlined1">Outlined Option 1</option>
+        <option value="outlined2">Outlined Option 2</option>
+    </echo-select>
+
+    <!-- Different contexts -->
+    <echo-select context="primary">
+        <option value="primary1">Primary Option 1</option>
+        <option value="primary2">Primary Option 2</option>
+    </echo-select>
+    
+    <echo-select context="secondary">
+        <option value="secondary1">Secondary Option 1</option>
+        <option value="secondary2">Secondary Option 2</option>
+    </echo-select>
+    
+    <echo-select context="success">
+        <option value="success1">Success Option 1</option>
+        <option value="success2">Success Option 2</option>
+    </echo-select>
+    
+    <echo-select context="warning">
+        <option value="warning1">Warning Option 1</option>
+        <option value="warning2">Warning Option 2</option>
+    </echo-select>
+    
+    <echo-select context="danger">
+        <option value="danger1">Danger Option 1</option>
+        <option value="danger2">Danger Option 2</option>
+    </echo-select>
+    
+    <echo-select context="info">
+        <option value="info1">Info Option 1</option>
+        <option value="info2">Info Option 2</option>
+    </echo-select>
+
+    <!-- Different sizes -->
+    <echo-select size="small">
+        <option value="small1">Small Option 1</option>
+        <option value="small2">Small Option 2</option>
+    </echo-select>
+    
+    <echo-select size="medium">
+        <option value="medium1">Medium Option 1</option>
+        <option value="medium2">Medium Option 2</option>
+    </echo-select>
+    
+    <echo-select size="large">
+        <option value="large1">Large Option 1</option>
+        <option value="large2">Large Option 2</option>
+    </echo-select>
+
+    <!-- With label -->
+    <echo-select label="Test Label">
+        <option value="label1">Label Option 1</option>
+        <option value="label2">Label Option 2</option>
+    </echo-select>
+
+    <!-- With placeholder -->
+    <echo-select placeholder="Choose an option">
+        <option value="placeholder1">Placeholder Option 1</option>
+        <option value="placeholder2">Placeholder Option 2</option>
+    </echo-select>
+
+    <!-- With description -->
+    <echo-select description="This is a description">
+        <option value="desc1">Description Option 1</option>
+        <option value="desc2">Description Option 2</option>
+    </echo-select>
+
+    <!-- With icon -->
+    <echo-select icon="mail">
+        <option value="icon1">Icon Option 1</option>
+        <option value="icon2">Icon Option 2</option>
+    </echo-select>
+
+    <!-- With icon on right -->
+    <echo-select icon="chevron-down" icon-position="right">
+        <option value="righticon1">Right Icon Option 1</option>
+        <option value="righticon2">Right Icon Option 2</option>
+    </echo-select>
+
+    <!-- Disabled state -->
+    <echo-select disabled>
+        <option value="disabled1">Disabled Option 1</option>
+        <option value="disabled2">Disabled Option 2</option>
+    </echo-select>
+
+    <!-- Required state -->
+    <echo-select required>
+        <option value="required1">Required Option 1</option>
+        <option value="required2">Required Option 2</option>
+    </echo-select>
+
+    <!-- Multiple select -->
+    <echo-select multiple>
+        <option value="multi1">Multiple Option 1</option>
+        <option value="multi2">Multiple Option 2</option>
+        <option value="multi3">Multiple Option 3</option>
+    </echo-select>
+
+    <!-- With options -->
+    <echo-select>
+        <option value="opt1">Option 1</option>
+        <option value="opt2">Option 2</option>
+        <option value="opt3">Option 3</option>
+        <option value="opt4">Option 4</option>
+    </echo-select>
+
+    <!-- With name and id -->
+    <echo-select name="test-select" id="test-select-id">
+        <option value="name1">Named Option 1</option>
+        <option value="name2">Named Option 2</option>
+    </echo-select>
+
+    <!-- Different icon sizes -->
+    <echo-select icon="mail" icon-size="small">
+        <option value="smallicon1">Small Icon Option 1</option>
+        <option value="smallicon2">Small Icon Option 2</option>
+    </echo-select>
+    
+    <echo-select icon="mail" icon-size="medium">
+        <option value="mediumicon1">Medium Icon Option 1</option>
+        <option value="mediumicon2">Medium Icon Option 2</option>
+    </echo-select>
+    
+    <echo-select icon="mail" icon-size="large">
+        <option value="largeicon1">Large Icon Option 1</option>
+        <option value="largeicon2">Large Icon Option 2</option>
+    </echo-select>
+
+    <!-- Different icon variants -->
+    <echo-select icon="mail" icon-variant="default">
+        <option value="defaulticon1">Default Icon Option 1</option>
+        <option value="defaulticon2">Default Icon Option 2</option>
+    </echo-select>
+    
+    <echo-select icon="mail" icon-variant="filled">
+        <option value="filledicon1">Filled Icon Option 1</option>
+        <option value="filledicon2">Filled Icon Option 2</option>
+    </echo-select>
+    
+    <echo-select icon="mail" icon-variant="outlined">
+        <option value="outlinedicon1">Outlined Icon Option 1</option>
+        <option value="outlinedicon2">Outlined Icon Option 2</option>
+    </echo-select>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>

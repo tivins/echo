@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Design Test Page</title>
+</head>
+<body>
+    <h1>Echo Design Test Page</h1>
+
+    <!-- Echo Button Tests -->
+    <h2>Echo Button</h2>
+    <echo-button>Primary Button</echo-button>
+    <echo-button variant="link">Link Button</echo-button>
+    <echo-button variant="outline">Outline Button</echo-button>
+    <echo-button variant="ghost">Ghost Button</echo-button>
+    
+    <echo-button context="primary">Primary Context</echo-button>
+    <echo-button context="secondary">Secondary Context</echo-button>
+    <echo-button context="success">Success Context</echo-button>
+    <echo-button context="danger">Danger Context</echo-button>
+    <echo-button context="warning">Warning Context</echo-button>
+    <echo-button context="info">Info Context</echo-button>
+    
+    <echo-button variant="default" context="success">Success Default</echo-button>
+    <echo-button variant="outline" context="danger">Danger Outline</echo-button>
+    <echo-button variant="ghost" context="warning">Warning Ghost</echo-button>
+    <echo-button variant="link" context="info">Info Link</echo-button>
+    
+    <echo-button size="small">Small Button</echo-button>
+    <echo-button size="medium">Medium Button</echo-button>
+    <echo-button size="large">Large Button</echo-button>
+    
+    <echo-button disabled>Disabled Button</echo-button>
+
+    <!-- Echo Card Tests -->
+    <h2>Echo Card</h2>
+    <echo-card>Default Card</echo-card>
+    <echo-card variant="outlined">Outlined Card</echo-card>
+    <echo-card variant="elevated">Elevated Card</echo-card>
+    <echo-card variant="flat">Flat Card</echo-card>
+    
+    <echo-card size="small">Small Card</echo-card>
+    <echo-card size="medium">Medium Card</echo-card>
+    <echo-card size="large">Large Card</echo-card>
+    
+    <echo-card context="primary">Primary Card</echo-card>
+    <echo-card context="secondary">Secondary Card</echo-card>
+    <echo-card context="success">Success Card</echo-card>
+    <echo-card context="danger">Danger Card</echo-card>
+    <echo-card context="warning">Warning Card</echo-card>
+    <echo-card context="info">Info Card</echo-card>
+    
+    <echo-card card-title="Test Card">Card with Title</echo-card>
+    <echo-card icon="star">Card with Icon</echo-card>
+    <echo-card card-title="Card with Icon" icon="heart">Card with Title and Icon</echo-card>
+    <echo-card closable>Closable Card</echo-card>
+    <echo-card disabled>Disabled Card</echo-card>
+    
+    <echo-card icon="star" icon-size="small">Small Icon Card</echo-card>
+    <echo-card icon="star" icon-size="large">Large Icon Card</echo-card>
+    <echo-card icon="star" icon-variant="filled">Filled Icon Card</echo-card>
+    <echo-card icon="star" icon-variant="outline">Outline Icon Card</echo-card>
+    
+    <echo-card variant="elevated" size="large" context="success">Complex Card</echo-card>
+
+    <!-- Card with footer -->
+    <echo-card card-title="Card with footer">
+        <p>This card has footer content.</p>
+        <div slot="footer">
+            <echo-button size="small">Cancel</echo-button>
+            <echo-button size="small" context="primary">Save</echo-button>
+        </div>
+    </echo-card>
+
+    <!-- Card with header actions -->
+    <echo-card card-title="Card with header actions">
+        <p>This card has header actions.</p>
+        <div slot="header-actions">
+            <echo-button size="small" variant="ghost">Action</echo-button>
+        </div>
+    </echo-card>
+
+    <!-- Echo Select Tests -->
+    <h2>Echo Select</h2>
+    <echo-select>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </echo-select>
+
+    <!-- Echo Input Tests -->
+    <h2>Echo Input</h2>
+    <echo-input placeholder="Enter text"></echo-input>
+    <echo-input type="email" placeholder="Enter email"></echo-input>
+    <echo-input type="password" placeholder="Enter password"></echo-input>
+
+    <!-- Echo Layout Tests -->
+    <h2>Echo Layout</h2>
+    <echo-layout direction="row" gap="medium">
+        <echo-button>Button 1</echo-button>
+        <echo-button>Button 2</echo-button>
+        <echo-button>Button 3</echo-button>
+    </echo-layout>
+
+    <script type="module" src="/docs/design-toolkit.esm.bundled.js"></script>
+</body>
+</html>
